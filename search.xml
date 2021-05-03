@@ -1,0 +1,1641 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Github Page绑定域名</title>
+    <url>/2021/04/29/Github-Page%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/</url>
+    <content><![CDATA[<p>轻松两步就可以完成Github Page域名绑定</p>
+<h2 id="dns端的设置">DNS端的设置</h2>
+<ul>
+<li>增加一条 <code>CNAME</code> 记录，名称指向自己的 <code>github page</code> 页 <code>username.github.io</code></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">类型</th>
+<th style="text-align: center;">名称</th>
+<th style="text-align: center;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">CNAME</td>
+<td style="text-align: center;">www</td>
+<td style="text-align: center;">username.github.io</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>增加一条 <code>A</code> 记录，指向 <code>185.199.108.153</code> 或 <code>185.199.109.153</code> 或 <code>185.199.110.153</code> 或 <code>185.199.111.153</code></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">类型</th>
+<th style="text-align: center;">名称</th>
+<th style="text-align: center;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">@</td>
+<td style="text-align: center;">185.199.108.153</td>
+</tr>
+</tbody>
+</table>
+<h2 id="github-pages端设置">Github Pages端设置</h2>
+<p><strong>（这样设置有坑，可以不看了，看下一步）</strong></p>
+<p><code>settings</code> --&gt; <code>Pages</code> --&gt; <code>Custom domain</code> --&gt; <code>www.zeroandone.tk</code> --&gt; <code>save</code></p>
+<p>如果你的DNS配置正确的话，检测通过，稍等片刻，这时可以通过 <code>http://www.zeroandone.tk</code> 访问了</p>
+<p>建议勾选下方的 <code>Enforce HTTPS</code> ，这样就可以通过 <code>https://www.zeroandone.tk</code> 访问</p>
+<p>说明：<code>zeroandone.tk</code> 会重定向到 <code>www.zeroandone.tk</code></p>
+<p>刚把这篇文章写完，去 <code>hexo g -d</code> 以后，突然访问 <code>https://www.zeroandone.tk</code> 页面 <code>404</code> 了，好奇怪！</p>
+<p>没发这篇文章之前还访问好好的，搜索发现好多小伙伴也有类似的事情发生：<a href="https://blog.csdn.net/Belingda/article/details/100635572">github page+hexo 绑定域名后页面显示404</a>，原来是部署覆盖掉了CNAME文件，正确的处理方式看下一步</p>
+<h2 id="hexo博客端设置">Hexo博客端设置</h2>
+<p>在 <code>source</code> 文件夹下创建 <code>CNAME</code> 文件（注意一定是大写）</p>
+<p>文件的内容就一行 <code>www.zeroandone.tk</code> （换成你自己的域名）</p>
+<p>这样部署上传的时候，就将该文件push到github仓库了</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>github page</tag>
+        <tag>绑定域名</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>给ipv4 only vps添加ipv6</title>
+    <url>/2021/04/28/%E7%BB%99ipv4-only-vps%E6%B7%BB%E5%8A%A0ipv6/</url>
+    <content><![CDATA[<h2 id="准备工作">准备工作</h2>
+<p>在网站 <a href="https://www.tunnelbroker.net/">TunnelBroker</a> 注册账号</p>
+<h2 id="网页端设置">网页端设置</h2>
+<p>1.登录后，点击左侧 <code>Creat Regular Tunnel</code></p>
+<p>2.<code>Ipv4 Endpoint(your side)</code> 填写Vps的ip地址，<code>Available Tunnel Servers</code> 选择ipv6地址所在地区,然后点击下方 <code>Creat Tunnel</code></p>
+<p>3.点击选项卡 <code>Example Configurations</code> ，选择你的配置方式或系统类型，得到vps端需要配置的东西</p>
+<h2 id="vps端设置">Vps端设置</h2>
+<p>有如下两种方式，推荐采用方式二：</p>
+<p>1.如果上一步你的选择是配置方式 <code>Linux-net-tools</code> ，会得到一串命令示例如下： <figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ifconfig</span> sit<span class="number">0</span> up</span><br><span class="line"><span class="attribute">ifconfig</span> sit<span class="number">0</span> inet<span class="number">6</span> tunnel ::<span class="number">66</span>.<span class="number">220</span>.xx.xx</span><br><span class="line"><span class="attribute">ifconfig</span> sit<span class="number">1</span> up</span><br><span class="line"><span class="attribute">ifconfig</span> sit<span class="number">1</span> inet<span class="number">6</span> add <span class="number">2001</span>:<span class="number">4</span>xx:x:<span class="number">137</span>::<span class="number">2</span>/<span class="number">64</span></span><br><span class="line"><span class="attribute">route</span> -A inet<span class="number">6</span> add ::/<span class="number">0</span> dev sit<span class="number">1</span></span><br></pre></td></tr></table></figure> 将以上命令粘贴进vps的终端，运行即可</p>
+<p>2.如果上一步的选择是系统类型比如 <code>Debian\Ubuntu</code> 的话，会得到配置代码： <figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">auto</span> he-ipv<span class="number">6</span></span><br><span class="line"><span class="attribute">iface</span> he-ipv<span class="number">6</span> inet<span class="number">6</span> v<span class="number">4</span>tunnel</span><br><span class="line">        <span class="attribute">address</span> xxxx:<span class="number">4</span>xx:x:<span class="number">137</span>::<span class="number">2</span></span><br><span class="line">        <span class="attribute">netmask</span> <span class="number">64</span></span><br><span class="line">        <span class="attribute">endpoint</span> <span class="number">66</span>.<span class="number">220</span>.xx.xx</span><br><span class="line">        <span class="attribute">local</span> xx.xx.xx.xx</span><br><span class="line">        <span class="attribute">ttl</span> <span class="number">255</span></span><br><span class="line">        <span class="attribute">gateway</span> <span class="number">2001</span>:<span class="number">470</span>:c:<span class="number">137</span>::<span class="number">1</span></span><br></pre></td></tr></table></figure> 将以上代码粘贴进 <code>/etc/network/interfaces</code></p>
+<p><strong>特别提醒</strong> ：如果你的vps是oracle的话，可能需要将上述代码中 <code>local xx.xx.xx.xx</code> 的ip地址修改为oracle的内网地址，一般是10开头的</p>
+<p>然后 <code>ifup he-ipv6</code> 就可以了，如果没有 <code>ifup</code> 命令就安装一下 <code>apt install ifupdown</code></p>
+<p>然后测试我们的ipv6地址是否添加成功： <figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ping6</span> ipv<span class="number">6</span>.google.com</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>vps</tag>
+        <tag>ipv4</tag>
+        <tag>ipv6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Win10计划任务不执行的解决办法</title>
+    <url>/2021/04/23/Win10%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E4%B8%8D%E6%89%A7%E8%A1%8C%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="使用计划任务的目的">使用计划任务的目的：</h2>
+<p>仅仅是为了定时打开某个软件.exe，挂个机，刷刷分</p>
+<h2 id="不执行的具体表现">不执行的具体表现</h2>
+<p>如果您定好计划任务以后，发现有如下情形之一，可以考虑试试下面的办法</p>
+<ul>
+<li><p>操作员或管理员拒绝了您的请求</p></li>
+<li><p>显示正在运行，但是有错误代码 <code>0x41301</code></p></li>
+<li><p>选择 <code>只在用户登录时运行</code> 可以运行，但是一旦选择 <code>不管用户是否登录都要运行</code> 就不行</p></li>
+</ul>
+<h2 id="尝试过的坑">尝试过的”坑“</h2>
+<p>按照网上千篇一律的教程，要么分配用户权限，要么用 <code>Administrator</code> 账户运行，可是我都没有成功</p>
+<h2 id="解决办法">解决办法</h2>
+<p>在网络上搜索了众多解决办法都无果之后，自己尝试将 <code>运行任务时，请使用下列用户账户</code> 选择设置为 <code>Administrators</code> 用户组</p>
+<p>对，没错，不是 <code>用户</code> ，而是 <code>用户组</code> ，然后 <code>只在用户登录时运行</code> 和 <code>不管用户是否登录都要运行</code> 都变灰不可选择，然后定好时间，锁定计算机，等下打开一看，我的exe文件居然运行起来了。</p>
+<p>为了进一步验证 我前面按网上教程设置的步骤是否是必要条件，我就取消了前面所有的修改，只是简单的将 <code>运行任务时，请使用下列用户账户</code> 选择设置为 <code>Administrators</code> 用户组，发现也是可行的。</p>
+<p>至于这到底是为什么，我也不清楚，误打误撞解决了问题，如果实在走投无路，不妨试试，好运。</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>267009</tag>
+        <tag>taskschd</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关注G,F两点坐标如何求解</title>
+    <url>/2021/04/21/%E5%85%B3%E6%B3%A8G,F%E4%B8%A4%E7%82%B9%E5%9D%90%E6%A0%87/</url>
+    <content><![CDATA[<h2 id="关注gf两点坐标如何求解">关注G,F两点坐标如何求解</h2>
+<p>如图，在四棱锥<span class="math inline">\(P-ABCD\)</span>中，<span class="math inline">\(PA\bot\)</span>平面<span class="math inline">\(ABCD\)</span>，<span class="math inline">\(AD\bot CD\)</span>，<span class="math inline">\(AD//BC\)</span>，<span class="math inline">\(PA=AD=CD=2,BC=3\)</span>，过点<span class="math inline">\(A\)</span>作截面<span class="math inline">\(AEFG\)</span></p>
+<p>已知<span class="math inline">\(PG:PB=2:3\)</span>，<span class="math inline">\(E\)</span>为<span class="math inline">\(PD\)</span>的中点</p>
+<p>（1）求证：<span class="math inline">\(AG//\)</span>平面<span class="math inline">\(PCD\)</span></p>
+<p>（2）求<span class="math inline">\(AF\)</span>与平面<span class="math inline">\(PAB\)</span>所成角的正弦值</p>
+<p><img src="https://gitee.com/andypl/imagehost/raw/master/img/Snipaste_2021-04-10_14-13-07.jpg" alt="33" style="zoom:50%;" /></p>
+]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>立体几何</tag>
+        <tag>坐标</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows10安装Ubuntu子系统以及折腾</title>
+    <url>/2021/04/20/Win10%E5%AE%89%E8%A3%85WSL2%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%8F%8A%E6%8A%98%E8%85%BE/</url>
+    <content><![CDATA[<h1 id="安装篇">安装篇</h1>
+<h2 id="步骤-1---启用适用于-linux-的-windows-子系统">步骤 1 - 启用适用于 Linux 的 Windows 子系统</h2>
+<p>需要先启用“适用于 Linux 的 Windows 子系统”可选功能，然后才能在 Windows 上安装 Linux 分发。</p>
+<p>以管理员身份打开 PowerShell 并运行：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">dism.exe <span class="string">/online</span> <span class="string">/enable-feature</span> <span class="string">/featurename</span><span class="function">:Microsoft-Windows-Subsystem-Linux</span> <span class="string">/all</span> <span class="string">/norestart</span></span><br></pre></td></tr></table></figure>
+<h2 id="步骤-2---检查运行-wsl-2-的要求">步骤 2 - 检查运行 WSL 2 的要求</h2>
+<p>若要更新到 WSL 2，需要运行 Windows 10。</p>
+<p>对于 x64 系统：版本 1903 或更高版本，采用 内部版本 18362 或更高版本。</p>
+<p>对于 ARM64 系统：版本 2004 或更高版本，采用 内部版本 19041 或更高版本。</p>
+<p>低于 18362 的版本不支持 WSL 2</p>
+<h2 id="步骤-3---启用虚拟机功能">步骤 3 - 启用虚拟机功能</h2>
+<p>安装 WSL 2 之前，必须启用“虚拟机平台”可选功能。 计算机需要虚拟化功能才能使用此功能。</p>
+<p>以管理员身份打开 PowerShell 并运行：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">dism.exe <span class="string">/online</span> <span class="string">/enable-feature</span> <span class="string">/featurename</span><span class="function">:VirtualMachinePlatform</span> <span class="string">/all</span> <span class="string">/norestart</span></span><br></pre></td></tr></table></figure>
+<h2 id="步骤-4---下载-linux-内核更新包">步骤 4 - 下载 Linux 内核更新包</h2>
+<p><a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" title="适用于 x64 计算机的 WSL2 Linux 内核更新包">适用于 x64 计算机的 WSL2 Linux 内核更新包</a></p>
+<h2 id="步骤-5---将-wsl-2-设置为默认版本">步骤 5 - 将 WSL 2 设置为默认版本</h2>
+<p>打开 PowerShell，然后在安装新的 Linux 发行版时运行以下命令，将 WSL 2 设置为默认版本：</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">wsl --<span class="keyword">set</span>-<span class="keyword">default</span>-version <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="步骤-6---安装自己喜欢的-linux-版本">步骤 6 - 安装自己喜欢的 Linux 版本</h2>
+<p>在Microsoft Store搜索ubuntu，安装18.04</p>
+<h1 id="折腾篇">折腾篇</h1>
+<h2 id="设置用户名和密码">设置用户名和密码</h2>
+<p>首次启动设置用户名和密码</p>
+<h2 id="更换apt源为清华源">更换apt源为清华源</h2>
+<p>编辑 <code>/etc/apt/sources.list</code> 删除所有内容，添加如下：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"># 默认注释了源码镜像以提高 apt <span class="keyword">update</span> 速度，如有需要可自行取消注释</span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"># <span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"># <span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"># <span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"># <span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"># 预发布软件源，不建议启用</span><br><span class="line"># <span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ focal-proposed main restricted universe multiverse</span><br><span class="line"># <span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.tuna.tsinghua.edu.<span class="keyword">cn</span>/ubuntu/ focal-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+<h2 id="安装指定版本的nodejs和最新版npm">安装指定版本的nodejs和最新版npm</h2>
+<p>用命令安装</p>
+<figure class="highlight vala"><table><tr><td class="code"><pre><span class="line">curl -sL https:<span class="comment">//deb.nodesource.com/setup_14.x  bash - </span></span><br><span class="line"><span class="meta"># 注意14代表版本号，可根据需要更换</span></span><br><span class="line">apt-<span class="keyword">get</span> install -y nodejs</span><br><span class="line">node -v</span><br><span class="line"><span class="meta"># v14.16.1</span></span><br><span class="line">npm -v</span><br><span class="line"><span class="meta"># 6.14.12</span></span><br></pre></td></tr></table></figure>
+<p>nodejs14.16.1自带npm版本为6.14.12，可以通过命令升级npm为最新版</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">npm</span> install -g <span class="built_in">npm</span></span><br><span class="line"><span class="built_in">npm</span> -v</span><br><span class="line"><span class="comment"># 7.10.0</span></span><br></pre></td></tr></table></figure>
+<h2 id="设置git配置">设置git配置</h2>
+<p>全局配置git用户名和邮箱，如果要push到github，则跟github用户名和邮箱保持一致</p>
+<figure class="highlight dsconfig"><table><tr><td class="code"><pre><span class="line"><span class="string">git</span> <span class="string">config</span> <span class="built_in">--global</span> <span class="string">user</span>.<span class="string">name</span> <span class="string">&quot;xxxxx&quot;</span></span><br><span class="line"><span class="string">git</span> <span class="string">config</span> <span class="built_in">--global</span> <span class="string">user</span>.<span class="string">email</span> <span class="string">&quot;xxx@gmail.com&quot;</span></span><br><span class="line"><span class="comment"># 查看确认设置是否正确</span></span><br><span class="line"><span class="string">git</span> <span class="string">config</span> <span class="built_in">--list</span> </span><br><span class="line"><span class="comment"># user.name = xxxxx</span></span><br><span class="line"><span class="comment"># user.email = xxx@gmial.com</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装配置windows-terminal">安装配置Windows Terminal</h2>
+<p>Windows Terminal 是win推出的一款新的命令行工具，可以在应用商店里搜索并下载安装</p>
+<h3 id="安装zsh">安装zsh</h3>
+<figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"><span class="meta"># 安装 zsh</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> install zsh</span><br><span class="line"></span><br><span class="line"><span class="meta"># 修改默认的 Shell 为 zsh</span></span><br><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<h3 id="安装oh-my-zsh">安装oh-my-zsh</h3>
+<p>oh-my-zsh用于快速配置zsh，进入官网或者Github可以了解其基本使用及其丰富的主题使用，安装只需要执行下面代码即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<p>如果遇到443错误，可能是dns污染造成的，分步执行以下代码</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">wget https:<span class="regexp">//</span>raw.githubusercontent.com<span class="regexp">/ohmyzsh/</span>ohmyzsh<span class="regexp">/master/</span>tools/install.sh</span><br><span class="line">sh ./install.sh</span><br></pre></td></tr></table></figure>
+<p>安装 <code>zsh-syntax-higlighting</code> 语法高亮插件</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下载</span></span><br><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/zsh-users/</span>zsh-syntax-highlighting.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移动到 plugins 文件夹中</span></span><br><span class="line">mv -p zsh-syntax-highlighting <span class="variable">$ZSH_CUSTOM</span>/plugins</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置环境变量</span></span><br><span class="line">cd ~</span><br><span class="line">vim .zshrc</span><br><span class="line"></span><br><span class="line"><span class="comment">#在 plugins 一列中添加 zsh-syntax-highlighting，如下</span></span><br><span class="line">plugins=(</span><br><span class="line">         git</span><br><span class="line">         zsh-syntax-highlighting</span><br><span class="line">         )</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在文件末尾添加</span></span><br><span class="line">source <span class="variable">$ZSH_CUSTOM</span><span class="regexp">/plugins/</span>zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置生效</span></span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>安装 <code>zsh-autosuggestions</code> 语法历史记录插件</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下载</span></span><br><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/zsh-users/</span>zsh-autosuggestions.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移动到 plugins 文件夹中</span></span><br><span class="line">mv -p zsh-autosuggestions <span class="variable">$ZSH_CUSTOM</span>/plugins</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置环境变量</span></span><br><span class="line">cd ~</span><br><span class="line">vim .zshrc</span><br><span class="line"></span><br><span class="line"><span class="comment">#在 plugins 一列中添加 zsh-autosuggestions，如下</span></span><br><span class="line">plugins=(</span><br><span class="line">         git</span><br><span class="line">         zsh-syntax-highlighting</span><br><span class="line">         zsh-autosuggestions</span><br><span class="line">         )</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在文件末尾添加</span></span><br><span class="line">source <span class="variable">$ZSH_CUSTOM</span><span class="regexp">/plugins/</span>zsh-autosuggestions/zsh-autosuggestions.zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置生效</span></span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
+<h3 id="更改oh-my-zsh主题">更改oh-my-zsh主题</h3>
+<p>安装Powerline字体以使用图标</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">$ sudo apt <span class="keyword">install</span> fonts-powerline</span><br></pre></td></tr></table></figure>
+<p>将主题从'robbyrussell'改为'agnoster'为传奇的Oh-My-Zsh主题</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">vim ~<span class="string">/.zshrc</span></span><br><span class="line">source ~<span class="string">/.zshrc</span></span><br></pre></td></tr></table></figure>
+<p>如果看到有乱码出现的话，那就需要给windows安装powerline字体 详见https://blog.csdn.net/qiphon3650/article/details/109165495 安装完毕后（安装自己喜欢的几个字体就行了，没必要全装），配置Windows Terminal字体为刚安装的字体</p>
+<p>取消前面的用户名和主机名显示 方法一：</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">cd ~<span class="regexp">/.oh-my-zsh/</span>themes</span><br><span class="line">vim agnoster.zsh-theme</span><br></pre></td></tr></table></figure>
+<p>把其中的 <code>prompt_context</code> 注释掉</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#prompt_context</span></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>这样，终端就不再显示前面长长的用户名和主机名了</p>
+<p>方法二： 下面这个方法更好些： 修改 <code>vim ~/.zshrc</code> 文件,在文件底部增加 隐藏用户名和主机名</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">prompt_context</span><span class="params">()</span></span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>只保留用户名，隐藏主机名</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">prompt_context</span></span>() &#123;</span><br><span class="line">  <span class="keyword">if</span> [[ <span class="string">&quot;<span class="variable">$USER</span>&quot;</span> != <span class="string">&quot;<span class="variable">$DEFAULT_USER</span>&quot;</span>  -n <span class="string">&quot;<span class="variable">$SSH_CLIENT</span>&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">    prompt_segment black default <span class="string">&quot;%(!.%&#123;%F&#123;yellow&#125;%&#125;.)<span class="variable">$USER</span>&quot;</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只保留主机名，隐藏用户名</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">prompt_context</span></span>() &#123;</span><br><span class="line">  <span class="keyword">if</span> [[ <span class="string">&quot;<span class="variable">$USER</span>&quot;</span> != <span class="string">&quot;<span class="variable">$DEFAULT_USER</span>&quot;</span>  -n <span class="string">&quot;<span class="variable">$SSH_CLIENT</span>&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">    prompt_segment black default <span class="string">&quot;%(!.%&#123;%F&#123;yellow&#125;%&#125;.)<span class="variable">$HOST</span>&quot;</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改后记得执行 <code>source ~/.zshrc</code></p>
+<h3 id="安装autojump">安装autojump</h3>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">apt install <span class="built_in">auto</span>jump</span><br><span class="line">vim ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>找到plugins，把autojump添加进去</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">plugins=(</span><br><span class="line">         git</span><br><span class="line">         zsh-syntax-highlighting</span><br><span class="line">         zsh-<span class="built_in">auto</span>suggestions</span><br><span class="line">         <span class="built_in">auto</span>jump</span><br><span class="line">         )</span><br></pre></td></tr></table></figure>
+<p>然后 <code>source .zshrc</code> autojump就开始记录你进入过的目录，以后直接 <code>j 目录名</code> 就可以了，甚至是目录名的部分字母都可以，如果有多选，提供tab选择功能</p>
+<h3 id="解决windows-terminal连接ssh不能输入中文标点">解决windows terminal连接ssh不能输入中文标点</h3>
+<p>详情见https://zhiqiang.org/it/windows-terminal-cannot-type-chinese-punctuations-in-ssh.html</p>
+<h2 id="安装shadowsocks并在客户端使用">安装shadowsocks并在客户端使用</h2>
+<p><a href="https://shadowsockshelp.github.io/Shadowsocks/linux.html#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%A2%E6%88%B7%E7%AB%AF">https://shadowsockshelp.github.io/Shadowsocks/linux.html#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%A2%E6%88%B7%E7%AB%AF</a></p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">apt-get install python-pip</span><br><span class="line">pip install git+https:<span class="regexp">//gi</span>thub.com<span class="regexp">/shadowsocks/</span>shadowsocks.git@master</span><br></pre></td></tr></table></figure>
+<p>创建一个 /etc/shadowsocks.json 文件，格式如下</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;server&quot;</span>:<span class="string">&quot;服务器 IP 或是域名&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;server_port&quot;</span>:端口号,</span><br><span class="line">    <span class="attr">&quot;local_address&quot;</span>: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;local_port&quot;</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="attr">&quot;password&quot;</span>:<span class="string">&quot;密码&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;timeout&quot;</span>:<span class="number">300</span>,</span><br><span class="line">    <span class="attr">&quot;method&quot;</span>:<span class="string">&quot;加密方式 (chacha20-ietf-poly1305 / aes-256-cfb)&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;fast_open&quot;</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>启动：Python 版客户端命令是 sslocal</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>sslocal -c <span class="regexp">/etc/</span>shadowsocks.json -d start</span><br></pre></td></tr></table></figure>
+<p>终端内使用，需安裝 proxychains</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">apt-<span class="builtin-name">get</span> install proxychains</span><br></pre></td></tr></table></figure>
+<p>编辑 /etc/proxychains.conf 修改最后一行</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">socks5</span> <span class="number">127.0.0.1</span> <span class="number">1080</span></span><br></pre></td></tr></table></figure>
+<p>接着我们就可以直接 用 proxychains + 命令的方式使用代理，例如</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">proxychains <span class="built_in">curl</span> xxxx</span><br><span class="line">proxychains <span class="built_in">wget</span> xxxx</span><br><span class="line">sudo proxychains apt<span class="literal">-get</span> xxxx</span><br></pre></td></tr></table></figure>
+<p>关闭 Shadowsocks： 在终端内输入</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">lsof</span> –i:<span class="number">1080</span></span><br></pre></td></tr></table></figure>
+<p>kill 相应的 pid 即可</p>
+<h3 id="sslocal启动失败的来看">sslocal启动失败的来看</h3>
+<p>如果你的ss加密方式是chacha20协议的，并且看到报错</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">load</span> libsodium failed <span class="keyword">with</span> <span class="type">path</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<p>那就需要安装一下libsodium了</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">wget https:<span class="regexp">//</span>download.libsodium.org<span class="regexp">/libsodium/</span>releases/LATEST.tar.gz</span><br><span class="line">tar xvf LATEST.tar.gz</span><br><span class="line">cd libsodium-stable/</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">ldconfig</span><br></pre></td></tr></table></figure>
+<p>据说还有不用编译的安装方法，自行百度</p>
+<h2 id="配置vim编辑器">配置Vim编辑器</h2>
+<p>创建配置文件</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">vim ~<span class="string">/.vimrc</span></span><br></pre></td></tr></table></figure>
+<p>将以下内容粘贴进去</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;vim</span>实用配置: https://www.xiebruce.top/<span class="number">594.</span><span class="string">html&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">syntax on           &quot;</span>语法高亮</span><br><span class="line"><span class="string">&quot;退格键默认删除光标所在字符，但这样感觉怪怪的，所以我们可以设置它删除光标所在字符的前一个字符，看起来更符合直观的印象</span></span><br><span class="line"><span class="string">set backspace=2</span></span><br><span class="line"><span class="string">set number          &quot;</span>显示行号，可简写为：set nu，取消：set nonu</span><br><span class="line">set cursorline      <span class="string">&quot;光标所在行显示一条下划线</span></span><br><span class="line"><span class="string">set hlsearch        &quot;</span>高亮显示查询出来的结果</span><br><span class="line">set incsearch       <span class="string">&quot;搜索的时候逐字高亮匹配</span></span><br><span class="line"><span class="string">set ruler           &quot;</span>光标移动时，编辑器底部显示当前行号与列号</span><br><span class="line">set nocompatible    <span class="string">&quot;不使用vi兼容模式</span></span><br><span class="line"><span class="string">set autoread        &quot;</span>文件改动时自动载入</span><br><span class="line">set tabstop=<span class="number">4</span>       <span class="string">&quot;一个tab所占列数</span></span><br><span class="line"><span class="string">set softtabstop=4   &quot;</span>敲入tab键时实际占有的列数</span><br><span class="line">set expandtab       <span class="string">&quot;设置用空格代替tab</span></span><br><span class="line"><span class="string">set shiftwidth=4    &quot;</span>底行模式下用:n,m&gt;或:n,m&lt;缩进时，缩进的列数</span><br><span class="line">set t_Co=<span class="number">256</span>        <span class="string">&quot;terminal Color 支持256色(默认是8色)</span></span><br><span class="line"><span class="string">hi comment ctermfg=6 &quot;</span>设置注释颜色</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;解决vim中文乱码问题</span></span><br><span class="line"><span class="string">set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936</span></span><br><span class="line"><span class="string">set termencoding=utf-8</span></span><br><span class="line"><span class="string">set encoding=utf-8</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">set smartindent &quot;</span>智能缩进(好处是修改代码时会根据代码规则自动缩进，坏处是当用<span class="string">`:n,m&gt;`</span>对齐左侧的注释将不会被移动)</span><br><span class="line"><span class="string">&quot;set autoindent &quot;</span>自动缩进(这两个差不多，感觉在大括号自动配对时，用智能缩进好点)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;自动补全单/双引号、圆、中、大括号</span></span><br><span class="line"><span class="string">inoremap &#x27; &#x27;&#x27;&lt;ESC&gt;i</span></span><br><span class="line"><span class="string">inoremap &quot;</span> <span class="string">&quot;&quot;</span>&lt;ESC&gt;i</span><br><span class="line">inoremap ( ()&lt;ESC&gt;i</span><br><span class="line">inoremap [ []&lt;ESC&gt;i</span><br><span class="line">inoremap &#123; &#123;&lt;CR&gt;&#125;&lt;ESC&gt;O</span><br></pre></td></tr></table></figure>
+<h2 id="windows访问linux子系统的文件">Windows访问Linux子系统的文件</h2>
+<p>由于wsl2系统是完整的一个vhdx磁盘文件，所以不能直接访问，可以通过添加网络位置的方式访问: <code>\\wsl$\Ubuntu-18.04</code> 这一网络位置就代表了 WSL2 内部文件的地址，根据不同的发行版后缀可能会有所不同，如果你不知道叫什么，可以在命令行内输入 <code>wsl --list</code> 查看名称。</p>
+<h2 id="参考文献">参考文献</h2>
+<p>搜索了众多文章，由于完成此篇历时较久，未能一一记录下原文链接，侵权删。</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>win10</tag>
+        <tag>wsl2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Microsoft To Do使用心得</title>
+    <url>/2021/04/19/Microsoft-To-Do%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/</url>
+    <content><![CDATA[<h2 id="加标签的方法">加标签的方法</h2>
+<p><code>Microsoft To-Do</code> 其实可以算是有标签的，在标题里加个空格，再打个英文#，后面接的东西会和#被整体标记为蓝色，点一下就自动进入搜索页面把所有带此标记的项都列出来了例如：</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">测试带标签的标题 <span class="meta">#学习</span></span><br></pre></td></tr></table></figure>
+<h2 id="与安卓手机的同步">与安卓手机的同步</h2>
+<p>安卓手机上下载 <code>微软桌面</code> ，登入账号即可实现与电脑端的同步，在手机的负一屏就可以看到各项任务。</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>Microsoft To Do</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微软免费主机Azure试用记录</title>
+    <url>/2021/04/12/%E5%BE%AE%E8%BD%AF%E5%85%8D%E8%B4%B9%E4%B8%BB%E6%9C%BAAzure%E8%AF%95%E7%94%A8%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h2 id="官方说明">官方说明</h2>
+<p>https://azure.microsoft.com/zh-cn/free/free-account-faq/</p>
+<h2 id="与主机相关的免费服务">与主机相关的免费服务</h2>
+<table>
+<thead>
+<tr class="header">
+<th>产品</th>
+<th>免费时长</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>通过将两个 64 GB (P6) SSD 存储合并得到的 128 GB 托管磁盘，外加 1 GB 快照和 2 百万个 I/O 操作</td>
+<td>12个月</td>
+</tr>
+<tr class="even">
+<td>15 GB 的出站数据传输带宽，无限免费入站数据传输</td>
+<td>12个月</td>
+</tr>
+<tr class="odd">
+<td>750 小时适用于 Microsoft Windows Server 的 Azure B1S 常规用途虚拟机使用时间</td>
+<td>12个月</td>
+</tr>
+<tr class="even">
+<td>750 小时适用于 Linux 的 Azure B1S 常规用途虚拟机使用时间</td>
+<td>12个月</td>
+</tr>
+<tr class="odd">
+<td>1,500 小时的动态公共 IP 地址，用于 B1S 虚拟机</td>
+<td>12个月</td>
+</tr>
+<tr class="even">
+<td>5 GB 的出站数据传输带宽，无限免费入站数据传输</td>
+<td>永久免费</td>
+</tr>
+</tbody>
+</table>
+<h2 id="免费试用注意事项">免费试用注意事项</h2>
+<p>1.虚拟机必须选择B1S型号</p>
+<p>2.最多可以建2个虚拟机：1个linux和1个windows server，但注意共用15G出站流量，超出部分会计费</p>
+<p>3.建立虚拟机时默认磁盘是30G的（收费），修改磁盘大小需要先停止虚拟机，然后改为64G P6</p>
+<p>4.ip地址必须选择动态ip，每次重启会变更ip，如若选择静态ip会按小时计费</p>
+<h2 id="合理的使用方式">合理的使用方式</h2>
+<p>每个月15G出站流量，绝对不要挂梯子来看视频 跳板机：https://51.ruyo.net/14393.html 上述文章评论里一个大佬给的iptables中转方案 <figure class="highlight tcl"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接在中转机上用iptable命令设置一下就nat 就好了</span></span><br><span class="line">echo <span class="number">1</span> &gt; /<span class="keyword">proc</span>/sys/net/ipv4/ip_forward</span><br><span class="line">iptables -t<span class="title"> nat</span> -A<span class="title"> PREROUTING</span> -p<span class="title"> tcp</span> -m<span class="title"> tcp</span> --dport 222 -j<span class="title"> DNAT</span> --to-destination<span class="title"> X.X.X.X:22</span></span><br><span class="line"><span class="title">iptables</span> -t<span class="title"> nat</span> -I<span class="title"> POSTROUTING</span> -p<span class="title"> tcp</span> --dport 22 -j<span class="title"> MASQUERADE</span></span><br><span class="line"><span class="title">#</span> 在连接X.X.X.X时，直接连接中转机端口222就行了，很纯粹的TCP中转</span><br></pre></td></tr></table></figure></p>
+<h2 id="免费服务踩坑记">免费服务踩坑记</h2>
+<p>https://www.taterli.com/7291/ 总之撸羊毛别被反撸</p>
+<h2 id="取消订阅官方说明">取消订阅官方说明</h2>
+<p>https://docs.microsoft.com/zh-cn/azure/cost-management-billing/manage/cancel-azure-subscription</p>
+<h2 id="移除绑定的信用卡">移除绑定的信用卡</h2>
+<p>http://andy51002000.blogspot.com/2019/09/azure.html</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>Azure</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>禁止恶意ip连接服务器</title>
+    <url>/2021/04/08/%E7%A6%81%E6%AD%A2%E6%81%B6%E6%84%8FIP%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    <content><![CDATA[<h2 id="实现原理">实现原理</h2>
+<p>由于 <code>/var/log/auth.log</code> 会记录所有用户的登录信息，通过提取 <code>Failed password</code> 类型的连接ip，然后将其加入 <code>/etc/hosts.deny</code> 文件，就可以禁止该ip再次连接。</p>
+<h2 id="具体步骤">具体步骤</h2>
+<p>1.首先确保安装了python</p>
+<p>2.然后在 <code>/home</code> 目录下 <code>touch bannedip.py</code> ，写入如下内容：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;/etc/hosts.deny&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    deny = f.read().split(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;/var/log/auth.log&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    log = f.read().split(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">ipset = <span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> each <span class="keyword">in</span> log:</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;Failed password&#x27;</span> <span class="keyword">in</span> each:</span><br><span class="line">        ip = each.split(<span class="string">&#x27; from &#x27;</span>)[<span class="number">1</span>].split(<span class="string">&#x27; port &#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">        writein = <span class="string">&#x27;ALL: &#x27;</span> + ip</span><br><span class="line">        ipset.add(writein)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;/etc/hosts.deny&#x27;</span>, <span class="string">&#x27;a&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> each <span class="keyword">in</span> ipset:</span><br><span class="line">        <span class="keyword">if</span> each <span class="keyword">not</span> <span class="keyword">in</span> deny:</span><br><span class="line">            <span class="built_in">print</span>(each)</span><br><span class="line">            f.write(each + <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>3.创建定时任务，每5分钟执行一次</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">*<span class="regexp">/5 * * * * python /</span>home/bannedip.py</span><br></pre></td></tr></table></figure>
+<p>4.手动将自己的ip（段）加入白名单 <code>/etc/hosts.allow</code> ，不然万一输错密码，把自己也关在外边就不好玩啦</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>ban ip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>创建、部署、备份Hexo博客一条龙</title>
+    <url>/2021/04/05/%E5%88%9B%E5%BB%BA%E3%80%81%E9%83%A8%E7%BD%B2%E3%80%81%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E4%B8%80%E6%9D%A1%E9%BE%99/</url>
+    <content><![CDATA[<h2 id="准备工作">准备工作</h2>
+<p>安装环境部署：</p>
+<p>安装git： <figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">apt <span class="keyword">install</span> git-core</span><br></pre></td></tr></table></figure> 安装node： <figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">curl -fsSL http<span class="variable">s:</span>//<span class="keyword">deb</span>.nodesource.<span class="keyword">com</span>/setup_15.<span class="keyword">x</span> | bash -</span><br><span class="line">apt-<span class="built_in">get</span> install -<span class="keyword">y</span> nodejs</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装hexo">安装hexo</h2>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装命令</span></span><br><span class="line">npm <span class="keyword">install </span>-g hexo-cli</span><br><span class="line"><span class="comment"># 初始化博客（会自动在当前文件夹创建blog文件夹）</span></span><br><span class="line">hexo init <span class="keyword">blog</span></span><br><span class="line"><span class="keyword">cd </span><span class="keyword">blog</span></span><br><span class="line"><span class="keyword"># </span>根据package.<span class="keyword">json文件里面的内容安装各种需要的包，安装到node_modules文件夹</span></span><br><span class="line"><span class="keyword">npm </span><span class="keyword">install</span></span><br><span class="line"><span class="keyword"># </span>启动hexo服务器（注意运行此命令时应该在<span class="keyword">blog文件夹下）</span></span><br><span class="line"><span class="keyword">hexo </span>server</span><br></pre></td></tr></table></figure>
+<p>如果无特殊需求，这时一个简单的hexo博客已经建好了</p>
+<h2 id="安装next主题">安装next主题</h2>
+<p>切换到blog文件夹运行下列命令 <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/next-theme/</span>hexo-theme-<span class="keyword">next</span> themes/<span class="keyword">next</span></span><br></pre></td></tr></table></figure> 修改网站_config.yml，启用主题 <figure class="highlight vbnet"><table><tr><td class="code"><pre><span class="line"><span class="symbol">theme:</span> <span class="keyword">next</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="数学公式支持设置">数学公式支持设置</h2>
+<p>卸载渲染包 <figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">npm</span> uninstall hexo-renderer-marked</span><br></pre></td></tr></table></figure> 安装pandoc作为新的渲染包 <figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-renderer-pandoc</span><br></pre></td></tr></table></figure> linux系统安装pandoc包 <figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">apt <span class="keyword">install</span> pandoc</span><br></pre></td></tr></table></figure> 解决渲染错误问题（这个错误可能跟linux安装的pandoc包版本新旧有关） <figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"><span class="meta"># 将node_modules\hexo-renderer-pandoc\index.js中的</span></span><br><span class="line"><span class="keyword">var</span> args = [ <span class="string">&#x27;-f&#x27;</span>, <span class="string">&#x27;markdown-smart&#x27;</span>+extensions, <span class="string">&#x27;-t&#x27;</span>, <span class="string">&#x27;html-smart&#x27;</span>, math]</span><br><span class="line"><span class="meta"># 改成</span></span><br><span class="line"><span class="keyword">var</span> args = [ <span class="string">&#x27;-f&#x27;</span>, <span class="string">&#x27;markdown&#x27;</span>+extensions, <span class="string">&#x27;-t&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, math]</span><br></pre></td></tr></table></figure> 开启next主题的mathjax支持,修改themes/next/_config.yml中关于math的设置 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Math Formulas Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="comment"># Default (true) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in Front-matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># See: https://mhchem.github.io/MathJax-mhchem/</span></span><br><span class="line">    <span class="attr">mhchem:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-renderer-markdown-it-plus (or hexo-renderer-markdown-it with markdown-it-katex plugin) required for full Katex support.</span></span><br><span class="line">  <span class="attr">katex:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex</span></span><br><span class="line">    <span class="attr">copy_tex:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="博文格式范例">博文格式范例</h2>
+<p>http://yearito.cn/posts/hexo-writing-skills.html</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">文章标题</span></span><br><span class="line"><span class="attr">tag:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">技术</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">数学</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<h2 id="关于next主题的配置">关于next主题的配置</h2>
+<p>详见next主题帮助页</p>
+<h2 id="备份与恢复">备份与恢复</h2>
+<h3 id="使用插件hexo-git-backup进行备份">使用插件hexo-git-backup进行备份</h3>
+<p>1.插件安装： <figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install </span>hexo-git-<span class="keyword">backup </span>--save</span><br></pre></td></tr></table></figure> 2.新建一个<strong>私有的github库</strong>：比如 <code>git@github.com:xx/xx.git</code></p>
+<p>3.插件设置：设置 <code>_config.yml</code> ，在最后添加如下内容 <figure class="highlight dts"><table><tr><td class="code"><pre><span class="line"><span class="symbol">backup:</span></span><br><span class="line"><span class="symbol">  type:</span> git</span><br><span class="line"><span class="symbol">  theme:</span> next</span><br><span class="line"><span class="symbol">  message:</span> Back up hexoblog</span><br><span class="line"><span class="symbol">  repository:</span></span><br><span class="line"><span class="symbol">    origin:</span> git@github.com:xx/xx.git,master</span><br></pre></td></tr></table></figure> 其中 <code>repository</code> 项，网上的教程是填写 <code>github: git@github.com:xx/xx.git,master</code> ，但是备份时会提示错误说 <figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INFO</span> <span class="keyword">Start</span> backup: git</span><br><span class="line">[backup <span class="number">0431</span>bed] Site updated: <span class="number">2020</span><span class="number">-02</span><span class="number">-29</span> <span class="number">21</span>:<span class="number">16</span>:<span class="number">51</span></span><br><span class="line"><span class="number">1</span> file changed, <span class="number">1</span> insertion(+), <span class="number">1</span> deletion(-)</span><br><span class="line">fatal: <span class="string">&#x27;github&#x27;</span> does <span class="keyword">not</span> appear <span class="keyword">to</span> be a git repository</span><br><span class="line">fatal: Could <span class="keyword">not</span> <span class="keyword">read</span> <span class="keyword">from</span> remote repository.</span><br><span class="line">Please make sure you have the correct <span class="keyword">access</span> rights</span><br><span class="line"><span class="keyword">and</span> the repository <span class="keyword">exists</span>.</span><br><span class="line"><span class="keyword">INFO</span> Backup done: git</span><br></pre></td></tr></table></figure> 后来按这个<a href="https://github.com/coneycode/hexo-git-backup/issues/40#issue-573488936" title="issue">issue</a>更改为 <code>origin</code> 就正常了</p>
+<p>4.备份命令 <figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 二选一</span></span><br><span class="line">hexo <span class="keyword">backup</span></span><br><span class="line"><span class="keyword">hexo </span><span class="keyword">b</span></span><br></pre></td></tr></table></figure> 5.可选动作：执行第4步备份之前，可以将原先主机的ssh私钥一同备份，这样在新电脑上恢复的时候，可以先将私钥下载下来放在.ssh文件夹，才能进行ssh连接了</p>
+<h3 id="恢复">恢复</h3>
+<p>1.在新电脑上配置好nodejs，git</p>
+<p>2.放置好用于建立和github连接的ssh私钥</p>
+<p>3.执行下列命令： <figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"><span class="meta"># 可选动作，我是为了配置数学公式渲染</span></span><br><span class="line">apt install pandoc</span><br><span class="line"><span class="meta"># 安装hexo</span></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"><span class="meta"># 在你想把hexoblog放置的文件夹内执行</span></span><br><span class="line">git clone git@github.com:xx/xx.git</span><br><span class="line"><span class="meta"># 进入hexoblog文件夹，安装依赖包</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure> 4.恢复数学公式渲染设置：由于我们对依赖包内的 <code>hexo-renderer-pandoc</code> 做的修改并没有备份，所以重新修改一下</p>
+<p>5.<code>hexo server</code> 一下，测试未报错即可</p>
+<p>6.如果有多台电脑需要同步，备份以后，在需要同步的电脑上 <code>git pull</code> 一下，如果安装了新的hexo插件，记得还要 <code>npm install</code> 一下，不然就有可能在 <code>hexo g</code> 的时候出错，或者不报错但是出现莫名其妙的问题。</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>月考错题集</title>
+    <url>/2021/03/21/%E6%9C%88%E8%80%83%E9%94%99%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="高一上学期第一次月考">高一上学期第一次月考</h2>
+<p>21.用清水洗一堆衣服上残留的污渍，用水越多，洗掉的污渍量也越多，但总还有污渍残留在衣服上.现作如下规定：用<span class="math inline">\(x\)</span>单位的水清洗1次后，衣服上残留的污渍与本次清洗前残留的污渍之比为函数<span class="math inline">\(f(x)=\dfrac{2}{2+x^2}\)</span> （1）（i）试解释<span class="math inline">\(f(0)\)</span>与<span class="math inline">\(f(1)\)</span>的实际意义； （ii）写出函数<span class="math inline">\(f(x)\)</span>应该满足的条件或具有的性质；（写出至少2条，不需要证明） （2）现有<span class="math inline">\(a(a&gt;0)\)</span>单位量的水，可以清洗一次，也可以把水平均分成2份后清洗两次，哪种方案清洗后衣服上残留的污渍比较少？请说明理由.</p>
+<p>22.已知<span class="math inline">\(f(x)=x\cdot |x|\)</span> （1）若<span class="math inline">\(\exists x\in[1,+\infty)\)</span>，使<span class="math inline">\(f(x-2a)-a&lt;0\)</span>成立，求实数<span class="math inline">\(a\)</span>的取值范围. （2）若<span class="math inline">\(g(x)=x|x|+|mx-1|(m&gt;0)\)</span>，在<span class="math inline">\(x\in (-1,+\infty)\)</span>上有最小值，求实数<span class="math inline">\(m\)</span>的取值范围.</p>
+<div style="page-break-after: always;">
+
+</div>
+<h2 id="高一上学期期中考试">高一上学期期中考试</h2>
+<p>12.已知函数<span class="math inline">\(f(x)=(\dfrac{1}{3})^x-\ln{x}\)</span>，若<span class="math inline">\(a&lt;b&lt;c\)</span>且满足<span class="math inline">\(f(a)f(b)f(c)&lt;0\)</span>，若实数<span class="math inline">\(d\)</span>是函数<span class="math inline">\(y=f(x)\)</span>的一个零点，那么下列结论中，有可能成立的是</p>
+<p><span class="math inline">\(A.d&lt;a \qquad\qquad\)</span> <span class="math inline">\(B.d&gt;b \qquad\qquad\)</span> <span class="math inline">\(C.d&lt;c \qquad\qquad\)</span> <span class="math inline">\(D.d&gt;c\)</span></p>
+<p>21.已知函数<span class="math inline">\(f(x)=2^x,g(x)=\log_2 x\)</span>. （1）若<span class="math inline">\(x_0\)</span>是方程<span class="math inline">\(f(x)=\dfrac{3}{2}-x\)</span>的根，证明：<span class="math inline">\(2^{x_0}\)</span>是方程<span class="math inline">\(g(x)=\dfrac{3}{2}-x\)</span>的根； （2）设方程<span class="math inline">\(f(x-1)=\dfrac{5}{2}-x,g(x-1)=\dfrac{5}{2}-x\)</span>的根分别是<span class="math inline">\(x_1,x_2\)</span>，求<span class="math inline">\(x_1+x_2\)</span>的值.</p>
+<p>22.已知<span class="math inline">\(f(x)=\log_a g(x)\)</span>，且<span class="math inline">\(f(x)\)</span>是定义在<span class="math inline">\(\mathbb{R}\)</span>上的奇函数，当<span class="math inline">\(x&gt;0\)</span>时，<span class="math inline">\(g(x)=ax^2-ax+1\)</span>. （1）若<span class="math inline">\(f(x)\)</span>在<span class="math inline">\([1,2]\)</span>上的最大值是2，求实数<span class="math inline">\(a\)</span>的值； （2）当<span class="math inline">\(a&gt;1\)</span>时，若对任意<span class="math inline">\(x_1\in[1,2]\)</span>，<span class="math inline">\(x_2\in (1,2]\)</span>，恒有<span class="math inline">\(\lambda[g(x_1)+g(-x_1)]\le f(x_2)+\dfrac{1}{f(x_2)}\)</span>，求<span class="math inline">\(\lambda\)</span>的取值范围.</p>
+<div style="page-break-after: always;">
+
+</div>
+<h2 id="高一第三次月考联考">高一第三次月考联考</h2>
+<p>10.已知<span class="math inline">\(f(\sqrt{2x^2-1})=4x^2-3\)</span>，则下列结论错误的是（ ）</p>
+<p><span class="math inline">\(A.f(1)=1\qquad\)</span> <span class="math inline">\(B.f(x)=2x^2-1\qquad\)</span> <span class="math inline">\(C.f(x)\)</span>是偶函数<span class="math inline">\(\qquad\)</span> <span class="math inline">\(D.f(x)\)</span>有唯一零点</p>
+<p>12.给出下面四个结论，其中不正确的是（ ）</p>
+<p><span class="math inline">\(A.\)</span>两次购买同一种物品，可以用两种不同的策略，第一种是不考虑物品价格的升降，每次购买这种物品所花的钱数一定；第二种是不考虑物品价格的升降，每次购买这种物品的数量一定，则若<span class="math inline">\(n\)</span>次（<span class="math inline">\(n\ge2\)</span>）购买同一物品，用第一种策略比较经济</p>
+<p><span class="math inline">\(B.\)</span>若二次函数<span class="math inline">\(f(x)=24ax^2+4x-1(a\ne0)\)</span>在区间<span class="math inline">\((-1,1)\)</span>内恰有一个零点，则由零点存在定理知，实数<span class="math inline">\(a\)</span>的取值范围是<span class="math inline">\((-\dfrac{1}{8},0)\cup (0,\dfrac{5}{24})\)</span></p>
+<p><span class="math inline">\(C.\)</span>已知函数<span class="math inline">\(f(x)=|\lg x|\)</span>，若<span class="math inline">\(0&lt;a&lt;b\)</span>，且<span class="math inline">\(f(a)=f(b)\)</span>，则<span class="math inline">\(3b+2a\)</span>的取值范围是<span class="math inline">\([2\sqrt6,+\infty)\)</span></p>
+<p><span class="math inline">\(D.\)</span>设矩形<span class="math inline">\(ABCD (AB&gt;AD)\)</span>的周长为24，把<span class="math inline">\(\triangle{ABC}\)</span>沿<span class="math inline">\(AC\)</span>向<span class="math inline">\(\triangle{ADC}\)</span>折叠，<span class="math inline">\(AB\)</span>折过去后交<span class="math inline">\(DC\)</span>于点<span class="math inline">\(P\)</span>，设<span class="math inline">\(AB=x\)</span>，则<span class="math inline">\(\triangle{ADP}\)</span>的面积是关于<span class="math inline">\(x\)</span>的函数且最大值为<span class="math inline">\(108-70\sqrt{2}\)</span></p>
+<p>21.新冠肺炎疫情发生后，政府为了支持企业复工复产，某地政府决定向当地企业发放补助款，其中对纳税额<span class="math inline">\(x\)</span>（万元）在<span class="math inline">\(x\in[4,8]\)</span>的小微企业做统一方案，方案要求同时具备下列两个条件：①补助款<span class="math inline">\(f(x)\)</span>（万元）随企业原纳税额<span class="math inline">\(x\)</span>（万元）的增加而增加；②补助款不低于原纳税额的<span class="math inline">\(50\%\)</span>.经测算，政府决定采用函数模型<span class="math inline">\(f(x)=\dfrac{x}{4}-\dfrac{m}{x}+4\)</span>（其中<span class="math inline">\(m\)</span>为参数）作为补助款发放方案. （1）当使用参数<span class="math inline">\(m=13\)</span>是否满足条件，并说明理由； （2）求同时满足条件①②的参数<span class="math inline">\(m\)</span>的取值范围.</p>
+<p>22.已知函数<span class="math inline">\(f(x)=\dfrac{3^x-a}{3^x+1}(a\in\mathbb{R})\)</span>. （1）若函数<span class="math inline">\(f(x)\)</span>为奇函数，求<span class="math inline">\(a\)</span>的值，并求此时函数<span class="math inline">\(f(x)\)</span>的值域； （2）若存在<span class="math inline">\(x_1&lt;0&lt;x_2\)</span>,使<span class="math inline">\(f(x_1)+f(x_2)=0\)</span>，求实数<span class="math inline">\(a\)</span>的取值范围.</p>
+<h2 id="高一下学期第二次月考试题">高一下学期第二次月考试题</h2>
+<p>16.<span class="math inline">\(\triangle ABC\)</span>的内角<span class="math inline">\(A,B,C\)</span>所对的边分别是<span class="math inline">\(a,b,c\)</span>，已知<span class="math inline">\(\dfrac{\cos C}{c}+\dfrac{\cos B}{b}=\dfrac{1}{a}\)</span>，则<span class="math inline">\(A\)</span>的取值范围是_______</p>
+<p>22.已知函数<span class="math inline">\(f(x)=\dfrac{x^2-3x+4}{x},g(x)=|\log_2 x|\)</span></p>
+<p>（1）若关于<span class="math inline">\(x\)</span>的方程<span class="math inline">\(g(x)=n\)</span>有两个不等根<span class="math inline">\(\alpha,\beta(\alpha&lt;\beta)\)</span>，求<span class="math inline">\(\alpha\beta\)</span>的值；</p>
+<p>（2）是否存在实数<span class="math inline">\(a\)</span>，使得对任意<span class="math inline">\(m\in[1,2]\)</span>，关于<span class="math inline">\(x\)</span>的方程<span class="math inline">\(4g^2(x)-4ag(x)+3a-1-f(m)=0\)</span>在区间<span class="math inline">\([\dfrac{1}{8},4]\)</span>上总有3个不等根<span class="math inline">\(x_1,x_2,x_3\)</span>，若存在，求出实数<span class="math inline">\(a\)</span>与<span class="math inline">\(x_1\cdot x_2\cdot x_3\)</span>的取值范围；若不存在，说明理由.</p>
+]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>月考错题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Test Mathjax</title>
+    <url>/2021/03/20/test-mathjax/</url>
+    <content><![CDATA[<h2 id="this-is-inline-equation">This is inline equation</h2>
+<p><span class="math inline">\(f(x)=\sin x+\cos x\)</span></p>
+<h2 id="this-is-display-equation">This is display equation</h2>
+<p><span class="math display">\[E=mc^2\]</span></p>
+]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>maths</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>乐播投屏PC版</title>
+    <url>/2020/12/16/%E4%B9%90%E6%92%AD%E6%8A%95%E5%B1%8FPC%E7%89%88/</url>
+    <content><![CDATA[<p>破解版下载：<a href="https://www.lanzous.com/i78svyd" class="uri">https://www.lanzous.com/i78svyd</a></p>
+<p>目前下载到nas里面 打开提示升级，取消不升级</p>
+<p>投屏方式有：整屏投影，选择应用程序投影，扩展屏投影</p>
+<p>使用感觉很好！</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>乐播投屏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VPS测试脚本</title>
+    <url>/2020/12/15/Vps%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<p>脚本1 纯净，不安装任何东西。均为国内节点。</p>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">wget -qO- <span class="keyword">bench.sh </span> <span class="keyword">bash</span></span><br></pre></td></tr></table></figure>
+<p>脚本2 有国内节点，可看上行和下行。</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">wget -qO- https:<span class="regexp">//</span>raw.githubusercontent.com<span class="regexp">/oooldking/</span>script<span class="regexp">/master/</span>superbench.sh  bash</span><br></pre></td></tr></table></figure>
+<p>脚本3</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">(<span class="built_in">wget</span> <span class="literal">-qO</span>- wget.racing/nench.sh  bash; <span class="built_in">wget</span> <span class="literal">-qO</span>- wget.racing/nench.sh  bash) <span class="number">2</span>&gt;&amp;<span class="number">1</span>  <span class="built_in">tee</span> nench.log</span><br></pre></td></tr></table></figure>
+<p>脚本4</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">curl -s bench<span class="selector-class">.wget</span><span class="selector-class">.racing</span>  bash</span><br></pre></td></tr></table></figure>
+<p>脚本5 可比较真实的测试服务器带宽</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">curl -s https:<span class="regexp">//</span>raw.githubusercontent.com<span class="regexp">/masonr/y</span>et-another-bench-script<span class="regexp">/master/y</span>abs.sh  bash</span><br></pre></td></tr></table></figure>
+<p>脚本6可测试是否支持Netflxi等（不一定准确）</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">curl -fsL https:<span class="regexp">//i</span>lemonra.<span class="keyword">in</span>/LemonBenchIntl  bash -s fast</span><br></pre></td></tr></table></figure>
+<p>脚本7 全能，测速、加速 DD系统等</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">wget -N --no-check-certificate https:<span class="regexp">//</span>raw.githubusercontent.com<span class="regexp">/veip007/</span>hj<span class="regexp">/master/</span>hj.sh &amp;&amp; chmod +x hj.sh &amp;&amp; bash hj.sh</span><br></pre></td></tr></table></figure>
+<p>脚本8</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">(<span class="built_in">curl</span> <span class="literal">-s</span> wget.racing/nench.sh  bash) <span class="number">2</span>&gt;&amp;<span class="number">1</span>  <span class="built_in">tee</span> nench.log</span><br></pre></td></tr></table></figure>
+<p>脚本9 服务器延迟监测</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">screen -S uping</span><br><span class="line">wget -N --no-check-certificate https:<span class="regexp">//</span>raw.githubusercontent.com<span class="regexp">/FunctionClub/u</span>Ping<span class="regexp">/master/u</span>ping.py</span><br><span class="line">python uping.py</span><br></pre></td></tr></table></figure>
+<p>脚本10 系统配置、国内速度等</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">wget -qO- --no-check-certificate https:<span class="regexp">//</span>raw.githubusercontent.com<span class="regexp">/qd201211/</span>Linux-SpeedTest<span class="regexp">/master/</span>superbench.sh  bash</span><br></pre></td></tr></table></figure>
+<p>脚本11 UnixBench跑分，测试主机性能 运行10-30分钟后（根据CPU内核数量，运算时间不等）得出分数，越高越好。</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">wget --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//zhujiwiki.<span class="keyword">com</span>/<span class="keyword">wp</span>-content/uploads/<span class="number">2018</span>/<span class="number">07</span>/unixbench.<span class="keyword">sh</span></span><br><span class="line">chmod +<span class="keyword">x</span> unixbench.<span class="keyword">sh</span></span><br><span class="line">./unixbench.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<p>脚本12、测试是否可以观看Netflix（奈飞） 访问：<a href="https://netflix.com/title/80018499" class="uri">https://netflix.com/title/80018499</a> 脚本13 测试本地速度 speedtest go版本的一键安装脚本</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">bash &lt;(curl -Lsk https:<span class="regexp">//</span>raw.githubusercontent.com<span class="regexp">/BigMangos/</span>speedtest-go-script<span class="regexp">/master/i</span>nstall.sh)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>VPS测试脚本</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker安装p2pspider和live-torrent</title>
+    <url>/2020/12/15/Docker%E5%AE%89%E8%A3%85P2pSpider%E5%92%8Clive-torrent/</url>
+    <content><![CDATA[<h2 id="安装docker和docker-compose">安装docker和docker-compose：</h2>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">apt -y update</span><br><span class="line">apt -y install curl</span><br><span class="line">curl -sSL https:<span class="regexp">//g</span>et.docker.com/  sh</span><br><span class="line">systemctl start docker</span><br><span class="line">systemctl enable docker</span><br><span class="line">curl -L https:<span class="regexp">//gi</span>thub.com<span class="regexp">/docker/</span>compose<span class="regexp">/releases/</span>download<span class="regexp">/1.27.4/</span>docker-compose-`uname -s`-`uname -m` -o <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>docker-compose</span><br><span class="line">chmod +x <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>docker-compose</span><br></pre></td></tr></table></figure>
+<h2 id="安装p2pspider搜刮torrent资源">安装p2pspider，搜刮torrent资源</h2>
+<p>新建一个目录/新建一个docker-compose.yml文件：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">mkdir -p <span class="regexp">/opt/</span>p2pspider-docker &amp;&amp; cd <span class="regexp">/opt/</span>p2pspider-docker &amp;&amp; nano docker-compose.yml</span><br></pre></td></tr></table></figure>
+<p>写入如下配置：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.5&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">    <span class="attr">spider:</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">imlala/p2pspider:latest</span></span><br><span class="line">        <span class="attr">container_name:</span> <span class="string">p2pspider</span></span><br><span class="line">        <span class="attr">depends_on:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">mongodb-spider</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">redis-spider</span></span><br><span class="line">        <span class="attr">environment:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">SITE_NAME=TorrentDatabase</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">USER_NAME=imlala</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">PASS_WORD=23333</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">SPIDER_MODE=1</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">MONGODB_HOST=mongodb://mongodb-spider</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">REDIS_HOST=redis-spider</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">&quot;8080:8080&quot;</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">&quot;6881:6881/udp&quot;</span></span><br><span class="line">        <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">mongodb-spider:</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">mongo</span></span><br><span class="line">        <span class="attr">container_name:</span> <span class="string">mongodb-spider</span></span><br><span class="line">        <span class="attr">volumes:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">./mongodb:/data/db</span></span><br><span class="line">        <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">redis-spider:</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">redis</span></span><br><span class="line">        <span class="attr">container_name:</span> <span class="string">redis-spider</span></span><br><span class="line">        <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br></pre></td></tr></table></figure>
+<p>几个environment的使用方法：</p>
+<p>1.SITE_NAME设置你的网站名字，可以任意填写。</p>
+<p>2.USER_NAME/PASS_WORD设置你的账号和密码，如果你想公开给任何人访问这两个env可以不设置直接删除即可。</p>
+<p>3.SPIDER_MODE可选配置1/2/3，1代表1H1G的配置，2代表2H2G的配置，3代表最大效率运行爬虫。不设置这个env表示最小配置（512M内存）</p>
+<p>4.MONGODB_HOST/REDIS_HOST的主机名必须和docker-compose下面的服务名对应。</p>
+<p>没问题up起来即可：</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">docker-compose up -d</span></span><br></pre></td></tr></table></figure>
+<p>备份还原很简单，直接打包/opt/p2pspider-docker目录，传到别的机器上解压up起来即可。</p>
+<p>在512M内存的小鸡上运行，每天大概可以搜刮20w的torrent</p>
+<h2 id="安装live-torrent在线播放磁力连接">安装live-torrent，在线播放磁力连接</h2>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> <span class="attribute">--restart</span>=always --name live-torrent -d -p 8080:8080 davenchy/live-torrent</span><br></pre></td></tr></table></figure>
+<p>搜索live-torrent在线播放的缓存文件：</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">find</span> <span class="regexp">/var/</span>lib/docker -<span class="keyword">size</span> +<span class="number">100</span>M</span><br></pre></td></tr></table></figure>
+<p>然后就可以看到一堆缓存的文件，做个脚本定时删除即可</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>p2pspider</tag>
+        <tag>live-torrent</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>https证书申请及安装</title>
+    <url>/2020/12/09/Https%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/</url>
+    <content><![CDATA[<h1 id="使用acme.sh申请证书">使用acme.sh申请证书</h1>
+<h2 id="准备工作">准备工作</h2>
+<p>1.将域名解析到vps</p>
+<p>2.vps安装nginx，注意找到nginx默认的网站文件夹，下面安装有用</p>
+<h2 id="安装acme.sh">安装acme.sh</h2>
+<p>详细见https://wsgzao.github.io/post/acme/ 我是采用以下方式安装的</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">acme.sh  --issue  -d mydomain.com -d www.mydomain.com  --webroot  <span class="regexp">/home/</span>wwwroot<span class="regexp">/mydomain.com/</span></span><br></pre></td></tr></table></figure>
+<p>将mydomain.com改为自己的域名，把/home/wwwroot/mydomain.com/ 改为nginx默认的网站文件夹</p>
+<h2 id="对于二级域名申请证书省心好用使用前确保80端口没有占用">对于二级域名申请证书（省心好用，使用前确保80端口没有占用）</h2>
+<figure class="highlight brainfuck"><table><tr><td class="code"><pre><span class="line"><span class="comment">acme</span><span class="string">.</span><span class="comment">sh</span>  --<span class="comment">issue</span> <span class="literal">-</span><span class="comment">d</span> <span class="comment">mydomain</span><span class="string">.</span><span class="comment">com</span>   --<span class="comment">standalone</span></span><br></pre></td></tr></table></figure>
+<h2 id="网站安装证书未成功">网站安装证书（未成功）</h2>
+<h1 id="使用certbot安装证书">使用certbot安装证书</h1>
+<h2 id="配置nginx.conf中的server_name">配置nginx.conf中的server_name</h2>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># For more information on configuration, see:</span></span><br><span class="line"><span class="comment">#   * Official English Documentation: http://nginx.org/en/docs/</span></span><br><span class="line"><span class="comment">#   * Official Russian Documentation: http://nginx.org/ru/docs/</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">user</span> nginx;</span><br><span class="line"><span class="attribute">worker_processes</span> auto;</span><br><span class="line"><span class="attribute">error_log</span> /var/log/nginx/error.log;</span><br><span class="line"><span class="attribute">pid</span> /run/nginx.pid;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.</span></span><br><span class="line"><span class="attribute">include</span> /usr/share/nginx/modules/<span class="regexp">*.conf</span>;</span><br><span class="line"></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span> <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">log_format</span>  main  <span class="string">&#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">access_log</span>  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>            <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">tcp_nopush</span>          <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">tcp_nodelay</span>         <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">keepalive_timeout</span>   <span class="number">65</span>;</span><br><span class="line">    <span class="attribute">types_hash_max_size</span> <span class="number">2048</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">include</span>             /etc/nginx/mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>        application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Load modular configuration files from the /etc/nginx/conf.d directory.</span></span><br><span class="line">    <span class="comment"># See http://nginx.org/en/docs/ngx_core_module.html#include</span></span><br><span class="line">    <span class="comment"># for more information.</span></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/conf.d/<span class="regexp">*.conf</span>;</span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">if</span> ($host = ilovemaths.tk) &#123;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">301</span> https://$host$request_uri;</span><br><span class="line">    &#125; <span class="comment"># managed by Certbot</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span> default_server;</span><br><span class="line">        <span class="attribute">listen</span>       [::]:<span class="number">80</span> default_server;</span><br><span class="line">        <span class="attribute">server_name</span>  ilovemaths.tk;</span><br><span class="line">        <span class="attribute">root</span>         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Load configuration files for the default server block.</span></span><br><span class="line">        <span class="attribute">include</span> /etc/nginx/default.d/<span class="regexp">*.conf</span>;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">error_page</span> <span class="number">404</span> /<span class="number">404</span>.html;</span><br><span class="line">        <span class="attribute">location</span> = /<span class="number">404</span>.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html;</span><br><span class="line">        <span class="attribute">location</span> = /50x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Settings for a TLS enabled server.</span></span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">444</span> ssl http2 default_server;</span><br><span class="line">        <span class="attribute">listen</span>       [::]:<span class="number">444</span> ssl http2 default_server;</span><br><span class="line">        <span class="attribute">server_name</span>  ilovemaths.tk;</span><br><span class="line">        <span class="attribute">root</span>         /usr/share/nginx/html;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/ilovemaths.tk/fullchain.pem; <span class="comment"># managed by Certbot</span></span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/ilovemaths.tk/privkey.pem; <span class="comment"># managed by Certbot</span></span><br><span class="line">        <span class="attribute">ssl_session_cache</span> shared:SSL:<span class="number">1m</span>;</span><br><span class="line">        <span class="attribute">ssl_session_timeout</span>  <span class="number">10m</span>;</span><br><span class="line">        <span class="attribute">ssl_ciphers</span> HIGH:!aNULL:!MD5;</span><br><span class="line">        <span class="attribute">ssl_prefer_server_ciphers</span> <span class="literal">on</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Load configuration files for the default server block.</span></span><br><span class="line">        <span class="attribute">include</span> /etc/nginx/default.d/<span class="regexp">*.conf</span>;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">error_page</span> <span class="number">404</span> /<span class="number">404</span>.html;</span><br><span class="line">        <span class="attribute">location</span> = /<span class="number">404</span>.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html;</span><br><span class="line">        <span class="attribute">location</span> = /50x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="安装certbot">安装certbot</h2>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">apt <span class="keyword">install</span> python-certbot-nginx</span><br></pre></td></tr></table></figure>
+<h2 id="申请证书">申请证书</h2>
+<figure class="highlight brainfuck"><table><tr><td class="code"><pre><span class="line"><span class="comment">certbot</span> --<span class="comment">nginx</span> --<span class="comment">agree</span><span class="literal">-</span><span class="comment">tos</span> --<span class="comment">no</span><span class="literal">-</span><span class="comment">eff</span><span class="literal">-</span><span class="comment">email</span> --<span class="comment">email</span> <span class="comment">xxxx@gmail</span><span class="string">.</span><span class="comment">com</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>https证书</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iptables学习笔记</title>
+    <url>/2020/11/25/Iptables%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="linux防火墙">Linux防火墙</h1>
+<p>Linux系统防火墙功能是由内核实现的，从2.4版本之后的内核中，包过滤机制是netfilter，管理工具是iptables</p>
+<h2 id="netfilter">netfilter</h2>
+<p>位于系统内核中的包过滤防火墙功能体系，被称为Linux防火墙的“内核态”</p>
+<h2 id="iptables">iptables</h2>
+<p>位于/sbin/iptables，是用来管理防火墙的命令工具，被称为linux防火墙的“用户态”</p>
+<h3 id="iptables的表与链介绍">iptables的表与链介绍</h3>
+<p>链是防火墙规则或策略的集合，对于数据包进行过滤或处理，要把处理机制的不同，将各种规则放入不同的“链”中</p>
+<h4 id="默认的5种链如下">默认的5种链如下：</h4>
+<p>INPUT：处理入站的数据包</p>
+<p>OUTPUT：处理出站的数据包</p>
+<p>FORWARD：处理转发数据包</p>
+<p>POSTROUTING：在进行路由选择后处理数据包</p>
+<p>PREROUTING：在进行路由选择前处理数据包</p>
+<p><strong>表是规则链的集合，具有某一类相似作用的规则，按不同的机制到不同的链之后，再被收入到不同的表中</strong></p>
+<h4 id="默认的4个表如下">默认的4个表如下：</h4>
+<p>raw表：确定是否对数据包进行状态跟踪</p>
+<p>mangle表：为数据设置标记</p>
+<p>nat表：修改数据包中的源、目IP或端口</p>
+<p>filter表：过滤数据包或对数据包进行相关处理</p>
+<h4 id="iptables的表与链的结构如下">iptables的表与链的结构如下</h4>
+<p>raw表</p>
+<p>mangle表</p>
+<p>nat表</p>
+<p>filter表</p>
+<p>PREROUTING链</p>
+<p>PREROUTING链</p>
+<p>PREROUTING链</p>
+<p>INPUT链</p>
+<p>OUTPUT链</p>
+<p>POSTROUTING链</p>
+<p>POSTROUTING链</p>
+<p>FORWARD链</p>
+<p>INPUT链</p>
+<p>OUTPUT链</p>
+<p>OUTPUT链</p>
+<p>OUTPUT链</p>
+<p>FORWARD链</p>
+<h3 id="iptables数据包过滤匹配介绍">Iptables数据包过滤匹配介绍</h3>
+<h4 id="表与表之间的优先顺序">表与表之间的优先顺序</h4>
+<p>raw---&gt; mangle--&gt;nat---&gt;filter</p>
+<h4 id="链之间的匹配顺序">链之间的匹配顺序</h4>
+<p>入站数据：PREROUTING--&gt;INPUT</p>
+<p>出站数据：OUTPUT---&gt;POSTROUTING</p>
+<p>转发数据：PRETOUTING--&gt;FORWARD---&gt;POSTROUTINGS</p>
+<h4 id="链内的匹配顺序">链内的匹配顺序</h4>
+<p>1、按顺序依次检查，找到匹配的规则就停止检查</p>
+<p>2、找不到匹配的规则，则按默认的策略处理</p>
+<h4 id="数据包匹配的流程如下">数据包匹配的流程如下</h4>
+<p>入站数据首先经过raw,mangle,nat表的PREROUTING链规则，然后判断是否为发送给本机的数据，由此产生两条路线：</p>
+<ul>
+<li><p>若是，则经过mangle,filter表的INPUT链规则，然后到本机应用程序，然后如果需要流出，则经过raw,mangle,nat,filter表的OUTPUT链，然后经过mangle,nat表的POSTROUTING链流出</p></li>
+<li><p>若否，则经过mangle,filter表的FORWARD链进行转发，然后经过mangle,nat表的POSTROUTING链出去</p></li>
+</ul>
+<h2 id="iptables管理与配置">iptables管理与配置</h2>
+<h3 id="命令语法格式">命令语法格式</h3>
+<p>iptables [-t 表名] 选项 [链名] [匹配条件] [-j 目标动作]</p>
+<p>注：不指定表名时默认是filter表 不指定链名时默认是表内的所有链 除设置链的默认策略，否则需要指定匹配条件</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">iptables -t <span class="attribute">filter</span> -<span class="selector-tag">A</span> <span class="selector-tag">INPUT</span> -<span class="selector-tag">p</span> tcp -j ACCEPT</span><br><span class="line">iptables -<span class="selector-tag">I</span> <span class="selector-tag">INPUT</span> -<span class="selector-tag">p</span> udp -j ACCEPT</span><br><span class="line">iptables -<span class="selector-tag">I</span> <span class="selector-tag">INPUT</span> <span class="number">2</span> -<span class="selector-tag">p</span> icmp -j ACCEPT</span><br><span class="line">iptables -<span class="selector-tag">P</span> <span class="selector-tag">INPUT</span> DROP #设置<span class="selector-tag">INPUT</span>链默认操作为DROP</span><br></pre></td></tr></table></figure>
+<h3 id="选项">选项：</h3>
+<p>-A 在末尾追加一条规则 -I 在开头插入一条规则 -D 删除一条规则 -R 替换一条规则</p>
+<h3 id="匹配条件">匹配条件</h3>
+<h4 id="协议匹配">协议匹配</h4>
+<p>-p 协议名</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">iptables -<span class="selector-tag">A</span> FORWARD -<span class="selector-tag">p</span> ! icmp -j ACCEPT</span><br><span class="line">iptables -<span class="selector-tag">A</span> FORWARD -<span class="selector-tag">p</span> tcp -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h4 id="地址匹配">地址匹配</h4>
+<p>-s 源地址 -d 目标地址 -i 匹配接口</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">iptables</span> -A FORWARD -s <span class="number">10.0.0.0</span>/<span class="number">24</span> -j ACCEPT</span><br><span class="line"><span class="attribute">iptables</span> -A INPUT -i eth<span class="number">0</span> -s <span class="number">100.0.0.100</span> -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h4 id="端口匹配">端口匹配</h4>
+<p>- - sport 源端口 - - dport 目标端口</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">iptables -<span class="selector-tag">A</span> FORWARD -<span class="selector-tag">p</span> tcp --dport <span class="number">22</span> -j ACCEPT</span><br><span class="line">iptables -<span class="selector-tag">A</span> OUTPUT -<span class="selector-tag">p</span> tcp --sport <span class="number">20</span>:<span class="number">80</span> -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h3 id="常见数据包的处理动作">常见数据包的处理动作</h3>
+<p>ACCEPT：放行数据包 DROP：丢弃数据包 REJECT：拒绝数据包 SNAT - - to ip : 转译源地址 DNAT - - to ip : 转译目标地址 MASQUERADE : 转译源地址为动态ip</p>
+<h3 id="查看现有规则">查看现有规则</h3>
+<p>-nvL</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">iptables -<span class="built_in">t</span> nat -nvL</span><br><span class="line">iptables -<span class="built_in">t</span> filter -nvL</span><br></pre></td></tr></table></figure>
+<h1 id="案例">案例</h1>
+<p>iptables防火墙常用的策略：</p>
+<p>1.拒绝进入防火墙的所有ICMP协议数据包</p>
+<p>iptables -I INPUT -p icmp -j REJECT</p>
+<p>2.允许防火墙转发除ICMP协议以外的所有数据包</p>
+<p>iptables -A FORWARD -p ! icmp -j ACCEPT</p>
+<p>说明：使用“！”可以将条件取反。</p>
+<p>3.拒绝转发来自192.168.1.10主机的数据，允许转发来自192.168.0.0/24网段的数据</p>
+<p>iptables -A FORWARD -s 192.168.1.11 -j REJECT</p>
+<p>iptables -A FORWARD -s 192.168.0.0/24 -j ACCEPT</p>
+<p>说明：注意要把拒绝的放在前面不然就不起作用了啊。</p>
+<p>4.丢弃从外网接口（eth1）进入防火墙本机的源地址为私网地址的数据包</p>
+<p>iptables -A INPUT -i eth1 -s 192.168.0.0/16 -j DROP</p>
+<p>iptables -A INPUT -i eth1 -s 172.16.0.0/12 -j DROP</p>
+<p>iptables -A INPUT -i eth1 -s 10.0.0.0/8 -j DROP</p>
+<p>5.封堵网段（192.168.1.0/24），两小时后解封。</p>
+<figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"><span class="meta"># iptables -I INPUT -s 10.20.30.0/24 -j DROP</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># iptables -I FORWARD -s 10.20.30.0/24 -j DROP</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># at now 2 hours at&gt; iptables -D INPUT 1 at&gt; iptables -D FORWARD 1</span></span><br></pre></td></tr></table></figure>
+<p>说明：这个策略咱们借助crond计划任务来完成，就再好不过了。</p>
+<p>[1]   Stopped     at now 2 hours</p>
+<p>6.只允许管理员从202.13.0.0/16网段使用SSH远程登录防火墙主机。</p>
+<p>iptables -A INPUT -p tcp --dport 22 -s 202.13.0.0/16 -j ACCEPT</p>
+<p>iptables -A INPUT -p tcp --dport 22 -j DROP</p>
+<p>说明：这个用法比较适合对设备进行远程管理时使用，比如位于分公司中的SQL服务器需要被总公司的管理员管理时。</p>
+<p>7.允许本机开放从TCP端口20-1024提供的应用服务。</p>
+<p>iptables -A INPUT -p tcp --dport 20:1024 -j ACCEPT</p>
+<p>iptables -A OUTPUT -p tcp --sport 20:1024 -j ACCEPT</p>
+<p>8.允许转发来自192.168.0.0/24局域网段的DNS解析请求数据包。</p>
+<p>iptables -A FORWARD -s 192.168.0.0/24 -p udp --dport 53 -j ACCEPT</p>
+<p>iptables -A FORWARD -d 192.168.0.0/24 -p udp --sport 53 -j ACCEPT</p>
+<p>9.禁止其他主机ping防火墙主机，但是允许从防火墙上ping其他主机</p>
+<p>iptables -I INPUT -p icmp --icmp-type Echo-Request -j DROP</p>
+<p>iptables -I INPUT -p icmp --icmp-type Echo-Reply -j ACCEPT</p>
+<p>iptables -I INPUT -p icmp --icmp-type destination-Unreachable -j ACCEPT</p>
+<p>10.禁止转发来自MAC地址为00：0C：29：27：55：3F的和主机的数据包</p>
+<p>iptables -A FORWARD -m mac --mac-source 00:0c:29:27:55:3F -j DROP</p>
+<p>说明：iptables中使用“-m 模块关键字”的形式调用显示匹配。咱们这里用“-m mac –mac-source”来表示数据包的源MAC地址。</p>
+<p>11.允许防火墙本机对外开放TCP端口20、21、25、110以及被动模式FTP端口1250-1280</p>
+<p>iptables -A INPUT -p tcp -m multiport --dport 20,21,25,110,1250:1280 -j ACCEPT</p>
+<p>说明：这里用“-m multiport –dport”来指定目的端口及范围</p>
+<p>12.禁止转发源IP地址为192.168.1.20-192.168.1.99的TCP数据包。</p>
+<p>iptables -A FORWARD -p tcp -m iprange --src-range 192.168.1.20-192.168.1.99 -j DROP</p>
+<p>说明：此处用“-m –iprange –src-range”指定IP范围。</p>
+<p>13.禁止转发与正常TCP连接无关的非—syn请求数据包。</p>
+<p>iptables -A FORWARD -m state --state NEW -p tcp ! --syn -j DROP</p>
+<p>说明：“-m state”表示数据包的连接状态，“NEW”表示与任何连接无关的，新的嘛！</p>
+<p>14.拒绝访问防火墙的新数据包，但允许响应连接或与已有连接相关的数据包</p>
+<p>iptables -A INPUT -p tcp -m state --state NEW -j DROP</p>
+<p>iptables -A INPUT -p tcp -m state --state ESTABLISHED,RELATED -j ACCEPT</p>
+<p>说明：“ESTABLISHED”表示已经响应请求或者已经建立连接的数据包，“RELATED”表示与已建立的连接有相关性的，比如FTP数据连接等。</p>
+<p>15.只开放本机的web服务（80）、FTP(20、21、20450-20480)，放行外部主机发住服务器其它端口的应答数据包，将其他入站数据包均予以丢弃处理。</p>
+<p>iptables -I INPUT -p tcp -m multiport --dport 20,21,80 -j ACCEPT</p>
+<p>iptables -I INPUT -p tcp --dport 20450:20480 -j ACCEPT</p>
+<p>iptables -I INPUT -p tcp -m state --state ESTABLISHED -j ACCEPT</p>
+<p>iptables -P INPUT DROP</p>
+<p>原文链接：<a href="https://www.jianshu.com/p/ee4ee15d3658" class="uri">https://www.jianshu.com/p/ee4ee15d3658</a></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>iptables</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>远程控制N1电视盒子Rush固件</title>
+    <url>/2020/11/24/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6N1%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90Rush%E5%9B%BA%E4%BB%B6/</url>
+    <content><![CDATA[<h2 id="从github上下载-androidvncserver">从github上下载 androidvncserver</h2>
+<p>https://github.com/appknox/androidvncserver/releases 目前我使用的是0.03版本</p>
+<h2 id="重新挂载system使其可以读写">重新挂载/system使其可以读写</h2>
+<ul>
+<li>ssh进入192.168.50.162,端口2223，用户root，密码rush</li>
+<li>安卓系统为防止意外损坏系统文件，默认系统被只读保护；通过 <code>mount -o remount,rw /system</code> ，重新挂载/system就可以读写了</li>
+</ul>
+<h2 id="上传至盒子">上传至盒子</h2>
+<p>通过当贝上传文件至 <code>/sdcard/dangbei-upload</code>，然后把 <code>androidvncserver</code> 移动到目录：<code>/system/bin</code>，修改 <code>androidvncserver</code> 权限，增加执行权限 <code>chmod +x /system/bin/androidvncserver</code></p>
+<h2 id="运行测试">运行测试</h2>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/system/</span>bin/androidvncserver &amp;</span><br></pre></td></tr></table></figure>
+<p>然后通过MobaXterm连接192.168.50.162:5901，看看是否能正常连接</p>
+<h2 id="添加开机启动">添加开机启动</h2>
+<p>在 <code>/system/bin/lazy-start.sh</code> 中增加上面的运行命令，重启盒子，看能否正常启动 <code>androidvncserver</code></p>
+<h2 id="关于lazy-start.sh">关于lazy-start.sh</h2>
+<p>如何用lazy-start.sh启动安卓应用 在脚本最后加上 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sleep</span> xxx     <span class="comment">#延时xxx秒等待系统进入桌面</span></span><br><span class="line">am <span class="built_in">start</span> xxx     <span class="comment">#利用am命令启动应用</span></span><br></pre></td></tr></table></figure></p>
+<p>如何使用am命令启动Android应用 命令格式为：<code>adb shell am start -n package/launch_activity</code> 示例： 打开设置App命令： <figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">adb <span class="keyword">shell</span> <span class="keyword">am</span> start -n <span class="keyword">com</span>.android.settings/<span class="keyword">com</span>.android.settings.Settings</span><br></pre></td></tr></table></figure> 命令的关键在于获取 <code>package</code> 和 <code>launch_activity</code> 。有很多种方法，这里列举两种，更多的方法请参考“如何获取Android App的package”一文（具体自己百度）。</p>
+<h2 id="关于自动挂载nfs服务">关于自动挂载nfs服务</h2>
+<p>系统重新挂载为可读写模式后 <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>nfs_mounts.sh</span><br><span class="line"><span class="comment"># 添加或修改为如下内容</span></span><br><span class="line">mkdir <span class="regexp">/mnt/</span>nfs</span><br><span class="line">chgrp root <span class="regexp">/mnt/</span>nfs</span><br><span class="line">chmod <span class="number">0644</span> <span class="regexp">/mnt/</span>nfs</span><br><span class="line">busybox mount -o ro,noatime,nolock,hard,intr,rsize=<span class="number">32768</span>,wsize=<span class="number">32768</span>,vers=<span class="number">3</span> -t nfs <span class="number">192.168</span>.<span class="number">50.218</span>:<span class="regexp">/media/</span>BC2D-<span class="number">34</span>FB <span class="regexp">/mnt/</span>nfs</span><br><span class="line"></span><br></pre></td></tr></table></figure> 然后修改lazy-start.sh中的nfs-client部分的设置即可，可能需要给予 <code>nfs_mounts.sh</code> 执行权限：<code>chmod 777 nfs_mounts.sh</code></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>n1</tag>
+        <tag>rush</tag>
+        <tag>androidvncserver</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>梅林路由器安装zerotier</title>
+    <url>/2020/11/17/%E6%A2%85%E6%9E%97%E8%B7%AF%E7%94%B1%E5%99%A8%E5%AE%89%E8%A3%85zerotier%E7%A9%BF%E9%80%8F%E6%89%80%E6%9C%89%E8%AE%BE%E5%A4%87/</url>
+    <content><![CDATA[<h2 id="准备工作重要">准备工作（重要）</h2>
+<ul>
+<li><p>如果zerotier后台建立了路由表的话，需要先删除，不然等下梅林连接的时候就会引起路由器死机</p></li>
+<li><p>关闭梅林路由器防火墙，实测安装完zerotier后，不关防火墙ping结果最高1000ms，关闭后稳定在30ms，貌似传说的打洞成功</p></li>
+</ul>
+<h2 id="安装过程">安装过程</h2>
+<ul>
+<li><p>首先安装好entware环境</p></li>
+<li><p>安装zerotier</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">opkg <span class="keyword">update</span></span><br><span class="line">opkg install zerotier</span><br><span class="line">modprobe tun</span><br><span class="line">zerotier-<span class="keyword">one</span> -<span class="keyword">d</span></span><br><span class="line">zerotier-<span class="keyword">cli</span> join xxxxx</span><br></pre></td></tr></table></figure></li>
+<li><p>网页端同意加入，并建立路由表192.168.50.0/24 via 192.168.192.1</p></li>
+<li><p>添加iptables，允许转发到192.168.50.0网段的流量通过</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">iptables</span> -A FORWARD -d <span class="number">192.168.50.0</span>/<span class="number">24</span> -j ACCEPT</span><br></pre></td></tr></table></figure></li>
+<li><p>测试连接是否正常，包括从学校访问家中的局域网是否ping通</p></li>
+<li><p>添加开机启动项</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">cd</span> /jffs/scripts</span><br><span class="line"><span class="attribute">vi</span> post-mount</span><br><span class="line"><span class="comment"># 在fi语句前添加下面三行命令</span></span><br><span class="line"><span class="attribute">modprobe</span> tun</span><br><span class="line"><span class="attribute">zerotier</span>-one -d</span><br><span class="line"><span class="attribute">iptables</span> -A FORWARD -d <span class="number">192.168.50.0</span>/<span class="number">24</span> -j ACCEPT</span><br></pre></td></tr></table></figure></li>
+<li><p>重启路由器测试是否正常启动</p></li>
+</ul>
+<p>至此，从外边任何安装了zerotier的电脑，都可以随意访问到家中局域网的各个设备了。</p>
+<h2 id="后记">后记</h2>
+<h3 id="modprobe-tun命令的作用">modprobe tun命令的作用</h3>
+<p>Tun/Tap是通过软件模拟的网络设备，提供与网络设备完全相同的功能。其中TAP模拟了以太网设备，即操作第二层数据包；TUN则模拟了网络层设备，即第三层数据包。Tun/Tap虚拟网络设备为用户空间程序提供了网络数据包的发送和接收能力。既可以当做点对点设备(TUN)，也可以当做以太网设备(TAP)。不仅Linux支持Tun/Tap虚拟网络设备，其他UNIX也是支持的，之间有少许差别。Tun/Tap驱动程序实现了虚拟网卡的功能，Tun表示虚拟的是点对点设备，Tap表示虚拟的是以太网设备，这两种设备针对网络包实行不同的封装。利用Tun/Tap驱动，可以将tcp/ip协议栈处理好的网络分包传给任何一个使用Tun/Tap驱动的进程，由进程重新处理后再发到物理链路中。</p>
+<p>Linux 2.4 内核之后代码默认编译tun、tap驱动，使用的时候只需要将模块加载即可(modprobe tun，mknod /dev/net/tun c 10 200)。运行tun、tap设备之后，会在内核空间添加一个杂项设备(miscdevice，类比字符设备、块设备等)/dev/net/tun，实质上是主设备号10的字符设备。从功能上看，tun设备驱动主要应该包括两个部分，一是虚拟网卡驱动，其实就是虚拟网卡中对skb进行封装解封装等操作；二是字符设备驱动，用于内核空间与用户空间的交互。</p>
+<h3 id="iptables命令相关知识">iptables命令相关知识</h3>
+<h3 id="为啥在post-mount中添加开机启动项">为啥在post-mount中添加开机启动项</h3>
+<p>/jffs/scripts目录: 里面的脚本名固定不可以随便修改，但是可以加自己的内容。</p>
+<p>脚本名</p>
+<p>作用</p>
+<p>wan-start</p>
+<p>在wan网卡启动后调用</p>
+<p>nat-start</p>
+<p>在NAT配置后调用</p>
+<p>post-mount</p>
+<p>在挂载磁盘后调用</p>
+<p>services-start</p>
+<p>在系统服务启动后调用</p>
+<p>services-stop</p>
+<p>在系统服务器停止前调用</p>
+<p>让我们看看post-mount的内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$1</span>&quot;</span> = <span class="string">&quot;/tmp/mnt/sda1&quot;</span> ] ; <span class="keyword">then</span></span><br><span class="line">  ln -nsf <span class="variable">$1</span>/entware /tmp/opt</span><br><span class="line">  modprobe tun</span><br><span class="line">  zerotier-one -d</span><br><span class="line">  iptables -A FORWARD -d 192.168.50.0/24 -j ACCEPT</span><br><span class="line">  swapon /tmp/mnt/sda1/swapfile</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p>由于我们的zerotier就是安装在U盘上的，所以放在这个脚本里面，只有U盘正确挂载后，才会执行这里的操作，再合适不过了！</p>
+<h3 id="梅林启动项的问题">梅林启动项的问题</h3>
+<ul>
+<li><p>/jffs时路由器自带的可写目录，按照特定格式命名的脚本可以被系统启动时自动调用。</p></li>
+<li><p>安装 entware后，产生了一个/jffs/service-start文件。</p>
+<ul>
+<li><p>该脚本调用/opt/etc/init.d/rc.unslung。</p></li>
+<li><p>然后rc.unslung启动/opt/etc/init.d/目录下的所有脚本，使用*.* start参数进行调用。</p></li>
+<li><p>脚本中运行的进程以服务方式驻留，是Linux早期版本的标准运行机制。</p></li>
+</ul></li>
+<li><p>自己的脚本放在/opt/etc/init.d/目录下</p></li>
+</ul>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>路由器</tag>
+        <tag>内网穿透</tag>
+        <tag>merlin</tag>
+        <tag>zerotier</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记录newifi3重刷padavan以后的折腾</title>
+    <url>/2020/11/14/%E8%AE%B0%E5%BD%95Newifi3%E9%87%8D%E5%88%B7Padavan%E5%8F%8A%E5%90%8E%E7%BB%AD%E6%8A%98%E8%85%BE/</url>
+    <content><![CDATA[<h1 id="刷机前的准备">刷机前的准备</h1>
+<h2 id="备份可选">备份（可选）</h2>
+<p>以为刷机以后所有的设置都会丢失，于是导出了设置和导出了内部存储设置，文件存放在nas中的newifi3文件夹，结果刷机以后才发现原来的基本配置都还在，比如后台登录地址，wifi设置，中继设置等</p>
+<h2 id="下载刷机包">下载刷机包</h2>
+<p>地址：<a href="https://t.me/s/pdcn1" class="uri">https://t.me/s/pdcn1</a> 刷机包：<a href="https://opt.cn2qq.com/padavan/" class="uri">https://opt.cn2qq.com/padavan/</a> 下载专用包RT-N56UB1-newifi3D2-512M_3.4.3.9-099.trx</p>
+<p>题外话：MT7621_7603_7612_512M_3.4.3.9-099.trx这个包名字的含义：MT7621芯片型号，7603wifi2g芯片，7612wifi5g芯片，512m内存大小，跟新路由3的配置一模一样，所以也可以用，但是我还是选择了专用包</p>
+<h1 id="刷机">刷机</h1>
+<ul>
+<li><p>网线连接电脑和路由器的lan口</p></li>
+<li><p>按住reset键不放，插上电源，等所有灯闪烁以后松开reset</p></li>
+<li><p>电脑上进入192.168.1.1登录breed后台</p></li>
+<li><p>选择新刷机包上传，完成</p></li>
+<li><p>另外如果以后跟着这个系列一起升级的话，可以选择一键自动更新固件命令：<code>wget -q -O- https://opt.cn2qq.com/opt-script/up.sh &gt; /tmp/up.sh &amp;&amp; bash &lt; /tmp/up.sh &amp;</code></p></li>
+</ul>
+<h1 id="更新时间设置">更新时间设置</h1>
+<p>系统管理——服务——crontab计划任务，添加命令</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*/<span class="number">10</span> * * * * ntpd -n -<span class="selector-tag">q</span> -<span class="selector-tag">p</span> time1<span class="selector-class">.apple</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
+<h1 id="开启entware环境">开启entware环境</h1>
+<ul>
+<li><p>备份/opt/etc/tinc文件夹下的所有内容</p></li>
+<li><p>删除/opt文件夹下的所有内容</p></li>
+<li><p>高级设置——USB应用程序——其他设置——允许运行Optware，选择entware</p></li>
+<li><p>重新启动路由器，会自动在opt文件夹下生成新的文件内容，opkg update验证entware环境是否开启成功</p></li>
+</ul>
+<h1 id="开启onmp">开启onmp</h1>
+<p>扩展功能——搭建web环境——开关，启用 nginx+mysql+php 环境，在log中可以看到安装进程</p>
+<h1 id="安装zerotier">安装zerotier</h1>
+<p>通过opkg安装</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">opkg <span class="keyword">install</span> zerotier</span><br></pre></td></tr></table></figure>
+<p>启动zerotier</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">zerotier-one -d</span></span><br></pre></td></tr></table></figure>
+<p>加入自己的zerotier网络,并在网页端同意加入</p>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line">zerotier-<span class="keyword">cli</span> join xxxxx</span><br></pre></td></tr></table></figure>
+<p>通过防火墙设置nat转发到本地局域网</p>
+<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line">iptables -<span class="keyword">A</span> FORWARD -d <span class="number">192.168.50.0</span>/<span class="number">24</span> -j ACCEPT</span><br><span class="line">iptables -t nat -<span class="keyword">A</span> POSTROUTING -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<p>在网页端添加路由表ManagedIP</p>
+<figure class="highlight accesslog"><table><tr><td class="code"><pre><span class="line"><span class="number">192.168.50.0</span>/<span class="number">24</span> via <span class="number">192</span>.<span class="number">168</span>.<span class="number">192</span>.<span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p>测试一下是否能访问局域网其他设备了，如果可以，就可以去添加路由器开启启动脚本 高级设置——自定义设置——脚本——自定义脚本设置0（功能设置）中添加</p>
+<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line">zerotier-one -d</span><br><span class="line">iptables -<span class="keyword">A</span> FORWARD -d <span class="number">192.168.50.0</span>/<span class="number">24</span> -j ACCEPT</span><br><span class="line">iptables -t nat -<span class="keyword">A</span> POSTROUTING -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<h1 id="安装tinc">安装tinc</h1>
+<p>安装</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">opkg <span class="keyword">install</span> tinc</span><br></pre></td></tr></table></figure>
+<p>将上面备份的tinc文件夹还原，将tinc-up,tinc-down两个文件给予执行权限</p>
+<figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">chmod +<span class="keyword">x</span> tinc-*</span><br></pre></td></tr></table></figure>
+<p>启动服务</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">tincd -n cloud</span></span><br></pre></td></tr></table></figure>
+<p>高级设置——自定义设置——脚本——自定义脚本设置0（功能设置）中添加 <code>tincd -n cloud</code></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>newifi3</tag>
+        <tag>padavan</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>全平台终端连接神器MobaXTerm</title>
+    <url>/2020/11/09/%E5%85%A8%E5%B9%B3%E5%8F%B0%E7%BB%88%E7%AB%AF%E8%BF%9E%E6%8E%A5%E7%A5%9E%E5%99%A8MobaXTerm/</url>
+    <content><![CDATA[<p>必须安利一波，谁用谁知道好！</p>
+<p><a href="https://mobaxterm.mobatek.net/download-home-edition.html" class="uri">https://mobaxterm.mobatek.net/download-home-edition.html</a></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>MobaXTerm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>newifi3作无线中继</title>
+    <url>/2020/10/26/Newifi3%E5%88%B7%E6%9C%BA%E5%8F%8A%E4%BD%9C%E6%97%A0%E7%BA%BF%E4%B8%AD%E7%BB%A7/</url>
+    <content><![CDATA[<h2 id="原版系统特点">原版系统特点</h2>
+<p>后台登陆地址：192.168.99.1，设置好wifi密码 原版买回来后，首先试用了原版系统，界面简单，但是其中的无线中继设置是傻瓜式的，只不过中继后的网络跟主路由的ip段不能相同，不能无缝漫游</p>
+<h2 id="刷入不死系统breed">刷入不死系统breed</h2>
+<ol type="1">
+<li>开启固件 SSH</li>
+</ol>
+<ol type="a">
+<li><p>开启路由器，进入管理界面 (假设路由器 IP 地址是 192.168.99.1)</p></li>
+<li><p>在浏览器中输入 <a href="http://192.168.99.1/newifi/ifiwen_hss.html" class="uri">http://192.168.99.1/newifi/ifiwen_hss.html</a> 并进入</p></li>
+<li><p>页面显示 success 即表明已开启 SSH</p></li>
+</ol>
+<ol start="2" type="1">
+<li><p>进入路由器 SSH 环境 ，使用 PuTTY/SecureCRT/ssh 均可</p></li>
+<li><p>上传解锁文件到路由器</p></li>
+</ol>
+<ol type="a">
+<li><p>下载附件，解压得到 newifi-d2-jail-break.ko</p></li>
+<li><p>用 WinSCP 等工具将其上传到路由器的 /tmp 目录</p></li>
+<li><p>或者用 HFS 搭建本地 HTTP 服务器，并在 SSH 里用 wget 命令下载</p></li>
+<li><p>或者用 tftpd32/tftpd64 搭建本地 TFTP 服务器，并在 SSH 里用 tftp 命令下载</p></li>
+<li><p>用 U 盘当然也行</p></li>
+</ol>
+<ol start="4" type="1">
+<li>开始解锁</li>
+</ol>
+<ol type="a">
+<li><p>SSH 进入 /tmp 目录 cd /tmp</p></li>
+<li><p>加载 newifi-d2-jail-break.ko insmod newifi-d2-jail-break.ko</p></li>
+<li><p>此时 SSH 会停止响应，因为 newifi-d2-jail-break.ko 会冻结系统的其他功能，强制写入 Newifi D2 专用版 Breed 到 Flash</p></li>
+<li><p>成功后路由器会自动重启，断电，然后按住复位健接通电源，看到灯闪2次以后，松开reset键，就可进入 Breed，登录地址变成了192.168.1.1，以后每次进入breed都是这样进入</p></li>
+</ol>
+<h2 id="最终刷机选择了老毛子pandavan">最终刷机选择了老毛子Pandavan</h2>
+<p>家里主路由地址192.168.1.2，开DHCP，地址池从192.168.1.100开始。</p>
+<p>第一种中继模式：</p>
+<ol type="1">
+<li><p>内部网络里设置路由地址为192.168.1.4；</p></li>
+<li><p>内部网络里设置DHCP关闭；</p></li>
+<li><p>无线网络2.4G里设置ssid和密码与主路由相同；</p></li>
+<li><p>无线网络2.4G - 无线桥接里选AP-Client + AP，LAN Bridge，搜索并连接主路由； 重启后，有线无线均可通过newifi3上网。</p></li>
+</ol>
+<p>第二种中继模式：</p>
+<ol start="5" type="1">
+<li><p>关闭自动获取DNS，手动指定DNS为父路由；</p></li>
+<li><p>关闭动态路由，手动指定路由为： IP：0.0.0.0；Netmask：0.0.0.0；Gateway：父路由地址；跃点留空；LAN模式</p></li>
+<li><p>打开DHCP；</p></li>
+<li><p>无线网络2.4G里设置ssid和密码与主路由不一样；</p></li>
+<li><p>AP-Client + AP，WAN (Wireless ISP)，搜索并连接主路由； 这时，newifi3成为二级路由，联网功能正常，路由自身也可以上网，ss+adbyby也正常工作；</p></li>
+</ol>
+<p>但是第二种中继模式无法实现两个覆盖范围无缝跳转。</p>
+<h2 id="开启entware和安装tinc">开启entware和安装tinc</h2>
+<p>开启entware <a href="http://xmfhost.com/index.php/2020/03/23/%E8%80%81%E6%AF%9B%E5%AD%90-padavan-%E5%9B%BA%E4%BB%B6%E7%9A%84%E8%B7%AF%E7%94%B1%E5%99%A8%E5%AE%89%E8%A3%85-zerotier%E6%96%B9%E6%B3%95/">http://xmfhost.com/index.php/2020/03/23/%E8%80%81%E6%AF%9B%E5%AD%90-padavan-%E5%9B%BA%E4%BB%B6%E7%9A%84%E8%B7%AF%E7%94%B1%E5%99%A8%E5%AE%89%E8%A3%85-zerotier%E6%96%B9%E6%B3%95/</a></p>
+<p>另外，在 padavan 下，启动 entware 环境后，也可以直接安装 tinc（安装的版本是 1.1pre14）安装方法如下</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg <span class="keyword">install</span> tinc</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>安装好以后，上传修改好的配置文件（配置文件位置在 /opt/etc 下面），并修改部分文件的属性，然后再生成密码。只是产生密码的方式，需如下操作。 <figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">tinc -n hello <span class="keyword">generate</span>-keys</span><br></pre></td></tr></table></figure> 启动、停止、重启、重新加载配置文件的方法如下： <figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">tinc -<span class="built_in">n</span> hello start </span><br><span class="line">tinc -<span class="built_in">n</span> hello stop </span><br><span class="line">tinc -<span class="built_in">n</span> hello restart </span><br><span class="line">tinc -<span class="built_in">n</span> hello reload</span><br></pre></td></tr></table></figure> 加入 padavan 的开机启动的方法为，放到“在路由器启动后执行”里，命令前要带上路径，好像一次不行，要运行两次才可以起来！我的方法是在前面运行一个 ps 命令来代替，真奇怪！我的是纯净版 padavan，是这样。也许你的没有这个问题。 <figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">ps <span class="keyword">grep</span> tinc <span class="regexp">/opt/</span>sbin/tincd -n hello</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>newifi3</tag>
+        <tag>无线中继</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Tinc建立vpn</title>
+    <url>/2020/10/21/Tinc%E5%BB%BA%E7%AB%8BVpn/</url>
+    <content><![CDATA[<h1 id="服务端安装">服务端安装</h1>
+<figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"><span class="meta">## 进入配置目录</span></span><br><span class="line">cd /etc/tinc/</span><br><span class="line"><span class="meta">## 网络目录名可任意，但其他节点须与服务端节点相同</span></span><br><span class="line">sudo mkdir cloud</span><br><span class="line">cd cloud/</span><br><span class="line"><span class="meta">## 目录名固定，这里存放各个节点的配置文件</span></span><br><span class="line">sudo mkdir hosts</span><br><span class="line"><span class="meta">## 开始配置cloud</span></span><br><span class="line">sudo vim tinc.conf</span><br><span class="line"><span class="meta">## 极简配置如下，其他配置默认</span></span><br><span class="line">Name = tencent</span><br><span class="line">Interface = vpn</span><br><span class="line"><span class="meta">## 配置tencent节点，对应tinc.conf中的Name</span></span><br><span class="line">sudo vim hosts/tencent</span><br><span class="line"><span class="meta">## 填写公网IP和vpn节点IP，这里我使用10.0.0.1</span></span><br><span class="line">Address = 你的公网IP</span><br><span class="line">Subnet = <span class="number">10.0</span><span class="number">.0</span><span class="number">.1</span>/<span class="number">32</span></span><br><span class="line"><span class="meta">## 生成密钥，-n 网络名</span></span><br><span class="line">sudo tincd -n cloud -K</span><br><span class="line"><span class="meta">## 编写拨号脚本，注意与Subnet中的IP相同</span></span><br><span class="line">sudo vim tinc-up</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ifconfig $INTERFACE <span class="number">10.0</span><span class="number">.0</span><span class="number">.1</span> netmask <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br><span class="line"><span class="meta">## 编写断线脚本</span></span><br><span class="line">sudo vim tinc-down</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ifconfig $INTERFACE down</span><br><span class="line"><span class="meta">## 赋予脚本执行权限</span></span><br><span class="line">sudo chmod +x tinc-*</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>安装完毕以后，文件及文件夹的结构是这样的：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">/etc/tinc—— nets.boot</span><br><span class="line">       —— cloud——tinc.conf</span><br><span class="line">             ——rsa_key.priv</span><br><span class="line">             ——rsa_key.pub</span><br><span class="line">             ——tinc-down</span><br><span class="line">             ——tinc-up</span><br><span class="line">             ——hosts——gcp</span><br><span class="line">                    ——pc</span><br><span class="line">                    ——school</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="windows客户端安装">Windows客户端安装</h1>
+<ul>
+<li><p>首先下载Windows版的tinc。在安装过程三项可选，直接全选。然后指定安装目录。之后进入安装目录</p></li>
+<li><p>新建网络目录，本例为cloud</p></li>
+<li><p>进入cloud目录后，创建hosts目录</p></li>
+<li><p>在cloud目录下新建文件tinc.conf，输入如下内容</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">Name</span> = pc</span><br><span class="line"><span class="attr">Interface</span> = vpn</span><br><span class="line"><span class="attr">ConnectTo</span> = tencent</span><br></pre></td></tr></table></figure></li>
+<li><p>在hosts目录下新建文件pc，输入如下内容，将节点IP配置为10.0.0.2</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Subnet</span> = <span class="number">10.0.0.2</span>/<span class="number">32</span></span><br></pre></td></tr></table></figure></li>
+<li><p>在安装目录下以管理员身份启动cmd，输入tincd -n cloud -K，生成密钥</p></li>
+<li><p>待密钥生成完毕后，获取并保存服务端hosts文件夹下的tencent文件至pc文件处，将pc文件上传至服务端的hosts文件夹下。</p></li>
+<li><p>在安装目录tap-win64下以管理员身份运行addtap.exe，安装网络适配器</p></li>
+<li><p>接着去网络中心找到类似的TAP网络适配器，修改其名称为tinc.conf中的Interface值，本例为vpn，接着右键属性设置ipv4的地址，此地址应与hosts中pc的Subnet值相同，本例为10.0.0.2</p></li>
+</ul>
+<h1 id="linux客户端安装">Linux客户端安装</h1>
+<p>使用apt install tinc即可。其配置与服务端的配置步骤相同。同样是确保用户具备sudo权限或是直接使用root。</p>
+<figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"><span class="meta">## 进入配置目录</span></span><br><span class="line">cd /etc/tinc/</span><br><span class="line"><span class="meta">## 网络须与服务端节点相同</span></span><br><span class="line">sudo mkdir cloud</span><br><span class="line">cd cloud/</span><br><span class="line"><span class="meta">## 目录名固定，这里存放orangePi节点和服务端节点的主机文件</span></span><br><span class="line">sudo mkdir hosts</span><br><span class="line"><span class="meta">## 开始配置cloud</span></span><br><span class="line">sudo vim tinc.conf</span><br><span class="line"><span class="meta">## 极简配置如下，其他配置默认</span></span><br><span class="line"><span class="meta">## ConnectTo = 服务端节点名，本例为tencent</span></span><br><span class="line">Name = orangePi</span><br><span class="line">Interface = vpn</span><br><span class="line">ConnectTo = tencent</span><br><span class="line"><span class="meta">## 配置orangePi节点，对应tinc.conf中的Name</span></span><br><span class="line">sudo vim hosts/orangePi</span><br><span class="line"><span class="meta">## 填写orangePi节点vpn的IP，需唯一</span></span><br><span class="line">Subnet = <span class="number">10.0</span><span class="number">.0</span><span class="number">.10</span>/<span class="number">32</span></span><br><span class="line"><span class="meta">## 生成密钥，-n 网络名</span></span><br><span class="line">sudo tincd -n cloud -K</span><br><span class="line"><span class="meta">## 编写拨号脚本，注意与Subnet的IP相同</span></span><br><span class="line">sudo vim tinc-up</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ifconfig $INTERFACE <span class="number">10.0</span><span class="number">.0</span><span class="number">.10</span> netmask <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br><span class="line"><span class="meta">## 编写断线脚本</span></span><br><span class="line">sudo vim tinc-down</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ifconfig $INTERFACE down</span><br><span class="line"><span class="meta">## 赋予脚本执行权限</span></span><br><span class="line">sudo chmod +x tinc-*</span><br></pre></td></tr></table></figure>
+<h1 id="padavan安装tinc">Padavan安装tinc</h1>
+<p>首先要加载entware环境，然后opkg install tinc</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> /<span class="keyword">opt</span>/etc</span><br><span class="line"><span class="built_in">mkdir</span> tinc</span><br><span class="line"><span class="keyword">cd</span> tinc</span><br><span class="line"><span class="built_in">mkdir</span> cloud</span><br></pre></td></tr></table></figure>
+<p>文件结构和linux下的相同，但是注意生成密匙的命令不同</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">tinc -n cloud <span class="keyword">generate</span>-keys</span><br></pre></td></tr></table></figure>
+<h1 id="启动服务">启动服务</h1>
+<ul>
+<li><p>Linux下启动tinc 需要使用命令tincd -n 网络名，故本例的启动为</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">tincd -n cloud</span></span><br></pre></td></tr></table></figure></li>
+<li><p>若是想首先开机启动则需要使用systemctl enable tinc@网络名</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">systemctl <span class="builtin-name">enable</span> tinc@cloud</span><br></pre></td></tr></table></figure></li>
+<li><p>Windows下需要在安装目录下以管理员身份运行cmd输入</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">tincd -n cloud</span></span><br></pre></td></tr></table></figure>
+<p>如果成功会生成一个tinc.cloud的服务，服务默认是开机自动启动的</p></li>
+<li><p>padavan启动较为特殊,启动、停止、重启、重新加载配置文件的方法如下：</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">tinc -<span class="built_in">n</span> cloud start</span><br><span class="line">tinc -<span class="built_in">n</span> cloud stop</span><br><span class="line">tinc -<span class="built_in">n</span> cloud restart</span><br><span class="line">tinc -<span class="built_in">n</span> cloud reload</span><br></pre></td></tr></table></figure>
+<p>还要在路由器开机后执行的脚本中加入</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/opt/</span>sbin/tincd -n hello</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="配置工具一个脚本">配置工具：一个脚本</h1>
+<p>可以看到很多的配置都是重复的，为了简化配置我编写了一个shell脚本可以帮助快速配置。使用简单而且Windows和Linux皆可用。按如下代码编写shell文件至指定目录，Windows为安装目录，Linux为/etc/tinc，然后执行脚本按照提示输入对应的信息即可，注意Windows需要管理员权限，Linux需要支持sudo或以root身份。以本文为例做个简单的示范：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">net_name=<span class="string">&quot;&quot;</span></span><br><span class="line">node_name=<span class="string">&quot;&quot;</span></span><br><span class="line">is_client=<span class="string">&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="title">mk_dir</span></span>()&#123;</span><br><span class="line">    <span class="keyword">while</span> [ -z <span class="variable">$&#123;net_name&#125;</span> ]</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">read</span> -p <span class="string">&quot;Enter the network name:&quot;</span> net_name</span><br><span class="line">        net_name=<span class="variable">$net_namesed</span> <span class="string">&#x27;s/ //g&#x27;</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">    mkdir <span class="variable">$net_name</span></span><br><span class="line">    <span class="built_in">cd</span> <span class="variable">$net_name</span></span><br><span class="line">    mkdir <span class="string">&#x27;hosts&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">tinc_conf</span></span>()&#123;</span><br><span class="line">    <span class="built_in">read</span> -p <span class="string">&quot;Enter Interface Name:&quot;</span> interface</span><br><span class="line">    <span class="built_in">read</span> -p <span class="string">&quot;Enter local node name:&quot;</span> node_name</span><br><span class="line">    conf_str=<span class="string">&quot;Interface = <span class="variable">$&#123;interface&#125;</span> \nName = <span class="variable">$&#123;node_name&#125;</span>&quot;</span></span><br><span class="line">    <span class="built_in">read</span> -p <span class="string">&quot;Is client node?(y/n):&quot;</span> is_client</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$is_client</span>&quot;</span> == <span class="string">&quot;y&quot;</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">read</span> -p <span class="string">&quot;Enter server node name:&quot;</span> server_name</span><br><span class="line">    conf_str=<span class="variable">$conf_str</span><span class="string">&quot;\nConnectTo = <span class="variable">$&#123;server_name&#125;</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="variable">$conf_str</span> &gt; <span class="string">&#x27;tinc.conf&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">net_conf</span></span>()&#123;</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$is_client</span>&quot;</span> == <span class="string">&quot;y&quot;</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">read</span> -p <span class="string">&quot;Enter public IP address(can be empty):&quot;</span> pub_ip</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">while</span> [ -z <span class="variable">$&#123;pub_ip&#125;</span> ]</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">          <span class="built_in">read</span> -p <span class="string">&quot;Enter public IP address:&quot;</span> pub_ip</span><br><span class="line">      pub_ip=<span class="variable">$pub_ipsed</span> <span class="string">&#x27;s/ //g&#x27;</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    <span class="built_in">read</span> -p <span class="string">&quot;Enter local node ip:&quot;</span> local_ip</span><br><span class="line">    net_str=<span class="string">&quot;Subnet = <span class="variable">$&#123;local_ip&#125;</span>/32&quot;</span></span><br><span class="line">    pub_ip=<span class="variable">$pub_ipsed</span> <span class="string">&#x27;s/ //g&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> [ -n <span class="string">&quot;<span class="variable">$pub_ip</span>&quot;</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">       net_str=<span class="variable">$net_str</span><span class="string">&quot;\nAddress = <span class="variable">$pub_ip</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    <span class="built_in">cd</span> hosts</span><br><span class="line">    <span class="built_in">echo</span> -e <span class="variable">$net_str</span> &gt; <span class="variable">$node_name</span></span><br><span class="line">    <span class="built_in">cd</span> ..</span><br><span class="line">    os=`uname`</span><br><span class="line">    <span class="keyword">if</span> [ `uname` = <span class="string">&quot;Linux&quot;</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">&quot;#!/bin/bash\n&quot;</span><span class="string">&#x27;ifconfig $INTERFACE &#x27;</span><span class="string">&quot;<span class="variable">$&#123;local_ip&#125;</span> netmask 255.255.255.0&quot;</span> &gt; <span class="string">&#x27;tinc-up&#x27;</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">&quot;#!/bin/bash\n&quot;</span><span class="string">&#x27;ifconfig $INTERFACE down&#x27;</span> &gt; <span class="string">&#x27;tinc-down&#x27;</span></span><br><span class="line">    chmod +x tinc-*</span><br><span class="line">    tincd -n <span class="variable">$net_name</span> -K</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        ./tincd -n <span class="variable">$net_name</span> -K</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">mk_dir</span><br><span class="line">tinc_conf</span><br><span class="line">net_conf</span><br></pre></td></tr></table></figure>
+<p>脚本执行效果如下：</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 输入网络名</span></span><br><span class="line">Enter the network name:cloud</span><br><span class="line"><span class="comment">## 输入网口名</span></span><br><span class="line">Enter Interface Name:vpn</span><br><span class="line"><span class="comment">## 输入本地节点名</span></span><br><span class="line">Enter local <span class="keyword">node</span> name:<span class="title">pc</span></span><br><span class="line"><span class="comment">## 是否为客户端节点</span></span><br><span class="line">Is client <span class="keyword">node</span><span class="title">?(y</span>/n):y</span><br><span class="line"><span class="comment">## 输入服务端节点名（上步填n则无此项）</span></span><br><span class="line">Enter server <span class="keyword">node</span> name:<span class="title">tencent</span></span><br><span class="line"><span class="comment">## 输入公网IP（为y时此项必填，n可以直接回车）</span></span><br><span class="line">Enter public IP address(can be empty):</span><br><span class="line"><span class="comment">## 输入本节点的IP</span></span><br><span class="line">Enter local <span class="keyword">node</span> ip:<span class="title">10</span>.<span class="number">0.0</span>.<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>之后就会完成配置，注意这个脚本仅用于自动完成配置，不会启动服务，所以还需与服务端交换host文件和步骤5，Windows下仍要配置ip(部分条件下需要手动生成密钥)</p>
+<h1 id="使用感受">使用感受</h1>
+<p>1.中途遇到好多的坑，比如文件配置修改以后，需要重启tinc服务</p>
+<p>2.晚高峰期间的速度基本可以接受</p>
+<p>3.将两个vps同时作为服务端的文件配置，目前还没有搞定</p>
+<h1 id="致敬原文作者">致敬原文作者</h1>
+<p><a href="https://wuzk.tk/2018/09/13/2018/20180913/" class="uri">https://wuzk.tk/2018/09/13/2018/20180913/</a> <a href="https://chanix.github.io/TincCookbook/" class="uri">https://chanix.github.io/TincCookbook/</a> <a href="http://www.lucktu.com/archives/763-3.html" class="uri">http://www.lucktu.com/archives/763-3.html</a></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>tinc</tag>
+        <tag>vpn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装完整ChromeOS</title>
+    <url>/2020/10/20/%E6%97%A7%E7%94%B5%E8%84%91%E5%AE%89%E8%A3%85%E5%AE%8C%E6%95%B4%E7%89%88ChromeOs%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1 id="准备需要的文件与设备">准备需要的文件与设备</h1>
+<p>这一步，是在准备需要的硬件与软件。</p>
+<p>（1）16G以上的U盘，与一台老笔记本（台式机应该也可以）。U盘与电脑里的文件都会被删除，所以不要存储重要文件。</p>
+<p>（2）下载Linux系统镜像文件</p>
+<p>（3）下载镜像刷写工具 Rufus</p>
+<p>（4）下载适合你的旧电脑的ChromeOS镜像</p>
+<p>在这个网页上(cros-updates-serving.appspot.com )，有第三方汇总的ChromeOS系统镜像的下载地址：</p>
+<p>不同机器需要下载不同镜像——</p>
+<ul>
+<li><p>1、<strong>Intel第1代到第3代的CPU，选择&quot;samus&quot;一栏的镜像</strong></p></li>
+<li><p>我的ideapad是i3-2365，也就是第二代的cpu，后面的数字81，82，83代表ChromeOs系统的版本号</p></li>
+<li><p>2、Intel第4代以后的CPU，选择&quot;rammus&quot;一栏的镜像</p></li>
+<li><p>3、AMD的支持范围比较小，目前只有2016年&quot;Stoney Ridge&quot;CPU芯片可以安装，选择&quot;grunt&quot;一栏的镜像。</p></li>
+<li><p>4、每一栏后面的数字，就是对应版本的ChromeOS镜像下载地址。数字越大，系统越新。没有特别问题，建议选择高版本的系统。</p></li>
+<li><p>5、某些特别新的设备，有可能不支持。具体兼容情况，请参考官方Chromebook使用了什么硬件。</p></li>
+<li><p>比如，编辑测试的机器CPU为i5-3320M，网上搜索资料，判断属于Intel第3代CPU。所以点击&quot;samus&quot;一栏的“83”，下载了“chromeos_13020.87.0_samus_recovery_stable-channel_mp-v3.bin.zip”</p></li>
+</ul>
+<p>（5）下载ChromeOS安装、启动工具包“Brunch” 在项目的release页面里(github.com/sebanc/brunch/releases)，下载最新版的安装、启动程序。</p>
+<h1 id="制作启动盘">制作启动盘</h1>
+<p>文件都准备好后，就可以烧录Linux镜像到U盘上面去了。运行Rufus，点击软件界面上的“选择”，打开linux的镜像文件。<strong>将分区类型设置为GPT。</strong> 确认无误后，点击“开始”，刷写镜像。</p>
+<p>刷写完成后，就可以打开U盘，将整个chromeos文件夹，一起复制到U盘根目录里面了。</p>
+<h1 id="更改bios设置">更改BIOS设置</h1>
+<p>在硬盘中安装ChromeOS，会格式化、删除所有文件。所以请一定注意检查老机器里面是否有重要资料。</p>
+<p>首先，插入U盘，并打开安装ChromeOS的旧电脑电源。</p>
+<p>进入BIOS后，修改启动方式为UEFI，并选择U盘启动。</p>
+<p>保存BIOS设置并重启后，就可以进入U盘中的linux系统了。</p>
+<h1 id="利用linux安装chromeos">利用linux，安装ChromeOS</h1>
+<p>和Windows不一样，ChromeOS官方并没有放出通用安装程序，所以需要U盘上的Linux系统（这里是Ubuntu）辅助安装。</p>
+<h2 id="安装需要的软件">安装需要的软件</h2>
+<figure class="highlight sas"><table><tr><td class="code"><pre><span class="line">sudo apt <span class="meta">update</span> <span class="variable">&amp;&amp;</span> sudo apt install figlet pv cgpt</span><br></pre></td></tr></table></figure>
+<h2 id="查询安装硬盘代号">查询安装硬盘代号</h2>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sudo fdisk -l</span></span><br></pre></td></tr></table></figure>
+<p>如果只有一块硬盘，硬盘代号一般是/dev/sda。但某些机器，可能是emmc或nvram固态硬盘，这种情况下代号可能不同。</p>
+<h2 id="安装chromeos">安装ChromeOS</h2>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sudo df -h</span></span><br></pre></td></tr></table></figure>
+<p>屏幕提示U盘分区为“/cdrom”。于是切换到U盘chromeos文件夹的指令为：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">cd <span class="regexp">/cdrom/</span>chromeos</span><br></pre></td></tr></table></figure>
+<p>最后一步，安装ChromeOS到硬盘：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sudo</span> bash chromeos-install.sh -src chromeos_<span class="number">13020</span>.<span class="number">87</span>.<span class="number">0</span>_samus_recovery_stable-channel_mp-v<span class="number">3</span>.bin -dst /dev/sda</span><br></pre></td></tr></table></figure>
+<p>注意根据实际的bin文件更改以上命令</p>
+<h1 id="使用说明">使用说明</h1>
+<p>由于需要连接google进行更新设置，账户登录等，需要有富强环境</p>
+<h1 id="使用体验效果">使用体验效果</h1>
+<p>由于旧电脑速度实在是太慢了，2g内存+2代cpu+机械硬盘，整体使用的效果就是卡顿，如果再开启ChromeOs中的linux系统的话，貌似更加卡顿，于是使用了一天以后，决定再刷回CloudReady的阉割版的ChromeOs了，虽然不能在play商店安装应用了，但是对于破旧电脑来说，流畅度大于一切！</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>ChromeOs</tag>
+        <tag>旧电脑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ZeroTierOne创建大局域网</title>
+    <url>/2020/10/15/ZeroTierOne%E5%88%9B%E5%BB%BA%E5%A4%A7%E5%B1%80%E5%9F%9F%E7%BD%91/</url>
+    <content><![CDATA[<h1 id="zerotier原理">ZeroTier原理</h1>
+<p>这个过程如下：</p>
+<ul>
+<li><p>A 想要将数据包发送到 B，但由于它没有直接路径，因此将其向上发送到 R。</p></li>
+<li><p>如果 R 有直接链接到 B，它会转发数据包给 B。否则它会继续向上游发送数据包，直到达到行星根(planet)。行星根知道所有节点，所以如果 B 在线，最终数据包将到达 B。</p></li>
+<li><p>R 还向 A 发送一个名为会和的消息，包含有关它如何到达 B 的提示。同时，将会和发给 B，通知 B 它如何到达 A。</p></li>
+<li><p>A 和 B 获取它们的会合消息并尝试相互发送测试消息，可能会对 NAT 或状态防火墙进行穿透。如果这样可以建立直接链路，则不再需要中继。</p></li>
+<li><p>如果无法建立直接路径，则通信可以继续中继(速度慢)</p></li>
+<li><p>ZeroTier 官方搭建了一个行星根服务器叫做地球 Earth，行星根服务器唯一的且是免费的，它记录了所有的路径信息，一般情况下大家都直接用的这个。除此之外还有 12 个遍布全球的根服务器，这些是收费的服务。所以如果使用免费套餐，连接时的延迟可能会很高，另外由于 Earth 在国外，一些不确定因素可能会影响到使用。考虑到网络的不确定性，ZeroTier 能自己创建根服务器月球 Moons，这样就能在大局域网中得到更好的体验了。</p></li>
+</ul>
+<h1 id="安装">安装</h1>
+<p>ZeroTier 是跨平台的，能安装在几乎任何平台</p>
+<p>Windows、macOS、Linux、iOS、Android、QNAP、Synology、西数 MyCloud NAS，下载地址：<a href="https://www.zerotier.com/download.shtml" class="uri">https://www.zerotier.com/download.shtml</a></p>
+<h2 id="在linux安装">在linux安装</h2>
+<p>一键安装</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">curl -s https:<span class="regexp">//i</span>nstall.zerotier.com  sudo bash</span><br></pre></td></tr></table></figure>
+<p>加入网络</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">sudo zerotier-cli <span class="keyword">join</span> <span class="symbol">&lt;network_id&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="在路由器安装">在路由器安装</h2>
+<p>路由器推荐安装 Entware 后使用 <code>opkg install zerotier</code> 命令安装， <code>vi /etc/config/zerotier</code>，找到以下两处进行修改： <code>config zerotier sample\_config option enabled 0</code> (这里把0替换成1，让选项生效) <code>list join ‘8056c2e21c000001’</code> (替换为自己的网络ID)，然后重启路由器</p>
+<h1 id="路由器防火墙配置关键">路由器防火墙配置（关键）</h1>
+<p>在防火墙-&gt;自定义规则页面，增加下面三条记录: <figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">iptables</span> -I FORWARD -i ztc<span class="number">3</span>qwyx<span class="number">5</span>l -j ACCEPT </span><br><span class="line"><span class="attribute">iptables</span> -I FORWARD -o ztc<span class="number">3</span>qwyx<span class="number">5</span>l -j ACCEPT </span><br><span class="line"><span class="attribute">iptables</span> -t nat -I POSTROUTING -o ztc<span class="number">3</span>qwyx<span class="number">5</span>l -j MASQUERADE </span><br></pre></td></tr></table></figure> <code>ztc3qwyx5l</code>是路由器的ZeroTier虚拟接口的名称，在终端可以使用ifconfig命令查看，请自行替换。</p>
+<p>设置完成后，点击重启防火墙。</p>
+<p><strong>实测命令：</strong></p>
+<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line">iptables -<span class="keyword">A</span> FORWARD -d <span class="number">192.168.50.0</span>/<span class="number">24</span> -j ACCEPT</span><br><span class="line">iptables -t nat -<span class="keyword">A</span> POSTROUTING -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<p><strong>然后就发现通过学校可以访问家里的192.168.50.0/24网段了</strong></p>
+<h1 id="在vps配置moon服务节点可选操作">在vps配置moon服务节点（可选操作）</h1>
+<h2 id="安装-moon">安装 moon</h2>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">curl -s https:<span class="regexp">//i</span>nstall.zerotier.com/  sudo bash</span><br></pre></td></tr></table></figure>
+<h2 id="生成moon配置文件">生成moon配置文件</h2>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">cd <span class="regexp">/var/</span>lib/zerotier-one  <span class="comment">#安装好zerotier后,自动会安装到此目录</span></span><br><span class="line"></span><br><span class="line">sudo zerotier-idtool initmoon identity.public &gt; moon.json         <span class="comment">#该命令将id文件转换为能用于配置的json</span></span><br></pre></td></tr></table></figure>
+<h2 id="修改配置文件moon.json">修改配置文件moon.json</h2>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;stableEndpoints&quot;</span>: [ <span class="string">&quot;23.23.23.23/9993&quot;</span> ] <span class="meta">#修改为vps的ip，端口9993</span></span><br></pre></td></tr></table></figure>
+<p>该配置里面,有一个id字段,10个字符,如: [&quot;id&quot;: &quot;18fasd2319&quot;], 就是moon的id, 在客户端连接时,需要用到它.</p>
+<h2 id="生成moon文件">生成moon文件</h2>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">sudo zerotier-idtool genmoon moon.<span class="keyword">json </span></span><br></pre></td></tr></table></figure>
+<p>执行该命令后,会在在/var/lib/zerotier-one目录下生成一个类似00000018fasd2319.moon的文件..这个文件非常重要,所有的客户端要连接上moon都是依靠该文件关联的..</p>
+<h2 id="使moon配置文件生效">使moon配置文件生效</h2>
+<p>在/var/lib/zerotier-one目录下,新建一个 moons.d 文件夹，并将刚生成的moon配置文件放到该文件夹下</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">mv</span> <span class="number">00000018</span>fasd<span class="number">2319</span>.moon moons.d/</span><br></pre></td></tr></table></figure>
+<h2 id="重新启动moon服务器">重新启动moon服务器</h2>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">systemctl restart zerotier-one</span></span><br></pre></td></tr></table></figure>
+<h1 id="客户端连接并使用服务器上的moon">客户端连接并使用服务器上的Moon</h1>
+<h2 id="linux">linux</h2>
+<p>直接在zerotier目录下,创建moons.d文件夹,并且将生成的00000018fasd2319.moon文件拷入,并重启服务即可.</p>
+<h2 id="windows-10">Windows 10</h2>
+<p>打开<code>C:\ProgramData\ZeroTier\One</code>文件夹，并且在其下建立<code>moons.d</code>文件夹,然后将moon服务器下生成的000xxxx.moon文件,拷贝到此文件夹内..再重启该服务即可..</p>
+<h2 id="验证moon是否生效">验证moon是否生效</h2>
+<p><strong>必须是管理员权限运行cmd</strong> 在开始上点右键，选择windows powershell 管理员，打开窗口后再运行命令即可</p>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line">zerotier-<span class="keyword">cli</span> listpeers</span><br></pre></td></tr></table></figure>
+<p>若有类似地址,即可证明moon连接成功</p>
+<p>200 listpeers 18fasd2319 23.23.23.23/9994;4242;4038 224 1.2.12 MOON</p>
+<p>验证时看不到本机</p>
+<h1 id="其他方案">其他方案</h1>
+<p>frps,nps,tinc,smartgate</p>
+<h1 id="使用效果记录">使用效果记录</h1>
+<p>经过一周的试用，发现用国外的vps建立的moons节点连接速度非常慢，效果并不理想，还不如不建立moon，直接用官方的就行了。下一步打算使用一下tinc</p>
+<h1 id="参考教程">参考教程</h1>
+<p>padavan安装zerotier: <a href="https://www.right.com.cn/forum/thread-367080-1-1.html" class="uri">https://www.right.com.cn/forum/thread-367080-1-1.html</a></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>zerotier</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小钢炮添加虚拟内存</title>
+    <url>/2020/10/14/%E5%B0%8F%E9%92%A2%E7%82%AE%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</url>
+    <content><![CDATA[<h2 id="创建虚拟文件">创建虚拟文件</h2>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">fallocate -l <span class="number">2048</span>M <span class="regexp">/media/</span>BC2D-<span class="number">34</span>FB<span class="regexp">/swap/</span>swapfile</span><br></pre></td></tr></table></figure>
+<h2 id="设置权限">设置权限</h2>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">chmod <span class="number">666</span> <span class="regexp">/media/</span>BC2D-<span class="number">34</span>FB<span class="regexp">/swap/</span>swapfile</span><br></pre></td></tr></table></figure>
+<h2 id="创建swap">创建swap</h2>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">mkswap <span class="regexp">/media/</span>BC2D-<span class="number">34</span>FB<span class="regexp">/swap/</span>swapfile</span><br></pre></td></tr></table></figure>
+<h2 id="挂载swap">挂载swap</h2>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">swapon <span class="regexp">/media/</span>BC2D-<span class="number">34</span>FB<span class="regexp">/swap/</span>swapfile</span><br></pre></td></tr></table></figure>
+<h2 id="以下步骤二选一">以下步骤二选一</h2>
+<h3 id="添加开机启动命令">添加开机启动命令</h3>
+<p>在System-Startup中添加上一步的挂载命令</p>
+<h3 id="添加挂载服务">添加挂载服务</h3>
+<p>在/etc/init.d/下建一个文件S+数字开头，比如S91swap，内容如下：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/bin/sh</span></span><br><span class="line">[ -f <span class="regexp">/media/</span>BC2D-<span class="number">34</span>FB<span class="regexp">/swap/</span>swapfile ]  <span class="keyword">exit</span> <span class="number">0</span></span><br><span class="line">swapon <span class="regexp">/media/</span>BC2D-<span class="number">34</span>FB<span class="regexp">/swap/</span>swapfile</span><br></pre></td></tr></table></figure>
+<p>并给予执行权限</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">chmod</span> +x S<span class="number">91</span>swap</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>小钢炮</tag>
+        <tag>虚拟内存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WIN10家庭版也能拥有组策略</title>
+    <url>/2020/10/12/Win10%E5%AE%B6%E5%BA%AD%E7%89%88%E4%B9%9F%E8%83%BD%E6%8B%A5%E6%9C%89%E7%BB%84%E7%AD%96%E7%95%A5/</url>
+    <content><![CDATA[<p>Windows 家庭版用户最大的心结，可能就是没有本地组策略编辑器（Win+R后输入gpedit.msc）了。在注册表中不好找的东西，在这里直接就图形化处理了，不可谓不方便。</p>
+<p>今天小编就来帮大家了却心结，家庭版用户用上组策略编辑器不再是梦！</p>
+<p>跟我来学黑科技先新建一个文本文档，把下面这些内容复制进去：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">@<span class="keyword">echo</span> off</span><br><span class="line">pushd <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line">dir <span class="string">/b</span> C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*<span class="string">.mum</span> &gt;List.txt</span><br><span class="line">dir <span class="string">/b</span> C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*<span class="string">.mum</span> &gt;&gt;List.txt</span><br><span class="line">for <span class="string">/f</span> %%i in <span class="params">(&#x27;findstr /i . List.txt 2^&gt;nul&#x27;)</span> do dism <span class="string">/online</span> <span class="string">/norestart</span> <span class="string">/add-package</span>:<span class="string">&quot;C:\Windows\servicing\Packages\%%i&quot;</span></span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+<p>保存后将文件的后缀名从.txt改成.cmd 选择“以管理员身份运行”就行了</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>win10</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>windows上好用的软件</title>
+    <url>/2020/08/10/Win10%E4%B8%8A%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/</url>
+    <content><![CDATA[<h2 id="免费视频剪辑">免费视频剪辑</h2>
+<p>Quickcut</p>
+<h2 id="应用卸载">应用卸载</h2>
+<p>GEEK UNINSTALLER</p>
+<h2 id="系统清理软件">系统清理软件</h2>
+<p>Glary Utilities 5</p>
+<h2 id="截图工具">截图工具</h2>
+<p>Snipaste</p>
+<h2 id="窗口置顶工具">窗口置顶工具</h2>
+<p>OneQuick</p>
+<h2 id="解压缩软件">解压缩软件</h2>
+<p>360zip国际版</p>
+<h2 id="油猴脚本">油猴脚本</h2>
+<p>Google Hit Hider</p>
+<p>searchEngineJump</p>
+<h2 id="网盘挂载工具">网盘挂载工具</h2>
+<p>RaiDrive</p>
+<p>rclone</p>
+<h2 id="百度云不限速工具">百度云不限速工具</h2>
+<p>雷鸟下载</p>
+<h2 id="全能终端工具">全能终端工具</h2>
+<p>MobaXterm</p>
+<h2 id="投屏神器">投屏神器</h2>
+<p>乐播投屏破解版</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>win10</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决win10字体发虚问题</title>
+    <url>/2020/08/07/%E8%A7%A3%E5%86%B3Win10%E5%AD%97%E4%BD%93%E5%8F%91%E8%99%9A%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>方法一：缩放设置为自定义124%，利用bug解决问题</p>
+<p>方法二：到wintools.info下载软件System Font Size changer，就可以更改各种框架下的字体大小</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>win10</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>玩耍JupyterNotebook</title>
+    <url>/2020/05/12/%E7%8E%A9%E8%80%8DJupyterNotebook/</url>
+    <content><![CDATA[<h2 id="在docker中安装">在docker中安装</h2>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 映射容器内jupyter的工作目录</span></span><br><span class="line">mkdir <span class="regexp">/home/</span>jupyter</span><br><span class="line"><span class="comment"># 给jupyter写入文件夹的权限</span></span><br><span class="line">chmod <span class="number">777</span> <span class="regexp">/home/</span>jupyter</span><br><span class="line"><span class="comment"># 映射端口和文件夹</span></span><br><span class="line">docker run -d -v <span class="regexp">/home/</span>jupyter:<span class="regexp">/home/</span>jovyan<span class="regexp">/work --name=jupyter -p 13579:8888 jupyter/</span>base-notebook</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>访问浏览器地址：127.0.0.1:13579，会进入jupyter页面，首次需要输入token。</p>
+<p>获取token的方法是 <code>docker logs jupyter</code> ,然后会看到token字样。</p>
+<p>从jupyter 5开始，可以通过命令设置密码，jupyter notebook password，输入两次密码后，今后就默认启用密码登录jupyter了，不然每次都要输入token</p>
+<h2 id="安装插件">安装插件</h2>
+<p>进入容器命令行 <figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">pip <span class="keyword">install </span><span class="keyword">jupyter_contrib_nbextensions</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword"># </span>配置</span><br><span class="line"><span class="keyword">jupyter </span>contrib nbextension <span class="keyword">install </span>--user --skip-running-check</span><br></pre></td></tr></table></figure> 然后可能要重新启动容器生效</p>
+<h2 id="安装主题及设置文字">安装主题及设置文字</h2>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="comment"># install jupyterthemes</span></span><br><span class="line">pip <span class="keyword">install </span><span class="keyword">jupyterthemes</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword"># </span>upgrade to latest version</span><br><span class="line">pip <span class="keyword">install </span>--upgrade <span class="keyword">jupyterthemes</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword"># </span>查看可用主题</span><br><span class="line"><span class="keyword">jt </span>-l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看jt帮助</span></span><br><span class="line"><span class="keyword">jt </span>--help</span><br><span class="line"></span><br><span class="line"><span class="comment"># 个性化设置示例</span></span><br><span class="line"><span class="keyword">jt </span>-t onedork -f roboto -fs <span class="number">14</span> -nfs <span class="number">14</span> -tfs <span class="number">14</span> -ofs <span class="number">11</span></span><br></pre></td></tr></table></figure>
+<h2 id="常用快捷键">常用快捷键</h2>
+<table>
+<thead>
+<tr class="header">
+<th>功能</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>删除cell</td>
+<td>dd</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="高大全的science版">高大全的science版</h2>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">docker</span> run --rm -p <span class="number">8888</span>:<span class="number">8888</span> -e JUPYTER_ENABLE_LAB=yes -v <span class="string">&quot;$PWD&quot;</span>:/home/jovyan/work jupyter/datascience-notebook:<span class="number">9</span>b<span class="number">06</span>df<span class="number">75</span>e<span class="number">445</span></span><br></pre></td></tr></table></figure>
+<p>镜像下载有6g的大小</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>jupyternotebook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>盒子上的博客建立及搬迁过程</title>
+    <url>/2020/03/20/%E7%9B%92%E5%AD%90%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E5%8F%8A%E4%B8%A4%E6%AC%A1%E6%90%AC%E8%BF%81/</url>
+    <content><![CDATA[<h1 id="首次建立">首次建立</h1>
+<p>直接在n1小钢炮系统里面建立了entware环境，利用onmp使得该博客正式建立</p>
+<h1 id="搬迁到docker-wordpress">搬迁到docker wordpress</h1>
+<h2 id="docker-wordpress建立过程">docker wordpress建立过程</h2>
+<p>1.利用docker建立mariadb数据库（选择mariadb的原因是小钢炮架构是arm64）</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> -itd --name some-mariadb -p 3308:3306 -e <span class="attribute">MYSQL_ROOT_PASSWORD</span>=123456 -d mariadb:tag</span><br></pre></td></tr></table></figure>
+<p>name参数指定要启动的实例名称，MYSQL_ROOT_PASSWORD指定ROOT密码。tag参数是mariadb的版本号，我使用的是latest;由于3306已经被onmp的mysql占用，所以改端口为3308</p>
+<p>然后通过portainer进入mariadb的主机：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">mysql</span> -u root -p <span class="comment">#连接数据库，输入密码</span></span><br><span class="line">creat database wordpress; </span><br></pre></td></tr></table></figure>
+<p>这样就为下一步安装wordpress做好了数据库准备</p>
+<p>2.docker建立wordpress</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">docker</span> run --name some-wordpress -p <span class="number">8080</span>:<span class="number">80</span> -d wordpress:tag</span><br></pre></td></tr></table></figure>
+<p>3.然后按正常的wordpress安装步骤进行，数据库地址那里填写192.168.50.218:3308</p>
+<h2 id="搬迁">搬迁</h2>
+<p>onmp里面建立的这个博客已经稳定服役了将近一年的时间，但是担心哪天小钢炮系统挂掉，另外也占用小钢炮系统空间 <code>du -sh /opt/onmp</code> 有500M，不便于小钢炮进一步的折腾，另外docker灵活的优势还是很明显，于是决定搬迁到docker里面来。</p>
+<p>1.利用All-in-One WP Migration插件很方便的整体打包原站成为一个文件，大小只有40多M</p>
+<p>2.在新站安装All-in-One WP Migration插件，安装的时候需要翻墙，不然总是失败，也有可能是wp-content文件夹没有写入权限，<code>chmod 777 wp-content</code></p>
+<p>3.修改新站附件上传大小2M的限制： 在网站根目录的 .htaccess 文件中添加如下代码：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">php_value</span> upload_max_filesize <span class="number">64</span>M</span><br><span class="line"><span class="attribute">php_value</span> post_max_size <span class="number">64</span>M</span><br><span class="line"><span class="attribute">php_value</span> max_execution_time <span class="number">300</span></span><br><span class="line"><span class="attribute">php_value</span> max_input_time <span class="number">300</span></span><br></pre></td></tr></table></figure>
+<p>蛋疼的是docker wordpress系统连个编辑器vi,vim都没有，要么用 <code>echo &quot;追加内容&quot; &gt;&gt; .htaccess</code> ，要么暴力 <code>apt update&amp;apt install vim</code> ，还是要翻墙安装，不然debian源连接不上</p>
+<p>4.在新站中利用All-in-One WP Migration插件导入备份的文件即可（第3步不做的话上传不成功的），由于搬迁一般都会修改了ip地址或域名，所以导入成功后仔细看有一步是需要修改数据库的站点域名连接的（或叫做升级数据库）</p>
+<p>至此折腾了一晚上，大功告成！</p>
+<h2 id="清理释放entware占用的空间">清理释放entware占用的空间</h2>
+<p>使用一段新博客后，考虑删除entware环境，删除前注意留意对原小钢炮系统做了哪些修改，首先还原回去。</p>
+<p>10月5日删除了整个/opt文件夹</p>
+<p>现在System空间就占用不到50%了</p>
+<h2 id="再次搬迁">再次搬迁</h2>
+<p>由于平时写作基本都是在typora中，利用markdown进行的，输入数学公式比较方便，机缘巧合看到了hexo可以将md文件直接渲染成静态网站，方便展示，于是萌生了将数学文章和平时折腾记录的文章搬迁到hexo的想法，顺便也在廖雪峰老师的网站学习了git的基本操作，于是就有了该github page的诞生。</p>
+<p>每次折腾，收获满满。</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>小钢炮</tag>
+        <tag>n1</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在n1上安装docker及有用的镜像</title>
+    <url>/2020/03/19/n1%E5%AE%89%E8%A3%85docker%E5%8F%8A%E6%9C%89%E7%94%A8%E7%9A%84%E9%95%9C%E5%83%8F/</url>
+    <content><![CDATA[<h2 id="本地n1建立openwrt系统">本地n1建立openwrt系统</h2>
+<p>n1架构为aarch64，可以用docker里面的arm64版本的openwrt，比如有 <a href="https://hub.docker.com/r/buddyfly/openwrt-aarch64" class="uri">https://hub.docker.com/r/buddyfly/openwrt-aarch64</a></p>
+<p><a href="https://hub.docker.com/r/unifreq/openwrt-aarch64" class="uri">https://hub.docker.com/r/unifreq/openwrt-aarch64</a></p>
+<p>安装命令： <code>docker run --name op2 --restart always -d --network macvlan0 --mac-address 42:23:3C:4D:DB:EF --privileged buddyfly/openwrt-aarch64:latest /sbin/init</code></p>
+<p>安装完毕后通过portainer进入主机，修改ip地址：<code>vi /etc/config/network</code>，然后就可以在浏览器中进入后台管理了，设置网络的时候主要添加网关地址比如192.168.50.1，广播地址192.168.50.255</p>
+<h2 id="其它有用的docker项目">其它有用的docker项目</h2>
+<p><a href="https://hub.docker.com/u/teddysun/" class="uri">https://hub.docker.com/u/teddysun/</a></p>
+<p><a href="https://hub.docker.com/u/oldiy" class="uri">https://hub.docker.com/u/oldiy</a></p>
+<p><a href="https://hub.docker.com/r/mritd/shadowsocks" class="uri">https://hub.docker.com/r/mritd/shadowsocks</a></p>
+<p><a href="https://hub.docker.com/r/trojangfw/trojan" class="uri">https://hub.docker.com/r/trojangfw/trojan</a></p>
+<p><a href="https://hub.docker.com/r/teddysun/trojan" class="uri">https://hub.docker.com/r/teddysun/trojan</a></p>
+<p>一个远程服务器带浏览器和桌面系统</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">docker</span> run -it -p <span class="number">5901</span>:<span class="number">5901</span> -p <span class="number">6901</span>:<span class="number">6901</span> -e <span class="string">&quot;VNC_PW=my-new-password&quot;</span> -e VNC_RESOLUTION=<span class="number">800</span>x<span class="number">600</span> consol/centos-xfce-vnc</span><br></pre></td></tr></table></figure>
+<p>可道云</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line">docker run -d -p <span class="number">88</span><span class="symbol">:</span><span class="number">80</span> --name kodexplorer -v <span class="string">&quot;$PWD&quot;</span><span class="symbol">:/var/www/html/data/User/admin/home</span> baiyuetribe/kodexplorer</span><br></pre></td></tr></table></figure>
+<p>其中$PWD是文档存放的目录</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>n1</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>N1电视盒子从Wepad固件刷入Rush固件</title>
+    <url>/2019/10/22/N1%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90%E4%BB%8EWepad%E5%9B%BA%E4%BB%B6%E5%88%B7%E5%85%A5Rush%E5%9B%BA%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="前言">前言</h1>
+<p>使用了半年的wepad固件，感觉越来越臃肿，加上没有完全的root权限，于是想到更换为rush固件</p>
+<h1 id="准备工作">准备工作</h1>
+<p>到网盘下载刷机工具和rush固件（我的百度网盘有个文件夹“斐讯n1”），目前下载到了自己的nas里面</p>
+<h1 id="刷机流程">刷机流程</h1>
+<p>1.先将wepad固件恢复出厂设置，等待第二次重启以后马上断电！</p>
+<p>2.打开usb burning tool，载入固件</p>
+<p>3.通过usb双头线连接盒子和电脑，听到叮咚声表示盒子连接电脑正常（也可以通过设备管理器查看）</p>
+<p>4.usb burning tool 显示连接正常，<strong>注意去掉勾选</strong> 擦除flash和bootloader，然后点击开始</p>
+<p>5.实际刷入的过程中，到1%就失败了，并且盒子和电脑的连接断开，这时直接拔掉盒子电源，然后重新插上电源，刷机工具又继续工作了，等待烧录成功即可！</p>
+<p>注意：擦除flash和bootloader是变砖的时候勾选的！本次操作是在win10下进行的</p>
+<h1 id="ssh连接">ssh连接</h1>
+<figure class="highlight accesslog"><table><tr><td class="code"><pre><span class="line"><span class="number">192.168.50.162:2223</span></span><br><span class="line">root rush</span><br></pre></td></tr></table></figure>
+<h1 id="使用体验后记">使用体验(后记)</h1>
+<p>今天是2020年10月12日，用了一年时间，内部存储空间5g全部占满，无法再安装任何软件，于是乎恢复出厂设置，重新安装各种软件。</p>
+<h2 id="启动器">启动器</h2>
+<p>atv launcher 天气插件:pure weather</p>
+<h2 id="应用市场">应用市场</h2>
+<p>当贝市场</p>
+<h2 id="youtube">YouTube</h2>
+<p>smart youtube</p>
+<h2 id="直播软件">直播软件</h2>
+<p>电视家无广告破解版</p>
+<h2 id="点播软件">点播软件</h2>
+<p>tv影院 下载地址https://wxf2088.xyz/839.html 银河奇异果无广告破解 https://www.lanzoux.com/iZmbUfy0nzc</p>
+<h2 id="投屏软件">投屏软件</h2>
+<p>乐播投屏</p>
+<h2 id="空间占用">空间占用</h2>
+<p>以上软件装完以后，大概占用1.2g左右，可用空间3.8g</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>n1</tag>
+        <tag>wepad</tag>
+        <tag>rush</tag>
+        <tag>电视盒子</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ddwrt路由器作无线桥接</title>
+    <url>/2019/07/14/Ddwrt%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BD%9C%E6%97%A0%E7%BA%BF%E6%A1%A5%E6%8E%A5/</url>
+    <content><![CDATA[<h2 id="重要的事情说在前">重要的事情说在前：</h2>
+<p>1.目前设置成功，但是总掉线，不稳定</p>
+<p>2.用网线将一台电脑和副路由的一个lan口连接起来，只需设置副路由</p>
+<h2 id="设置步骤">设置步骤</h2>
+<p>连接好以后，进入副路由的管理界面</p>
+<p>1.进入<strong>状态——无线</strong>：点击下面的“<strong>基站勘察</strong>”：找到主路由的wifi信号，加入进去，点继续</p>
+<p>2.进入<strong>无线模式选择</strong>： <strong>clienet bridge（客户端桥接）</strong>，下面的<strong>无线网络模式</strong>、<strong>频道宽度</strong>、<strong>无线频道</strong>、<strong>无线网络名</strong>，都设置好和主路由一致，设置好后点击<strong>保存设置</strong>。</p>
+<p>3.进入<strong>无线——无线安全</strong>：设置<strong>加密方式</strong>和<strong>密码</strong>同主路由，设置好后点击<strong>保存设置</strong>。</p>
+<p>4.进入<strong>设置——基本设置</strong>：修改<strong>本地IP</strong>地址为同主路由同一网段但不同地址，例如主路由是192.168.50.1，那么副路由就可以设置为192.168.50.2，修改好后点击<strong>保存设置</strong>，再点击<strong>应用</strong>。路由器将重启。 到这一步时，无线中继已经成功，<strong>但现在只能通过有线连接副路由</strong>（你会发现此时这台电脑已经可以上网了），为了实现无线连接副路由，继续如下操作。</p>
+<p>5.通过<strong>新IP</strong>进入副路由设置界面，转到<strong>无线——基本设置</strong>，点击<strong>虚拟接口</strong>这里的<strong>添加</strong></p>
+<p>6.点击后出现一个虚拟接口： <strong>无线模式</strong>：选访问点AP <strong>无线网络名（SSID）</strong>：如果要实现无线漫游，ssid名设置和主路由相同；也可以设置不同ssid，需要手动切换连接，设置好后点击<strong>保存设置</strong></p>
+<p>7.进入<strong>无线安全</strong>：设置虚拟接口auth0.1的无线加密，如果要实现无线漫游，加密方式和密码需要同主路由一致，设置好后，点击<strong>保存设置</strong>，再点击<strong>应用</strong>。 大功告成！</p>
+<p>经过测试发现：自动漫游是成功了，但是连接副路由的手机或电脑上网非常不稳定，总是掉线。</p>
+<p>原文地址：<a href="https://www.chiphell.com/thread-1018824-1-1.html" class="uri">https://www.chiphell.com/thread-1018824-1-1.html</a></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>ddwrt</tag>
+        <tag>路由器</tag>
+        <tag>无线桥接</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>梅林路由器升级过程记录</title>
+    <url>/2019/07/06/%E6%A2%85%E6%9E%97%E8%B7%AF%E7%94%B1%E5%99%A8%E5%8D%87%E7%BA%A7%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>今日把梅林固件从7.5升级到了7.9，简单记录一下过程：</p>
+<h2 id="准备工作">准备工作</h2>
+<p>1.到https://firmware.koolshare.cn/ 下载固件，找到自己路由器对应的版本</p>
+<p>2.备份jffs的脚本</p>
+<h2 id="开始升级">开始升级</h2>
+<p>1.找到系统管理——固件升级——上传升级，等待3分钟左右，完成升级</p>
+<p>2.（可选动作）为了稳定可以重置一下路由器，避免新旧版本冲突造成的一些莫名问题，如果重置，需要重新配置路由各项数据</p>
+<h2 id="重置后需要配置的数据">重置后需要配置的数据</h2>
+<p>1.上网账号，密码</p>
+<p>2.wifi的设置：5g信道选择161，5g频率带宽选择为80Mhz（频率越大速率越快，但穿墙能力越弱）；专业设置中：信号间隔默认100改为50或80（可以解决wifi莫名总是断网问题），地区选择Australia（穿墙能力瞬间变强），设置完毕保存的时候会重启路由器</p>
+<p>3.系统管理——系统设置中，开启ssh连接，开启jffs的两个选项，然后重启路由器生效</p>
+<p>4.在软件中心中安装需要的各种东西，其中xx上网插件arm系列路由的下载地址为 <a href="https://github.com/hq450/fancyss_history_package/tree/master/fancyss_arm" class="uri">https://github.com/hq450/fancyss_history_package/tree/master/fancyss_arm</a> 最新4.1.9</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>路由器</tag>
+        <tag>merlin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>梅林安装entware和开启虚拟内存的正确姿势</title>
+    <url>/2019/07/01/%E6%A2%85%E6%9E%97%E5%AE%89%E8%A3%85entware%E5%92%8C%E5%BC%80%E5%90%AF%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</url>
+    <content><![CDATA[<h2 id="准备u盘">准备U盘</h2>
+<ul>
+<li><p>查找U盘，找到对应的设备名，例如/dev/sda1</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">df -h</span></span><br></pre></td></tr></table></figure></li>
+<li><p>卸载</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">umount <span class="regexp">/dev/</span>sda1</span><br></pre></td></tr></table></figure></li>
+<li><p>格式化</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">mkfs</span>.ext<span class="number">4</span> /dev/sda<span class="number">1</span></span><br></pre></td></tr></table></figure></li>
+<li><p>重新挂载</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">mount <span class="regexp">/dev/</span>sda1<span class="regexp">/ /</span>tmp<span class="regexp">/mnt/</span>sda1</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="安装entware">安装entware</h2>
+<p>一个命令搞定</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">entware-setup.sh</span><br></pre></td></tr></table></figure>
+<p>注意的问题:</p>
+<p>1.这个命令是梅林系统自带的，位于/usr/sbin下面</p>
+<p>2.这个命令用cat eof在梅林系统的/jffs/scripts/services-start中加入了开机启动项，如果是先安装虚拟内存的话，cat eof命令会<strong>覆盖</strong>掉该文件的内容，导致事先设置好的虚拟内存开机启动没有了，如果想省事些，<strong>建议先安装entware，再安装虚拟内存</strong></p>
+<h2 id="安装虚拟内存">安装虚拟内存</h2>
+<p>教程见<a href="https://koolshare.cn/thread-42723-1-1.html" title="这里">这里</a></p>
+<p>注意问题:</p>
+<p>1.sdaswap脚本在/jffs/scripts/services-start中添加了2行代码：sleep 30 &amp;&amp; swapon /tmp/mnt/sda1/swap/.swap，如果发现重启不能开机启动的话，检查这里是否缺失；如果没有缺失，那检查services-start是否开机自行启动，如果没有启动，在路由器后台界面的tools——script中添加natstart,/jffs/scripts/services-start</p>
+<p>2.命令参数： 创建虚拟内存：/jffs/scripts/sdaswap start ，虚拟内存大小的单位是kb 停用虚拟内存：/jffs/scripts/sdaswap stop 虚拟内存用量：/jffs/scripts/sdaswap info 注意“start，stop，info”的参数不可少.</p>
+<h2 id="一些有用的知识">一些有用的知识</h2>
+<p>1.扩展opt说明(工具箱操作) 内置存储分区 mtd8 挂载目录 /root ， /opt目录实际也在/root目录下(/root/opt) ，总可用空间80M 原理是在U盘建立一个ext4格式文件，覆盖挂载到/opt目录，这样/root目录下(除了opt)原来的文件不变，/root/opt目录读写变成了读写U盘ext4文件，总可用空间变成了80+扩展文件大小 可以实现安装一些大型的软件，可以理解为两个/opt目录，一个内置一个外置二选一切换，软件是独立的，共用etc配置&amp;启动目录 可以把常用的装到内置存储的opt下，大型的软件装到扩展文件里，用的时候再进行切换，启用后开机自动挂载。</p>
+<p>2.有些文件名以@结尾，表示这个文件夹带有链接属性，可以用命令<code>`ls -li`</code>查看</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>entware</tag>
+        <tag>虚拟内存</tag>
+        <tag>merlin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>梅林路由器安装entware踩过的坑</title>
+    <url>/2019/06/30/%E6%A2%85%E6%9E%97%E8%B7%AF%E7%94%B1%E5%99%A8%E5%AE%89%E8%A3%85entware%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/</url>
+    <content><![CDATA[<h2 id="解决-wget-无法建立ssl问题">解决 wget 无法建立SSL问题</h2>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">curl -O -L <span class="regexp">/opt/</span>onmp.zip https:<span class="regexp">//gi</span>thub.com<span class="regexp">/xzhih/</span>ONMP<span class="regexp">/archive/m</span>aster.zip</span><br></pre></td></tr></table></figure>
+<h2 id="创建2gb虚拟内存">创建2gb虚拟内存</h2>
+<p>[梅林虚拟内存](<a href="https://koolshare.cn/forum.php?mod=viewthread&amp;tid=42723&amp;extra=page%3D1%26filter%3Dtypeid%26typeid%3D97">https://koolshare.cn/forum.php?mod=viewthread&amp;tid=42723&amp;extra=page%3D1%26filter%3Dtypeid%26typeid%3D97</a> 2gb=2097152kb &quot;梅林虚拟内存&quot;) 多么痛的领悟！！！mysqld无法启动就是因为虚拟内存设置不够，想增加内存可能会用到下面的东东</p>
+<h2 id="相关知识">相关知识</h2>
+<p>简单来讲就是swapoff和swapon命令，但是如果内存不足，比如出现</p>
+<figure class="highlight fortran"><table><tr><td class="code"><pre><span class="line">swapoff failed: Cannot <span class="built_in">allocate</span> memory</span><br></pre></td></tr></table></figure>
+<p>提示，那么需要更进一步的操作去解决。</p>
+<p>1，增加一个新的swap分区</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"> dd <span class="attribute">if</span>=/dev/zero  <span class="attribute">of</span>=/opt/swaptmp <span class="attribute">bs</span>=1M  <span class="attribute">count</span>=2097152 </span><br><span class="line"></span><br><span class="line">mkswap swaptmp </span><br><span class="line"></span><br><span class="line">swapon swaptmp </span><br></pre></td></tr></table></figure>
+<p>2，查看swap，然后去掉原来的swap分区</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">cat <span class="regexp">/proc/</span>swaps</span><br></pre></td></tr></table></figure>
+<p>得到结果 /dev/sda3</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">swapoff <span class="regexp">/dev/</span>sda3</span><br></pre></td></tr></table></figure>
+<p>原文：<a href="https://blog.csdn.net/zhsh87/article/details/8954493" class="uri">https://blog.csdn.net/zhsh87/article/details/8954493</a></p>
+<h2 id="修改onmp.sh文件">修改onmp.sh文件</h2>
+<p>由于脚本只建了512M的虚拟内存，启动mysql时可能会报错不够</p>
+<p>将第1217行修改为 dd if=/dev/zero  of=/opt/swaptmp bs=1M  count=2097152 原来是512m的虚拟内存，修改为2097152kb=2gb</p>
+<h2 id="注意">注意：</h2>
+<p>安装entware会更改覆盖梅林的services-start文件内容</p>
+<p>造成的后果就是重启路由器后，虚拟内存不会自动加载</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>路由器</tag>
+        <tag>entware</tag>
+        <tag>虚拟内存</tag>
+        <tag>merlin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小钢炮安装entware环境及部署博客</title>
+    <url>/2019/06/27/%E5%B0%8F%E9%92%A2%E7%82%AE%E5%AE%89%E8%A3%85entware%E7%8E%AF%E5%A2%83%E5%8F%8A%E9%83%A8%E7%BD%B2Wordpress%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="什么是entware">什么是entware</h2>
+<p>Entware是一个适用于嵌入式系统的软件包库，使用opkg包管理系统进行管理，现在在官方的源上已经有超过2000个软件包了，可以说是非常的丰富 官方地址：<a href="https://entware.net/" title="Entware">Entware</a></p>
+<h3 id="安装entware">安装entware</h3>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">rm -rf /<span class="keyword">opt</span></span><br><span class="line"><span class="built_in">mkdir</span> /<span class="keyword">opt</span></span><br><span class="line"><span class="keyword">cd</span> /<span class="keyword">opt</span></span><br><span class="line">wget -O - http://bin.entware.net/aarch64-k3.<span class="number">10</span>/installer/alternative.<span class="keyword">sh</span>  <span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<p>将自带opkg改名为opkg_bak暂时停用 灯大固件更新可以改回来免重装系统更新软件</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">mv <span class="regexp">/usr/</span>bin<span class="regexp">/opkg /u</span>sr<span class="regexp">/bin/</span>opkg_bak</span><br></pre></td></tr></table></figure>
+<h3 id="配置entware环境变量">配置entware环境变量</h3>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>profile</span><br></pre></td></tr></table></figure>
+<p>直接在前面/usr/sbin:\这行下直接添加下面两行并保存退出（ESC+:wq+Enter）</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/opt/</span>bin:\</span><br><span class="line"><span class="regexp">/opt/</span>sbin:\</span><br></pre></td></tr></table></figure>
+<p>使配置生效</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">source</span> <span class="regexp">/etc/</span>profile</span><br></pre></td></tr></table></figure>
+<h3 id="检查entware环境安装情况看是否报错">检查entware环境安装情况看是否报错</h3>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">opkg update</span></span><br><span class="line"><span class="attribute">opkg list</span></span><br></pre></td></tr></table></figure>
+<p>opkg isntall 软件名</p>
+<h2 id="什么是onmp">什么是onmp</h2>
+<p>ONMP: Opkg + Nginx + MySQL + PHP</p>
+<p>这是一个用Linux Shell编写的脚本，可以为使用opkg包管理的路由器快速搭建Nginx/MySQL/PHP环境，并且内置了一些好用的网站程序一键免配置快速安装</p>
+<p>ONMP内置了以下程序的一键安装：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line">(<span class="number">1</span>) phpMyAdmin（数据库管理工具）</span><br><span class="line">(<span class="number">2</span>) WordPress（使用最广泛的CMS）</span><br><span class="line">(<span class="number">3</span>) Owncloud（经典的私有云）</span><br><span class="line">(<span class="number">4</span>) Nextcloud（Owncloud团队的新作，美观强大的个人云盘）</span><br><span class="line">(<span class="number">5</span>) h5ai（优秀的文件目录）</span><br><span class="line">(<span class="number">6</span>) Lychee（一个很好看，易于使用的Web相册）</span><br><span class="line">(<span class="number">7</span>) Kodexplorer（可道云aka芒果云在线文档管理器）</span><br><span class="line">(<span class="number">8</span>) Typecho (流畅的轻量级开源博客程序)</span><br><span class="line">(<span class="number">9</span>) Z-Blog (体积小，速度快的PHP博客程序)</span><br><span class="line">(<span class="number">10</span>) DzzOffice (开源办公平台)</span><br></pre></td></tr></table></figure>
+<p>所有的软件包均通过 opkg 安装，一切配置均在脚本中可见，请放心使用 官方地址：<a href="https://github.com/xzhih/ONMP" class="uri">https://github.com/xzhih/ONMP</a></p>
+<h3 id="安装教程">安装教程</h3>
+<ol type="1">
+<li><p>安装 Entware Entware-ng 是一个适用于嵌入式系统的软件包库，使用 opkg 包管理系统进行管理，现在在官方的源上已经有超过 2000 个软件包了，可以说是非常的丰富</p></li>
+<li><p>安装onmp 一键命令，复制-&gt;粘贴-&gt;回车</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$</span> sh <span class="literal">-c</span> <span class="string">&quot;<span class="variable">$</span>(curl -kfsSl https://raw.githubusercontent.com/xzhih/ONMP/master/oneclick.sh)&quot;</span></span><br></pre></td></tr></table></figure>
+<p>一长串的复制如果出错，可以按照以下给出的命令，一步步进行安装</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进入 entware 挂载目录</span></span><br><span class="line">cd /opt &amp;&amp; opkg install wget unzip </span><br><span class="line"><span class="comment"># 下载软件包</span></span><br><span class="line">wget --no-check-certificate -O <span class="regexp">/opt/</span>onmp.zip https:<span class="regexp">//gi</span>thub.com<span class="regexp">/xzhih/</span>ONMP<span class="regexp">/archive/m</span>aster.zip </span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">unzip <span class="regexp">/opt/</span>onmp.zip </span><br><span class="line">cd <span class="regexp">/opt/</span>ONMP-master </span><br><span class="line"><span class="comment"># 设置权限</span></span><br><span class="line">chmod +x ./onmp.sh </span><br><span class="line"><span class="comment"># 运行</span></span><br><span class="line">./onmp.sh </span><br></pre></td></tr></table></figure>
+<p>接下来选择1即可安装</p></li>
+</ol>
+<h3 id="使用教程">使用教程</h3>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">管理：onmp open</span><br><span class="line">启动、停止、重启：onmp startstoprestart</span><br><span class="line">查看网站列表：onmp list </span><br></pre></td></tr></table></figure>
+<p>主要软件包的管理命令：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Nginx</span> 管理命令</span><br><span class="line">onmp nginx startrestartstop</span><br><span class="line"></span><br><span class="line">MySQL 管理命令</span><br><span class="line">onmp mysql startrestartstop</span><br><span class="line"></span><br><span class="line">PHP 管理命令</span><br><span class="line">onmp php startrestartstop</span><br><span class="line"></span><br><span class="line">Redis 管理命令</span><br><span class="line">onmp redis startrestartstop</span><br></pre></td></tr></table></figure>
+<h3 id="探针安装">探针安装</h3>
+<p>正常情况下如果以上步骤都没有出错的话，会自动安装了探针，但是我的没有 手动下载：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">cd <span class="regexp">/opt/</span>wwwroot/default</span><br><span class="line">wget https:<span class="regexp">//</span>raw.githubusercontent.com<span class="regexp">/WuSiYu/</span>PHP-Probe<span class="regexp">/master/</span>tz.php</span><br></pre></td></tr></table></figure>
+<p>进入http://localhost:81 即可查看</p>
+<p>参考原文：<a href="https://www.right.com.cn/forum/thread-343953-1-1.html" class="uri">https://www.right.com.cn/forum/thread-343953-1-1.html</a> <a href="http://nanodm.net/post/nanodm-n1-20190411-changelog/" class="uri">http://nanodm.net/post/nanodm-n1-20190411-changelog/</a> <a href="https://gitee.com/8ox86/phicomm-n1-issue/wikis/entware%20guide?sort_id=1368793">https://gitee.com/8ox86/phicomm-n1-issue/wikis/entware%20guide?sort_id=1368793</a></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>小钢炮</tag>
+        <tag>entware</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>N1刷小钢炮教程汇总</title>
+    <url>/2019/06/24/N1%E5%88%B7%E5%B0%8F%E9%92%A2%E7%82%AE%E6%95%99%E7%A8%8B%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<p>下载地址：</p>
+<p><a href="http://files.80x86.io/router/rom/PHICOMM-N1/" class="uri">http://files.80x86.io/router/rom/PHICOMM-N1/</a></p>
+<p>最新的刷机文档：</p>
+<p><a href="http://files.80x86.io/router/rom/PHICOMM-N1/n1-fw-install-guide.txt" class="uri">http://files.80x86.io/router/rom/PHICOMM-N1/n1-fw-install-guide.txt</a></p>
+<p>新手和老手都要看，有更新。 降级教程：</p>
+<p><a href="https://gitee.com/8ox86/phicomm-n1-issue/blob/master/downgrade-n1.md" class="uri">https://gitee.com/8ox86/phicomm-n1-issue/blob/master/downgrade-n1.md</a></p>
+<p>论坛主贴： <a href="https://www.right.com.cn/forum/thread-324404-1-1.html" class="uri">https://www.right.com.cn/forum/thread-324404-1-1.html</a></p>
+<p>【5月16日新增降级助手】N1刷电视盒子&amp;主旁路由&amp;小钢炮教程 <a href="https://www.right.com.cn/forum/thread-539320-1-2.html" class="uri">https://www.right.com.cn/forum/thread-539320-1-2.html</a></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>小钢炮</tag>
+        <tag>n1</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>给transmission,aria2添加tracker服务器</title>
+    <url>/2019/06/24/%E7%BB%99transmission%E5%92%8Caria2%E6%B7%BB%E5%8A%A0tracker%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    <content><![CDATA[<h3 id="给transmission添加tracker适用public-bittorrent">给Transmission添加tracker（适用public BitTorrent）：</h3>
+<p>1、电脑上安装Transmission Remote GUI，下载地址：<a href="https://github.com/transmission-remote-gui/transgui/releases" class="uri">https://github.com/transmission-remote-gui/transgui/releases</a></p>
+<p>2、运行transgui，设置一下，填上盒子的IP、端口之类的，然后transgui就连上盒子上的Transmission了</p>
+<p>3、选中你的任何一个种子，属性， 可以找到添加tracker的选项</p>
+<p>4、哪里找tracker呢？网友维护的trackerslist: An updated list of public BitTorrent trackers，地址：<a href="https://github.com/ngosang/trackerslist" class="uri">https://github.com/ngosang/trackerslist</a></p>
+<p>我还没有找到全局tracker的设置在哪里：tracker维护好之后，以后加入的每个种子自动添加这些tracker</p>
+<h3 id="给aria2添加">给Aria2添加</h3>
+<p>一般在Aria2设置里面的Bittorrent设置</p>
+<h3 id="注意事项">注意事项：</h3>
+<p>多个地址之间用逗号隔开</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">udp:<span class="regexp">//</span>tracker.coppersurfer.tk:<span class="number">6969</span><span class="regexp">/announce, udp:/</span><span class="regexp">/tracker.open-internet.nl:6969/</span>announce, udp:<span class="regexp">//</span>tracker.leechers-paradise.org:<span class="number">6969</span><span class="regexp">/announce, udp:/</span><span class="regexp">/tracker.openbittorrent.com:80/</span>announce, udp:<span class="regexp">//</span>exodus.desync.com:<span class="number">6969</span><span class="regexp">/announce, udp:/</span><span class="regexp">/9.rarbg.to:2710/</span>announce, udp:<span class="regexp">//</span><span class="number">9</span>.rarbg.me:<span class="number">2710</span><span class="regexp">/announce, udp:/</span><span class="regexp">/tracker.internetwarriors.net:1337/</span>announce, [http:<span class="regexp">//</span>tracker.internetwarriors.net:<span class="number">1337</span><span class="regexp">/announce](http:/</span><span class="regexp">/tracker.internetwarriors.net:1337/</span>announce), udp:<span class="regexp">//</span>tracker.opentrackr.org:<span class="number">1337</span><span class="regexp">/announce, [http://tracker.opentrackr.org:1337/announce](http:/</span><span class="regexp">/tracker.opentrackr.org:1337/</span>announce), udp:<span class="regexp">//</span>tracker.torrent.eu.org:<span class="number">451</span><span class="regexp">/announce, udp:/</span><span class="regexp">/thetracker.org:80/</span>announce, udp:<span class="regexp">//</span>bt.xxx-tracker.com:<span class="number">2710</span><span class="regexp">/announce, udp:/</span><span class="regexp">/tracker.tiny-vps.com:6969/</span>announce, udp:<span class="regexp">//</span>tracker.cyberia.is:<span class="number">6969</span><span class="regexp">/announce, udp:/</span><span class="regexp">/open.demonii.si:1337/</span>announce, [http:<span class="regexp">//</span>open.acgnxtracker.com:<span class="number">80</span><span class="regexp">/announce](http:/</span><span class="regexp">/open.acgnxtracker.com:80/</span>announce), udp:<span class="regexp">//i</span>pv4.tracker.harry.lu:<span class="number">80</span><span class="regexp">/announce, udp:/</span><span class="regexp">/explodie.org:6969/</span>announce, [http:<span class="regexp">//</span>explodie.org:<span class="number">6969</span><span class="regexp">/announce](http:/</span><span class="regexp">/explodie.org:6969/</span>announce), udp:<span class="regexp">//</span>retracker.netbynet.ru:<span class="number">2710</span><span class="regexp">/announce, udp:/</span><span class="regexp">/tracker.trackton.ga:7070/</span>announce, udp:<span class="regexp">//</span>tracker.supertracker.net:<span class="number">1337</span><span class="regexp">/announce, udp:/</span><span class="regexp">/tracker.iamhansen.xyz:2000/</span>announce, udp:<span class="regexp">//</span>tracker.filepit.to:<span class="number">6969</span><span class="regexp">/announce, udp:/</span><span class="regexp">/tracker.filemail.com:6969/</span>announce, udp:<span class="regexp">//</span>torrentclub.tech:<span class="number">6969</span><span class="regexp">/announce, udp:/</span><span class="regexp">/retracker.lanta-net.ru:2710/</span>announce, udp:<span class="regexp">//</span>retracker.baikal-telecom.net:<span class="number">2710</span><span class="regexp">/announce, [http://torrentclub.tech:6969/announce](http:/</span><span class="regexp">/torrentclub.tech:6969/</span>announce), udp:<span class="regexp">//</span>tracker.novg.net:<span class="number">6969</span><span class="regexp">/announce, [http://tracker.novg.net:6969/announce](http:/</span><span class="regexp">/tracker.novg.net:6969/</span>announce), [http:<span class="regexp">//</span>opentracker.h4ck.me:<span class="number">6969</span><span class="regexp">/announce](http:/</span><span class="regexp">/opentracker.h4ck.me:6969/</span>announce), udp:<span class="regexp">//</span>tracker.uw0.xyz:<span class="number">6969</span><span class="regexp">/announce, udp:/</span><span class="regexp">/tracker.tvunderground.org.ru:3218/</span>announce, [https:<span class="regexp">//</span>tracker.fastdownload.xyz:<span class="number">443</span><span class="regexp">/announce](https:/</span><span class="regexp">/tracker.fastdownload.xyz:443/</span>announce), [https:<span class="regexp">//</span>t.quic.ws:<span class="number">443</span><span class="regexp">/announce](https:/</span><span class="regexp">/t.quic.ws:443/</span>announce), [http:<span class="regexp">//</span>tracker.tvunderground.org.ru:<span class="number">3218</span><span class="regexp">/announce](http:/</span><span class="regexp">/tracker.tvunderground.org.ru:3218/</span>announce), [http:<span class="regexp">//</span>open.trackerlist.xyz:<span class="number">80</span><span class="regexp">/announce](http:/</span><span class="regexp">/open.trackerlist.xyz:80/</span>announce), [http:<span class="regexp">//</span>open.acgtracker.com:<span class="number">1096</span><span class="regexp">/announce](http:/</span><span class="regexp">/open.acgtracker.com:1096/</span>announce), [http:<span class="regexp">//g</span>wp2-v19.rinet.ru:<span class="number">80</span><span class="regexp">/announce](http:/</span><span class="regexp">/gwp2-v19.rinet.ru:80/</span>announce), udp:<span class="regexp">//</span>zephir.monocul.us:<span class="number">6969</span><span class="regexp">/announce, udp:/</span><span class="regexp">/tracker.kamigami.org:2710/</span>announce, udp:<span class="regexp">//</span>tracker.gbitt.info:<span class="number">80</span><span class="regexp">/announce, udp:/</span><span class="regexp">/retracker.maxnet.ua:80/</span>announce, udp:<span class="regexp">//</span>retracker.akado-ural.ru:<span class="number">80</span><span class="regexp">/announce, udp:/</span><span class="regexp">/carapax.net:6969/</span>announce, [https:<span class="regexp">//</span>tracker.gbitt.info:<span class="number">443</span><span class="regexp">/announce](https:/</span><span class="regexp">/tracker.gbitt.info:443/</span>announce), [http:<span class="regexp">//</span>vps02.net.orel.ru:<span class="number">80</span><span class="regexp">/announce](http:/</span><span class="regexp">/vps02.net.orel.ru:80/</span>announce), [http:<span class="regexp">//</span>tracker.gbitt.info:<span class="number">80</span><span class="regexp">/announce](http:/</span><span class="regexp">/tracker.gbitt.info:80/</span>announce), [http:<span class="regexp">//m</span>ail2.zelenaya.net:<span class="number">80</span><span class="regexp">/announce](http:/</span><span class="regexp">/mail2.zelenaya.net:80/</span>announce), [http:<span class="regexp">//</span>carapax.net:<span class="number">6969</span><span class="regexp">/announce](http:/</span><span class="regexp">/carapax.net:6969/</span>announce), udp:<span class="regexp">//</span>tracker.nyaa.uk:<span class="number">6969</span><span class="regexp">/announce, [http://tracker.moxing.party:6969/announce](http:/</span><span class="regexp">/tracker.moxing.party:6969/</span>announce), udp:<span class="regexp">//</span>tracker.moeking.me:<span class="number">6969</span><span class="regexp">/announce, udp:/</span><span class="regexp">/retracker.sevstar.net:2710/</span>announce, udp:<span class="regexp">//</span>pubt.<span class="keyword">in</span>:<span class="number">2710</span><span class="regexp">/announce, udp:/</span><span class="regexp">/home.penza.com.ru:6969/</span>announce, udp:<span class="regexp">//</span>bt.dy20188.com:<span class="number">80</span><span class="regexp">/announce, [https://tracker.vectahosting.eu:2053/announce](https:/</span><span class="regexp">/tracker.vectahosting.eu:2053/</span>announce), [https:<span class="regexp">//</span>tracker.parrotsec.org:<span class="number">443</span><span class="regexp">/announce](https:/</span><span class="regexp">/tracker.parrotsec.org:443/</span>announce), [http:<span class="regexp">//</span>tracker.torrentyorg.pl:<span class="number">80</span><span class="regexp">/announce](http:/</span><span class="regexp">/tracker.torrentyorg.pl:80/</span>announce), [http:<span class="regexp">//</span>tracker.bz:<span class="number">80</span><span class="regexp">/announce](http:/</span><span class="regexp">/tracker.bz:80/</span>announce), [http:<span class="regexp">//</span>tracker.bt4g.com:<span class="number">2095</span><span class="regexp">/announce](http:/</span><span class="regexp">/tracker.bt4g.com:2095/</span>announce), [http:<span class="regexp">//</span>torrent.nwps.ws:<span class="number">80</span><span class="regexp">/announce](http:/</span><span class="regexp">/torrent.nwps.ws:80/</span>announce), [http:<span class="regexp">//</span>t.nyaatracker.com:<span class="number">80</span><span class="regexp">/announce](http:/</span><span class="regexp">/t.nyaatracker.com:80/</span>announce), [http:<span class="regexp">//</span>retracker.sevstar.net:<span class="number">2710</span><span class="regexp">/announce](http:/</span><span class="regexp">/retracker.sevstar.net:2710/</span>announce), udp:<span class="regexp">//</span>packages.crunchbangplusplus.org:<span class="number">6969</span><span class="regexp">/announce, [https://1337.abcvg.info:443/announce](https:/</span><span class="regexp">/1337.abcvg.info:443/</span>announce), [http:<span class="regexp">//</span>t.acg.rip:<span class="number">6699</span><span class="regexp">/announce](http:/</span><span class="regexp">/t.acg.rip:6699/</span>announce), [http:<span class="regexp">//</span>share.camoe.cn:<span class="number">8080</span><span class="regexp">/announce](http:/</span><span class="regexp">/share.camoe.cn:8080/</span>announce), [http:<span class="regexp">//</span>retracker.mgts.by:<span class="number">80</span><span class="regexp">/announce](http:/</span><span class="regexp">/retracker.mgts.by:80/</span>announce), [http:<span class="regexp">//</span>bt-tracker.gamexp.ru:<span class="number">2710</span><span class="regexp">/announce](http:/</span><span class="regexp">/bt-tracker.gamexp.ru:2710/</span>announce), udp:<span class="regexp">//</span>tracker4.itzmx.com:<span class="number">2710</span><span class="regexp">/announce, [http://tracker4.itzmx.com:2710/announce](http:/</span><span class="regexp">/tracker4.itzmx.com:2710/</span>announce), [http:<span class="regexp">//</span>tracker3.itzmx.com:<span class="number">6961</span><span class="regexp">/announce](http:/</span><span class="regexp">/tracker3.itzmx.com:6961/</span>announce), [http:<span class="regexp">//</span>tracker2.itzmx.com:<span class="number">6961</span><span class="regexp">/announce](http:/</span><span class="regexp">/tracker2.itzmx.com:6961/</span>announce), [http:<span class="regexp">//</span>tracker1.itzmx.com:<span class="number">8080</span><span class="regexp">/announce](http:/</span><span class="regexp">/tracker1.itzmx.com:8080/</span>announce),</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>transmission</tag>
+        <tag>aria2</tag>
+        <tag>tracker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Frp内网穿透</title>
+    <url>/2019/06/24/Frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="两个问题">两个问题</h2>
+<h3 id="frps和frpc有什么区别">1.frps和frpc有什么区别？</h3>
+<p>s指的是server端，c指的是客户端</p>
+<h3 id="需要什么东西">2.需要什么东西？</h3>
+<p>一个vps 或者别人已经搭好的免费的frp服务，比如ddnsto.com</p>
+<h2 id="如何利用vps自建frp服务">如何利用VPS自建frp服务</h2>
+<h3 id="frps服务端搭建">1.frps服务端搭建</h3>
+<p>首先到 frp 的 releases 页面下载最新版的对应 VPS 的处理器架构的压缩包 <a href="https://github.com/fatedier/frp/releases" class="uri">https://github.com/fatedier/frp/releases</a> 如何知道 VPS 的处理器架构？在 VPS 上运行这个命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">arch</span><br></pre></td></tr></table></figure>
+<p>如果输出x86_64则需要下载带linux_amd64的那个压缩包； 如果输出的是其他的，则在文件列表中找 linux 的对应架构的压缩包 以x86_64架构举例（目前大多数都应该是这个架构）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /root</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 下载</span></span><br><span class="line">wget --no-check-certificate https://github.com/fatedier/frp/releases/download/v0.18.0/frp_0.18.0_linux_amd64.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line">tar -xzvf frp_0.18.0_linux_amd64.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 文件夹名改成 frp，不然目录太长了不方便</span></span><br><span class="line">mv frp_0.18.0_linux_amd64 frp</span><br><span class="line">cd frp</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 确保 frps 程序具有可执行权限</span></span><br><span class="line">chmod +x frps</span><br></pre></td></tr></table></figure>
+<p>然后试着运行一下frps,看看能否运行</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="string">./frps</span> <span class="params">--help</span></span><br></pre></td></tr></table></figure>
+<p>正常情况下会输出一串帮助信息，那么就说明你下载了正确架构的版本 如果提示-bash: ./frps: cannot execute binary file: Exec format error就说明你下错版本了</p>
+<h3 id="配置frps服务器">2.配置frps服务器</h3>
+<p>参考以下配置说明来书写配置文件frps.ini，你可以先在电脑上打一份草稿 此处只解释说明一些必要和常用的配置，如需研究完整配置说明请看目录下的frps_full.ini，以及参考<a href="https://github.com/fatedier/frp/blob/master/README_zh.md" title="frp中文说明">frp中文说明</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下面这句开头必须要有，表示配置的开始</span></span><br><span class="line">[common]</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> frp 服务端端口（必须）</span></span><br><span class="line">bind_port = 7000</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> frp 服务端密码（必须）</span></span><br><span class="line">token = 12345678</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 认证超时时间，由于时间戳会被用于加密认证，防止报文劫持后被他人利用</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 因此服务端与客户端所在机器的时间差不能超过这个时间（秒）</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 默认为900秒，即15分钟，如果设置成0就不会对报文时间戳进行超时验证</span></span><br><span class="line">authentication_timeout = 900</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 仪表盘端口，只有设置了才能使用仪表盘（即后台）</span></span><br><span class="line">dashboard_port = 7500</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 仪表盘访问的用户名密码，如果不设置，则默认都是 admin</span></span><br><span class="line">dashboard_user = admin</span><br><span class="line">dashboard_pwd = admin</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果你想要用 frp 穿透访问内网中的网站（例如路由器设置页面）</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 则必须要设置以下两个监听端口，不设置则不会开启这项功能</span></span><br><span class="line">vhost_http_port = 10080</span><br><span class="line">vhost_https_port = 10443</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 此设置需要配合客户端设置，仅在穿透到内网中的 http 或 https 时有用（可选）</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 假设此项设置为 example.com，客户端配置 http 时将 subdomain 设置为 <span class="built_in">test</span>，</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 则你将 test.example.com 解析到服务端后，可以使用此域名来访问客户端对应的 http</span></span><br><span class="line">subdomain_host = example.com</span><br></pre></td></tr></table></figure>
+<p>然后把你的准备好的配置文件内容写入frps.ini</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;[common]</span><br><span class="line">bind_port = 7000</span><br><span class="line">token = 12345678</span><br><span class="line">dashboard_port = 7500</span><br><span class="line">dashboard_user = admin</span><br><span class="line">dashboard_pwd = admin</span><br><span class="line">vhost_http_port = 10080</span><br><span class="line">vhost_https_port = 10443</span><br><span class="line">subdomain_host = example.com&quot; &gt; frps.ini</span><br></pre></td></tr></table></figure>
+<p>试着启动一下frps</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用 -c 参数指定配置文件</span></span><br><span class="line">./frps -c frps.ini</span><br></pre></td></tr></table></figure>
+<p>如果没有出现错误提示就说明配置没有问题，可以正常使用 接着按下Ctrl + C可以终止程序运行</p>
+<h3 id="使-frps-在后台持续运行">3. 使 frps 在后台持续运行</h3>
+<p>启动 直接使用前面的命令行来运行是不行的，因为在关掉 ssh 窗口后程序frps就会停止运行，因此要使用nohup [command] &amp;这种操作来使其在后台运行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">nohup /root/frp/frps -c /root/frp/frps.ini &amp;</span><br></pre></td></tr></table></figure>
+<p>并且程序的所有输出（日志）会被写入nohup.out文件中，你可以使用cat命令查看其内容</p>
+<p>停止 想停止的话，结束frps即可</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pkill frps</span><br></pre></td></tr></table></figure>
+<p>重启 那就先停止再启动</p>
+<p>加入开机自启 编辑/etc/rc.local文件，将启动那句命令加到exit 0语句之前（如果有）</p>
+<p>注意：debian9需要自行创建rc.local文件，详细看这https://sb.sb/blog/debian-9-rc-local/</p>
+<h3 id="配置frpc客户端">4.配置frpc客户端</h3>
+<p>在梅林固件中，安装“frpc穿透”software，里面的配置对照第3步中的frps.ini进行配置即可，注意ac66u b1必须用虚拟内存软件，必须用虚拟内存软件，必须用虚拟内存软件，重要的事情说三遍 目前自己只是实现了udp的穿透形式：即 example.com:端口 进行穿透，当然首先需要将域名解析到frps服务器的ip</p>
+<h2 id="后记">后记</h2>
+<p>这里只是记录自己目前实现的配置，感谢 https://moe.best/tutorial/frp.html 这个教程</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>frp</tag>
+        <tag>内网穿透</tag>
+      </tags>
+  </entry>
+</search>
