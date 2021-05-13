@@ -30,7 +30,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/shades-of-purple.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github.min.css" />
     
   
 
@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -65,11 +65,11 @@
 
 
 <body>
-  <header style="height: 40vh;">
+  <header style="height: 50vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>零和壹</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -159,7 +159,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('https://gitee.com/andypl/imagehost/raw/master/img/IndiaLitSpace_ZH-CN5941074986_1920x1080.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -203,6 +203,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -245,7 +253,7 @@
 <p>一般在Aria2设置里面的Bittorrent设置</p>
 <h3 id="注意事项">注意事项：</h3>
 <p>多个地址之间用逗号隔开</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">udp:<span class="hljs-regexp">//</span>tracker.coppersurfer.tk:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.open-internet.nl:6969/</span>announce, udp:<span class="hljs-regexp">//</span>tracker.leechers-paradise.org:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.openbittorrent.com:80/</span>announce, udp:<span class="hljs-regexp">//</span>exodus.desync.com:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/9.rarbg.to:2710/</span>announce, udp:<span class="hljs-regexp">//</span><span class="hljs-number">9</span>.rarbg.me:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.internetwarriors.net:1337/</span>announce, [http:<span class="hljs-regexp">//</span>tracker.internetwarriors.net:<span class="hljs-number">1337</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker.internetwarriors.net:1337/</span>announce), udp:<span class="hljs-regexp">//</span>tracker.opentrackr.org:<span class="hljs-number">1337</span><span class="hljs-regexp">/announce, [http://tracker.opentrackr.org:1337/announce](http:/</span><span class="hljs-regexp">/tracker.opentrackr.org:1337/</span>announce), udp:<span class="hljs-regexp">//</span>tracker.torrent.eu.org:<span class="hljs-number">451</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/thetracker.org:80/</span>announce, udp:<span class="hljs-regexp">//</span>bt.xxx-tracker.com:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.tiny-vps.com:6969/</span>announce, udp:<span class="hljs-regexp">//</span>tracker.cyberia.is:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/open.demonii.si:1337/</span>announce, [http:<span class="hljs-regexp">//</span>open.acgnxtracker.com:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/open.acgnxtracker.com:80/</span>announce), udp:<span class="hljs-regexp">//i</span>pv4.tracker.harry.lu:<span class="hljs-number">80</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/explodie.org:6969/</span>announce, [http:<span class="hljs-regexp">//</span>explodie.org:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/explodie.org:6969/</span>announce), udp:<span class="hljs-regexp">//</span>retracker.netbynet.ru:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.trackton.ga:7070/</span>announce, udp:<span class="hljs-regexp">//</span>tracker.supertracker.net:<span class="hljs-number">1337</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.iamhansen.xyz:2000/</span>announce, udp:<span class="hljs-regexp">//</span>tracker.filepit.to:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.filemail.com:6969/</span>announce, udp:<span class="hljs-regexp">//</span>torrentclub.tech:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/retracker.lanta-net.ru:2710/</span>announce, udp:<span class="hljs-regexp">//</span>retracker.baikal-telecom.net:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce, [http://torrentclub.tech:6969/announce](http:/</span><span class="hljs-regexp">/torrentclub.tech:6969/</span>announce), udp:<span class="hljs-regexp">//</span>tracker.novg.net:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, [http://tracker.novg.net:6969/announce](http:/</span><span class="hljs-regexp">/tracker.novg.net:6969/</span>announce), [http:<span class="hljs-regexp">//</span>opentracker.h4ck.me:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/opentracker.h4ck.me:6969/</span>announce), udp:<span class="hljs-regexp">//</span>tracker.uw0.xyz:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.tvunderground.org.ru:3218/</span>announce, [https:<span class="hljs-regexp">//</span>tracker.fastdownload.xyz:<span class="hljs-number">443</span><span class="hljs-regexp">/announce](https:/</span><span class="hljs-regexp">/tracker.fastdownload.xyz:443/</span>announce), [https:<span class="hljs-regexp">//</span>t.quic.ws:<span class="hljs-number">443</span><span class="hljs-regexp">/announce](https:/</span><span class="hljs-regexp">/t.quic.ws:443/</span>announce), [http:<span class="hljs-regexp">//</span>tracker.tvunderground.org.ru:<span class="hljs-number">3218</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker.tvunderground.org.ru:3218/</span>announce), [http:<span class="hljs-regexp">//</span>open.trackerlist.xyz:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/open.trackerlist.xyz:80/</span>announce), [http:<span class="hljs-regexp">//</span>open.acgtracker.com:<span class="hljs-number">1096</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/open.acgtracker.com:1096/</span>announce), [http:<span class="hljs-regexp">//g</span>wp2-v19.rinet.ru:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/gwp2-v19.rinet.ru:80/</span>announce), udp:<span class="hljs-regexp">//</span>zephir.monocul.us:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.kamigami.org:2710/</span>announce, udp:<span class="hljs-regexp">//</span>tracker.gbitt.info:<span class="hljs-number">80</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/retracker.maxnet.ua:80/</span>announce, udp:<span class="hljs-regexp">//</span>retracker.akado-ural.ru:<span class="hljs-number">80</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/carapax.net:6969/</span>announce, [https:<span class="hljs-regexp">//</span>tracker.gbitt.info:<span class="hljs-number">443</span><span class="hljs-regexp">/announce](https:/</span><span class="hljs-regexp">/tracker.gbitt.info:443/</span>announce), [http:<span class="hljs-regexp">//</span>vps02.net.orel.ru:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/vps02.net.orel.ru:80/</span>announce), [http:<span class="hljs-regexp">//</span>tracker.gbitt.info:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker.gbitt.info:80/</span>announce), [http:<span class="hljs-regexp">//m</span>ail2.zelenaya.net:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/mail2.zelenaya.net:80/</span>announce), [http:<span class="hljs-regexp">//</span>carapax.net:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/carapax.net:6969/</span>announce), udp:<span class="hljs-regexp">//</span>tracker.nyaa.uk:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, [http://tracker.moxing.party:6969/announce](http:/</span><span class="hljs-regexp">/tracker.moxing.party:6969/</span>announce), udp:<span class="hljs-regexp">//</span>tracker.moeking.me:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/retracker.sevstar.net:2710/</span>announce, udp:<span class="hljs-regexp">//</span>pubt.<span class="hljs-keyword">in</span>:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/home.penza.com.ru:6969/</span>announce, udp:<span class="hljs-regexp">//</span>bt.dy20188.com:<span class="hljs-number">80</span><span class="hljs-regexp">/announce, [https://tracker.vectahosting.eu:2053/announce](https:/</span><span class="hljs-regexp">/tracker.vectahosting.eu:2053/</span>announce), [https:<span class="hljs-regexp">//</span>tracker.parrotsec.org:<span class="hljs-number">443</span><span class="hljs-regexp">/announce](https:/</span><span class="hljs-regexp">/tracker.parrotsec.org:443/</span>announce), [http:<span class="hljs-regexp">//</span>tracker.torrentyorg.pl:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker.torrentyorg.pl:80/</span>announce), [http:<span class="hljs-regexp">//</span>tracker.bz:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker.bz:80/</span>announce), [http:<span class="hljs-regexp">//</span>tracker.bt4g.com:<span class="hljs-number">2095</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker.bt4g.com:2095/</span>announce), [http:<span class="hljs-regexp">//</span>torrent.nwps.ws:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/torrent.nwps.ws:80/</span>announce), [http:<span class="hljs-regexp">//</span>t.nyaatracker.com:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/t.nyaatracker.com:80/</span>announce), [http:<span class="hljs-regexp">//</span>retracker.sevstar.net:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/retracker.sevstar.net:2710/</span>announce), udp:<span class="hljs-regexp">//</span>packages.crunchbangplusplus.org:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, [https://1337.abcvg.info:443/announce](https:/</span><span class="hljs-regexp">/1337.abcvg.info:443/</span>announce), [http:<span class="hljs-regexp">//</span>t.acg.rip:<span class="hljs-number">6699</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/t.acg.rip:6699/</span>announce), [http:<span class="hljs-regexp">//</span>share.camoe.cn:<span class="hljs-number">8080</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/share.camoe.cn:8080/</span>announce), [http:<span class="hljs-regexp">//</span>retracker.mgts.by:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/retracker.mgts.by:80/</span>announce), [http:<span class="hljs-regexp">//</span>bt-tracker.gamexp.ru:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/bt-tracker.gamexp.ru:2710/</span>announce), udp:<span class="hljs-regexp">//</span>tracker4.itzmx.com:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce, [http://tracker4.itzmx.com:2710/announce](http:/</span><span class="hljs-regexp">/tracker4.itzmx.com:2710/</span>announce), [http:<span class="hljs-regexp">//</span>tracker3.itzmx.com:<span class="hljs-number">6961</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker3.itzmx.com:6961/</span>announce), [http:<span class="hljs-regexp">//</span>tracker2.itzmx.com:<span class="hljs-number">6961</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker2.itzmx.com:6961/</span>announce), [http:<span class="hljs-regexp">//</span>tracker1.itzmx.com:<span class="hljs-number">8080</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker1.itzmx.com:8080/</span>announce),<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">udp:<span class="hljs-regexp">//</span>tracker.coppersurfer.tk:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.open-internet.nl:6969/</span>announce, udp:<span class="hljs-regexp">//</span>tracker.leechers-paradise.org:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.openbittorrent.com:80/</span>announce, udp:<span class="hljs-regexp">//</span>exodus.desync.com:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/9.rarbg.to:2710/</span>announce, udp:<span class="hljs-regexp">//</span><span class="hljs-number">9</span>.rarbg.me:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.internetwarriors.net:1337/</span>announce, [http:<span class="hljs-regexp">//</span>tracker.internetwarriors.net:<span class="hljs-number">1337</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker.internetwarriors.net:1337/</span>announce), udp:<span class="hljs-regexp">//</span>tracker.opentrackr.org:<span class="hljs-number">1337</span><span class="hljs-regexp">/announce, [http://tracker.opentrackr.org:1337/announce](http:/</span><span class="hljs-regexp">/tracker.opentrackr.org:1337/</span>announce), udp:<span class="hljs-regexp">//</span>tracker.torrent.eu.org:<span class="hljs-number">451</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/thetracker.org:80/</span>announce, udp:<span class="hljs-regexp">//</span>bt.xxx-tracker.com:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.tiny-vps.com:6969/</span>announce, udp:<span class="hljs-regexp">//</span>tracker.cyberia.is:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/open.demonii.si:1337/</span>announce, [http:<span class="hljs-regexp">//</span>open.acgnxtracker.com:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/open.acgnxtracker.com:80/</span>announce), udp:<span class="hljs-regexp">//i</span>pv4.tracker.harry.lu:<span class="hljs-number">80</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/explodie.org:6969/</span>announce, [http:<span class="hljs-regexp">//</span>explodie.org:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/explodie.org:6969/</span>announce), udp:<span class="hljs-regexp">//</span>retracker.netbynet.ru:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.trackton.ga:7070/</span>announce, udp:<span class="hljs-regexp">//</span>tracker.supertracker.net:<span class="hljs-number">1337</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.iamhansen.xyz:2000/</span>announce, udp:<span class="hljs-regexp">//</span>tracker.filepit.to:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.filemail.com:6969/</span>announce, udp:<span class="hljs-regexp">//</span>torrentclub.tech:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/retracker.lanta-net.ru:2710/</span>announce, udp:<span class="hljs-regexp">//</span>retracker.baikal-telecom.net:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce, [http://torrentclub.tech:6969/announce](http:/</span><span class="hljs-regexp">/torrentclub.tech:6969/</span>announce), udp:<span class="hljs-regexp">//</span>tracker.novg.net:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, [http://tracker.novg.net:6969/announce](http:/</span><span class="hljs-regexp">/tracker.novg.net:6969/</span>announce), [http:<span class="hljs-regexp">//</span>opentracker.h4ck.me:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/opentracker.h4ck.me:6969/</span>announce), udp:<span class="hljs-regexp">//</span>tracker.uw0.xyz:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.tvunderground.org.ru:3218/</span>announce, [https:<span class="hljs-regexp">//</span>tracker.fastdownload.xyz:<span class="hljs-number">443</span><span class="hljs-regexp">/announce](https:/</span><span class="hljs-regexp">/tracker.fastdownload.xyz:443/</span>announce), [https:<span class="hljs-regexp">//</span>t.quic.ws:<span class="hljs-number">443</span><span class="hljs-regexp">/announce](https:/</span><span class="hljs-regexp">/t.quic.ws:443/</span>announce), [http:<span class="hljs-regexp">//</span>tracker.tvunderground.org.ru:<span class="hljs-number">3218</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker.tvunderground.org.ru:3218/</span>announce), [http:<span class="hljs-regexp">//</span>open.trackerlist.xyz:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/open.trackerlist.xyz:80/</span>announce), [http:<span class="hljs-regexp">//</span>open.acgtracker.com:<span class="hljs-number">1096</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/open.acgtracker.com:1096/</span>announce), [http:<span class="hljs-regexp">//g</span>wp2-v19.rinet.ru:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/gwp2-v19.rinet.ru:80/</span>announce), udp:<span class="hljs-regexp">//</span>zephir.monocul.us:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/tracker.kamigami.org:2710/</span>announce, udp:<span class="hljs-regexp">//</span>tracker.gbitt.info:<span class="hljs-number">80</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/retracker.maxnet.ua:80/</span>announce, udp:<span class="hljs-regexp">//</span>retracker.akado-ural.ru:<span class="hljs-number">80</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/carapax.net:6969/</span>announce, [https:<span class="hljs-regexp">//</span>tracker.gbitt.info:<span class="hljs-number">443</span><span class="hljs-regexp">/announce](https:/</span><span class="hljs-regexp">/tracker.gbitt.info:443/</span>announce), [http:<span class="hljs-regexp">//</span>vps02.net.orel.ru:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/vps02.net.orel.ru:80/</span>announce), [http:<span class="hljs-regexp">//</span>tracker.gbitt.info:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker.gbitt.info:80/</span>announce), [http:<span class="hljs-regexp">//m</span>ail2.zelenaya.net:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/mail2.zelenaya.net:80/</span>announce), [http:<span class="hljs-regexp">//</span>carapax.net:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/carapax.net:6969/</span>announce), udp:<span class="hljs-regexp">//</span>tracker.nyaa.uk:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, [http://tracker.moxing.party:6969/announce](http:/</span><span class="hljs-regexp">/tracker.moxing.party:6969/</span>announce), udp:<span class="hljs-regexp">//</span>tracker.moeking.me:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/retracker.sevstar.net:2710/</span>announce, udp:<span class="hljs-regexp">//</span>pubt.<span class="hljs-keyword">in</span>:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce, udp:/</span><span class="hljs-regexp">/home.penza.com.ru:6969/</span>announce, udp:<span class="hljs-regexp">//</span>bt.dy20188.com:<span class="hljs-number">80</span><span class="hljs-regexp">/announce, [https://tracker.vectahosting.eu:2053/announce](https:/</span><span class="hljs-regexp">/tracker.vectahosting.eu:2053/</span>announce), [https:<span class="hljs-regexp">//</span>tracker.parrotsec.org:<span class="hljs-number">443</span><span class="hljs-regexp">/announce](https:/</span><span class="hljs-regexp">/tracker.parrotsec.org:443/</span>announce), [http:<span class="hljs-regexp">//</span>tracker.torrentyorg.pl:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker.torrentyorg.pl:80/</span>announce), [http:<span class="hljs-regexp">//</span>tracker.bz:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker.bz:80/</span>announce), [http:<span class="hljs-regexp">//</span>tracker.bt4g.com:<span class="hljs-number">2095</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker.bt4g.com:2095/</span>announce), [http:<span class="hljs-regexp">//</span>torrent.nwps.ws:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/torrent.nwps.ws:80/</span>announce), [http:<span class="hljs-regexp">//</span>t.nyaatracker.com:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/t.nyaatracker.com:80/</span>announce), [http:<span class="hljs-regexp">//</span>retracker.sevstar.net:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/retracker.sevstar.net:2710/</span>announce), udp:<span class="hljs-regexp">//</span>packages.crunchbangplusplus.org:<span class="hljs-number">6969</span><span class="hljs-regexp">/announce, [https://1337.abcvg.info:443/announce](https:/</span><span class="hljs-regexp">/1337.abcvg.info:443/</span>announce), [http:<span class="hljs-regexp">//</span>t.acg.rip:<span class="hljs-number">6699</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/t.acg.rip:6699/</span>announce), [http:<span class="hljs-regexp">//</span>share.camoe.cn:<span class="hljs-number">8080</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/share.camoe.cn:8080/</span>announce), [http:<span class="hljs-regexp">//</span>retracker.mgts.by:<span class="hljs-number">80</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/retracker.mgts.by:80/</span>announce), [http:<span class="hljs-regexp">//</span>bt-tracker.gamexp.ru:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/bt-tracker.gamexp.ru:2710/</span>announce), udp:<span class="hljs-regexp">//</span>tracker4.itzmx.com:<span class="hljs-number">2710</span><span class="hljs-regexp">/announce, [http://tracker4.itzmx.com:2710/announce](http:/</span><span class="hljs-regexp">/tracker4.itzmx.com:2710/</span>announce), [http:<span class="hljs-regexp">//</span>tracker3.itzmx.com:<span class="hljs-number">6961</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker3.itzmx.com:6961/</span>announce), [http:<span class="hljs-regexp">//</span>tracker2.itzmx.com:<span class="hljs-number">6961</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker2.itzmx.com:6961/</span>announce), [http:<span class="hljs-regexp">//</span>tracker1.itzmx.com:<span class="hljs-number">8080</span><span class="hljs-regexp">/announce](http:/</span><span class="hljs-regexp">/tracker1.itzmx.com:8080/</span>announce),<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -306,6 +314,38 @@
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI",
+          app_key: "jpWiVUMoucJREpt4DsJR4oys",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -365,9 +405,36 @@
      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
 
   
 
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1279870992" style="display: none"></span>
   
 </footer>
 
@@ -419,6 +486,8 @@
   <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
 
 
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
@@ -497,6 +566,23 @@
 
 
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1279870992&show=pic"
+            type="text/javascript"></script>
+  
 
 
 

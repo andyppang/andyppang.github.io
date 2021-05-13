@@ -30,7 +30,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/shades-of-purple.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github.min.css" />
     
   
 
@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -65,11 +65,11 @@
 
 
 <body>
-  <header style="height: 40vh;">
+  <header style="height: 50vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>零和壹</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -159,7 +159,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('https://gitee.com/andypl/imagehost/raw/master/img/IndiaLitSpace_ZH-CN5941074986_1920x1080.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -203,6 +203,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -236,29 +244,29 @@
             
             <div class="markdown-body">
               <p>脚本1 纯净，不安装任何东西。均为国内节点。</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mipsasm">wget -qO- <span class="hljs-keyword">bench.sh </span> <span class="hljs-keyword">bash</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">wget -qO- <span class="hljs-keyword">bench.sh </span> <span class="hljs-keyword">bash</span><br></code></pre></td></tr></table></figure>
 <p>脚本2 有国内节点，可看上行和下行。</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">wget -qO- https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/oooldking/</span>script<span class="hljs-regexp">/master/</span>superbench.sh  bash<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">wget -qO- https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/oooldking/</span>script<span class="hljs-regexp">/master/</span>superbench.sh  bash<br></code></pre></td></tr></table></figure>
 <p>脚本3</p>
-<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell">(<span class="hljs-built_in">wget</span> <span class="hljs-literal">-qO</span>- wget.racing/nench.sh  bash; <span class="hljs-built_in">wget</span> <span class="hljs-literal">-qO</span>- wget.racing/nench.sh  bash) <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span>  <span class="hljs-built_in">tee</span> nench.log<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">(<span class="hljs-built_in">wget</span> <span class="hljs-literal">-qO</span>- wget.racing/nench.sh  bash; <span class="hljs-built_in">wget</span> <span class="hljs-literal">-qO</span>- wget.racing/nench.sh  bash) <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span>  <span class="hljs-built_in">tee</span> nench.log<br></code></pre></td></tr></table></figure>
 <p>脚本4</p>
-<figure class="highlight stylus"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stylus">curl -s bench<span class="hljs-selector-class">.wget</span><span class="hljs-selector-class">.racing</span>  bash<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">curl -s bench<span class="hljs-selector-class">.wget</span><span class="hljs-selector-class">.racing</span>  bash<br></code></pre></td></tr></table></figure>
 <p>脚本5 可比较真实的测试服务器带宽</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">curl -s https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/masonr/y</span>et-another-bench-script<span class="hljs-regexp">/master/y</span>abs.sh  bash<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -s https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/masonr/y</span>et-another-bench-script<span class="hljs-regexp">/master/y</span>abs.sh  bash<br></code></pre></td></tr></table></figure>
 <p>脚本6可测试是否支持Netflxi等（不一定准确）</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">curl -fsL https:<span class="hljs-regexp">//i</span>lemonra.<span class="hljs-keyword">in</span>/LemonBenchIntl  bash -s fast<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -fsL https:<span class="hljs-regexp">//i</span>lemonra.<span class="hljs-keyword">in</span>/LemonBenchIntl  bash -s fast<br></code></pre></td></tr></table></figure>
 <p>脚本7 全能，测速、加速 DD系统等</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">wget -N --no-check-certificate https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/veip007/</span>hj<span class="hljs-regexp">/master/</span>hj.sh &amp;&amp; chmod +x hj.sh &amp;&amp; bash hj.sh<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">wget -N --no-check-certificate https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/veip007/</span>hj<span class="hljs-regexp">/master/</span>hj.sh &amp;&amp; chmod +x hj.sh &amp;&amp; bash hj.sh<br></code></pre></td></tr></table></figure>
 <p>脚本8</p>
-<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell">(<span class="hljs-built_in">curl</span> <span class="hljs-literal">-s</span> wget.racing/nench.sh  bash) <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span>  <span class="hljs-built_in">tee</span> nench.log<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">(<span class="hljs-built_in">curl</span> <span class="hljs-literal">-s</span> wget.racing/nench.sh  bash) <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span>  <span class="hljs-built_in">tee</span> nench.log<br></code></pre></td></tr></table></figure>
 <p>脚本9 服务器延迟监测</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">screen -S uping<br>wget -N --no-check-certificate https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/FunctionClub/u</span>Ping<span class="hljs-regexp">/master/u</span>ping.py<br>python uping.py<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">screen -S uping<br>wget -N --no-check-certificate https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/FunctionClub/u</span>Ping<span class="hljs-regexp">/master/u</span>ping.py<br>python uping.py<br></code></pre></td></tr></table></figure>
 <p>脚本10 系统配置、国内速度等</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">wget -qO- --no-check-certificate https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/qd201211/</span>Linux-SpeedTest<span class="hljs-regexp">/master/</span>superbench.sh  bash<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">wget -qO- --no-check-certificate https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/qd201211/</span>Linux-SpeedTest<span class="hljs-regexp">/master/</span>superbench.sh  bash<br></code></pre></td></tr></table></figure>
 <p>脚本11 UnixBench跑分，测试主机性能 运行10-30分钟后（根据CPU内核数量，运算时间不等）得出分数，越高越好。</p>
-<figure class="highlight vim"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vim">wget --<span class="hljs-keyword">no</span>-check-certificate http<span class="hljs-variable">s:</span>//zhujiwiki.<span class="hljs-keyword">com</span>/<span class="hljs-keyword">wp</span>-content/uploads/<span class="hljs-number">2018</span>/<span class="hljs-number">07</span>/unixbench.<span class="hljs-keyword">sh</span><br>chmod +<span class="hljs-keyword">x</span> unixbench.<span class="hljs-keyword">sh</span><br>./unixbench.<span class="hljs-keyword">sh</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vim">wget --<span class="hljs-keyword">no</span>-check-certificate http<span class="hljs-variable">s:</span>//zhujiwiki.<span class="hljs-keyword">com</span>/<span class="hljs-keyword">wp</span>-content/uploads/<span class="hljs-number">2018</span>/<span class="hljs-number">07</span>/unixbench.<span class="hljs-keyword">sh</span><br>chmod +<span class="hljs-keyword">x</span> unixbench.<span class="hljs-keyword">sh</span><br>./unixbench.<span class="hljs-keyword">sh</span><br></code></pre></td></tr></table></figure>
 <p>脚本12、测试是否可以观看Netflix（奈飞） 访问：<a target="_blank" rel="noopener" href="https://netflix.com/title/80018499" class="uri">https://netflix.com/title/80018499</a> 脚本13 测试本地速度 speedtest go版本的一键安装脚本</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">bash &lt;(curl -Lsk https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/BigMangos/</span>speedtest-go-script<span class="hljs-regexp">/master/i</span>nstall.sh)<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">bash &lt;(curl -Lsk https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/BigMangos/</span>speedtest-go-script<span class="hljs-regexp">/master/i</span>nstall.sh)<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -314,6 +322,38 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI",
+          app_key: "jpWiVUMoucJREpt4DsJR4oys",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
             
           </article>
         </div>
@@ -374,9 +414,36 @@
      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
 
   
 
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1279870992" style="display: none"></span>
   
 </footer>
 
@@ -428,6 +495,8 @@
   <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
 
 
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
@@ -506,6 +575,23 @@
 
 
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1279870992&show=pic"
+            type="text/javascript"></script>
+  
 
 
 

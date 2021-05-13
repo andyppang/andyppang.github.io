@@ -30,7 +30,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/shades-of-purple.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github.min.css" />
     
   
 
@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -65,11 +65,11 @@
 
 
 <body>
-  <header style="height: 40vh;">
+  <header style="height: 50vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>零和壹</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -159,7 +159,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('https://gitee.com/andypl/imagehost/raw/master/img/IndiaLitSpace_ZH-CN5941074986_1920x1080.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -203,6 +203,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -244,13 +252,13 @@
 <ul>
 <li><p>首先安装好entware环境</p></li>
 <li><p>安装zerotier</p>
-<figure class="highlight stata"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stata">opkg <span class="hljs-keyword">update</span><br>opkg install zerotier<br>modprobe tun<br>zerotier-<span class="hljs-keyword">one</span> -<span class="hljs-keyword">d</span><br>zerotier-<span class="hljs-keyword">cli</span> join xxxxx<br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stata">opkg <span class="hljs-keyword">update</span><br>opkg install zerotier<br>modprobe tun<br>zerotier-<span class="hljs-keyword">one</span> -<span class="hljs-keyword">d</span><br>zerotier-<span class="hljs-keyword">cli</span> join xxxxx<br></code></pre></td></tr></table></figure></li>
 <li><p>网页端同意加入，并建立路由表192.168.50.0/24 via 192.168.192.1</p></li>
 <li><p>添加iptables，允许转发到192.168.50.0网段的流量通过</p>
-<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">iptables</span> -A FORWARD -d <span class="hljs-number">192.168.50.0</span>/<span class="hljs-number">24</span> -j ACCEPT<br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">iptables</span> -A FORWARD -d <span class="hljs-number">192.168.50.0</span>/<span class="hljs-number">24</span> -j ACCEPT<br></code></pre></td></tr></table></figure></li>
 <li><p>测试连接是否正常，包括从学校访问家中的局域网是否ping通</p></li>
 <li><p>添加开机启动项</p>
-<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">cd</span> /jffs/scripts<br><span class="hljs-attribute">vi</span> post-mount<br><span class="hljs-comment"># 在fi语句前添加下面三行命令</span><br><span class="hljs-attribute">modprobe</span> tun<br><span class="hljs-attribute">zerotier</span>-one -d<br><span class="hljs-attribute">iptables</span> -A FORWARD -d <span class="hljs-number">192.168.50.0</span>/<span class="hljs-number">24</span> -j ACCEPT<br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cd</span> /jffs/scripts<br><span class="hljs-attribute">vi</span> post-mount<br><span class="hljs-comment"># 在fi语句前添加下面三行命令</span><br><span class="hljs-attribute">modprobe</span> tun<br><span class="hljs-attribute">zerotier</span>-one -d<br><span class="hljs-attribute">iptables</span> -A FORWARD -d <span class="hljs-number">192.168.50.0</span>/<span class="hljs-number">24</span> -j ACCEPT<br></code></pre></td></tr></table></figure></li>
 <li><p>重启路由器测试是否正常启动</p></li>
 </ul>
 <p>至此，从外边任何安装了zerotier的电脑，都可以随意访问到家中局域网的各个设备了。</p>
@@ -274,7 +282,7 @@
 <p>services-stop</p>
 <p>在系统服务器停止前调用</p>
 <p>让我们看看post-mount的内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> = <span class="hljs-string">&quot;/tmp/mnt/sda1&quot;</span> ] ; <span class="hljs-keyword">then</span><br>  ln -nsf <span class="hljs-variable">$1</span>/entware /tmp/opt<br>  modprobe tun<br>  zerotier-one -d<br>  iptables -A FORWARD -d 192.168.50.0/24 -j ACCEPT<br>  swapon /tmp/mnt/sda1/swapfile<br><span class="hljs-keyword">fi</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> = <span class="hljs-string">&quot;/tmp/mnt/sda1&quot;</span> ] ; <span class="hljs-keyword">then</span><br>  ln -nsf <span class="hljs-variable">$1</span>/entware /tmp/opt<br>  modprobe tun<br>  zerotier-one -d<br>  iptables -A FORWARD -d 192.168.50.0/24 -j ACCEPT<br>  swapon /tmp/mnt/sda1/swapfile<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
 <p>由于我们的zerotier就是安装在U盘上的，所以放在这个脚本里面，只有U盘正确挂载后，才会执行这里的操作，再合适不过了！</p>
 <h3 id="梅林启动项的问题">梅林启动项的问题</h3>
 <ul>
@@ -349,6 +357,38 @@
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI",
+          app_key: "jpWiVUMoucJREpt4DsJR4oys",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -408,9 +448,36 @@
      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
 
   
 
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1279870992" style="display: none"></span>
   
 </footer>
 
@@ -462,6 +529,8 @@
   <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
 
 
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
@@ -540,6 +609,23 @@
 
 
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1279870992&show=pic"
+            type="text/javascript"></script>
+  
 
 
 

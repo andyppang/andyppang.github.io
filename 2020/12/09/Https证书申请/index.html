@@ -30,7 +30,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/shades-of-purple.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github.min.css" />
     
   
 
@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -65,11 +65,11 @@
 
 
 <body>
-  <header style="height: 40vh;">
+  <header style="height: 50vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>零和壹</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -159,7 +159,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('https://gitee.com/andypl/imagehost/raw/master/img/IndiaLitSpace_ZH-CN5941074986_1920x1080.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -203,6 +203,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -241,18 +249,18 @@
 <p>2.vps安装nginx，注意找到nginx默认的网站文件夹，下面安装有用</p>
 <h2 id="安装acme.sh">安装acme.sh</h2>
 <p>详细见https://wsgzao.github.io/post/acme/ 我是采用以下方式安装的</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">acme.sh  --issue  -d mydomain.com -d www.mydomain.com  --webroot  <span class="hljs-regexp">/home/</span>wwwroot<span class="hljs-regexp">/mydomain.com/</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">acme.sh  --issue  -d mydomain.com -d www.mydomain.com  --webroot  <span class="hljs-regexp">/home/</span>wwwroot<span class="hljs-regexp">/mydomain.com/</span><br></code></pre></td></tr></table></figure>
 <p>将mydomain.com改为自己的域名，把/home/wwwroot/mydomain.com/ 改为nginx默认的网站文件夹</p>
 <h2 id="对于二级域名申请证书省心好用使用前确保80端口没有占用">对于二级域名申请证书（省心好用，使用前确保80端口没有占用）</h2>
-<figure class="highlight brainfuck"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs brainfuck"><span class="hljs-comment">acme</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span>  --<span class="hljs-comment">issue</span> <span class="hljs-literal">-</span><span class="hljs-comment">d</span> <span class="hljs-comment">mydomain</span><span class="hljs-string">.</span><span class="hljs-comment">com</span>   --<span class="hljs-comment">standalone</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">acme</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span>  --<span class="hljs-comment">issue</span> <span class="hljs-literal">-</span><span class="hljs-comment">d</span> <span class="hljs-comment">mydomain</span><span class="hljs-string">.</span><span class="hljs-comment">com</span>   --<span class="hljs-comment">standalone</span><br></code></pre></td></tr></table></figure>
 <h2 id="网站安装证书未成功">网站安装证书（未成功）</h2>
 <h1 id="使用certbot安装证书">使用certbot安装证书</h1>
 <h2 id="配置nginx.conf中的server_name">配置nginx.conf中的server_name</h2>
-<figure class="highlight nginx"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs nginx"><span class="hljs-comment"># For more information on configuration, see:</span><br><span class="hljs-comment">#   * Official English Documentation: http://nginx.org/en/docs/</span><br><span class="hljs-comment">#   * Official Russian Documentation: http://nginx.org/ru/docs/</span><br><br><span class="hljs-attribute">user</span> nginx;<br><span class="hljs-attribute">worker_processes</span> auto;<br><span class="hljs-attribute">error_log</span> /var/log/nginx/error.log;<br><span class="hljs-attribute">pid</span> /run/nginx.pid;<br><br><span class="hljs-comment"># Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.</span><br><span class="hljs-attribute">include</span> /usr/share/nginx/modules/<span class="hljs-regexp">*.conf</span>;<br><br><span class="hljs-section">events</span> &#123;<br>    <span class="hljs-attribute">worker_connections</span> <span class="hljs-number">1024</span>;<br>&#125;<br><br><span class="hljs-section">http</span> &#123;<br>    <span class="hljs-attribute">log_format</span>  main  <span class="hljs-string">&#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span><br>                      <span class="hljs-string">&#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span><br>                      <span class="hljs-string">&#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;</span>;<br><br>    <span class="hljs-attribute">access_log</span>  /var/log/nginx/access.log  main;<br><br>    <span class="hljs-attribute">sendfile</span>            <span class="hljs-literal">on</span>;<br>    <span class="hljs-attribute">tcp_nopush</span>          <span class="hljs-literal">on</span>;<br>    <span class="hljs-attribute">tcp_nodelay</span>         <span class="hljs-literal">on</span>;<br>    <span class="hljs-attribute">keepalive_timeout</span>   <span class="hljs-number">65</span>;<br>    <span class="hljs-attribute">types_hash_max_size</span> <span class="hljs-number">2048</span>;<br><br>    <span class="hljs-attribute">include</span>             /etc/nginx/mime.types;<br>    <span class="hljs-attribute">default_type</span>        application/octet-stream;<br><br>    <span class="hljs-comment"># Load modular configuration files from the /etc/nginx/conf.d directory.</span><br>    <span class="hljs-comment"># See http://nginx.org/en/docs/ngx_core_module.html#include</span><br>    <span class="hljs-comment"># for more information.</span><br>    <span class="hljs-attribute">include</span> /etc/nginx/conf.d/<span class="hljs-regexp">*.conf</span>;<br><br>    <span class="hljs-section">server</span> &#123;<br>    <span class="hljs-attribute">if</span> ($host = ilovemaths.tk) &#123;<br>        <span class="hljs-attribute">return</span> <span class="hljs-number">301</span> https://$host$request_uri;<br>    &#125; <span class="hljs-comment"># managed by Certbot</span><br><br>        <span class="hljs-attribute">listen</span>       <span class="hljs-number">80</span> default_server;<br>        <span class="hljs-attribute">listen</span>       [::]:<span class="hljs-number">80</span> default_server;<br>        <span class="hljs-attribute">server_name</span>  ilovemaths.tk;<br>        <span class="hljs-attribute">root</span>         /usr/share/nginx/html;<br><br>        <span class="hljs-comment"># Load configuration files for the default server block.</span><br>        <span class="hljs-attribute">include</span> /etc/nginx/default.d/<span class="hljs-regexp">*.conf</span>;<br><br>        <span class="hljs-attribute">location</span> / &#123;<br>        &#125;<br><br>        <span class="hljs-attribute">error_page</span> <span class="hljs-number">404</span> /<span class="hljs-number">404</span>.html;<br>        <span class="hljs-attribute">location</span> = /<span class="hljs-number">404</span>.html &#123;<br>        &#125;<br><br>        <span class="hljs-attribute">error_page</span> <span class="hljs-number">500</span> <span class="hljs-number">502</span> <span class="hljs-number">503</span> <span class="hljs-number">504</span> /50x.html;<br>        <span class="hljs-attribute">location</span> = /50x.html &#123;<br>        &#125;<br><br>&#125;<br><br><span class="hljs-comment"># Settings for a TLS enabled server.</span><br><br>    <span class="hljs-section">server</span> &#123;<br>        <span class="hljs-attribute">listen</span>       <span class="hljs-number">444</span> ssl http2 default_server;<br>        <span class="hljs-attribute">listen</span>       [::]:<span class="hljs-number">444</span> ssl http2 default_server;<br>        <span class="hljs-attribute">server_name</span>  ilovemaths.tk;<br>        <span class="hljs-attribute">root</span>         /usr/share/nginx/html;<br>    <span class="hljs-attribute">ssl_certificate</span> /etc/letsencrypt/live/ilovemaths.tk/fullchain.pem; <span class="hljs-comment"># managed by Certbot</span><br>    <span class="hljs-attribute">ssl_certificate_key</span> /etc/letsencrypt/live/ilovemaths.tk/privkey.pem; <span class="hljs-comment"># managed by Certbot</span><br>        <span class="hljs-attribute">ssl_session_cache</span> shared:SSL:<span class="hljs-number">1m</span>;<br>        <span class="hljs-attribute">ssl_session_timeout</span>  <span class="hljs-number">10m</span>;<br>        <span class="hljs-attribute">ssl_ciphers</span> HIGH:!aNULL:!MD5;<br>        <span class="hljs-attribute">ssl_prefer_server_ciphers</span> <span class="hljs-literal">on</span>;<br><br>        <span class="hljs-comment"># Load configuration files for the default server block.</span><br>        <span class="hljs-attribute">include</span> /etc/nginx/default.d/<span class="hljs-regexp">*.conf</span>;<br><br>        <span class="hljs-attribute">location</span> / &#123;<br>        &#125;<br><br>        <span class="hljs-attribute">error_page</span> <span class="hljs-number">404</span> /<span class="hljs-number">404</span>.html;<br>        <span class="hljs-attribute">location</span> = /<span class="hljs-number">404</span>.html &#123;<br>        &#125;<br><br>        <span class="hljs-attribute">error_page</span> <span class="hljs-number">500</span> <span class="hljs-number">502</span> <span class="hljs-number">503</span> <span class="hljs-number">504</span> /50x.html;<br>        <span class="hljs-attribute">location</span> = /50x.html &#123;<br>        &#125;<br><br>&#125;<br><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># For more information on configuration, see:</span><br><span class="hljs-comment">#   * Official English Documentation: http://nginx.org/en/docs/</span><br><span class="hljs-comment">#   * Official Russian Documentation: http://nginx.org/ru/docs/</span><br><br><span class="hljs-attribute">user</span> nginx;<br><span class="hljs-attribute">worker_processes</span> auto;<br><span class="hljs-attribute">error_log</span> /var/log/nginx/error.log;<br><span class="hljs-attribute">pid</span> /run/nginx.pid;<br><br><span class="hljs-comment"># Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.</span><br><span class="hljs-attribute">include</span> /usr/share/nginx/modules/<span class="hljs-regexp">*.conf</span>;<br><br><span class="hljs-section">events</span> &#123;<br>    <span class="hljs-attribute">worker_connections</span> <span class="hljs-number">1024</span>;<br>&#125;<br><br><span class="hljs-section">http</span> &#123;<br>    <span class="hljs-attribute">log_format</span>  main  <span class="hljs-string">&#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span><br>                      <span class="hljs-string">&#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span><br>                      <span class="hljs-string">&#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;</span>;<br><br>    <span class="hljs-attribute">access_log</span>  /var/log/nginx/access.log  main;<br><br>    <span class="hljs-attribute">sendfile</span>            <span class="hljs-literal">on</span>;<br>    <span class="hljs-attribute">tcp_nopush</span>          <span class="hljs-literal">on</span>;<br>    <span class="hljs-attribute">tcp_nodelay</span>         <span class="hljs-literal">on</span>;<br>    <span class="hljs-attribute">keepalive_timeout</span>   <span class="hljs-number">65</span>;<br>    <span class="hljs-attribute">types_hash_max_size</span> <span class="hljs-number">2048</span>;<br><br>    <span class="hljs-attribute">include</span>             /etc/nginx/mime.types;<br>    <span class="hljs-attribute">default_type</span>        application/octet-stream;<br><br>    <span class="hljs-comment"># Load modular configuration files from the /etc/nginx/conf.d directory.</span><br>    <span class="hljs-comment"># See http://nginx.org/en/docs/ngx_core_module.html#include</span><br>    <span class="hljs-comment"># for more information.</span><br>    <span class="hljs-attribute">include</span> /etc/nginx/conf.d/<span class="hljs-regexp">*.conf</span>;<br><br>    <span class="hljs-section">server</span> &#123;<br>    <span class="hljs-attribute">if</span> ($host = ilovemaths.tk) &#123;<br>        <span class="hljs-attribute">return</span> <span class="hljs-number">301</span> https://$host$request_uri;<br>    &#125; <span class="hljs-comment"># managed by Certbot</span><br><br>        <span class="hljs-attribute">listen</span>       <span class="hljs-number">80</span> default_server;<br>        <span class="hljs-attribute">listen</span>       [::]:<span class="hljs-number">80</span> default_server;<br>        <span class="hljs-attribute">server_name</span>  ilovemaths.tk;<br>        <span class="hljs-attribute">root</span>         /usr/share/nginx/html;<br><br>        <span class="hljs-comment"># Load configuration files for the default server block.</span><br>        <span class="hljs-attribute">include</span> /etc/nginx/default.d/<span class="hljs-regexp">*.conf</span>;<br><br>        <span class="hljs-attribute">location</span> / &#123;<br>        &#125;<br><br>        <span class="hljs-attribute">error_page</span> <span class="hljs-number">404</span> /<span class="hljs-number">404</span>.html;<br>        <span class="hljs-attribute">location</span> = /<span class="hljs-number">404</span>.html &#123;<br>        &#125;<br><br>        <span class="hljs-attribute">error_page</span> <span class="hljs-number">500</span> <span class="hljs-number">502</span> <span class="hljs-number">503</span> <span class="hljs-number">504</span> /50x.html;<br>        <span class="hljs-attribute">location</span> = /50x.html &#123;<br>        &#125;<br><br>&#125;<br><br><span class="hljs-comment"># Settings for a TLS enabled server.</span><br><br>    <span class="hljs-section">server</span> &#123;<br>        <span class="hljs-attribute">listen</span>       <span class="hljs-number">444</span> ssl http2 default_server;<br>        <span class="hljs-attribute">listen</span>       [::]:<span class="hljs-number">444</span> ssl http2 default_server;<br>        <span class="hljs-attribute">server_name</span>  ilovemaths.tk;<br>        <span class="hljs-attribute">root</span>         /usr/share/nginx/html;<br>    <span class="hljs-attribute">ssl_certificate</span> /etc/letsencrypt/live/ilovemaths.tk/fullchain.pem; <span class="hljs-comment"># managed by Certbot</span><br>    <span class="hljs-attribute">ssl_certificate_key</span> /etc/letsencrypt/live/ilovemaths.tk/privkey.pem; <span class="hljs-comment"># managed by Certbot</span><br>        <span class="hljs-attribute">ssl_session_cache</span> shared:SSL:<span class="hljs-number">1m</span>;<br>        <span class="hljs-attribute">ssl_session_timeout</span>  <span class="hljs-number">10m</span>;<br>        <span class="hljs-attribute">ssl_ciphers</span> HIGH:!aNULL:!MD5;<br>        <span class="hljs-attribute">ssl_prefer_server_ciphers</span> <span class="hljs-literal">on</span>;<br><br>        <span class="hljs-comment"># Load configuration files for the default server block.</span><br>        <span class="hljs-attribute">include</span> /etc/nginx/default.d/<span class="hljs-regexp">*.conf</span>;<br><br>        <span class="hljs-attribute">location</span> / &#123;<br>        &#125;<br><br>        <span class="hljs-attribute">error_page</span> <span class="hljs-number">404</span> /<span class="hljs-number">404</span>.html;<br>        <span class="hljs-attribute">location</span> = /<span class="hljs-number">404</span>.html &#123;<br>        &#125;<br><br>        <span class="hljs-attribute">error_page</span> <span class="hljs-number">500</span> <span class="hljs-number">502</span> <span class="hljs-number">503</span> <span class="hljs-number">504</span> /50x.html;<br>        <span class="hljs-attribute">location</span> = /50x.html &#123;<br>        &#125;<br><br>&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="安装certbot">安装certbot</h2>
-<figure class="highlight cmake"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cmake">apt <span class="hljs-keyword">install</span> python-certbot-nginx<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">apt <span class="hljs-keyword">install</span> python-certbot-nginx<br></code></pre></td></tr></table></figure>
 <h2 id="申请证书">申请证书</h2>
-<figure class="highlight brainfuck"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs brainfuck"><span class="hljs-comment">certbot</span> --<span class="hljs-comment">nginx</span> --<span class="hljs-comment">agree</span><span class="hljs-literal">-</span><span class="hljs-comment">tos</span> --<span class="hljs-comment">no</span><span class="hljs-literal">-</span><span class="hljs-comment">eff</span><span class="hljs-literal">-</span><span class="hljs-comment">email</span> --<span class="hljs-comment">email</span> <span class="hljs-comment">xxxx@gmail</span><span class="hljs-string">.</span><span class="hljs-comment">com</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">certbot</span> --<span class="hljs-comment">nginx</span> --<span class="hljs-comment">agree</span><span class="hljs-literal">-</span><span class="hljs-comment">tos</span> --<span class="hljs-comment">no</span><span class="hljs-literal">-</span><span class="hljs-comment">eff</span><span class="hljs-literal">-</span><span class="hljs-comment">email</span> --<span class="hljs-comment">email</span> <span class="hljs-comment">xxxx@gmail</span><span class="hljs-string">.</span><span class="hljs-comment">com</span><br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -308,6 +316,38 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI",
+          app_key: "jpWiVUMoucJREpt4DsJR4oys",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
             
           </article>
         </div>
@@ -368,9 +408,36 @@
      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
 
   
 
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1279870992" style="display: none"></span>
   
 </footer>
 
@@ -422,6 +489,8 @@
   <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
 
 
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
@@ -500,6 +569,23 @@
 
 
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1279870992&show=pic"
+            type="text/javascript"></script>
+  
 
 
 

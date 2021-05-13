@@ -6,7 +6,7 @@
   <link href="https://andyppang.github.io/atom.xml" rel="self"/>
   
   <link href="https://andyppang.github.io/"/>
-  <updated>2021-05-02T08:37:06.496Z</updated>
+  <updated>2021-05-13T08:40:38.039Z</updated>
   <id>https://andyppang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Pandoc的使用记录</title>
+    <link href="https://andyppang.github.io/2021/05/13/Pandoc%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
+    <id>https://andyppang.github.io/2021/05/13/Pandoc%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</id>
+    <published>2021-05-13T08:20:15.000Z</published>
+    <updated>2021-05-13T08:40:38.039Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="pandoc" scheme="https://andyppang.github.io/tags/pandoc/"/>
+    
+  </entry>
   
   <entry>
     <title>Github Page绑定域名</title>
@@ -285,7 +310,7 @@
         
     <summary type="html">&lt;h2 id=&quot;准备工作&quot;&gt;准备工作&lt;/h2&gt;
 &lt;p&gt;安装环境部署：&lt;/p&gt;
-&lt;p&gt;安装git： &lt;figure class=&quot;highlight cmake&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter hljs&quot;&gt;&lt;div class=&quot;hljs</summary>
+&lt;p&gt;安装git： &lt;figure class=&quot;highlight cmake&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
         
       
     
@@ -392,7 +417,7 @@
         
         
     <summary type="html">&lt;p&gt;脚本1 纯净，不安装任何东西。均为国内节点。&lt;/p&gt;
-&lt;figure class=&quot;highlight mipsasm&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter hljs&quot;&gt;&lt;div class=&quot;hljs</summary>
+&lt;figure class=&quot;highlight mipsasm&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
         
       
     
@@ -418,7 +443,7 @@
         
         
     <summary type="html">&lt;h2 id=&quot;安装docker和docker-compose&quot;&gt;安装docker和docker-compose：&lt;/h2&gt;
-&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter hljs&quot;&gt;&lt;div</summary>
+&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
         
       
     
@@ -549,34 +574,6 @@
     <category term="zerotier" scheme="https://andyppang.github.io/tags/zerotier/"/>
     
     <category term="merlin" scheme="https://andyppang.github.io/tags/merlin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记录newifi3重刷padavan以后的折腾</title>
-    <link href="https://andyppang.github.io/2020/11/14/%E8%AE%B0%E5%BD%95Newifi3%E9%87%8D%E5%88%B7Padavan%E5%8F%8A%E5%90%8E%E7%BB%AD%E6%8A%98%E8%85%BE/"/>
-    <id>https://andyppang.github.io/2020/11/14/%E8%AE%B0%E5%BD%95Newifi3%E9%87%8D%E5%88%B7Padavan%E5%8F%8A%E5%90%8E%E7%BB%AD%E6%8A%98%E8%85%BE/</id>
-    <published>2020-11-14T10:12:10.000Z</published>
-    <updated>2021-05-02T08:37:06.496Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;刷机前的准备&quot;&gt;刷机前的准备&lt;/h1&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    
-    <category term="newifi3" scheme="https://andyppang.github.io/tags/newifi3/"/>
-    
-    <category term="padavan" scheme="https://andyppang.github.io/tags/padavan/"/>
     
   </entry>
   

@@ -30,7 +30,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/shades-of-purple.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github.min.css" />
     
   
 
@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -65,11 +65,11 @@
 
 
 <body>
-  <header style="height: 40vh;">
+  <header style="height: 50vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>零和壹</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -159,7 +159,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('https://gitee.com/andypl/imagehost/raw/master/img/IndiaLitSpace_ZH-CN5941074986_1920x1080.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -203,6 +203,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -238,40 +246,40 @@
               <h2 id="什么是entware">什么是entware</h2>
 <p>Entware是一个适用于嵌入式系统的软件包库，使用opkg包管理系统进行管理，现在在官方的源上已经有超过2000个软件包了，可以说是非常的丰富 官方地址：<a target="_blank" rel="noopener" href="https://entware.net/" title="Entware">Entware</a></p>
 <h3 id="安装entware">安装entware</h3>
-<figure class="highlight vim"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vim">rm -rf /<span class="hljs-keyword">opt</span><br><span class="hljs-built_in">mkdir</span> /<span class="hljs-keyword">opt</span><br><span class="hljs-keyword">cd</span> /<span class="hljs-keyword">opt</span><br>wget -O - http://bin.entware.net/aarch64-k3.<span class="hljs-number">10</span>/installer/alternative.<span class="hljs-keyword">sh</span>  <span class="hljs-keyword">sh</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vim">rm -rf /<span class="hljs-keyword">opt</span><br><span class="hljs-built_in">mkdir</span> /<span class="hljs-keyword">opt</span><br><span class="hljs-keyword">cd</span> /<span class="hljs-keyword">opt</span><br>wget -O - http://bin.entware.net/aarch64-k3.<span class="hljs-number">10</span>/installer/alternative.<span class="hljs-keyword">sh</span>  <span class="hljs-keyword">sh</span><br></code></pre></td></tr></table></figure>
 <p>将自带opkg改名为opkg_bak暂时停用 灯大固件更新可以改回来免重装系统更新软件</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">mv <span class="hljs-regexp">/usr/</span>bin<span class="hljs-regexp">/opkg /u</span>sr<span class="hljs-regexp">/bin/</span>opkg_bak<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">mv <span class="hljs-regexp">/usr/</span>bin<span class="hljs-regexp">/opkg /u</span>sr<span class="hljs-regexp">/bin/</span>opkg_bak<br></code></pre></td></tr></table></figure>
 <h3 id="配置entware环境变量">配置entware环境变量</h3>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">vi <span class="hljs-regexp">/etc/</span>profile<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vi <span class="hljs-regexp">/etc/</span>profile<br></code></pre></td></tr></table></figure>
 <p>直接在前面/usr/sbin:\这行下直接添加下面两行并保存退出（ESC+:wq+Enter）</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">/opt/</span>bin:\<br><span class="hljs-regexp">/opt/</span>sbin:\<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/opt/</span>bin:\<br><span class="hljs-regexp">/opt/</span>sbin:\<br></code></pre></td></tr></table></figure>
 <p>使配置生效</p>
-<figure class="highlight gradle"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs gradle"><span class="hljs-keyword">source</span> <span class="hljs-regexp">/etc/</span>profile<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">source</span> <span class="hljs-regexp">/etc/</span>profile<br></code></pre></td></tr></table></figure>
 <h3 id="检查entware环境安装情况看是否报错">检查entware环境安装情况看是否报错</h3>
-<figure class="highlight ebnf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">opkg update</span><br><span class="hljs-attribute">opkg list</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">opkg update</span><br><span class="hljs-attribute">opkg list</span><br></code></pre></td></tr></table></figure>
 <p>opkg isntall 软件名</p>
 <h2 id="什么是onmp">什么是onmp</h2>
 <p>ONMP: Opkg + Nginx + MySQL + PHP</p>
 <p>这是一个用Linux Shell编写的脚本，可以为使用opkg包管理的路由器快速搭建Nginx/MySQL/PHP环境，并且内置了一些好用的网站程序一键免配置快速安装</p>
 <p>ONMP内置了以下程序的一键安装：</p>
-<figure class="highlight scss"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scss">(<span class="hljs-number">1</span>) phpMyAdmin（数据库管理工具）<br>(<span class="hljs-number">2</span>) WordPress（使用最广泛的CMS）<br>(<span class="hljs-number">3</span>) Owncloud（经典的私有云）<br>(<span class="hljs-number">4</span>) Nextcloud（Owncloud团队的新作，美观强大的个人云盘）<br>(<span class="hljs-number">5</span>) h5ai（优秀的文件目录）<br>(<span class="hljs-number">6</span>) Lychee（一个很好看，易于使用的Web相册）<br>(<span class="hljs-number">7</span>) Kodexplorer（可道云aka芒果云在线文档管理器）<br>(<span class="hljs-number">8</span>) Typecho (流畅的轻量级开源博客程序)<br>(<span class="hljs-number">9</span>) Z-Blog (体积小，速度快的PHP博客程序)<br>(<span class="hljs-number">10</span>) DzzOffice (开源办公平台)<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs scss">(<span class="hljs-number">1</span>) phpMyAdmin（数据库管理工具）<br>(<span class="hljs-number">2</span>) WordPress（使用最广泛的CMS）<br>(<span class="hljs-number">3</span>) Owncloud（经典的私有云）<br>(<span class="hljs-number">4</span>) Nextcloud（Owncloud团队的新作，美观强大的个人云盘）<br>(<span class="hljs-number">5</span>) h5ai（优秀的文件目录）<br>(<span class="hljs-number">6</span>) Lychee（一个很好看，易于使用的Web相册）<br>(<span class="hljs-number">7</span>) Kodexplorer（可道云aka芒果云在线文档管理器）<br>(<span class="hljs-number">8</span>) Typecho (流畅的轻量级开源博客程序)<br>(<span class="hljs-number">9</span>) Z-Blog (体积小，速度快的PHP博客程序)<br>(<span class="hljs-number">10</span>) DzzOffice (开源办公平台)<br></code></pre></td></tr></table></figure>
 <p>所有的软件包均通过 opkg 安装，一切配置均在脚本中可见，请放心使用 官方地址：<a target="_blank" rel="noopener" href="https://github.com/xzhih/ONMP" class="uri">https://github.com/xzhih/ONMP</a></p>
 <h3 id="安装教程">安装教程</h3>
 <ol type="1">
 <li><p>安装 Entware Entware-ng 是一个适用于嵌入式系统的软件包库，使用 opkg 包管理系统进行管理，现在在官方的源上已经有超过 2000 个软件包了，可以说是非常的丰富</p></li>
 <li><p>安装onmp 一键命令，复制-&gt;粘贴-&gt;回车</p>
-<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> sh <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>(curl -kfsSl https://raw.githubusercontent.com/xzhih/ONMP/master/oneclick.sh)&quot;</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> sh <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>(curl -kfsSl https://raw.githubusercontent.com/xzhih/ONMP/master/oneclick.sh)&quot;</span><br></code></pre></td></tr></table></figure>
 <p>一长串的复制如果出错，可以按照以下给出的命令，一步步进行安装</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-comment"># 进入 entware 挂载目录</span><br>cd /opt &amp;&amp; opkg install wget unzip <br><span class="hljs-comment"># 下载软件包</span><br>wget --no-check-certificate -O <span class="hljs-regexp">/opt/</span>onmp.zip https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/xzhih/</span>ONMP<span class="hljs-regexp">/archive/m</span>aster.zip <br><span class="hljs-comment"># 解压</span><br>unzip <span class="hljs-regexp">/opt/</span>onmp.zip <br>cd <span class="hljs-regexp">/opt/</span>ONMP-master <br><span class="hljs-comment"># 设置权限</span><br>chmod +x ./onmp.sh <br><span class="hljs-comment"># 运行</span><br>./onmp.sh <br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 进入 entware 挂载目录</span><br>cd /opt &amp;&amp; opkg install wget unzip <br><span class="hljs-comment"># 下载软件包</span><br>wget --no-check-certificate -O <span class="hljs-regexp">/opt/</span>onmp.zip https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/xzhih/</span>ONMP<span class="hljs-regexp">/archive/m</span>aster.zip <br><span class="hljs-comment"># 解压</span><br>unzip <span class="hljs-regexp">/opt/</span>onmp.zip <br>cd <span class="hljs-regexp">/opt/</span>ONMP-master <br><span class="hljs-comment"># 设置权限</span><br>chmod +x ./onmp.sh <br><span class="hljs-comment"># 运行</span><br>./onmp.sh <br></code></pre></td></tr></table></figure>
 <p>接下来选择1即可安装</p></li>
 </ol>
 <h3 id="使用教程">使用教程</h3>
-<figure class="highlight arduino"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs arduino">管理：onmp open<br>启动、停止、重启：onmp startstoprestart<br>查看网站列表：onmp list <br></code></pre></div></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs arduino">管理：onmp open<br>启动、停止、重启：onmp startstoprestart<br>查看网站列表：onmp list <br></code></pre></td></tr></table></figure>
 <p>主要软件包的管理命令：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs nginx"><span class="hljs-attribute">Nginx</span> 管理命令<br>onmp nginx startrestartstop<br><br>MySQL 管理命令<br>onmp mysql startrestartstop<br><br>PHP 管理命令<br>onmp php startrestartstop<br><br>Redis 管理命令<br>onmp redis startrestartstop<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">Nginx</span> 管理命令<br>onmp nginx startrestartstop<br><br>MySQL 管理命令<br>onmp mysql startrestartstop<br><br>PHP 管理命令<br>onmp php startrestartstop<br><br>Redis 管理命令<br>onmp redis startrestartstop<br></code></pre></td></tr></table></figure>
 <h3 id="探针安装">探针安装</h3>
 <p>正常情况下如果以上步骤都没有出错的话，会自动安装了探针，但是我的没有 手动下载：</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">cd <span class="hljs-regexp">/opt/</span>wwwroot/default<br>wget https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/WuSiYu/</span>PHP-Probe<span class="hljs-regexp">/master/</span>tz.php<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">cd <span class="hljs-regexp">/opt/</span>wwwroot/default<br>wget https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/WuSiYu/</span>PHP-Probe<span class="hljs-regexp">/master/</span>tz.php<br></code></pre></td></tr></table></figure>
 <p>进入http://localhost:81 即可查看</p>
 <p>参考原文：<a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/thread-343953-1-1.html" class="uri">https://www.right.com.cn/forum/thread-343953-1-1.html</a> <a target="_blank" rel="noopener" href="http://nanodm.net/post/nanodm-n1-20190411-changelog/" class="uri">http://nanodm.net/post/nanodm-n1-20190411-changelog/</a> <a target="_blank" rel="noopener" href="https://gitee.com/8ox86/phicomm-n1-issue/wikis/entware%20guide?sort_id=1368793">https://gitee.com/8ox86/phicomm-n1-issue/wikis/entware%20guide?sort_id=1368793</a></p>
 
@@ -332,6 +340,38 @@
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI",
+          app_key: "jpWiVUMoucJREpt4DsJR4oys",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -391,9 +431,36 @@
      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
 
   
 
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1279870992" style="display: none"></span>
   
 </footer>
 
@@ -445,6 +512,8 @@
   <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
 
 
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
@@ -523,6 +592,23 @@
 
 
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1279870992&show=pic"
+            type="text/javascript"></script>
+  
 
 
 
