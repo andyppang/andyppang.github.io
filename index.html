@@ -183,6 +183,115 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/05/17/%E6%A2%85%E6%9E%97%E5%86%8D%E8%A3%85zerotier1-63%E7%89%88%E6%9C%AC%E7%9A%84%E5%9D%91/" target="_self">
+          梅林再装zerotier1.63版本的坑
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/17/%E6%A2%85%E6%9E%97%E5%86%8D%E8%A3%85zerotier1-63%E7%89%88%E6%9C%AC%E7%9A%84%E5%9D%91/" target="_self">
+          
+          
+            
+          
+          起因
+昨天不知为何，梅林路由器ac66u在定时重启以后就不正常了，cpu占用率两个都维持在100%，具体表现就是所有设备连不上wifi，网页登录后台管理地址异常慢，半年前也出现过一次类似的情况。
+经过
+
+拔掉U盘，重启设备，用电脑有线连接路由器，龟速登录上后台管理地址，然后在系统管理里面找到 format jffs on next boot （大概叫这个名字吧）打勾，然后再重启路由器，这样就吧jf
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-17 10:18" pubdate>
+              2021-05-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/zerotier/">zerotier</a>
+            
+              <a href="/tags/merlin/">merlin</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/16/%E8%A7%A3%E5%86%B3docker%E6%89%80%E5%9C%A8var%E5%88%86%E5%8C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+          解决docker所在var分区磁盘空间不足的问题
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/16/%E8%A7%A3%E5%86%B3docker%E6%89%80%E5%9C%A8var%E5%88%86%E5%8C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+          
+          
+            
+          
+          尴尬
+今天在 docker pull jupyter/datascience-notebook 的时候，遇到了尴尬的问题：系统提示磁盘空间不足。仔细一看，原来是docker所在的var分区当时自动分区的时候只分了1.7个G，现在下载这个玩意儿解压缩以后有几个G，好尬尬
+解决方案
+首先尝试了给分区扩容，然后发现自己对linux纯命令行利用命令进行扩容一点都不知道，即使是在参看网上很多的教程以后，尝试
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-16 00:17" pubdate>
+              2021-05-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/05/14/%E6%9E%81%E5%80%BC%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E6%80%9D%E8%B7%AF%E6%B6%88%E5%8F%82%E7%9A%84%E6%93%8D%E4%BD%9C/" target="_self">
           极值点偏移的思路消参的操作
         </a>
@@ -650,133 +759,6 @@ Microsoft To-Do 其实可以算是有标签的，在标题里加个空格，再�
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Microsoft-To-Do/">Microsoft To Do</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/12/%E5%BE%AE%E8%BD%AF%E5%85%8D%E8%B4%B9%E4%B8%BB%E6%9C%BAAzure%E8%AF%95%E7%94%A8%E8%AE%B0%E5%BD%95/" target="_self">
-          微软免费主机Azure试用记录
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/12/%E5%BE%AE%E8%BD%AF%E5%85%8D%E8%B4%B9%E4%B8%BB%E6%9C%BAAzure%E8%AF%95%E7%94%A8%E8%AE%B0%E5%BD%95/" target="_self">
-          
-          
-            
-          
-          官方说明
-https://azure.microsoft.com/zh-cn/free/free-account-faq/
-与主机相关的免费服务
-
-
-
-产品
-免费时长
-
-
-
-
-通过将两个 64 GB (P6) SSD 存储合并得到的 128 GB 托管磁盘，外加 1 GB 快照和 2 百万个 I/O 操作
-12个月
-
-
-15 GB 的出站数据传输带宽，无限免费入站数据传输
-12个月
-
-
-750 小
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-12 00:00" pubdate>
-              2021-04-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Azure/">Azure</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/08/%E7%A6%81%E6%AD%A2%E6%81%B6%E6%84%8FIP%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
-          禁止恶意ip连接服务器
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/08/%E7%A6%81%E6%AD%A2%E6%81%B6%E6%84%8FIP%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
-          
-          
-            
-          
-          实现原理
-由于 /var/log/auth.log 会记录所有用户的登录信息，通过提取 Failed password 类型的连接ip，然后将其加入 /etc/hosts.deny 文件，就可以禁止该ip再次连接。
-具体步骤
-1.首先确保安装了python
-2.然后在 /home 目录下 touch bannedip.py ，写入如下内容：
-1234567891011121314151617181
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-08 16:15" pubdate>
-              2021-04-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">python</a>
-            
-              <a href="/tags/ban-ip/">ban ip</a>
             
           </div>
         

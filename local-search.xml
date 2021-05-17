@@ -4,6 +4,58 @@
   
   
   <entry>
+    <title>梅林再装zerotier1.63版本的坑</title>
+    <link href="/2021/05/17/%E6%A2%85%E6%9E%97%E5%86%8D%E8%A3%85zerotier1-63%E7%89%88%E6%9C%AC%E7%9A%84%E5%9D%91/"/>
+    <url>/2021/05/17/%E6%A2%85%E6%9E%97%E5%86%8D%E8%A3%85zerotier1-63%E7%89%88%E6%9C%AC%E7%9A%84%E5%9D%91/</url>
+    
+    <content type="html"><![CDATA[<h2 id="起因">起因</h2><p>昨天不知为何，梅林路由器ac66u在定时重启以后就不正常了，cpu占用率两个都维持在100%，具体表现就是所有设备连不上wifi，网页登录后台管理地址异常慢，半年前也出现过一次类似的情况。</p><h2 id="经过">经过</h2><ol type="1"><li><p>拔掉U盘，重启设备，用电脑有线连接路由器，龟速登录上后台管理地址，然后在系统管理里面找到 <code>format jffs on next boot</code> （大概叫这个名字吧）打勾，然后再重启路由器，这样就吧jffs分区进行了格式化，影响就是 <code>软件中心</code> 需要重装，以及配置的<code>entware</code> 环境需要重装，当然也包括通过entware安装的 <code>zerotier</code></p></li><li><p>格式化U盘，重新安装 <code>entware</code></p></li><li><p>下面开始安装 <code>zerotier</code> ，前方大坑：</p><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">opkg update<br>opkg install zerotier<br>modprobe tun<br><span class="hljs-meta"># 如果在zerotier网页端建立了路由表的话，先删除，不然下面启动连接时会造成路由器死机</span><br>zerotier-one -d<br><span class="hljs-meta"># 这时出现了一个warning，没在意继续</span><br>zerotier-<span class="hljs-keyword">cli</span> join xxxxxx <span class="hljs-meta"># 注意在网页端开放接受连接</span><br>zerotier-<span class="hljs-keyword">cli</span> listnetworks<br></code></pre></td></tr></table></figure><p>ping一下获取到的ip没有问题，但是ping其它设备就是不通，反复重启、重装试了好多次都不行</p></li><li><p>开始认真看下那个 <code>Warning:WARNING: ioctl() failed setting up Linux tap device(Set Mac)</code> ，大意是说 <code>tun</code> 模块无法设置mac地址，最后终于找到这个<a href="https://github.com/zerotier/ZeroTierOne/issues/1314#issuecomment-814862249">issue</a>，原来是 <code>zerotier</code> 包升级到了1.63，原来安装的是1.46版本没有问题，回退到1.46就可以了</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">opkg</span> remove zerotier<br><span class="hljs-attribute">opkg</span> install http://bin.entware.net/armv<span class="hljs-number">7</span>sf-k<span class="hljs-number">2</span>.<span class="hljs-number">6</span>/archive/zerotier_<span class="hljs-number">1</span>.<span class="hljs-number">4</span>.<span class="hljs-number">6</span>-<span class="hljs-number">5</span>_armv<span class="hljs-number">7</span>-<span class="hljs-number">2</span>.<span class="hljs-number">6</span>.ipk<br></code></pre></td></tr></table></figure><p>自己也曾想过这个问题，但是苦苦找不到 <code>entware</code> 的旧包的源，原来所有版本的都存放在这里 <code>http://bin.entware.net/armv7sf-k2.6/archive</code> ，都在 <code>archive</code> 归档文件夹下，受教啦！！</p></li><li><p>本来很欢快的重新走一下上面的3，不知道啥奇怪问题，加入网络网页端都不提示了，又是折腾好久，最后删除了 <code>/opt/entware/var/lib/zerotier-one</code> 整个文件夹，再重新安装，终于连上了，能够ping通其它设备了，然后又遇到一个奇怪的问题，每次ping完其它设备，<code>Ctrl+c</code> 结束ping的时候，<code>zerotier-one</code> 服务也停止了，不知为何，<code>ping xxx -c 4</code> 貌似没有这个问题。</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>zerotier</tag>
+      
+      <tag>merlin</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>解决docker所在var分区磁盘空间不足的问题</title>
+    <link href="/2021/05/16/%E8%A7%A3%E5%86%B3docker%E6%89%80%E5%9C%A8var%E5%88%86%E5%8C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <url>/2021/05/16/%E8%A7%A3%E5%86%B3docker%E6%89%80%E5%9C%A8var%E5%88%86%E5%8C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h2 id="尴尬">尴尬</h2><p>今天在 <code>docker pull jupyter/datascience-notebook</code> 的时候，遇到了尴尬的问题：系统提示磁盘空间不足。仔细一看，原来是docker所在的var分区当时自动分区的时候只分了1.7个G，现在下载这个玩意儿解压缩以后有几个G，好尬尬</p><h2 id="解决方案">解决方案</h2><p>首先尝试了给分区扩容，然后发现自己对linux纯命令行利用命令进行扩容一点都不知道，即使是在参看网上很多的教程以后，尝试进行操作也没有成功，干脆就放弃了这条路。就在一头莫展的时候发现了通过创建软连接的方式，将docker所在目录转移到其他空间充足的地方，比如我的home分区还剩十多个G</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">service stop docker<br>mkdir <span class="hljs-regexp">/home/</span>docker<br>mv <span class="hljs-regexp">/var/</span>lib<span class="hljs-regexp">/docker /</span>home/docker<br>ln -s <span class="hljs-regexp">/home/</span>docker <span class="hljs-regexp">/var/</span>lib/docker<br>service start docker<br></code></pre></td></tr></table></figure><p>docker 默认的目录是在 <code>/var/lib/docker</code> 下，再次启动docker以后，docker还是只认这个目录，但是已经被我们软连接到home文件夹下了，再去pull以后，没有再报错了，并且发现 <code>/home/docker</code> 文件夹确实变大了，说明成功了。没想到通过软链接曲线救国，解决了空间不足的问题。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>极值点偏移的思路消参的操作</title>
     <link href="/2021/05/14/%E6%9E%81%E5%80%BC%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E6%80%9D%E8%B7%AF%E6%B6%88%E5%8F%82%E7%9A%84%E6%93%8D%E4%BD%9C/"/>
     <url>/2021/05/14/%E6%9E%81%E5%80%BC%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E6%80%9D%E8%B7%AF%E6%B6%88%E5%8F%82%E7%9A%84%E6%93%8D%E4%BD%9C/</url>

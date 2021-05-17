@@ -18,7 +18,7 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-  <title>极值点偏移的思路消参的操作 - Wish You Success</title>
+  <title>梅林再装zerotier1.63版本的坑 - Wish You Success</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -164,7 +164,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="极值点偏移的思路消参的操作">
+            <span class="h2" id="subtitle" title="梅林再装zerotier1.63版本的坑">
               
             </span>
 
@@ -174,8 +174,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-05-14 14:38" pubdate>
-        2021年5月14日 下午
+      <time datetime="2021-05-17 10:18" pubdate>
+        2021年5月17日 上午
       </time>
     </span>
   
@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      527 字
+      602 字
     </span>
   
 
@@ -234,36 +234,28 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">极值点偏移的思路消参的操作</h1>
+            <h1 style="display: none">梅林再装zerotier1.63版本的坑</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月14日 下午
+                  本文最后更新于：2021年5月17日 上午
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="题">题</h2>
-<p>已知函数<span class="math inline">\(f(x)=axe^{2-x}-2(x-1)^2,a\in\mathbf{R}\)</span></p>
-<p>（1）讨论<span class="math inline">\(f(x)\)</span>的单调性；</p>
-<p>（2）当<span class="math inline">\(0&lt;a&lt;1\)</span>时，证明：<span class="math inline">\(f(x)\)</span>有两个零点<span class="math inline">\(x_1,x_2\)</span>，且<span class="math inline">\(x_1x_2&lt;1\)</span></p>
-<h2 id="解">解</h2>
-<p>解析：（1）<span class="math inline">\(f&#39;(x)=ae^{2-x}(1-x)-4(x-1)=(1-x)(ae^{2-x}+4)\)</span></p>
-<p>当<span class="math inline">\(a\ge0\)</span>时，<span class="math inline">\(f(x)\)</span>在<span class="math inline">\((-\infty,1)\)</span>单增，在<span class="math inline">\((1,+\infty)\)</span>单减</p>
-<p>当<span class="math inline">\(a&lt;0\)</span>时，令<span class="math inline">\(f&#39;(x)=0\)</span>得<span class="math inline">\(x_1=1\)</span>或<span class="math inline">\(x_2=2-\ln(-\dfrac{4}{a})\)</span></p>
-<p>若<span class="math inline">\(a=-\dfrac{4}{e}\)</span>，则<span class="math inline">\(x_1=x_2\)</span>，<span class="math inline">\(f&#39;(x)\le0\)</span>，于是<span class="math inline">\(f(x)\)</span>在<span class="math inline">\(\mathbf{R}\)</span>上单减</p>
-<p>若<span class="math inline">\(a&lt;-\dfrac{4}{e}\)</span>，则<span class="math inline">\(x_1&lt;x_2\)</span>，于是<span class="math inline">\(f(x)\)</span>在<span class="math inline">\((-\infty,1)\)</span>单减，<span class="math inline">\((1,x_2)\)</span>单增，<span class="math inline">\((x_2,+\infty)\)</span>单减</p>
-<p>若<span class="math inline">\(-\dfrac{4}{e}&lt;a&lt;0\)</span>，则<span class="math inline">\(x_2&lt;x_1\)</span>，于是<span class="math inline">\(f(x)\)</span>在<span class="math inline">\((-\infty,x_2)\)</span>单减，<span class="math inline">\((x_2,1)\)</span>单增，<span class="math inline">\((1,+\infty)\)</span>单减</p>
-<p>（2）<span class="math inline">\(0&lt;a&lt;1\)</span>时，由（1）知<span class="math inline">\(f(x)\)</span>在<span class="math inline">\((-\infty,1)\)</span>单增，在<span class="math inline">\((1,+\infty)\)</span>单减，<span class="math inline">\(f(0)=-2&lt;0\)</span>，<span class="math inline">\(f(1)=ae&gt;0\)</span>，<span class="math inline">\(f(2)=2a-2&lt;0\)</span></p>
-<p>于是<span class="math inline">\(f(x)\)</span>在<span class="math inline">\((0,1)\)</span>和<span class="math inline">\((1,2)\)</span>内各有一个零点<span class="math inline">\(x_1,x_2\)</span>，由<span class="math inline">\(f(x_1)=0\)</span>得<span class="math inline">\(ax_1e^{2-x_1}=2(x_1-1)^2\)</span>，即<span class="math inline">\(a=\dfrac{2(x_1-1)^2}{x_1e^{2-x_1}}\)</span></p>
-<p>欲证<span class="math inline">\(x_1x_2&lt;1\)</span>，即证<span class="math inline">\(x_2&lt;\dfrac{1}{x_1}\)</span>，由于<span class="math inline">\(x_2,\dfrac{1}{x_1}\in(1,+\infty)\)</span>，只需证<span class="math inline">\(0=f(x_2)&gt;f(\dfrac{1}{x_1})\)</span>，即证</p>
-<p><span class="math inline">\(f(\dfrac{1}{x_1})=a\cdot\dfrac{1}{x_1}\cdot e^{2-\dfrac{1}{x_1}}-2(\dfrac{1}{x_1}-1)^2&lt;0\)</span>，将<span class="math inline">\(a\)</span>代入化简后即证<span class="math inline">\(e^{x_1-\dfrac{1}{x_1}}&lt;1\)</span></p>
-<p>由于<span class="math inline">\(0&lt;x_1&lt;1\)</span>，则上式显然成立，得证</p>
-<h2 id="评">评</h2>
+              <h2 id="起因">起因</h2>
+<p>昨天不知为何，梅林路由器ac66u在定时重启以后就不正常了，cpu占用率两个都维持在100%，具体表现就是所有设备连不上wifi，网页登录后台管理地址异常慢，半年前也出现过一次类似的情况。</p>
+<h2 id="经过">经过</h2>
 <ol type="1">
-<li>第（1）问解不等式<span class="math inline">\((1-x)(ae^{2-x}+4)&gt;0\)</span>时，由于<span class="math inline">\(y=ae^{2-x}+4(a&lt;0)\)</span>是个增函数，所以相当于解<span class="math inline">\((1-x)[x-(2-\ln(-\dfrac{4}{a}))]&gt;0\)</span>，可能有些同学绕不清楚</li>
-<li>第（2）问在1的右侧找点小于0时，注意观察找到<span class="math inline">\(f(2)\)</span>，刚好可以利用题目条件<span class="math inline">\(a\)</span>的范围</li>
-<li>如果采用传统的极值点偏移构造函数的思路，将会得到非常复杂的函数解析式，如果不消参处理，基本完蛋，切忌不写出解析式直接求导的操作，比如直接拿着<span class="math inline">\(f(x)-f(\dfrac{1}{x})\)</span>利用复合函数求导去了。</li>
+<li><p>拔掉U盘，重启设备，用电脑有线连接路由器，龟速登录上后台管理地址，然后在系统管理里面找到 <code>format jffs on next boot</code> （大概叫这个名字吧）打勾，然后再重启路由器，这样就吧jffs分区进行了格式化，影响就是 <code>软件中心</code> 需要重装，以及配置的<code>entware</code> 环境需要重装，当然也包括通过entware安装的 <code>zerotier</code></p></li>
+<li><p>格式化U盘，重新安装 <code>entware</code></p></li>
+<li><p>下面开始安装 <code>zerotier</code> ，前方大坑：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">opkg update<br>opkg install zerotier<br>modprobe tun<br><span class="hljs-meta"># 如果在zerotier网页端建立了路由表的话，先删除，不然下面启动连接时会造成路由器死机</span><br>zerotier-one -d<br><span class="hljs-meta"># 这时出现了一个warning，没在意继续</span><br>zerotier-<span class="hljs-keyword">cli</span> join xxxxxx <span class="hljs-meta"># 注意在网页端开放接受连接</span><br>zerotier-<span class="hljs-keyword">cli</span> listnetworks<br></code></pre></td></tr></table></figure>
+<p>ping一下获取到的ip没有问题，但是ping其它设备就是不通，反复重启、重装试了好多次都不行</p></li>
+<li><p>开始认真看下那个 <code>Warning:WARNING: ioctl() failed setting up Linux tap device(Set Mac)</code> ，大意是说 <code>tun</code> 模块无法设置mac地址，最后终于找到这个<a target="_blank" rel="noopener" href="https://github.com/zerotier/ZeroTierOne/issues/1314#issuecomment-814862249">issue</a>，原来是 <code>zerotier</code> 包升级到了1.63，原来安装的是1.46版本没有问题，回退到1.46就可以了</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">opkg</span> remove zerotier<br><span class="hljs-attribute">opkg</span> install http://bin.entware.net/armv<span class="hljs-number">7</span>sf-k<span class="hljs-number">2</span>.<span class="hljs-number">6</span>/archive/zerotier_<span class="hljs-number">1</span>.<span class="hljs-number">4</span>.<span class="hljs-number">6</span>-<span class="hljs-number">5</span>_armv<span class="hljs-number">7</span>-<span class="hljs-number">2</span>.<span class="hljs-number">6</span>.ipk<br></code></pre></td></tr></table></figure>
+<p>自己也曾想过这个问题，但是苦苦找不到 <code>entware</code> 的旧包的源，原来所有版本的都存放在这里 <code>http://bin.entware.net/armv7sf-k2.6/archive</code> ，都在 <code>archive</code> 归档文件夹下，受教啦！！</p></li>
+<li><p>本来很欢快的重新走一下上面的3，不知道啥奇怪问题，加入网络网页端都不提示了，又是折腾好久，最后删除了 <code>/opt/entware/var/lib/zerotier-one</code> 整个文件夹，再重新安装，终于连上了，能够ping通其它设备了，然后又遇到一个奇怪的问题，每次ping完其它设备，<code>Ctrl+c</code> 结束ping的时候，<code>zerotier-one</code> 服务也停止了，不知为何，<code>ping xxx -c 4</code> 貌似没有这个问题。</p></li>
 </ol>
 
             </div>
@@ -274,7 +266,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+                      <a class="hover-with-bg" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
                     
                   </div>
                 
@@ -282,9 +274,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%9E%81%E5%80%BC%E7%82%B9%E5%81%8F%E7%A7%BB/">极值点偏移</a>
+                      <a class="hover-with-bg" href="/tags/zerotier/">zerotier</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%AF%BC%E6%95%B0/">导数</a>
+                      <a class="hover-with-bg" href="/tags/merlin/">merlin</a>
                     
                   </div>
                 
@@ -301,18 +293,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/05/16/%E8%A7%A3%E5%86%B3docker%E6%89%80%E5%9C%A8var%E5%88%86%E5%8C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">解决docker所在var分区磁盘空间不足的问题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/05/13/Pandoc%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">
-                        <span class="hidden-mobile">Pandoc的使用记录</span>
+                      <a href="/2021/05/16/%E8%A7%A3%E5%86%B3docker%E6%89%80%E5%9C%A8var%E5%88%86%E5%8C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/">
+                        <span class="hidden-mobile">解决docker所在var分区磁盘空间不足的问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
