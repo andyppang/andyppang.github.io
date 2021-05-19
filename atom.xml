@@ -6,7 +6,7 @@
   <link href="https://andyppang.github.io/atom.xml" rel="self"/>
   
   <link href="https://andyppang.github.io/"/>
-  <updated>2021-05-17T03:07:46.403Z</updated>
+  <updated>2021-05-19T01:11:07.197Z</updated>
   <id>https://andyppang.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>梅林再装zerotier1.63版本的坑</title>
+    <title>deploy免输密码</title>
+    <link href="https://andyppang.github.io/2021/05/19/deploy%E5%85%8D%E8%BE%93%E5%AF%86%E7%A0%81/"/>
+    <id>https://andyppang.github.io/2021/05/19/deploy%E5%85%8D%E8%BE%93%E5%AF%86%E7%A0%81/</id>
+    <published>2021-05-19T01:07:28.000Z</published>
+    <updated>2021-05-19T01:11:07.197Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;按照网上的方法，将deploy的https协议改为git协议&lt;/p&gt;
+&lt;p&gt;修改hexo的 &lt;code&gt;_config.yml&lt;/code&gt; &lt;figure class=&quot;highlight dts&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="hexo" scheme="https://andyppang.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>梅林再装zerotier1.6.3版本的坑</title>
     <link href="https://andyppang.github.io/2021/05/17/%E6%A2%85%E6%9E%97%E5%86%8D%E8%A3%85zerotier1-63%E7%89%88%E6%9C%AC%E7%9A%84%E5%9D%91/"/>
     <id>https://andyppang.github.io/2021/05/17/%E6%A2%85%E6%9E%97%E5%86%8D%E8%A3%85zerotier1-63%E7%89%88%E6%9C%AC%E7%9A%84%E5%9D%91/</id>
     <published>2021-05-17T02:18:28.000Z</published>
-    <updated>2021-05-17T03:07:46.403Z</updated>
+    <updated>2021-05-17T06:51:31.955Z</updated>
     
     
       
@@ -541,35 +567,6 @@
     <category term="p2pspider" scheme="https://andyppang.github.io/tags/p2pspider/"/>
     
     <category term="live-torrent" scheme="https://andyppang.github.io/tags/live-torrent/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>https证书申请及安装</title>
-    <link href="https://andyppang.github.io/2020/12/09/Https%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/"/>
-    <id>https://andyppang.github.io/2020/12/09/Https%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/</id>
-    <published>2020-12-09T14:16:22.000Z</published>
-    <updated>2021-05-02T08:37:06.496Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;使用acme.sh申请证书&quot;&gt;使用acme.sh申请证书&lt;/h1&gt;
-&lt;h2 id=&quot;准备工作&quot;&gt;准备工作&lt;/h2&gt;
-&lt;p&gt;1.将域名解析到vps&lt;/p&gt;
-&lt;p&gt;2.vps安装nginx，注意找到nginx默认的网站文件夹，下面安装有用&lt;/p&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    
-    <category term="https证书" scheme="https://andyppang.github.io/tags/https%E8%AF%81%E4%B9%A6/"/>
     
   </entry>
   
