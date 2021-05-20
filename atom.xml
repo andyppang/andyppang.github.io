@@ -6,7 +6,7 @@
   <link href="https://andyppang.github.io/atom.xml" rel="self"/>
   
   <link href="https://andyppang.github.io/"/>
-  <updated>2021-05-19T01:11:07.197Z</updated>
+  <updated>2021-05-20T06:03:24.977Z</updated>
   <id>https://andyppang.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>椭圆上两点连线过定点问题的简化计算</title>
+    <link href="https://andyppang.github.io/2021/05/20/%E6%A4%AD%E5%9C%86%E4%B8%8A%E4%B8%A4%E7%82%B9%E8%BF%9E%E7%BA%BF%E8%BF%87%E5%AE%9A%E7%82%B9%E9%97%AE%E9%A2%98%E7%9A%84%E7%AE%80%E5%8C%96%E8%AE%A1%E7%AE%97/"/>
+    <id>https://andyppang.github.io/2021/05/20/%E6%A4%AD%E5%9C%86%E4%B8%8A%E4%B8%A4%E7%82%B9%E8%BF%9E%E7%BA%BF%E8%BF%87%E5%AE%9A%E7%82%B9%E9%97%AE%E9%A2%98%E7%9A%84%E7%AE%80%E5%8C%96%E8%AE%A1%E7%AE%97/</id>
+    <published>2021-05-20T05:10:07.000Z</published>
+    <updated>2021-05-20T06:03:24.977Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;椭圆上两点连线过定点问题的计算优化&quot;&gt;椭圆上两点连线过定点问题的计算优化&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;题&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;已知椭圆&lt;span class=&quot;math</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="解析几何" scheme="https://andyppang.github.io/tags/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/"/>
+    
+    <category term="椭圆" scheme="https://andyppang.github.io/tags/%E6%A4%AD%E5%9C%86/"/>
+    
+    <category term="定点问题" scheme="https://andyppang.github.io/tags/%E5%AE%9A%E7%82%B9%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>deploy免输密码</title>
@@ -537,36 +568,6 @@
     
     
     <category term="VPS测试脚本" scheme="https://andyppang.github.io/tags/VPS%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>docker安装p2pspider和live-torrent</title>
-    <link href="https://andyppang.github.io/2020/12/15/Docker%E5%AE%89%E8%A3%85P2pSpider%E5%92%8Clive-torrent/"/>
-    <id>https://andyppang.github.io/2020/12/15/Docker%E5%AE%89%E8%A3%85P2pSpider%E5%92%8Clive-torrent/</id>
-    <published>2020-12-15T09:53:58.000Z</published>
-    <updated>2021-05-02T08:37:06.492Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;安装docker和docker-compose&quot;&gt;安装docker和docker-compose：&lt;/h2&gt;
-&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    
-    <category term="docker" scheme="https://andyppang.github.io/tags/docker/"/>
-    
-    <category term="p2pspider" scheme="https://andyppang.github.io/tags/p2pspider/"/>
-    
-    <category term="live-torrent" scheme="https://andyppang.github.io/tags/live-torrent/"/>
     
   </entry>
   

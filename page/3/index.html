@@ -40,7 +40,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":"nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI","app_key":"jpWiVUMoucJREpt4DsJR4oys","server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -176,6 +176,61 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/15/Docker%E5%AE%89%E8%A3%85P2pSpider%E5%92%8Clive-torrent/" target="_self">
+          docker安装p2pspider和live-torrent
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/15/Docker%E5%AE%89%E8%A3%85P2pSpider%E5%92%8Clive-torrent/" target="_self">
+          
+          
+            
+          
+          安装docker和docker-compose：
+1234567apt -y updateapt -y install curlcurl -sSL https://get.docker.com/  shsystemctl start dockersystemctl enable dockercurl -L https://github.com/docker/compose/releases/dow
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-15 17:53" pubdate>
+              2020-12-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">docker</a>
+            
+              <a href="/tags/p2pspider/">p2pspider</a>
+            
+              <a href="/tags/live-torrent/">live-torrent</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -693,61 +748,6 @@ https://mobaxterm.mobatek.net/download-home-edition.html
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/10/15/ZeroTierOne%E5%88%9B%E5%BB%BA%E5%A4%A7%E5%B1%80%E5%9F%9F%E7%BD%91/" target="_self">
-          ZeroTierOne创建大局域网
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/10/15/ZeroTierOne%E5%88%9B%E5%BB%BA%E5%A4%A7%E5%B1%80%E5%9F%9F%E7%BD%91/" target="_self">
-          
-          
-            
-          
-          ZeroTier原理
-这个过程如下：
-
-A 想要将数据包发送到 B，但由于它没有直接路径，因此将其向上发送到 R。
-如果 R 有直接链接到 B，它会转发数据包给 B。否则它会继续向上游发送数据包，直到达到行星根(planet)。行星根知道所有节点，所以如果 B 在线，最终数据包将到达 B。
-R 还向 A 发送一个名为会和的消息，包含有关它如何到达 B 的提示。同时，将会和发给 B，通知 B 它如何
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-15 00:53" pubdate>
-              2020-10-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/zerotier/">zerotier</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -809,21 +809,22 @@ R 还向 A 发送一个名为会和的消息，包含有关它如何到达 B 的
 
     
       
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
             总访问量 
-            <span id="busuanzi_value_site_pv"></span>
+            <span id="leancloud-site-pv"></span>
              次
           </span>
       
       
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
             总访客数 
-            <span id="busuanzi_value_site_uv"></span>
+            <span id="leancloud-site-uv"></span>
              人
           </span>
       
+
     
   </div>
 
@@ -881,6 +882,8 @@ R 还向 A 发送一个名为会和的消息，包含有关它如何到达 B 的
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
+
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
