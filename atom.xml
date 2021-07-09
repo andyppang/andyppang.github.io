@@ -6,7 +6,7 @@
   <link href="https://andyppang.github.io/atom.xml" rel="self"/>
   
   <link href="https://andyppang.github.io/"/>
-  <updated>2021-06-03T15:01:01.262Z</updated>
+  <updated>2021-07-09T06:10:10.305Z</updated>
   <id>https://andyppang.github.io/</id>
   
   <author>
@@ -15,6 +15,117 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>远程桌面控制软件Rustdesk</title>
+    <link href="https://andyppang.github.io/2021/07/09/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%8E%A7%E5%88%B6%E8%BD%AF%E4%BB%B6Rustdesk/"/>
+    <id>https://andyppang.github.io/2021/07/09/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%8E%A7%E5%88%B6%E8%BD%AF%E4%BB%B6Rustdesk/</id>
+    <published>2021-07-09T05:54:00.000Z</published>
+    <updated>2021-07-09T06:10:10.305Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;下载地址&quot;&gt;下载地址&lt;/h2&gt;
+&lt;p&gt;在控制端和主机端都下载好&lt;/p&gt;
+&lt;p&gt;1.如果是windows桌面版需要先下载dll动态库&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="Rustdesk" scheme="https://andyppang.github.io/tags/Rustdesk/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021全国乙卷第12，20，21题解</title>
+    <link href="https://andyppang.github.io/2021/06/26/2021%E5%85%A8%E5%9B%BD%E4%B9%99%E5%8D%B7%E7%AC%AC12%EF%BC%8C20%EF%BC%8C21%E9%A2%98%E8%A7%A3/"/>
+    <id>https://andyppang.github.io/2021/06/26/2021%E5%85%A8%E5%9B%BD%E4%B9%99%E5%8D%B7%E7%AC%AC12%EF%BC%8C20%EF%BC%8C21%E9%A2%98%E8%A7%A3/</id>
+    <published>2021-06-26T08:44:00.000Z</published>
+    <updated>2021-07-09T01:03:47.777Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;全国乙卷&quot;&gt;2021全国乙卷&lt;/h2&gt;
+&lt;p&gt;12.设&lt;span class=&quot;math inline&quot;&gt;\(a=2\ln1.01\)&lt;/span&gt;，&lt;span class=&quot;math inline&quot;&gt;\(b=\ln1.02\)&lt;/span&gt;，&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="高考题" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/%E9%AB%98%E8%80%83%E9%A2%98/"/>
+    
+    
+    <category term="高考题" scheme="https://andyppang.github.io/tags/%E9%AB%98%E8%80%83%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021新高考2卷部分试题解析</title>
+    <link href="https://andyppang.github.io/2021/06/22/2021%E6%96%B0%E9%AB%98%E8%80%832%E5%8D%B7%E9%83%A8%E5%88%86%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/"/>
+    <id>https://andyppang.github.io/2021/06/22/2021%E6%96%B0%E9%AB%98%E8%80%832%E5%8D%B7%E9%83%A8%E5%88%86%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/</id>
+    <published>2021-06-22T14:58:00.000Z</published>
+    <updated>2021-06-22T15:50:48.913Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;新高考全国2卷&quot;&gt;2021新高考全国2卷&lt;/h2&gt;
+&lt;p&gt;11.已知直线&lt;span class=&quot;math inline&quot;&gt;\(l:ax+by-r^2=0\)&lt;/span&gt;与圆&lt;span class=&quot;math</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="高考题" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/%E9%AB%98%E8%80%83%E9%A2%98/"/>
+    
+    
+    <category term="高考题" scheme="https://andyppang.github.io/tags/%E9%AB%98%E8%80%83%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021新高考1卷部分试题解析</title>
+    <link href="https://andyppang.github.io/2021/06/21/2021%E6%96%B0%E9%AB%98%E8%80%831%E5%8D%B7%E9%83%A8%E5%88%86%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/"/>
+    <id>https://andyppang.github.io/2021/06/21/2021%E6%96%B0%E9%AB%98%E8%80%831%E5%8D%B7%E9%83%A8%E5%88%86%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/</id>
+    <published>2021-06-21T09:30:00.000Z</published>
+    <updated>2021-06-22T15:50:48.913Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="高考题" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/%E9%AB%98%E8%80%83%E9%A2%98/"/>
+    
+    
+    <category term="高考题" scheme="https://andyppang.github.io/tags/%E9%AB%98%E8%80%83%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Debian延迟1m30s启动的解决</title>
@@ -466,122 +577,6 @@
     <category term="导数" scheme="https://andyppang.github.io/tags/%E5%AF%BC%E6%95%B0/"/>
     
     <category term="极值点偏移" scheme="https://andyppang.github.io/tags/%E6%9E%81%E5%80%BC%E7%82%B9%E5%81%8F%E7%A7%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Pandoc的使用记录</title>
-    <link href="https://andyppang.github.io/2021/05/13/Pandoc%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
-    <id>https://andyppang.github.io/2021/05/13/Pandoc%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</id>
-    <published>2021-05-13T08:20:00.000Z</published>
-    <updated>2021-05-21T11:00:00.027Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    
-    <category term="pandoc" scheme="https://andyppang.github.io/tags/pandoc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Github Page绑定域名</title>
-    <link href="https://andyppang.github.io/2021/04/29/Github-Page%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/"/>
-    <id>https://andyppang.github.io/2021/04/29/Github-Page%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/</id>
-    <published>2021-04-29T15:56:51.000Z</published>
-    <updated>2021-05-02T08:37:06.496Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;轻松两步就可以完成Github Page域名绑定&lt;/p&gt;
-&lt;h2 id=&quot;dns端的设置&quot;&gt;DNS端的设置&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;增加一条 &lt;code&gt;CNAME&lt;/code&gt; 记录，名称指向自己的 &lt;code&gt;github page&lt;/code&gt; 页</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    
-    <category term="github page" scheme="https://andyppang.github.io/tags/github-page/"/>
-    
-    <category term="绑定域名" scheme="https://andyppang.github.io/tags/%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>给ipv4 only vps添加ipv6</title>
-    <link href="https://andyppang.github.io/2021/04/28/%E7%BB%99ipv4-only-vps%E6%B7%BB%E5%8A%A0ipv6/"/>
-    <id>https://andyppang.github.io/2021/04/28/%E7%BB%99ipv4-only-vps%E6%B7%BB%E5%8A%A0ipv6/</id>
-    <published>2021-04-28T06:05:21.000Z</published>
-    <updated>2021-05-02T08:37:06.496Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;准备工作&quot;&gt;准备工作&lt;/h2&gt;
-&lt;p&gt;在网站 &lt;a href=&quot;https://www.tunnelbroker.net/&quot;&gt;TunnelBroker&lt;/a&gt; 注册账号&lt;/p&gt;
-&lt;h2 id=&quot;网页端设置&quot;&gt;网页端设置&lt;/h2&gt;
-&lt;p&gt;1.登录后，点击左侧</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    
-    <category term="vps" scheme="https://andyppang.github.io/tags/vps/"/>
-    
-    <category term="ipv4" scheme="https://andyppang.github.io/tags/ipv4/"/>
-    
-    <category term="ipv6" scheme="https://andyppang.github.io/tags/ipv6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Win10计划任务不执行的解决办法</title>
-    <link href="https://andyppang.github.io/2021/04/23/Win10%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E4%B8%8D%E6%89%A7%E8%A1%8C%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
-    <id>https://andyppang.github.io/2021/04/23/Win10%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E4%B8%8D%E6%89%A7%E8%A1%8C%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</id>
-    <published>2021-04-23T03:03:35.000Z</published>
-    <updated>2021-05-02T08:37:06.496Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;使用计划任务的目的&quot;&gt;使用计划任务的目的：&lt;/h2&gt;
-&lt;p&gt;仅仅是为了定时打开某个软件.exe，挂个机，刷刷分&lt;/p&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    
-    <category term="267009" scheme="https://andyppang.github.io/tags/267009/"/>
-    
-    <category term="taskschd" scheme="https://andyppang.github.io/tags/taskschd/"/>
     
   </entry>
   
