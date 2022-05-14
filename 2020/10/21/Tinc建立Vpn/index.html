@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="PL">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="服务端安装 1234567891011121314151617181920212223242526272829## 进入配置目录cd &#x2F;etc&#x2F;tinc&#x2F;## 网络目录名可任意，但其他节点须与服务端节点相同sudo mkdir cloudcd cloud&#x2F;## 目录名固定，这里存放各个节点的配置文件sudo mkdir hosts## 开始配置cloudsudo vim tinc.conf##">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tinc建立vpn">
+<meta property="og:url" content="https://andyppang.github.io/2020/10/21/Tinc%E5%BB%BA%E7%AB%8BVpn/index.html">
+<meta property="og:site_name" content="Wish You Success">
+<meta property="og:description" content="服务端安装 1234567891011121314151617181920212223242526272829## 进入配置目录cd &#x2F;etc&#x2F;tinc&#x2F;## 网络目录名可任意，但其他节点须与服务端节点相同sudo mkdir cloudcd cloud&#x2F;## 目录名固定，这里存放各个节点的配置文件sudo mkdir hosts## 开始配置cloudsudo vim tinc.conf##">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-21T08:27:29.000Z">
+<meta property="article:modified_time" content="2022-05-14T04:18:59.035Z">
+<meta property="article:author" content="PL">
+<meta property="article:tag" content="tinc">
+<meta property="article:tag" content="vpn">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Tinc建立vpn - Wish You Success</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":"nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI","app_key":"jpWiVUMoucJREpt4DsJR4oys","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Wish You Success" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>零和壹</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/andyppang/mdpic/pic/20220514001448.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Tinc建立vpn">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-21 16:27" pubdate>
+        2020年10月21日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      40 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Tinc建立vpn</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年5月14日 中午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="服务端安装">服务端安装</h1>
+<figure class="highlight vala"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta">## 进入配置目录</span><br>cd /etc/tinc/<br><span class="hljs-meta">## 网络目录名可任意，但其他节点须与服务端节点相同</span><br>sudo mkdir cloud<br>cd cloud/<br><span class="hljs-meta">## 目录名固定，这里存放各个节点的配置文件</span><br>sudo mkdir hosts<br><span class="hljs-meta">## 开始配置cloud</span><br>sudo vim tinc.conf<br><span class="hljs-meta">## 极简配置如下，其他配置默认</span><br>Name = tencent<br>Interface = vpn<br><span class="hljs-meta">## 配置tencent节点，对应tinc.conf中的Name</span><br>sudo vim hosts/tencent<br><span class="hljs-meta">## 填写公网IP和vpn节点IP，这里我使用10.0.0.1</span><br>Address = 你的公网IP<br>Subnet = <span class="hljs-number">10.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>/<span class="hljs-number">32</span><br><span class="hljs-meta">## 生成密钥，-n 网络名</span><br>sudo tincd -n cloud -K<br><span class="hljs-meta">## 编写拨号脚本，注意与Subnet中的IP相同</span><br>sudo vim tinc-up<br><span class="hljs-meta">#!/bin/bash</span><br>ifconfig $INTERFACE <span class="hljs-number">10.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span> netmask <span class="hljs-number">255.255</span><span class="hljs-number">.255</span><span class="hljs-number">.0</span><br><span class="hljs-meta">## 编写断线脚本</span><br>sudo vim tinc-down<br><span class="hljs-meta">#!/bin/bash</span><br>ifconfig $INTERFACE down<br><span class="hljs-meta">## 赋予脚本执行权限</span><br>sudo chmod +x tinc-*<br></code></pre></td></tr></table></figure>
+<ul>
+<li><p>安装完毕以后，文件及文件夹的结构是这样的：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs stylus">/etc/tinc—— nets.boot<br>       —— cloud——tinc.conf<br>             ——rsa_key.priv<br>             ——rsa_key.pub<br>             ——tinc-down<br>             ——tinc-up<br>             ——hosts——gcp<br>                    ——pc<br>                    ——school<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="windows客户端安装">Windows客户端安装</h1>
+<ul>
+<li><p>首先下载Windows版的tinc。在安装过程三项可选，直接全选。然后指定安装目录。之后进入安装目录</p></li>
+<li><p>新建网络目录，本例为cloud</p></li>
+<li><p>进入cloud目录后，创建hosts目录</p></li>
+<li><p>在cloud目录下新建文件tinc.conf，输入如下内容</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">Name</span> = pc<br><span class="hljs-attr">Interface</span> = vpn<br><span class="hljs-attr">ConnectTo</span> = tencent<br></code></pre></td></tr></table></figure></li>
+<li><p>在hosts目录下新建文件pc，输入如下内容，将节点IP配置为10.0.0.2</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Subnet</span> = <span class="hljs-number">10.0.0.2</span>/<span class="hljs-number">32</span><br></code></pre></td></tr></table></figure></li>
+<li><p>在安装目录下以管理员身份启动cmd，输入tincd -n cloud -K，生成密钥</p></li>
+<li><p>待密钥生成完毕后，获取并保存服务端hosts文件夹下的tencent文件至pc文件处，将pc文件上传至服务端的hosts文件夹下。</p></li>
+<li><p>在安装目录tap-win64下以管理员身份运行addtap.exe，安装网络适配器</p></li>
+<li><p>接着去网络中心找到类似的TAP网络适配器，修改其名称为tinc.conf中的Interface值，本例为vpn，接着右键属性设置ipv4的地址，此地址应与hosts中pc的Subnet值相同，本例为10.0.0.2</p></li>
+</ul>
+<h1 id="linux客户端安装">Linux客户端安装</h1>
+<p>使用apt install tinc即可。其配置与服务端的配置步骤相同。同样是确保用户具备sudo权限或是直接使用root。</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta">## 进入配置目录</span><br>cd /etc/tinc/<br><span class="hljs-meta">## 网络须与服务端节点相同</span><br>sudo mkdir cloud<br>cd cloud/<br><span class="hljs-meta">## 目录名固定，这里存放orangePi节点和服务端节点的主机文件</span><br>sudo mkdir hosts<br><span class="hljs-meta">## 开始配置cloud</span><br>sudo vim tinc.conf<br><span class="hljs-meta">## 极简配置如下，其他配置默认</span><br><span class="hljs-meta">## ConnectTo = 服务端节点名，本例为tencent</span><br>Name = orangePi<br>Interface = vpn<br>ConnectTo = tencent<br><span class="hljs-meta">## 配置orangePi节点，对应tinc.conf中的Name</span><br>sudo vim hosts/orangePi<br><span class="hljs-meta">## 填写orangePi节点vpn的IP，需唯一</span><br>Subnet = <span class="hljs-number">10.0</span><span class="hljs-number">.0</span><span class="hljs-number">.10</span>/<span class="hljs-number">32</span><br><span class="hljs-meta">## 生成密钥，-n 网络名</span><br>sudo tincd -n cloud -K<br><span class="hljs-meta">## 编写拨号脚本，注意与Subnet的IP相同</span><br>sudo vim tinc-up<br><span class="hljs-meta">#!/bin/bash</span><br>ifconfig $INTERFACE <span class="hljs-number">10.0</span><span class="hljs-number">.0</span><span class="hljs-number">.10</span> netmask <span class="hljs-number">255.255</span><span class="hljs-number">.255</span><span class="hljs-number">.0</span><br><span class="hljs-meta">## 编写断线脚本</span><br>sudo vim tinc-down<br><span class="hljs-meta">#!/bin/bash</span><br>ifconfig $INTERFACE down<br><span class="hljs-meta">## 赋予脚本执行权限</span><br>sudo chmod +x tinc-*<br></code></pre></td></tr></table></figure>
+<h1 id="padavan安装tinc">Padavan安装tinc</h1>
+<p>首先要加载entware环境，然后opkg install tinc</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">cd</span> /<span class="hljs-keyword">opt</span>/etc<br><span class="hljs-built_in">mkdir</span> tinc<br><span class="hljs-keyword">cd</span> tinc<br><span class="hljs-built_in">mkdir</span> cloud<br></code></pre></td></tr></table></figure>
+<p>文件结构和linux下的相同，但是注意生成密匙的命令不同</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs verilog">tinc -n cloud <span class="hljs-keyword">generate</span>-keys<br></code></pre></td></tr></table></figure>
+<h1 id="启动服务">启动服务</h1>
+<ul>
+<li><p>Linux下启动tinc 需要使用命令tincd -n 网络名，故本例的启动为</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">tincd -n cloud</span><br></code></pre></td></tr></table></figure></li>
+<li><p>若是想首先开机启动则需要使用systemctl enable tinc@网络名</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">systemctl <span class="hljs-builtin-name">enable</span> tinc@cloud<br></code></pre></td></tr></table></figure></li>
+<li><p>Windows下需要在安装目录下以管理员身份运行cmd输入</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">tincd -n cloud</span><br></code></pre></td></tr></table></figure>
+<p>如果成功会生成一个tinc.cloud的服务，服务默认是开机自动启动的</p></li>
+<li><p>padavan启动较为特殊,启动、停止、重启、重新加载配置文件的方法如下：</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs excel">tinc -<span class="hljs-built_in">n</span> cloud start<br>tinc -<span class="hljs-built_in">n</span> cloud stop<br>tinc -<span class="hljs-built_in">n</span> cloud restart<br>tinc -<span class="hljs-built_in">n</span> cloud reload<br></code></pre></td></tr></table></figure>
+<p>还要在路由器开机后执行的脚本中加入</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/opt/</span>sbin/tincd -n hello<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="配置工具一个脚本">配置工具：一个脚本</h1>
+<p>可以看到很多的配置都是重复的，为了简化配置我编写了一个shell脚本可以帮助快速配置。使用简单而且Windows和Linux皆可用。按如下代码编写shell文件至指定目录，Windows为安装目录，Linux为/etc/tinc，然后执行脚本按照提示输入对应的信息即可，注意Windows需要管理员权限，Linux需要支持sudo或以root身份。以本文为例做个简单的示范：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>net_name=<span class="hljs-string">&quot;&quot;</span><br>node_name=<span class="hljs-string">&quot;&quot;</span><br>is_client=<span class="hljs-string">&quot;&quot;</span><br><span class="hljs-function"><span class="hljs-title">mk_dir</span></span>()&#123;<br>    <span class="hljs-keyword">while</span> [ -z <span class="hljs-variable">$&#123;net_name&#125;</span> ]<br>    <span class="hljs-keyword">do</span><br>        <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;Enter the network name:&quot;</span> net_name<br>        net_name=<span class="hljs-variable">$net_namesed</span> <span class="hljs-string">&#x27;s/ //g&#x27;</span><br>    <span class="hljs-keyword">done</span><br>    mkdir <span class="hljs-variable">$net_name</span><br>    <span class="hljs-built_in">cd</span> <span class="hljs-variable">$net_name</span><br>    mkdir <span class="hljs-string">&#x27;hosts&#x27;</span><br>&#125;<br><span class="hljs-function"><span class="hljs-title">tinc_conf</span></span>()&#123;<br>    <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;Enter Interface Name:&quot;</span> interface<br>    <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;Enter local node name:&quot;</span> node_name<br>    conf_str=<span class="hljs-string">&quot;Interface = <span class="hljs-variable">$&#123;interface&#125;</span> \nName = <span class="hljs-variable">$&#123;node_name&#125;</span>&quot;</span><br>    <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;Is client node?(y/n):&quot;</span> is_client<br>    <span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$is_client</span>&quot;</span> == <span class="hljs-string">&quot;y&quot;</span> ]<br>    <span class="hljs-keyword">then</span><br>        <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;Enter server node name:&quot;</span> server_name<br>    conf_str=<span class="hljs-variable">$conf_str</span><span class="hljs-string">&quot;\nConnectTo = <span class="hljs-variable">$&#123;server_name&#125;</span>&quot;</span><br>    <span class="hljs-keyword">fi</span><br>    <span class="hljs-built_in">echo</span> -e <span class="hljs-variable">$conf_str</span> &gt; <span class="hljs-string">&#x27;tinc.conf&#x27;</span><br>&#125;<br><span class="hljs-function"><span class="hljs-title">net_conf</span></span>()&#123;<br>    <span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$is_client</span>&quot;</span> == <span class="hljs-string">&quot;y&quot;</span> ]<br>    <span class="hljs-keyword">then</span><br>        <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;Enter public IP address(can be empty):&quot;</span> pub_ip<br>    <span class="hljs-keyword">else</span><br>    <span class="hljs-keyword">while</span> [ -z <span class="hljs-variable">$&#123;pub_ip&#125;</span> ]<br>    <span class="hljs-keyword">do</span><br>          <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;Enter public IP address:&quot;</span> pub_ip<br>      pub_ip=<span class="hljs-variable">$pub_ipsed</span> <span class="hljs-string">&#x27;s/ //g&#x27;</span><br>        <span class="hljs-keyword">done</span><br>    <span class="hljs-keyword">fi</span><br>    <span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;Enter local node ip:&quot;</span> local_ip<br>    net_str=<span class="hljs-string">&quot;Subnet = <span class="hljs-variable">$&#123;local_ip&#125;</span>/32&quot;</span><br>    pub_ip=<span class="hljs-variable">$pub_ipsed</span> <span class="hljs-string">&#x27;s/ //g&#x27;</span><br>    <span class="hljs-keyword">if</span> [ -n <span class="hljs-string">&quot;<span class="hljs-variable">$pub_ip</span>&quot;</span> ]<br>    <span class="hljs-keyword">then</span><br>       net_str=<span class="hljs-variable">$net_str</span><span class="hljs-string">&quot;\nAddress = <span class="hljs-variable">$pub_ip</span>&quot;</span><br>    <span class="hljs-keyword">fi</span><br>    <span class="hljs-built_in">cd</span> hosts<br>    <span class="hljs-built_in">echo</span> -e <span class="hljs-variable">$net_str</span> &gt; <span class="hljs-variable">$node_name</span><br>    <span class="hljs-built_in">cd</span> ..<br>    os=`uname`<br>    <span class="hljs-keyword">if</span> [ `uname` = <span class="hljs-string">&quot;Linux&quot;</span> ]<br>    <span class="hljs-keyword">then</span><br>        <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;#!/bin/bash\n&quot;</span><span class="hljs-string">&#x27;ifconfig $INTERFACE &#x27;</span><span class="hljs-string">&quot;<span class="hljs-variable">$&#123;local_ip&#125;</span> netmask 255.255.255.0&quot;</span> &gt; <span class="hljs-string">&#x27;tinc-up&#x27;</span><br>        <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;#!/bin/bash\n&quot;</span><span class="hljs-string">&#x27;ifconfig $INTERFACE down&#x27;</span> &gt; <span class="hljs-string">&#x27;tinc-down&#x27;</span><br>    chmod +x tinc-*<br>    tincd -n <span class="hljs-variable">$net_name</span> -K<br>    <span class="hljs-keyword">else</span><br>        ./tincd -n <span class="hljs-variable">$net_name</span> -K<br>    <span class="hljs-keyword">fi</span><br>&#125;<br>mk_dir<br>tinc_conf<br>net_conf<br></code></pre></td></tr></table></figure>
+<p>脚本执行效果如下：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-comment">## 输入网络名</span><br>Enter the network name:cloud<br><span class="hljs-comment">## 输入网口名</span><br>Enter Interface Name:vpn<br><span class="hljs-comment">## 输入本地节点名</span><br>Enter local <span class="hljs-keyword">node</span> name:<span class="hljs-title">pc</span><br><span class="hljs-comment">## 是否为客户端节点</span><br>Is client <span class="hljs-keyword">node</span><span class="hljs-title">?(y</span>/n):y<br><span class="hljs-comment">## 输入服务端节点名（上步填n则无此项）</span><br>Enter server <span class="hljs-keyword">node</span> name:<span class="hljs-title">tencent</span><br><span class="hljs-comment">## 输入公网IP（为y时此项必填，n可以直接回车）</span><br>Enter public IP address(can be empty):<br><span class="hljs-comment">## 输入本节点的IP</span><br>Enter local <span class="hljs-keyword">node</span> ip:<span class="hljs-title">10</span>.<span class="hljs-number">0.0</span>.<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+<p>之后就会完成配置，注意这个脚本仅用于自动完成配置，不会启动服务，所以还需与服务端交换host文件和步骤5，Windows下仍要配置ip(部分条件下需要手动生成密钥)</p>
+<h1 id="使用感受">使用感受</h1>
+<p>1.中途遇到好多的坑，比如文件配置修改以后，需要重启tinc服务</p>
+<p>2.晚高峰期间的速度基本可以接受</p>
+<p>3.将两个vps同时作为服务端的文件配置，目前还没有搞定</p>
+<h1 id="致敬原文作者">致敬原文作者</h1>
+<p><a target="_blank" rel="noopener" href="https://wuzk.tk/2018/09/13/2018/20180913/">https://wuzk.tk/2018/09/13/2018/20180913/</a> <a target="_blank" rel="noopener" href="https://chanix.github.io/TincCookbook/">https://chanix.github.io/TincCookbook/</a> <a target="_blank" rel="noopener" href="http://www.lucktu.com/archives/763-3.html">http://www.lucktu.com/archives/763-3.html</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/tinc/">tinc</a>
+                    
+                      <a class="hover-with-bg" href="/tags/vpn/">vpn</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/10/26/Newifi3%E5%88%B7%E6%9C%BA%E5%8F%8A%E4%BD%9C%E6%97%A0%E7%BA%BF%E4%B8%AD%E7%BB%A7/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">newifi3作无线中继</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/10/20/%E6%97%A7%E7%94%B5%E8%84%91%E5%AE%89%E8%A3%85%E5%AE%8C%E6%95%B4%E7%89%88ChromeOs%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/">
+                        <span class="hidden-mobile">安装完整ChromeOS</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI","appKey":"jpWiVUMoucJREpt4DsJR4oys","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":null,"emojiCDN":null,"emojiMaps":null,"enableQQ":false,"appid":"nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI","appkey":"jpWiVUMoucJREpt4DsJR4oys"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1279870992" style="display: none"></span>
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1279870992&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

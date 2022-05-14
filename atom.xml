@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Wish You Success</title>
+  
+  
+  <link href="https://andyppang.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://andyppang.github.io/"/>
+  <updated>2022-05-14T04:36:53.268Z</updated>
+  <id>https://andyppang.github.io/</id>
+  
+  <author>
+    <name>PL</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2021T8联考数学22导数题</title>
+    <link href="https://andyppang.github.io/2022/05/13/2021T8%E8%81%94%E8%80%83%E6%95%B0%E5%AD%A622%E5%AF%BC%E6%95%B0%E9%A2%98/"/>
+    <id>https://andyppang.github.io/2022/05/13/2021T8%E8%81%94%E8%80%83%E6%95%B0%E5%AD%A622%E5%AF%BC%E6%95%B0%E9%A2%98/</id>
+    <published>2022-05-13T14:36:30.000Z</published>
+    <updated>2022-05-14T04:36:53.268Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;note note-primary&quot;&gt;
+            &lt;p&gt;已知函数&lt;span class=&quot;math inline&quot;&gt;\(f(x)=a\ln x-\sin x+x\)&lt;/span&gt;，其中&lt;span class=&quot;math</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="导数" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/%E5%AF%BC%E6%95%B0/"/>
+    
+    
+    <category term="导数" scheme="https://andyppang.github.io/tags/%E5%AF%BC%E6%95%B0/"/>
+    
+    <category term="零点问题" scheme="https://andyppang.github.io/tags/%E9%9B%B6%E7%82%B9%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>因式分解背后的主元思想</title>
+    <link href="https://andyppang.github.io/2022/03/14/%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3%E8%83%8C%E5%90%8E%E7%9A%84%E4%B8%BB%E5%85%83%E6%80%9D%E6%83%B3/"/>
+    <id>https://andyppang.github.io/2022/03/14/%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3%E8%83%8C%E5%90%8E%E7%9A%84%E4%B8%BB%E5%85%83%E6%80%9D%E6%83%B3/</id>
+    <published>2022-03-14T15:55:33.000Z</published>
+    <updated>2022-05-14T04:18:59.039Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;题目：若&lt;span class=&quot;math inline&quot;&gt;\(f(x)=\dfrac{1}{2}x^2+b\ln x+ax\)&lt;/span&gt;在&lt;span class=&quot;math inline&quot;&gt;\((1,2)\)&lt;/span&gt;内有两个极值点，则&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="主元法" scheme="https://andyppang.github.io/tags/%E4%B8%BB%E5%85%83%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>相关系数</title>
+    <link href="https://andyppang.github.io/2022/03/03/%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/"/>
+    <id>https://andyppang.github.io/2022/03/03/%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</id>
+    <published>2022-03-03T14:33:21.000Z</published>
+    <updated>2022-05-14T04:18:59.044Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;相关系数的引入理解&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于成对数据的相关性强弱问题，可以从定性的角度观察散点图直观的感知，当然定量进行研究就需要引入一个新的量——相关系数&lt;/p&gt;
+&lt;p&gt;对于数据&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="回归分析" scheme="https://andyppang.github.io/tags/%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>测试Windows下写博客</title>
+    <link href="https://andyppang.github.io/2022/03/01/testwindows/"/>
+    <id>https://andyppang.github.io/2022/03/01/testwindows/</id>
+    <published>2022-03-01T15:30:00.000Z</published>
+    <updated>2022-05-14T04:18:59.037Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这是windows7环境下，安装了git + nodejs + pandoc + hexo</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="windows" scheme="https://andyppang.github.io/tags/windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>远程桌面控制软件Rustdesk</title>
+    <link href="https://andyppang.github.io/2021/07/09/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%8E%A7%E5%88%B6%E8%BD%AF%E4%BB%B6Rustdesk/"/>
+    <id>https://andyppang.github.io/2021/07/09/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%8E%A7%E5%88%B6%E8%BD%AF%E4%BB%B6Rustdesk/</id>
+    <published>2021-07-09T05:54:00.000Z</published>
+    <updated>2022-05-14T04:18:59.047Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;下载地址&quot;&gt;下载地址&lt;/h2&gt;
+&lt;p&gt;在控制端和主机端都下载好&lt;/p&gt;
+&lt;p&gt;1.如果是windows桌面版需要先下载dll动态库&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="Rustdesk" scheme="https://andyppang.github.io/tags/Rustdesk/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021全国乙卷第12，20，21题解</title>
+    <link href="https://andyppang.github.io/2021/06/26/2021%E5%85%A8%E5%9B%BD%E4%B9%99%E5%8D%B7%E7%AC%AC12%EF%BC%8C20%EF%BC%8C21%E9%A2%98%E8%A7%A3/"/>
+    <id>https://andyppang.github.io/2021/06/26/2021%E5%85%A8%E5%9B%BD%E4%B9%99%E5%8D%B7%E7%AC%AC12%EF%BC%8C20%EF%BC%8C21%E9%A2%98%E8%A7%A3/</id>
+    <published>2021-06-26T08:44:00.000Z</published>
+    <updated>2022-05-14T04:18:59.031Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;全国乙卷&quot;&gt;2021全国乙卷&lt;/h2&gt;
+&lt;p&gt;12.设&lt;span class=&quot;math inline&quot;&gt;\(a=2\ln1.01\)&lt;/span&gt;，&lt;span class=&quot;math inline&quot;&gt;\(b=\ln1.02\)&lt;/span&gt;，&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="高考题" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/%E9%AB%98%E8%80%83%E9%A2%98/"/>
+    
+    
+    <category term="高考题" scheme="https://andyppang.github.io/tags/%E9%AB%98%E8%80%83%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021新高考2卷部分试题解析</title>
+    <link href="https://andyppang.github.io/2021/06/22/2021%E6%96%B0%E9%AB%98%E8%80%832%E5%8D%B7%E9%83%A8%E5%88%86%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/"/>
+    <id>https://andyppang.github.io/2021/06/22/2021%E6%96%B0%E9%AB%98%E8%80%832%E5%8D%B7%E9%83%A8%E5%88%86%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/</id>
+    <published>2021-06-22T14:58:00.000Z</published>
+    <updated>2022-05-14T04:18:59.031Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;新高考全国2卷&quot;&gt;2021新高考全国2卷&lt;/h2&gt;
+&lt;p&gt;11.已知直线&lt;span class=&quot;math inline&quot;&gt;\(l:ax+by-r^2=0\)&lt;/span&gt;与圆&lt;span class=&quot;math</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="高考题" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/%E9%AB%98%E8%80%83%E9%A2%98/"/>
+    
+    
+    <category term="高考题" scheme="https://andyppang.github.io/tags/%E9%AB%98%E8%80%83%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021新高考1卷部分试题解析</title>
+    <link href="https://andyppang.github.io/2021/06/21/2021%E6%96%B0%E9%AB%98%E8%80%831%E5%8D%B7%E9%83%A8%E5%88%86%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/"/>
+    <id>https://andyppang.github.io/2021/06/21/2021%E6%96%B0%E9%AB%98%E8%80%831%E5%8D%B7%E9%83%A8%E5%88%86%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/</id>
+    <published>2021-06-21T09:30:00.000Z</published>
+    <updated>2022-05-14T04:18:59.031Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="高考题" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/%E9%AB%98%E8%80%83%E9%A2%98/"/>
+    
+    
+    <category term="高考题" scheme="https://andyppang.github.io/tags/%E9%AB%98%E8%80%83%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Debian延迟1m30s启动的解决</title>
+    <link href="https://andyppang.github.io/2021/06/03/Debian%E5%BB%B6%E8%BF%9F1m30s%E5%90%AF%E5%8A%A8%E7%9A%84%E8%A7%A3%E5%86%B3/"/>
+    <id>https://andyppang.github.io/2021/06/03/Debian%E5%BB%B6%E8%BF%9F1m30s%E5%90%AF%E5%8A%A8%E7%9A%84%E8%A7%A3%E5%86%B3/</id>
+    <published>2021-06-03T14:32:00.000Z</published>
+    <updated>2022-05-14T04:18:59.032Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;问题现象&quot;&gt;问题现象&lt;/h2&gt;
+&lt;p&gt;1.启动时显示 &lt;span class=&quot;label label-danger&quot;&gt;Assuming drive cache: write through&lt;/span&gt; ，卡顿30秒以后，显示 &lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="debian" scheme="https://andyppang.github.io/tags/debian/"/>
+    
+    <category term="swap" scheme="https://andyppang.github.io/tags/swap/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>试用Gist桌面客户端兼编辑器Lepton</title>
+    <link href="https://andyppang.github.io/2021/06/03/%E8%AF%95%E7%94%A8Gist%E6%A1%8C%E9%9D%A2%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%85%BC%E7%BC%96%E8%BE%91%E5%99%A8Lepton/"/>
+    <id>https://andyppang.github.io/2021/06/03/%E8%AF%95%E7%94%A8Gist%E6%A1%8C%E9%9D%A2%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%85%BC%E7%BC%96%E8%BE%91%E5%99%A8Lepton/</id>
+    <published>2021-06-03T02:47:00.000Z</published>
+    <updated>2022-05-14T04:18:59.046Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;lepton简介&quot;&gt;Lepton简介&lt;/h2&gt;
+&lt;p&gt;Lepton is a lean code snippet manager based on GitHub Gist.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Unlimited public/private</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="gist" scheme="https://andyppang.github.io/tags/gist/"/>
+    
+    <category term="lepton" scheme="https://andyppang.github.io/tags/lepton/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>教学〔2020〕1号《教育部关于在部分高校开展基础学科招生改革试点工作的意见》</title>
+    <link href="https://andyppang.github.io/2021/06/03/%E6%95%99%E5%AD%A6%E3%80%942020%E3%80%951%E5%8F%B7%E3%80%8A%E6%95%99%E8%82%B2%E9%83%A8%E5%85%B3%E4%BA%8E%E5%9C%A8%E9%83%A8%E5%88%86%E9%AB%98%E6%A0%A1%E5%BC%80%E5%B1%95%E5%9F%BA%E7%A1%80%E5%AD%A6%E7%A7%91%E6%8B%9B%E7%94%9F%E6%94%B9%E9%9D%A9%E8%AF%95%E7%82%B9%E5%B7%A5%E4%BD%9C%E7%9A%84%E6%84%8F%E8%A7%81%E3%80%8B/"/>
+    <id>https://andyppang.github.io/2021/06/03/%E6%95%99%E5%AD%A6%E3%80%942020%E3%80%951%E5%8F%B7%E3%80%8A%E6%95%99%E8%82%B2%E9%83%A8%E5%85%B3%E4%BA%8E%E5%9C%A8%E9%83%A8%E5%88%86%E9%AB%98%E6%A0%A1%E5%BC%80%E5%B1%95%E5%9F%BA%E7%A1%80%E5%AD%A6%E7%A7%91%E6%8B%9B%E7%94%9F%E6%94%B9%E9%9D%A9%E8%AF%95%E7%82%B9%E5%B7%A5%E4%BD%9C%E7%9A%84%E6%84%8F%E8%A7%81%E3%80%8B/</id>
+    <published>2021-06-03T00:59:00.000Z</published>
+    <updated>2022-05-14T04:18:59.040Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="其它" scheme="https://andyppang.github.io/categories/%E5%85%B6%E5%AE%83/"/>
+    
+    
+    <category term="强基计划" scheme="https://andyppang.github.io/tags/%E5%BC%BA%E5%9F%BA%E8%AE%A1%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker安装JupyterNotebook</title>
+    <link href="https://andyppang.github.io/2021/06/02/docker%E5%AE%89%E8%A3%85JupyterNotebook/"/>
+    <id>https://andyppang.github.io/2021/06/02/docker%E5%AE%89%E8%A3%85JupyterNotebook/</id>
+    <published>2021-06-02T15:55:00.000Z</published>
+    <updated>2022-05-14T04:18:59.037Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;在docker中安装&quot;&gt;在docker中安装&lt;/h2&gt;
+&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;div class=&quot;code-wrapper&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="docker" scheme="https://andyppang.github.io/tags/docker/"/>
+    
+    <category term="jupyter" scheme="https://andyppang.github.io/tags/jupyter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Selenium通过屏幕坐标定位</title>
+    <link href="https://andyppang.github.io/2021/05/26/Selenium%E9%80%9A%E8%BF%87%E5%B1%8F%E5%B9%95%E5%9D%90%E6%A0%87%E5%AE%9A%E4%BD%8D/"/>
+    <id>https://andyppang.github.io/2021/05/26/Selenium%E9%80%9A%E8%BF%87%E5%B1%8F%E5%B9%95%E5%9D%90%E6%A0%87%E5%AE%9A%E4%BD%8D/</id>
+    <published>2021-05-26T03:28:00.000Z</published>
+    <updated>2022-05-14T04:18:59.035Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;示例代码&quot;&gt;示例代码&lt;/h2&gt;
+&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;div class=&quot;code-wrapper&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="selenium" scheme="https://andyppang.github.io/tags/selenium/"/>
+    
+    <category term="python" scheme="https://andyppang.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Selenium Python 教程</title>
+    <link href="https://andyppang.github.io/2021/05/25/Selenium-Python-%E6%95%99%E7%A8%8B/"/>
+    <id>https://andyppang.github.io/2021/05/25/Selenium-Python-%E6%95%99%E7%A8%8B/</id>
+    <published>2021-05-24T16:05:00.000Z</published>
+    <updated>2022-05-14T04:18:59.034Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;准备工作&quot;&gt;准备工作&lt;/h2&gt;
+&lt;p&gt;1.安装 &lt;code&gt;selenium&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight cmake&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;div</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="selenium" scheme="https://andyppang.github.io/tags/selenium/"/>
+    
+    <category term="python" scheme="https://andyppang.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>端点函数值为零求导不要停</title>
+    <link href="https://andyppang.github.io/2021/05/24/%E7%AB%AF%E7%82%B9%E5%87%BD%E6%95%B0%E5%80%BC%E4%B8%BA%E9%9B%B6%EF%BC%8C%E6%B1%82%E5%AF%BC%E4%B8%8D%E8%A6%81%E5%81%9C-1/"/>
+    <id>https://andyppang.github.io/2021/05/24/%E7%AB%AF%E7%82%B9%E5%87%BD%E6%95%B0%E5%80%BC%E4%B8%BA%E9%9B%B6%EF%BC%8C%E6%B1%82%E5%AF%BC%E4%B8%8D%E8%A6%81%E5%81%9C-1/</id>
+    <published>2021-05-24T07:46:00.000Z</published>
+    <updated>2022-05-14T04:18:59.044Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;note note-info&quot;&gt;
+            &lt;p&gt;&lt;span class=&quot;label label-danger&quot;&gt;庆祝剑群周题100期导数100-1&lt;/span&gt;已知函数&lt;span class=&quot;math</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="导数" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/%E5%AF%BC%E6%95%B0/"/>
+    
+    
+    <category term="导数" scheme="https://andyppang.github.io/tags/%E5%AF%BC%E6%95%B0/"/>
+    
+    <category term="高考题" scheme="https://andyppang.github.io/tags/%E9%AB%98%E8%80%83%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo Admin后台管理使用记录</title>
+    <link href="https://andyppang.github.io/2021/05/23/Hexo-Admin%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
+    <id>https://andyppang.github.io/2021/05/23/Hexo-Admin%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</id>
+    <published>2021-05-22T16:19:00.000Z</published>
+    <updated>2022-05-14T04:18:59.032Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;插件设计初衷&quot;&gt;插件设计初衷&lt;/h2&gt;
+&lt;p&gt;该插件最初设计为本地编辑器-您在本地运行hexo，使用 &lt;code&gt;hexo-admin&lt;/code&gt; 撰写帖子，然后使用&lt;code&gt;hexo generate&lt;/code&gt; 或 &lt;code&gt;hexo</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="hexo" scheme="https://andyppang.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>测试是否hexo backup</title>
+    <link href="https://andyppang.github.io/2021/05/22/%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6hexo-backup/"/>
+    <id>https://andyppang.github.io/2021/05/22/%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6hexo-backup/</id>
+    <published>2021-05-22T15:57:00.000Z</published>
+    <updated>2022-05-14T04:18:59.043Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;测试&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>放缩处理端点函数值取极限的情况</title>
+    <link href="https://andyppang.github.io/2021/05/22/%E6%94%BE%E7%BC%A9%E5%A4%84%E7%90%86%E7%AB%AF%E7%82%B9%E5%87%BD%E6%95%B0%E5%80%BC%E5%8F%96%E6%9E%81%E9%99%90%E7%9A%84%E6%83%85%E5%86%B5/"/>
+    <id>https://andyppang.github.io/2021/05/22/%E6%94%BE%E7%BC%A9%E5%A4%84%E7%90%86%E7%AB%AF%E7%82%B9%E5%87%BD%E6%95%B0%E5%80%BC%E5%8F%96%E6%9E%81%E9%99%90%E7%9A%84%E6%83%85%E5%86%B5/</id>
+    <published>2021-05-21T16:02:00.000Z</published>
+    <updated>2022-05-14T04:18:59.040Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;放缩处理端点函数值取极限的情况&quot;&gt;放缩处理端点函数值取极限的情况&lt;/h2&gt;
+&lt;div class=&quot;note note-info&quot;&gt;
+            &lt;p&gt;证明：&lt;span class=&quot;math inline&quot;&gt;\(x\ln</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="导数" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/%E5%AF%BC%E6%95%B0/"/>
+    
+    
+    <category term="导数" scheme="https://andyppang.github.io/tags/%E5%AF%BC%E6%95%B0/"/>
+    
+    <category term="放缩" scheme="https://andyppang.github.io/tags/%E6%94%BE%E7%BC%A9/"/>
+    
+    <category term="单身狗与基友" scheme="https://andyppang.github.io/tags/%E5%8D%95%E8%BA%AB%E7%8B%97%E4%B8%8E%E5%9F%BA%E5%8F%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Fluid主题脚注、标签、多图的语法</title>
+    <link href="https://andyppang.github.io/2021/05/20/Fluid%E4%B8%BB%E9%A2%98%E8%84%9A%E6%B3%A8%E3%80%81%E6%A0%87%E7%AD%BE%E3%80%81%E5%A4%9A%E5%9B%BE%E7%9A%84%E8%AF%AD%E6%B3%95/"/>
+    <id>https://andyppang.github.io/2021/05/20/Fluid%E4%B8%BB%E9%A2%98%E8%84%9A%E6%B3%A8%E3%80%81%E6%A0%87%E7%AD%BE%E3%80%81%E5%A4%9A%E5%9B%BE%E7%9A%84%E8%AF%AD%E6%B3%95/</id>
+    <published>2021-05-20T08:51:00.000Z</published>
+    <updated>2022-05-14T04:18:59.032Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;
+&lt;p&gt;主题内置了脚注语法支持，可以在文章末尾自动生成带有锚点的脚注，该功能在&lt;strong&gt;主题配置&lt;/strong&gt;中默认开启：&lt;/p&gt;
+&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="hexo" scheme="https://andyppang.github.io/tags/hexo/"/>
+    
+    <category term="fluid" scheme="https://andyppang.github.io/tags/fluid/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>椭圆上两点连线过定点问题的简化计算</title>
+    <link href="https://andyppang.github.io/2021/05/20/%E6%A4%AD%E5%9C%86%E4%B8%8A%E4%B8%A4%E7%82%B9%E8%BF%9E%E7%BA%BF%E8%BF%87%E5%AE%9A%E7%82%B9%E9%97%AE%E9%A2%98%E7%9A%84%E7%AE%80%E5%8C%96%E8%AE%A1%E7%AE%97/"/>
+    <id>https://andyppang.github.io/2021/05/20/%E6%A4%AD%E5%9C%86%E4%B8%8A%E4%B8%A4%E7%82%B9%E8%BF%9E%E7%BA%BF%E8%BF%87%E5%AE%9A%E7%82%B9%E9%97%AE%E9%A2%98%E7%9A%84%E7%AE%80%E5%8C%96%E8%AE%A1%E7%AE%97/</id>
+    <published>2021-05-20T05:10:00.000Z</published>
+    <updated>2022-05-14T04:18:59.042Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;椭圆上两点连线过定点问题的计算优化&quot;&gt;椭圆上两点连线过定点问题的计算优化&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;题&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;已知椭圆&lt;span class=&quot;math</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="解析几何" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/"/>
+    
+    
+    <category term="解析几何" scheme="https://andyppang.github.io/tags/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/"/>
+    
+    <category term="椭圆" scheme="https://andyppang.github.io/tags/%E6%A4%AD%E5%9C%86/"/>
+    
+    <category term="定点问题" scheme="https://andyppang.github.io/tags/%E5%AE%9A%E7%82%B9%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+</feed>
