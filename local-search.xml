@@ -4,6 +4,50 @@
   
   
   <entry>
+    <title>docker安装joomla</title>
+    <link href="/2022/06/05/docker%E5%AE%89%E8%A3%85joomla/"/>
+    <url>/2022/06/05/docker%E5%AE%89%E8%A3%85joomla/</url>
+    
+    <content type="html"><![CDATA[<h1 id="创建docker-compose.yml">创建docker-compose.yml</h1><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs yaml">&#123;<span class="hljs-string">%</span> <span class="hljs-string">note</span> <span class="hljs-string">success</span> <span class="hljs-string">%</span>&#125;<br><span class="hljs-string">```</span><br><span class="hljs-attr">ersion:</span> <span class="hljs-string">&#x27;3.1&#x27;</span><br><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">joomla:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">joomla</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">joomla</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">links:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">joomladb:mysql</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">8080</span><span class="hljs-string">:80</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">JOOMLA_DB_HOST:</span> <span class="hljs-string">joomladb</span><br>      <span class="hljs-attr">JOOMLA_DB_PASSWORD:</span> <span class="hljs-string">your_password(same</span> <span class="hljs-string">as</span> <span class="hljs-string">below)</span><br><br>  <span class="hljs-attr">joomladb:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">mysql:5.6</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">mysql</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">MYSQL_ROOT_PASSWORD:</span> <span class="hljs-string">your_password(same</span> <span class="hljs-string">as</span> <span class="hljs-string">above)</span><br><span class="hljs-string">```</span><br>&#123;<span class="hljs-string">%</span> <span class="hljs-string">endnote</span> <span class="hljs-string">%</span>&#125;<br></code></pre></td></tr></table></figure><h1 id="启动容器">启动容器</h1><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker-compose up -d</span><br></code></pre></td></tr></table></figure><h2 id="查看容器启动日志">查看容器启动日志</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker logs joomla</span><br><span class="hljs-attribute">docker logs mysql</span><br></code></pre></td></tr></table></figure><h2 id="查看容器ip">查看容器ip</h2><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="xml">docker inspect -f &#x27;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">range</span> .NetworkSettings.Networks&#125;&#125;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">.IPAddress</span>&#125;&#125;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">end</span>&#125;&#125;</span><span class="xml">&#x27; <span class="hljs-tag">&lt;<span class="hljs-name">container_name</span>&gt;</span></span><br></code></pre></td></tr></table></figure><p>或者查看全面信息</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml">docker inspect <span class="hljs-tag">&lt;<span class="hljs-name">container_name</span>&gt;</span><br></code></pre></td></tr></table></figure><p>查看mysql的ip地址下一步备用</p><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="xml">docker inspect -f &#x27;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">range</span> .NetworkSettings.Networks&#125;&#125;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">.IPAddress</span>&#125;&#125;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">end</span>&#125;&#125;</span><span class="xml">&#x27; mysql</span><br></code></pre></td></tr></table></figure><h1 id="安装joomla">安装joomla</h1><p>访问<code>http://ip:8080</code> 进入安装界面，其中关键的步骤是设置数据库的地址为上一步获取的ip地址，用户名为<code>root</code>，密码为<code>docker-compose</code>里面设置好的密码，其它网站设置根据自己情况填写即可。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>cdn.jsdelivr.net被墙</title>
+    <link href="/2022/06/01/cdn-jsdelivr-net%E8%A2%AB%E5%A2%99/"/>
+    <url>/2022/06/01/cdn-jsdelivr-net%E8%A2%AB%E5%A2%99/</url>
+    
+    <content type="html"><![CDATA[<p>5月16日，cdn.jsdelivr.net被墙，至此加速github成为历史；</p><p>临时解决方案：将cdn.jsdelivr.net更改为fastly.jsdelivr.net，不知道会不会留活口给jsdelivr</p><p>同时受到影响的还有静态资源mathjax的解析服务，目前替换为了https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.1</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>cdn</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>2021T8联考数学22导数题</title>
     <link href="/2022/05/13/2021T8%E8%81%94%E8%80%83%E6%95%B0%E5%AD%A622%E5%AF%BC%E6%95%B0%E9%A2%98/"/>
     <url>/2022/05/13/2021T8%E8%81%94%E8%80%83%E6%95%B0%E5%AD%A622%E5%AF%BC%E6%95%B0%E9%A2%98/</url>

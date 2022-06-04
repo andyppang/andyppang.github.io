@@ -25,15 +25,21 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
   <title>Wish You Success</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
@@ -42,22 +48,41 @@
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":"nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI","app_key":"jpWiVUMoucJREpt4DsJR4oys","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":"nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI","app_key":"jpWiVUMoucJREpt4DsJR4oys","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Wish You Success" type="application/atom+xml">
 </head>
 
 
 <body>
-  <header style="height: 100vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
       <strong>零和壹</strong>
@@ -139,6 +164,7 @@
               &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
@@ -151,34 +177,40 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('https://fastly.jsdelivr.net/gh/andyppang/mdpic/pic/20220514000303.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Wish You Success ~">
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fastly.jsdelivr.net/gh/andyppang/mdpic/pic/20220514000303.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
           
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
+            <span id="subtitle" data-typed-text="Wish You Success ~"></span>
           
         </div>
+
+        
       </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
+        <div id="board"
+          style="margin-top: 0">
           
           <div class="container">
             <div class="row">
@@ -192,17 +224,150 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/04/21/%E5%85%B3%E6%B3%A8G,F%E4%B8%A4%E7%82%B9%E5%9D%90%E6%A0%87/" target="_self">
+          关注G,F两点坐标如何求解
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/04/21/%E5%85%B3%E6%B3%A8G,F%E4%B8%A4%E7%82%B9%E5%9D%90%E6%A0%87/" target="_self">
+        <div>
+          
+          关注G,F两点坐标如何求解 如图，在四棱锥\(P-ABCD\)中，\(PA\bot\)平面\(ABCD\)，\(AD\bot CD\)，\(AD&#x2F;&#x2F;BC\)，\(PA&#x3D;AD&#x3D;CD&#x3D;2,BC&#x3D;3\)，过点\(A\)作截面\(AEFG\) 已知\(PG:PB&#x3D;2:3\)，\(E\)为\(PD\)的中点 （1）求证：\(AG&#x2F;&#x2F;\)平面\(PCD\) （2）求\(AF\)与平面\(PAB\)所成
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-21 00:00" pubdate>
+              2021-04-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E5%AD%A6/" class="category-chain-item">数学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%B0%E5%AD%A6/%E7%AB%8B%E4%BD%93%E5%87%A0%E4%BD%95/" class="category-chain-item">立体几何</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AB%8B%E4%BD%93%E5%87%A0%E4%BD%95/">#立体几何</a>
+            
+              <a href="/tags/%E5%9D%90%E6%A0%87/">#坐标</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/20/Win10%E5%AE%89%E8%A3%85WSL2%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%8F%8A%E6%8A%98%E8%85%BE/" target="_self">
+          Windows10安装Ubuntu子系统以及折腾
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/04/20/Win10%E5%AE%89%E8%A3%85WSL2%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%8F%8A%E6%8A%98%E8%85%BE/" target="_self">
+        <div>
+          
+          安装篇 步骤 1 - 启用适用于 Linux 的 Windows 子系统 需要先启用“适用于 Linux 的 Windows 子系统”可选功能，然后才能在 Windows 上安装 Linux 分发。 以管理员身份打开 PowerShell 并运行： 1dism.exe &#x2F;online &#x2F;enable-feature &#x2F;featurename:Microsoft-Windows-Subsys
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-20 15:32" pubdate>
+              2021-04-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/win10/">#win10</a>
+            
+              <a href="/tags/wsl2/">#wsl2</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/04/19/Microsoft-To-Do%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" target="_self">
           Microsoft To Do使用心得
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/04/19/Microsoft-To-Do%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" target="_self">
+      <a class="index-excerpt" href="/2021/04/19/Microsoft-To-Do%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" target="_self">
+        <div>
           
           加标签的方法 Microsoft To-Do 其实可以算是有标签的，在标题里加个空格，再打个英文#，后面接的东西会和#被整体标记为蓝色，点一下就自动进入搜索页面把所有带此标记的项都列出来了例如： 1测试带标签的标题 #学习 与安卓手机的同步 安卓手机上下载 微软桌面 ，登入账号即可实现与电脑端的同步，在手机的负一屏就可以看到各项任务。
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -214,18 +379,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Microsoft-To-Do/">Microsoft To Do</a>
+              <a href="/tags/Microsoft-To-Do/">#Microsoft To Do</a>
             
           </div>
         
@@ -244,12 +423,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/04/12/%E5%BE%AE%E8%BD%AF%E5%85%8D%E8%B4%B9%E4%B8%BB%E6%9C%BAAzure%E8%AF%95%E7%94%A8%E8%AE%B0%E5%BD%95/" target="_self">
+      <a class="index-excerpt" href="/2021/04/12/%E5%BE%AE%E8%BD%AF%E5%85%8D%E8%B4%B9%E4%B8%BB%E6%9C%BAAzure%E8%AF%95%E7%94%A8%E8%AE%B0%E5%BD%95/" target="_self">
+        <div>
           
           官方说明 https:&#x2F;&#x2F;azure.microsoft.com&#x2F;zh-cn&#x2F;free&#x2F;free-account-faq&#x2F; 与主机相关的免费服务    产品 免费时长     通过将两个 64 GB (P6) SSD 存储合并得到的 128 GB 托管磁盘，外加 1 GB 快照和 2 百万个 I&#x2F;O 操作 12个月   15 GB 的出站数据传输带宽，无限免费入站数
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -261,18 +440,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Azure/">Azure</a>
+              <a href="/tags/Azure/">#Azure</a>
             
           </div>
         
@@ -291,12 +484,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/04/08/%E7%A6%81%E6%AD%A2%E6%81%B6%E6%84%8FIP%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
+      <a class="index-excerpt" href="/2021/04/08/%E7%A6%81%E6%AD%A2%E6%81%B6%E6%84%8FIP%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
+        <div>
           
           实现原理 由于 &#x2F;var&#x2F;log&#x2F;auth.log 会记录所有用户的登录信息，通过提取 Failed password 类型的连接ip，然后将其加入 &#x2F;etc&#x2F;hosts.deny 文件，就可以禁止该ip再次连接。 具体步骤 1.首先确保安装了python 2.然后在 &#x2F;home 目录下 touch bannedip.py ，写入如下内容： 12345678910111213141516
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -308,20 +501,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/python/">python</a>
+              <a href="/tags/python/">#python</a>
             
-              <a href="/tags/ban-ip/">ban ip</a>
+              <a href="/tags/ban-ip/">#ban ip</a>
             
           </div>
         
@@ -340,12 +547,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/04/05/test-updatedtime/" target="_self">
+      <a class="index-excerpt" href="/2021/04/05/test-updatedtime/" target="_self">
+        <div>
           
           会按updated时间排序吗？
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -357,11 +564,25 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
@@ -380,12 +601,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/04/05/%E5%88%9B%E5%BB%BA%E3%80%81%E9%83%A8%E7%BD%B2%E3%80%81%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E4%B8%80%E6%9D%A1%E9%BE%99/" target="_self">
+      <a class="index-excerpt" href="/2021/04/05/%E5%88%9B%E5%BB%BA%E3%80%81%E9%83%A8%E7%BD%B2%E3%80%81%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E4%B8%80%E6%9D%A1%E9%BE%99/" target="_self">
+        <div>
           
           准备工作 安装环境部署： 安装git： 1apt install git-core 安装node： 12curl -fsSL https:&#x2F;&#x2F;deb.nodesource.com&#x2F;setup_15.x | bash -apt-get install -y nodejs 安装hexo 123456789# 安装命令npm install -g hexo-cli# 初始化博客（会自动在当前文件
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -397,18 +618,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/hexo/">hexo</a>
+              <a href="/tags/hexo/">#hexo</a>
             
           </div>
         
@@ -427,12 +662,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/03/21/%E6%9C%88%E8%80%83%E9%94%99%E9%A2%98/" target="_self">
+      <a class="index-excerpt" href="/2021/03/21/%E6%9C%88%E8%80%83%E9%94%99%E9%A2%98/" target="_self">
+        <div>
           
           高一上学期第一次月考 21.用清水洗一堆衣服上残留的污渍，用水越多，洗掉的污渍量也越多，但总还有污渍残留在衣服上.现作如下规定：用\(x\)单位的水清洗1次后，衣服上残留的污渍与本次清洗前残留的污渍之比为函数\(f(x)&#x3D;\dfrac{2}{2+x^2}\) （1）（i）试解释\(f(0)\)与\(f(1)\)的实际意义； （ii）写出函数\(f(x)\)应该满足的条件或具有的性质；（写出至少2
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -444,18 +679,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E5%AD%A6/" class="category-chain-item">数学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%9C%88%E8%80%83%E9%94%99%E9%A2%98/">月考错题</a>
+              <a href="/tags/%E6%9C%88%E8%80%83%E9%94%99%E9%A2%98/">#月考错题</a>
             
           </div>
         
@@ -474,12 +723,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/12/16/%E4%B9%90%E6%92%AD%E6%8A%95%E5%B1%8FPC%E7%89%88/" target="_self">
+      <a class="index-excerpt" href="/2020/12/16/%E4%B9%90%E6%92%AD%E6%8A%95%E5%B1%8FPC%E7%89%88/" target="_self">
+        <div>
           
           破解版下载：https:&#x2F;&#x2F;www.lanzous.com&#x2F;i78svyd 目前下载到nas里面 打开提示升级，取消不升级 投屏方式有：整屏投影，选择应用程序投影，扩展屏投影 使用感觉很好！
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -491,18 +740,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E4%B9%90%E6%92%AD%E6%8A%95%E5%B1%8F/">乐播投屏</a>
+              <a href="/tags/%E4%B9%90%E6%92%AD%E6%8A%95%E5%B1%8F/">#乐播投屏</a>
             
           </div>
         
@@ -521,12 +784,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/12/15/Vps%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/" target="_self">
+      <a class="index-excerpt" href="/2020/12/15/Vps%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/" target="_self">
+        <div>
           
           脚本1 纯净，不安装任何东西。均为国内节点。 1wget -qO- bench.sh  bash 脚本2 有国内节点，可看上行和下行。 1wget -qO- https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;oooldking&#x2F;script&#x2F;master&#x2F;superbench.sh  bash 脚本3 1(wget -qO- wget.racing&#x2F;nench.sh
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -538,116 +801,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/VPS%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/">VPS测试脚本</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/15/Docker%E5%AE%89%E8%A3%85P2pSpider%E5%92%8Clive-torrent/" target="_self">
-          docker安装p2pspider和live-torrent
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/15/Docker%E5%AE%89%E8%A3%85P2pSpider%E5%92%8Clive-torrent/" target="_self">
-          
-          安装docker和docker-compose： 1234567apt -y updateapt -y install curlcurl -sSL https:&#x2F;&#x2F;get.docker.com&#x2F;  shsystemctl start dockersystemctl enable dockercurl -L https:&#x2F;&#x2F;github.com&#x2F;docker&#x2F;compose&#x2F;releases&#x2F;do
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-15 17:53" pubdate>
-              2020-12-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/docker/">docker</a>
-            
-              <a href="/tags/p2pspider/">p2pspider</a>
-            
-              <a href="/tags/live-torrent/">live-torrent</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/09/Https%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/" target="_self">
-          https证书申请及安装
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/09/Https%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/" target="_self">
-          
-          使用acme.sh申请证书 准备工作 1.将域名解析到vps 2.vps安装nginx，注意找到nginx默认的网站文件夹，下面安装有用 安装acme.sh 详细见https:&#x2F;&#x2F;wsgzao.github.io&#x2F;post&#x2F;acme&#x2F; 我是采用以下方式安装的 1acme.sh  --issue  -d mydomain.com -d www.mydomain.com  --webroo
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-09 22:16" pubdate>
-              2020-12-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/https%E8%AF%81%E4%B9%A6/">https证书</a>
+              <a href="/tags/VPS%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/">#VPS测试脚本</a>
             
           </div>
         
@@ -692,60 +871,62 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- LeanCloud 统计PV -->
-        <span id="leancloud-site-pv-container" style="display: none">
-            总访问量 
-            <span id="leancloud-site-pv"></span>
-             次
-          </span>
-      
-      
-        <!-- LeanCloud 统计UV -->
-        <span id="leancloud-site-uv-container" style="display: none">
-            总访客数 
-            <span id="leancloud-site-uv"></span>
-             人
-          </span>
-      
-
-    
-  </div>
-
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
   
 
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
   
     <!-- cnzz Analytics Icon -->
     <span id="cnzz_stat_icon_1279870992" style="display: none"></span>
   
-</footer>
+</div>
 
+  </footer>
 
-  <!-- SCRIPTS -->
+  <!-- Scripts -->
   
   <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
@@ -764,50 +945,21 @@
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-  <script defer src="/js/leancloud.js" ></script>
-
-
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
   <script>
     (function (window, document) {
       var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
       
-        typing(title);
+        typing(text);
       
     })(window, document);
   </script>
-
-
-
-
-
-
-
-
 
 
 
@@ -824,17 +976,44 @@
 
   
     <!-- cnzz Analytics -->
-    <script defer src="//s4.cnzz.com/z_stat.php?id=1279870992&show=pic"
-            type="text/javascript"></script>
+    <script defer>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('//s4.cnzz.com/z_stat.php?id=1279870992&show=pic');
+      }
+    </script>
+  
+
+  
+    
   
 
 
 
 
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
-<!-- 主题的启动项 保持在最底部 -->
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

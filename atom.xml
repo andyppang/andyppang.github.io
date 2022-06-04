@@ -6,7 +6,7 @@
   <link href="https://andyppang.github.io/atom.xml" rel="self"/>
   
   <link href="https://andyppang.github.io/"/>
-  <updated>2022-05-14T04:36:53.268Z</updated>
+  <updated>2022-06-04T16:26:07.717Z</updated>
   <id>https://andyppang.github.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>docker安装joomla</title>
+    <link href="https://andyppang.github.io/2022/06/05/docker%E5%AE%89%E8%A3%85joomla/"/>
+    <id>https://andyppang.github.io/2022/06/05/docker%E5%AE%89%E8%A3%85joomla/</id>
+    <published>2022-06-04T16:07:58.000Z</published>
+    <updated>2022-06-04T16:26:07.717Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;创建docker-compose.yml&quot;&gt;创建docker-compose.yml&lt;/h1&gt;
+&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    
+    <category term="docker" scheme="https://andyppang.github.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cdn.jsdelivr.net被墙</title>
+    <link href="https://andyppang.github.io/2022/06/01/cdn-jsdelivr-net%E8%A2%AB%E5%A2%99/"/>
+    <id>https://andyppang.github.io/2022/06/01/cdn-jsdelivr-net%E8%A2%AB%E5%A2%99/</id>
+    <published>2022-06-01T03:27:03.000Z</published>
+    <updated>2022-06-04T16:05:37.667Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;5月16日，cdn.jsdelivr.net被墙，至此加速github成为历史；&lt;/p&gt;
+&lt;p&gt;临时解决方案：将cdn.jsdelivr.net更改为fastly.jsdelivr.net，不知道会不会留活口给jsdelivr&lt;/p&gt;
+&lt;p&gt;同时受到影响的还有静态资源m</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="cdn" scheme="https://andyppang.github.io/tags/cdn/"/>
+    
+  </entry>
   
   <entry>
     <title>2021T8联考数学22导数题</title>
@@ -76,7 +127,7 @@
     <link href="https://andyppang.github.io/2022/03/03/%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/"/>
     <id>https://andyppang.github.io/2022/03/03/%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</id>
     <published>2022-03-03T14:33:21.000Z</published>
-    <updated>2022-05-14T04:18:59.044Z</updated>
+    <updated>2022-05-20T02:36:53.809Z</updated>
     
     
       
@@ -511,68 +562,6 @@
     <category term="放缩" scheme="https://andyppang.github.io/tags/%E6%94%BE%E7%BC%A9/"/>
     
     <category term="单身狗与基友" scheme="https://andyppang.github.io/tags/%E5%8D%95%E8%BA%AB%E7%8B%97%E4%B8%8E%E5%9F%BA%E5%8F%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Fluid主题脚注、标签、多图的语法</title>
-    <link href="https://andyppang.github.io/2021/05/20/Fluid%E4%B8%BB%E9%A2%98%E8%84%9A%E6%B3%A8%E3%80%81%E6%A0%87%E7%AD%BE%E3%80%81%E5%A4%9A%E5%9B%BE%E7%9A%84%E8%AF%AD%E6%B3%95/"/>
-    <id>https://andyppang.github.io/2021/05/20/Fluid%E4%B8%BB%E9%A2%98%E8%84%9A%E6%B3%A8%E3%80%81%E6%A0%87%E7%AD%BE%E3%80%81%E5%A4%9A%E5%9B%BE%E7%9A%84%E8%AF%AD%E6%B3%95/</id>
-    <published>2021-05-20T08:51:00.000Z</published>
-    <updated>2022-05-14T04:18:59.032Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;
-&lt;p&gt;主题内置了脚注语法支持，可以在文章末尾自动生成带有锚点的脚注，该功能在&lt;strong&gt;主题配置&lt;/strong&gt;中默认开启：&lt;/p&gt;
-&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    
-    <category term="hexo" scheme="https://andyppang.github.io/tags/hexo/"/>
-    
-    <category term="fluid" scheme="https://andyppang.github.io/tags/fluid/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>椭圆上两点连线过定点问题的简化计算</title>
-    <link href="https://andyppang.github.io/2021/05/20/%E6%A4%AD%E5%9C%86%E4%B8%8A%E4%B8%A4%E7%82%B9%E8%BF%9E%E7%BA%BF%E8%BF%87%E5%AE%9A%E7%82%B9%E9%97%AE%E9%A2%98%E7%9A%84%E7%AE%80%E5%8C%96%E8%AE%A1%E7%AE%97/"/>
-    <id>https://andyppang.github.io/2021/05/20/%E6%A4%AD%E5%9C%86%E4%B8%8A%E4%B8%A4%E7%82%B9%E8%BF%9E%E7%BA%BF%E8%BF%87%E5%AE%9A%E7%82%B9%E9%97%AE%E9%A2%98%E7%9A%84%E7%AE%80%E5%8C%96%E8%AE%A1%E7%AE%97/</id>
-    <published>2021-05-20T05:10:00.000Z</published>
-    <updated>2022-05-14T04:18:59.042Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;椭圆上两点连线过定点问题的计算优化&quot;&gt;椭圆上两点连线过定点问题的计算优化&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;题&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;已知椭圆&lt;span class=&quot;math</summary>
-        
-      
-    
-    
-    
-    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-    
-    <category term="解析几何" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/"/>
-    
-    
-    <category term="解析几何" scheme="https://andyppang.github.io/tags/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/"/>
-    
-    <category term="椭圆" scheme="https://andyppang.github.io/tags/%E6%A4%AD%E5%9C%86/"/>
-    
-    <category term="定点问题" scheme="https://andyppang.github.io/tags/%E5%AE%9A%E7%82%B9%E9%97%AE%E9%A2%98/"/>
     
   </entry>
   

@@ -25,15 +25,21 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
   <title>Wish You Success</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
@@ -42,22 +48,41 @@
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":"nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI","app_key":"jpWiVUMoucJREpt4DsJR4oys","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":"nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI","app_key":"jpWiVUMoucJREpt4DsJR4oys","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Wish You Success" type="application/atom+xml">
 </head>
 
 
 <body>
-  <header style="height: 100vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
       <strong>零和壹</strong>
@@ -139,6 +164,7 @@
               &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
@@ -151,34 +177,40 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('https://fastly.jsdelivr.net/gh/andyppang/mdpic/pic/20220514000303.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Wish You Success ~">
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fastly.jsdelivr.net/gh/andyppang/mdpic/pic/20220514000303.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
           
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
+            <span id="subtitle" data-typed-text="Wish You Success ~"></span>
           
         </div>
+
+        
       </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
+        <div id="board"
+          style="margin-top: 0">
           
           <div class="container">
             <div class="row">
@@ -192,17 +224,141 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2020/10/15/ZeroTierOne%E5%88%9B%E5%BB%BA%E5%A4%A7%E5%B1%80%E5%9F%9F%E7%BD%91/" target="_self">
+          ZeroTierOne创建大局域网
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2020/10/15/ZeroTierOne%E5%88%9B%E5%BB%BA%E5%A4%A7%E5%B1%80%E5%9F%9F%E7%BD%91/" target="_self">
+        <div>
+          
+          ZeroTier原理 这个过程如下：  A 想要将数据包发送到 B，但由于它没有直接路径，因此将其向上发送到 R。 如果 R 有直接链接到 B，它会转发数据包给 B。否则它会继续向上游发送数据包，直到达到行星根(planet)。行星根知道所有节点，所以如果 B 在线，最终数据包将到达 B。 R 还向 A 发送一个名为会和的消息，包含有关它如何到达 B 的提示。同时，将会和发给 B，通知
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-15 00:53" pubdate>
+              2020-10-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/zerotier/">#zerotier</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/14/%E5%B0%8F%E9%92%A2%E7%82%AE%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" target="_self">
+          小钢炮添加虚拟内存
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2020/10/14/%E5%B0%8F%E9%92%A2%E7%82%AE%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" target="_self">
+        <div>
+          
+          创建虚拟文件 1fallocate -l 2048M &#x2F;media&#x2F;BC2D-34FB&#x2F;swap&#x2F;swapfile 设置权限 1chmod 666 &#x2F;media&#x2F;BC2D-34FB&#x2F;swap&#x2F;swapfile 创建swap 1mkswap &#x2F;media&#x2F;BC2D-34FB&#x2F;swap&#x2F;swapfile 挂载swap 1swapon &#x2F;media&#x2F;BC2D-34FB&#x2F;swap&#x2F;swapf
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-14 23:00" pubdate>
+              2020-10-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B0%8F%E9%92%A2%E7%82%AE/">#小钢炮</a>
+            
+              <a href="/tags/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">#虚拟内存</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2020/10/12/Win10%E5%AE%B6%E5%BA%AD%E7%89%88%E4%B9%9F%E8%83%BD%E6%8B%A5%E6%9C%89%E7%BB%84%E7%AD%96%E7%95%A5/" target="_self">
           WIN10家庭版也能拥有组策略
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/10/12/Win10%E5%AE%B6%E5%BA%AD%E7%89%88%E4%B9%9F%E8%83%BD%E6%8B%A5%E6%9C%89%E7%BB%84%E7%AD%96%E7%95%A5/" target="_self">
+      <a class="index-excerpt" href="/2020/10/12/Win10%E5%AE%B6%E5%BA%AD%E7%89%88%E4%B9%9F%E8%83%BD%E6%8B%A5%E6%9C%89%E7%BB%84%E7%AD%96%E7%95%A5/" target="_self">
+        <div>
           
           Windows 家庭版用户最大的心结，可能就是没有本地组策略编辑器（Win+R后输入gpedit.msc）了。在注册表中不好找的东西，在这里直接就图形化处理了，不可谓不方便。 今天小编就来帮大家了却心结，家庭版用户用上组策略编辑器不再是梦！ 跟我来学黑科技先新建一个文本文档，把下面这些内容复制进去： 123456@echo offpushd &quot;%~dp0&quot;dir &#x2F;b C
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -214,18 +370,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/win10/">win10</a>
+              <a href="/tags/win10/">#win10</a>
             
           </div>
         
@@ -244,12 +414,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/08/10/Win10%E4%B8%8A%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/" target="_self">
+      <a class="index-excerpt" href="/2020/08/10/Win10%E4%B8%8A%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/" target="_self">
+        <div>
           
           免费视频剪辑 Quickcut 应用卸载 GEEK UNINSTALLER 系统清理软件 Glary Utilities 5 截图工具 Snipaste 窗口置顶工具 OneQuick 解压缩软件 360zip国际版 油猴脚本 Google Hit Hider searchEngineJump 网盘挂载工具 RaiDrive rclone 百度云不限速工具 雷
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -261,18 +431,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/win10/">win10</a>
+              <a href="/tags/win10/">#win10</a>
             
           </div>
         
@@ -291,12 +475,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/08/07/%E8%A7%A3%E5%86%B3Win10%E5%AD%97%E4%BD%93%E5%8F%91%E8%99%9A%E9%97%AE%E9%A2%98/" target="_self">
+      <a class="index-excerpt" href="/2020/08/07/%E8%A7%A3%E5%86%B3Win10%E5%AD%97%E4%BD%93%E5%8F%91%E8%99%9A%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
           
           方法一：缩放设置为自定义124%，利用bug解决问题 方法二：到wintools.info下载软件System Font Size changer，就可以更改各种框架下的字体大小
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -308,18 +492,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/win10/">win10</a>
+              <a href="/tags/win10/">#win10</a>
             
           </div>
         
@@ -338,12 +536,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/05/12/%E7%8E%A9%E8%80%8DJupyterNotebook/" target="_self">
+      <a class="index-excerpt" href="/2020/05/12/%E7%8E%A9%E8%80%8DJupyterNotebook/" target="_self">
+        <div>
           
           在docker中安装 1234567# 映射容器内jupyter的工作目录mkdir &#x2F;home&#x2F;jupyter# 给jupyter写入文件夹的权限chmod 777 &#x2F;home&#x2F;jupyter# 映射端口和文件夹docker run -d -v &#x2F;home&#x2F;jupyter:&#x2F;home&#x2F;jovyan&#x2F;work --name&#x3D;jupyter -p 13579:8888 jupyter&#x2F;base-n
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -355,18 +553,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/jupyternotebook/">jupyternotebook</a>
+              <a href="/tags/jupyternotebook/">#jupyternotebook</a>
             
           </div>
         
@@ -385,12 +597,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/03/20/%E7%9B%92%E5%AD%90%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E5%8F%8A%E4%B8%A4%E6%AC%A1%E6%90%AC%E8%BF%81/" target="_self">
+      <a class="index-excerpt" href="/2020/03/20/%E7%9B%92%E5%AD%90%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B%E5%8F%8A%E4%B8%A4%E6%AC%A1%E6%90%AC%E8%BF%81/" target="_self">
+        <div>
           
           首次建立 直接在n1小钢炮系统里面建立了entware环境，利用onmp使得该博客正式建立 搬迁到docker wordpress docker wordpress建立过程 1.利用docker建立mariadb数据库（选择mariadb的原因是小钢炮架构是arm64） 1docker run -itd --name some-mariadb -p 3308:3306 -e MYSQL_
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -402,20 +614,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%B0%8F%E9%92%A2%E7%82%AE/">小钢炮</a>
+              <a href="/tags/%E5%B0%8F%E9%92%A2%E7%82%AE/">#小钢炮</a>
             
-              <a href="/tags/n1/">n1</a>
+              <a href="/tags/n1/">#n1</a>
             
           </div>
         
@@ -434,12 +660,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/03/19/n1%E5%AE%89%E8%A3%85docker%E5%8F%8A%E6%9C%89%E7%94%A8%E7%9A%84%E9%95%9C%E5%83%8F/" target="_self">
+      <a class="index-excerpt" href="/2020/03/19/n1%E5%AE%89%E8%A3%85docker%E5%8F%8A%E6%9C%89%E7%94%A8%E7%9A%84%E9%95%9C%E5%83%8F/" target="_self">
+        <div>
           
           本地n1建立openwrt系统 n1架构为aarch64，可以用docker里面的arm64版本的openwrt，比如有 https:&#x2F;&#x2F;hub.docker.com&#x2F;r&#x2F;buddyfly&#x2F;openwrt-aarch64 https:&#x2F;&#x2F;hub.docker.com&#x2F;r&#x2F;unifreq&#x2F;openwrt-aarch64 安装命令： docker run --name op2 --restart
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -451,20 +677,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/docker/">docker</a>
+              <a href="/tags/docker/">#docker</a>
             
-              <a href="/tags/n1/">n1</a>
+              <a href="/tags/n1/">#n1</a>
             
           </div>
         
@@ -483,12 +723,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2019/10/22/N1%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90%E4%BB%8EWepad%E5%9B%BA%E4%BB%B6%E5%88%B7%E5%85%A5Rush%E5%9B%BA%E4%BB%B6/" target="_self">
+      <a class="index-excerpt" href="/2019/10/22/N1%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90%E4%BB%8EWepad%E5%9B%BA%E4%BB%B6%E5%88%B7%E5%85%A5Rush%E5%9B%BA%E4%BB%B6/" target="_self">
+        <div>
           
           前言 使用了半年的wepad固件，感觉越来越臃肿，加上没有完全的root权限，于是想到更换为rush固件 准备工作 到网盘下载刷机工具和rush固件（我的百度网盘有个文件夹“斐讯n1”），目前下载到了自己的nas里面 刷机流程 1.先将wepad固件恢复出厂设置，等待第二次重启以后马上断电！ 2.打开usb burning tool，载入固件 3.通过usb双头线连接盒子和电脑，听到
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -500,24 +740,38 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/n1/">n1</a>
+              <a href="/tags/n1/">#n1</a>
             
-              <a href="/tags/wepad/">wepad</a>
+              <a href="/tags/wepad/">#wepad</a>
             
-              <a href="/tags/rush/">rush</a>
+              <a href="/tags/rush/">#rush</a>
             
-              <a href="/tags/%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/">电视盒子</a>
+              <a href="/tags/%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/">#电视盒子</a>
             
           </div>
         
@@ -536,12 +790,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2019/07/14/Ddwrt%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BD%9C%E6%97%A0%E7%BA%BF%E6%A1%A5%E6%8E%A5/" target="_self">
+      <a class="index-excerpt" href="/2019/07/14/Ddwrt%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BD%9C%E6%97%A0%E7%BA%BF%E6%A1%A5%E6%8E%A5/" target="_self">
+        <div>
           
           重要的事情说在前： 1.目前设置成功，但是总掉线，不稳定 2.用网线将一台电脑和副路由的一个lan口连接起来，只需设置副路由 设置步骤 连接好以后，进入副路由的管理界面 1.进入状态——无线：点击下面的“基站勘察”：找到主路由的wifi信号，加入进去，点继续 2.进入无线模式选择： clienet bridge（客户端桥接），下面的无线网络模式、频道宽度、无线频道、无线网络名，都设置好
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -553,122 +807,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/ddwrt/">ddwrt</a>
+              <a href="/tags/ddwrt/">#ddwrt</a>
             
-              <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器</a>
+              <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">#路由器</a>
             
-              <a href="/tags/%E6%97%A0%E7%BA%BF%E6%A1%A5%E6%8E%A5/">无线桥接</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/07/06/%E6%A2%85%E6%9E%97%E8%B7%AF%E7%94%B1%E5%99%A8%E5%8D%87%E7%BA%A7%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" target="_self">
-          梅林路由器升级过程记录
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/06/%E6%A2%85%E6%9E%97%E8%B7%AF%E7%94%B1%E5%99%A8%E5%8D%87%E7%BA%A7%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" target="_self">
-          
-          今日把梅林固件从7.5升级到了7.9，简单记录一下过程： 准备工作 1.到https:&#x2F;&#x2F;firmware.koolshare.cn&#x2F; 下载固件，找到自己路由器对应的版本 2.备份jffs的脚本 开始升级 1.找到系统管理——固件升级——上传升级，等待3分钟左右，完成升级 2.（可选动作）为了稳定可以重置一下路由器，避免新旧版本冲突造成的一些莫名问题，如果重置，需要重新配置路由各项数据
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-06 22:50" pubdate>
-              2019-07-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器</a>
-            
-              <a href="/tags/merlin/">merlin</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/07/01/%E6%A2%85%E6%9E%97%E5%AE%89%E8%A3%85entware%E5%92%8C%E5%BC%80%E5%90%AF%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" target="_self">
-          梅林安装entware和开启虚拟内存的正确姿势
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/01/%E6%A2%85%E6%9E%97%E5%AE%89%E8%A3%85entware%E5%92%8C%E5%BC%80%E5%90%AF%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" target="_self">
-          
-          准备U盘  查找U盘，找到对应的设备名，例如&#x2F;dev&#x2F;sda1 1df -h 卸载 1umount &#x2F;dev&#x2F;sda1 格式化 1mkfs.ext4 &#x2F;dev&#x2F;sda1 重新挂载 1mount &#x2F;dev&#x2F;sda1&#x2F; &#x2F;tmp&#x2F;mnt&#x2F;sda1  安装entware 一个命令搞定 1entware-setup.sh 注意的问题: 1.这个命令是梅林系统自带的，位于&#x2F;us
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-01 10:35" pubdate>
-              2019-07-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">虚拟内存</a>
-            
-              <a href="/tags/entware/">entware</a>
-            
-              <a href="/tags/merlin/">merlin</a>
+              <a href="/tags/%E6%97%A0%E7%BA%BF%E6%A1%A5%E6%8E%A5/">#无线桥接</a>
             
           </div>
         
@@ -713,60 +881,62 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- LeanCloud 统计PV -->
-        <span id="leancloud-site-pv-container" style="display: none">
-            总访问量 
-            <span id="leancloud-site-pv"></span>
-             次
-          </span>
-      
-      
-        <!-- LeanCloud 统计UV -->
-        <span id="leancloud-site-uv-container" style="display: none">
-            总访客数 
-            <span id="leancloud-site-uv"></span>
-             人
-          </span>
-      
-
-    
-  </div>
-
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
   
 
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
   
     <!-- cnzz Analytics Icon -->
     <span id="cnzz_stat_icon_1279870992" style="display: none"></span>
   
-</footer>
+</div>
 
+  </footer>
 
-  <!-- SCRIPTS -->
+  <!-- Scripts -->
   
   <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
@@ -785,50 +955,21 @@
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-  <script defer src="/js/leancloud.js" ></script>
-
-
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
   <script>
     (function (window, document) {
       var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
       
-        typing(title);
+        typing(text);
       
     })(window, document);
   </script>
-
-
-
-
-
-
-
-
 
 
 
@@ -845,17 +986,44 @@
 
   
     <!-- cnzz Analytics -->
-    <script defer src="//s4.cnzz.com/z_stat.php?id=1279870992&show=pic"
-            type="text/javascript"></script>
+    <script defer>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('//s4.cnzz.com/z_stat.php?id=1279870992&show=pic');
+      }
+    </script>
+  
+
+  
+    
   
 
 
 
 
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
-<!-- 主题的启动项 保持在最底部 -->
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

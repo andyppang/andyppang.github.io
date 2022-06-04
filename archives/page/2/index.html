@@ -25,15 +25,21 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
   <title>归档 - Wish You Success</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
@@ -42,22 +48,41 @@
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":"nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI","app_key":"jpWiVUMoucJREpt4DsJR4oys","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":"nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI","app_key":"jpWiVUMoucJREpt4DsJR4oys","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Wish You Success" type="application/atom+xml">
 </head>
 
 
 <body>
-  <header style="height: 60vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
       <strong>零和壹</strong>
@@ -139,6 +164,7 @@
               &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
@@ -151,29 +177,35 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('https://fastly.jsdelivr.net/gh/andyppang/mdpic/pic/20220514001448.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fastly.jsdelivr.net/gh/andyppang/mdpic/pic/20220514001448.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="归档"></span>
           
         </div>
+
+        
       </div>
+
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
+        <div id="board"
           >
           
           <div class="container">
@@ -182,7 +214,7 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 65 篇文章</p>
+  <p class="h4">共计 67 篇文章</p>
   <hr>
   
   
@@ -190,99 +222,111 @@
       
       <p class="h5">2021</p>
     
+    <a href="/2021/05/20/Fluid%E4%B8%BB%E9%A2%98%E8%84%9A%E6%B3%A8%E3%80%81%E6%A0%87%E7%AD%BE%E3%80%81%E5%A4%9A%E5%9B%BE%E7%9A%84%E8%AF%AD%E6%B3%95/" class="list-group-item list-group-item-action">
+      <time>05-20</time>
+      <div class="list-group-item-title">Fluid主题脚注、标签、多图的语法</div>
+    </a>
+  
+    
+    <a href="/2021/05/20/%E6%A4%AD%E5%9C%86%E4%B8%8A%E4%B8%A4%E7%82%B9%E8%BF%9E%E7%BA%BF%E8%BF%87%E5%AE%9A%E7%82%B9%E9%97%AE%E9%A2%98%E7%9A%84%E7%AE%80%E5%8C%96%E8%AE%A1%E7%AE%97/" class="list-group-item list-group-item-action">
+      <time>05-20</time>
+      <div class="list-group-item-title">椭圆上两点连线过定点问题的简化计算</div>
+    </a>
+  
+    
     <a href="/2021/05/19/deploy%E5%85%8D%E8%BE%93%E5%AF%86%E7%A0%81/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">deploy免输密码</span>
-      <time style="float: right;">05-19</time>
+      <time>05-19</time>
+      <div class="list-group-item-title">deploy免输密码</div>
     </a>
   
     
     <a href="/2021/05/17/%E6%A2%85%E6%9E%97%E5%86%8D%E8%A3%85zerotier1-63%E7%89%88%E6%9C%AC%E7%9A%84%E5%9D%91/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">梅林再装zerotier1.6.3版本的坑</span>
-      <time style="float: right;">05-17</time>
+      <time>05-17</time>
+      <div class="list-group-item-title">梅林再装zerotier1.6.3版本的坑</div>
     </a>
   
     
     <a href="/2021/05/16/%E8%A7%A3%E5%86%B3docker%E6%89%80%E5%9C%A8var%E5%88%86%E5%8C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">解决docker所在var分区磁盘空间不足的问题</span>
-      <time style="float: right;">05-16</time>
+      <time>05-16</time>
+      <div class="list-group-item-title">解决docker所在var分区磁盘空间不足的问题</div>
     </a>
   
     
     <a href="/2021/05/14/%E6%9E%81%E5%80%BC%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E6%80%9D%E8%B7%AF%E6%B6%88%E5%8F%82%E7%9A%84%E6%93%8D%E4%BD%9C/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">极值点偏移的思路消参的操作</span>
-      <time style="float: right;">05-14</time>
+      <time>05-14</time>
+      <div class="list-group-item-title">极值点偏移的思路消参的操作</div>
     </a>
   
     
     <a href="/2021/05/13/Pandoc%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Pandoc的使用记录</span>
-      <time style="float: right;">05-13</time>
+      <time>05-13</time>
+      <div class="list-group-item-title">Pandoc的使用记录</div>
     </a>
   
     
     <a href="/2021/04/29/Github-Page%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Github Page绑定域名</span>
-      <time style="float: right;">04-29</time>
+      <time>04-29</time>
+      <div class="list-group-item-title">Github Page绑定域名</div>
     </a>
   
     
     <a href="/2021/04/28/%E7%BB%99ipv4-only-vps%E6%B7%BB%E5%8A%A0ipv6/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">给ipv4 only vps添加ipv6</span>
-      <time style="float: right;">04-28</time>
+      <time>04-28</time>
+      <div class="list-group-item-title">给ipv4 only vps添加ipv6</div>
     </a>
   
     
     <a href="/2021/04/23/Win10%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E4%B8%8D%E6%89%A7%E8%A1%8C%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Win10计划任务不执行的解决办法</span>
-      <time style="float: right;">04-23</time>
+      <time>04-23</time>
+      <div class="list-group-item-title">Win10计划任务不执行的解决办法</div>
     </a>
   
     
     <a href="/2021/04/21/%E5%85%B3%E6%B3%A8G,F%E4%B8%A4%E7%82%B9%E5%9D%90%E6%A0%87/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">关注G,F两点坐标如何求解</span>
-      <time style="float: right;">04-21</time>
+      <time>04-21</time>
+      <div class="list-group-item-title">关注G,F两点坐标如何求解</div>
     </a>
   
     
     <a href="/2021/04/20/Win10%E5%AE%89%E8%A3%85WSL2%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%8F%8A%E6%8A%98%E8%85%BE/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Windows10安装Ubuntu子系统以及折腾</span>
-      <time style="float: right;">04-20</time>
+      <time>04-20</time>
+      <div class="list-group-item-title">Windows10安装Ubuntu子系统以及折腾</div>
     </a>
   
     
     <a href="/2021/04/19/Microsoft-To-Do%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Microsoft To Do使用心得</span>
-      <time style="float: right;">04-19</time>
+      <time>04-19</time>
+      <div class="list-group-item-title">Microsoft To Do使用心得</div>
     </a>
   
     
     <a href="/2021/04/12/%E5%BE%AE%E8%BD%AF%E5%85%8D%E8%B4%B9%E4%B8%BB%E6%9C%BAAzure%E8%AF%95%E7%94%A8%E8%AE%B0%E5%BD%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">微软免费主机Azure试用记录</span>
-      <time style="float: right;">04-12</time>
+      <time>04-12</time>
+      <div class="list-group-item-title">微软免费主机Azure试用记录</div>
     </a>
   
     
     <a href="/2021/04/08/%E7%A6%81%E6%AD%A2%E6%81%B6%E6%84%8FIP%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">禁止恶意ip连接服务器</span>
-      <time style="float: right;">04-08</time>
+      <time>04-08</time>
+      <div class="list-group-item-title">禁止恶意ip连接服务器</div>
     </a>
   
     
     <a href="/2021/04/05/test-updatedtime/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">test-updatedtime</span>
-      <time style="float: right;">04-05</time>
+      <time>04-05</time>
+      <div class="list-group-item-title">test-updatedtime</div>
     </a>
   
     
     <a href="/2021/04/05/%E5%88%9B%E5%BB%BA%E3%80%81%E9%83%A8%E7%BD%B2%E3%80%81%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E4%B8%80%E6%9D%A1%E9%BE%99/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">创建、部署、备份Hexo博客一条龙</span>
-      <time style="float: right;">04-05</time>
+      <time>04-05</time>
+      <div class="list-group-item-title">创建、部署、备份Hexo博客一条龙</div>
     </a>
   
     
     <a href="/2021/03/21/%E6%9C%88%E8%80%83%E9%94%99%E9%A2%98/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">月考错题集</span>
-      <time style="float: right;">03-21</time>
+      <time>03-21</time>
+      <div class="list-group-item-title">月考错题集</div>
     </a>
   
     
@@ -290,26 +334,14 @@
       <p class="h5">2020</p>
     
     <a href="/2020/12/16/%E4%B9%90%E6%92%AD%E6%8A%95%E5%B1%8FPC%E7%89%88/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">乐播投屏PC版</span>
-      <time style="float: right;">12-16</time>
+      <time>12-16</time>
+      <div class="list-group-item-title">乐播投屏PC版</div>
     </a>
   
     
     <a href="/2020/12/15/Vps%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">VPS测试脚本</span>
-      <time style="float: right;">12-15</time>
-    </a>
-  
-    
-    <a href="/2020/12/15/Docker%E5%AE%89%E8%A3%85P2pSpider%E5%92%8Clive-torrent/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">docker安装p2pspider和live-torrent</span>
-      <time style="float: right;">12-15</time>
-    </a>
-  
-    
-    <a href="/2020/12/09/Https%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">https证书申请及安装</span>
-      <time style="float: right;">12-09</time>
+      <time>12-15</time>
+      <div class="list-group-item-title">VPS测试脚本</div>
     </a>
   
 </div>
@@ -351,60 +383,62 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- LeanCloud 统计PV -->
-        <span id="leancloud-site-pv-container" style="display: none">
-            总访问量 
-            <span id="leancloud-site-pv"></span>
-             次
-          </span>
-      
-      
-        <!-- LeanCloud 统计UV -->
-        <span id="leancloud-site-uv-container" style="display: none">
-            总访客数 
-            <span id="leancloud-site-uv"></span>
-             人
-          </span>
-      
-
-    
-  </div>
-
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
   
 
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
   
     <!-- cnzz Analytics Icon -->
     <span id="cnzz_stat_icon_1279870992" style="display: none"></span>
   
-</footer>
+</div>
 
+  </footer>
 
-  <!-- SCRIPTS -->
+  <!-- Scripts -->
   
   <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
@@ -423,50 +457,21 @@
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-  <script defer src="/js/leancloud.js" ></script>
-
-
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
   <script>
     (function (window, document) {
       var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
       
-        typing(title);
+        typing(text);
       
     })(window, document);
   </script>
-
-
-
-
-
-
-
-
 
 
 
@@ -483,17 +488,44 @@
 
   
     <!-- cnzz Analytics -->
-    <script defer src="//s4.cnzz.com/z_stat.php?id=1279870992&show=pic"
-            type="text/javascript"></script>
+    <script defer>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('//s4.cnzz.com/z_stat.php?id=1279870992&show=pic');
+      }
+    </script>
+  
+
+  
+    
   
 
 
 
 
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
-<!-- 主题的启动项 保持在最底部 -->
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
