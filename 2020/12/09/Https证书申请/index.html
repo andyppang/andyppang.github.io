@@ -298,7 +298,7 @@
 <p>2.vps安装nginx，注意找到nginx默认的网站文件夹，下面安装有用</p>
 <h2 id="安装acme.sh">安装acme.sh</h2>
 <p>详细见https://wsgzao.github.io/post/acme/ 我是采用以下方式安装的</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs awk">acme.sh  --issue  -d mydomain.com -d www.mydomain.com  --webroot  <span class="hljs-regexp">/home/</span>wwwroot<span class="hljs-regexp">/mydomain.com/</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">acme.sh  --issue  -d mydomain.com -d www.mydomain.com  --webroot  <span class="hljs-regexp">/home/</span>wwwroot<span class="hljs-regexp">/mydomain.com/</span><br></code></pre></td></tr></table></figure>
 <p>将mydomain.com改为自己的域名，把/home/wwwroot/mydomain.com/ 改为nginx默认的网站文件夹</p>
 <h2 id="对于二级域名申请证书省心好用使用前确保80端口没有占用">对于二级域名申请证书（省心好用，使用前确保80端口没有占用）</h2>
 <figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">acme</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span>  --<span class="hljs-comment">issue</span> <span class="hljs-literal">-</span><span class="hljs-comment">d</span> <span class="hljs-comment">mydomain</span><span class="hljs-string">.</span><span class="hljs-comment">com</span>   --<span class="hljs-comment">standalone</span><br></code></pre></td></tr></table></figure>

@@ -224,6 +224,452 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/05/17/%E6%A2%85%E6%9E%97%E5%86%8D%E8%A3%85zerotier1-63%E7%89%88%E6%9C%AC%E7%9A%84%E5%9D%91/" target="_self">
+          梅林再装zerotier1.6.3版本的坑
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/05/17/%E6%A2%85%E6%9E%97%E5%86%8D%E8%A3%85zerotier1-63%E7%89%88%E6%9C%AC%E7%9A%84%E5%9D%91/" target="_self">
+        <div>
+          
+          起因 昨天不知为何，梅林路由器ac66u在定时重启以后就不正常了，cpu占用率两个都维持在100%，具体表现就是所有设备连不上wifi，网页登录后台管理地址异常慢，半年前也出现过一次类似的情况。 经过  拔掉U盘，重启设备，用电脑有线连接路由器，龟速登录上后台管理地址，然后在系统管理里面找到 format jffs on next boot （大概叫这个名字吧）打勾，然后再重启路由器，这样
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-17 10:18" pubdate>
+              2021-05-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/zerotier/">#zerotier</a>
+            
+              <a href="/tags/merlin/">#merlin</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/16/%E8%A7%A3%E5%86%B3docker%E6%89%80%E5%9C%A8var%E5%88%86%E5%8C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+          解决docker所在var分区磁盘空间不足的问题
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/05/16/%E8%A7%A3%E5%86%B3docker%E6%89%80%E5%9C%A8var%E5%88%86%E5%8C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          
+          尴尬 今天在 docker pull jupyter&#x2F;datascience-notebook 的时候，遇到了尴尬的问题：系统提示磁盘空间不足。仔细一看，原来是docker所在的var分区当时自动分区的时候只分了1.7个G，现在下载这个玩意儿解压缩以后有几个G，好尬尬 解决方案 首先尝试了给分区扩容，然后发现自己对linux纯命令行利用命令进行扩容一点都不知道，即使是在参看网上很多的教程以后
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-16 00:17" pubdate>
+              2021-05-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">#docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/14/%E6%9E%81%E5%80%BC%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E6%80%9D%E8%B7%AF%E6%B6%88%E5%8F%82%E7%9A%84%E6%93%8D%E4%BD%9C/" target="_self">
+          极值点偏移的思路消参的操作
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/05/14/%E6%9E%81%E5%80%BC%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E6%80%9D%E8%B7%AF%E6%B6%88%E5%8F%82%E7%9A%84%E6%93%8D%E4%BD%9C/" target="_self">
+        <div>
+          
+          题 已知函数\(f(x)&#x3D;axe^{2-x}-2(x-1)^2,a\in\mathbf{R}\) （1）讨论\(f(x)\)的单调性； （2）当\(0&lt;a&lt;1\)时，证明：\(f(x)\)有两个零点\(x_1,x_2\)，且\(x_1x_2&lt;1\) 解 解析：（1）\(f&#39;(x)&#x3D;ae^{2-x}(1-x)-4(x-1)&#x3D;(1-x)(ae^{2-x}+4)\)
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-14 14:38" pubdate>
+              2021-05-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E5%AD%A6/" class="category-chain-item">数学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%B0%E5%AD%A6/%E5%AF%BC%E6%95%B0/" class="category-chain-item">导数</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AF%BC%E6%95%B0/">#导数</a>
+            
+              <a href="/tags/%E6%9E%81%E5%80%BC%E7%82%B9%E5%81%8F%E7%A7%BB/">#极值点偏移</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/13/Pandoc%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" target="_self">
+          Pandoc的使用记录
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/05/13/Pandoc%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" target="_self">
+        <div>
+          
+          Pandoc简介  Pandoc是使用Haskell语言编写的一款跨平台、自由开源及命令行界面的标记语言转换工具，可实现不同标记语言间的格式转换，堪称该领域中的“瑞士军刀”  Windows10系统下的使用方法  将pandoc安装目录加入系统环境变量的path中 在命令行操作pandoc进行格式转换  markdown&#x2F;latex转docx 123pandoc -s sour
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-13 16:20" pubdate>
+              2021-05-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/pandoc/">#pandoc</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/29/Github-Page%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/" target="_self">
+          Github Page绑定域名
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/04/29/Github-Page%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/" target="_self">
+        <div>
+          
+          轻松两步就可以完成Github Page域名绑定 DNS端的设置  增加一条 CNAME 记录，名称指向自己的 github page 页 username.github.io     类型 名称 内容     CNAME www username.github.io     增加一条 A 记录，指向 185.199.108.153 或 185.199.
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-29 23:56" pubdate>
+              2021-04-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/github-page/">#github page</a>
+            
+              <a href="/tags/%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/">#绑定域名</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/28/%E7%BB%99ipv4-only-vps%E6%B7%BB%E5%8A%A0ipv6/" target="_self">
+          给ipv4 only vps添加ipv6
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/04/28/%E7%BB%99ipv4-only-vps%E6%B7%BB%E5%8A%A0ipv6/" target="_self">
+        <div>
+          
+          准备工作 在网站 TunnelBroker 注册账号 网页端设置 1.登录后，点击左侧 Creat Regular Tunnel 2.Ipv4 Endpoint(your side) 填写Vps的ip地址，Available Tunnel Servers 选择ipv6地址所在地区,然后点击下方 Creat Tunnel 3.点击选项卡 Example Configurations ，选择
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-28 14:05" pubdate>
+              2021-04-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vps/">#vps</a>
+            
+              <a href="/tags/ipv4/">#ipv4</a>
+            
+              <a href="/tags/ipv6/">#ipv6</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/23/Win10%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E4%B8%8D%E6%89%A7%E8%A1%8C%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" target="_self">
+          Win10计划任务不执行的解决办法
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/04/23/Win10%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E4%B8%8D%E6%89%A7%E8%A1%8C%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" target="_self">
+        <div>
+          
+          使用计划任务的目的： 仅仅是为了定时打开某个软件.exe，挂个机，刷刷分 不执行的具体表现 如果您定好计划任务以后，发现有如下情形之一，可以考虑试试下面的办法  操作员或管理员拒绝了您的请求 显示正在运行，但是有错误代码 0x41301 选择 只在用户登录时运行 可以运行，但是一旦选择 不管用户是否登录都要运行 就不行  尝试过的”坑“ 按照网上千篇一律的教程，要么分配用户权限
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-23 11:03" pubdate>
+              2021-04-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/267009/">#267009</a>
+            
+              <a href="/tags/taskschd/">#taskschd</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/04/21/%E5%85%B3%E6%B3%A8G,F%E4%B8%A4%E7%82%B9%E5%9D%90%E6%A0%87/" target="_self">
           关注G,F两点坐标如何求解
         </a>
@@ -412,433 +858,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/12/%E5%BE%AE%E8%BD%AF%E5%85%8D%E8%B4%B9%E4%B8%BB%E6%9C%BAAzure%E8%AF%95%E7%94%A8%E8%AE%B0%E5%BD%95/" target="_self">
-          微软免费主机Azure试用记录
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2021/04/12/%E5%BE%AE%E8%BD%AF%E5%85%8D%E8%B4%B9%E4%B8%BB%E6%9C%BAAzure%E8%AF%95%E7%94%A8%E8%AE%B0%E5%BD%95/" target="_self">
-        <div>
-          
-          官方说明 https:&#x2F;&#x2F;azure.microsoft.com&#x2F;zh-cn&#x2F;free&#x2F;free-account-faq&#x2F; 与主机相关的免费服务    产品 免费时长     通过将两个 64 GB (P6) SSD 存储合并得到的 128 GB 托管磁盘，外加 1 GB 快照和 2 百万个 I&#x2F;O 操作 12个月   15 GB 的出站数据传输带宽，无限免费入站数
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-12 00:00" pubdate>
-              2021-04-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Azure/">#Azure</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/08/%E7%A6%81%E6%AD%A2%E6%81%B6%E6%84%8FIP%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
-          禁止恶意ip连接服务器
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2021/04/08/%E7%A6%81%E6%AD%A2%E6%81%B6%E6%84%8FIP%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
-        <div>
-          
-          实现原理 由于 &#x2F;var&#x2F;log&#x2F;auth.log 会记录所有用户的登录信息，通过提取 Failed password 类型的连接ip，然后将其加入 &#x2F;etc&#x2F;hosts.deny 文件，就可以禁止该ip再次连接。 具体步骤 1.首先确保安装了python 2.然后在 &#x2F;home 目录下 touch bannedip.py ，写入如下内容： 12345678910111213141516
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-08 16:15" pubdate>
-              2021-04-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">#python</a>
-            
-              <a href="/tags/ban-ip/">#ban ip</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/05/test-updatedtime/" target="_self">
-          test-updatedtime
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2021/04/05/test-updatedtime/" target="_self">
-        <div>
-          
-          会按updated时间排序吗？
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-05 22:03" pubdate>
-              2021-04-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/05/%E5%88%9B%E5%BB%BA%E3%80%81%E9%83%A8%E7%BD%B2%E3%80%81%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E4%B8%80%E6%9D%A1%E9%BE%99/" target="_self">
-          创建、部署、备份Hexo博客一条龙
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2021/04/05/%E5%88%9B%E5%BB%BA%E3%80%81%E9%83%A8%E7%BD%B2%E3%80%81%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E4%B8%80%E6%9D%A1%E9%BE%99/" target="_self">
-        <div>
-          
-          准备工作 安装环境部署： 安装git： 1apt install git-core 安装node： 12curl -fsSL https:&#x2F;&#x2F;deb.nodesource.com&#x2F;setup_15.x | bash -apt-get install -y nodejs 安装hexo 123456789# 安装命令npm install -g hexo-cli# 初始化博客（会自动在当前文件
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-05 00:00" pubdate>
-              2021-04-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/hexo/">#hexo</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/21/%E6%9C%88%E8%80%83%E9%94%99%E9%A2%98/" target="_self">
-          月考错题集
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2021/03/21/%E6%9C%88%E8%80%83%E9%94%99%E9%A2%98/" target="_self">
-        <div>
-          
-          高一上学期第一次月考 21.用清水洗一堆衣服上残留的污渍，用水越多，洗掉的污渍量也越多，但总还有污渍残留在衣服上.现作如下规定：用\(x\)单位的水清洗1次后，衣服上残留的污渍与本次清洗前残留的污渍之比为函数\(f(x)&#x3D;\dfrac{2}{2+x^2}\) （1）（i）试解释\(f(0)\)与\(f(1)\)的实际意义； （ii）写出函数\(f(x)\)应该满足的条件或具有的性质；（写出至少2
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-21 00:00" pubdate>
-              2021-03-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%95%B0%E5%AD%A6/" class="category-chain-item">数学</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9C%88%E8%80%83%E9%94%99%E9%A2%98/">#月考错题</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/16/%E4%B9%90%E6%92%AD%E6%8A%95%E5%B1%8FPC%E7%89%88/" target="_self">
-          乐播投屏PC版
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2020/12/16/%E4%B9%90%E6%92%AD%E6%8A%95%E5%B1%8FPC%E7%89%88/" target="_self">
-        <div>
-          
-          破解版下载：https:&#x2F;&#x2F;www.lanzous.com&#x2F;i78svyd 目前下载到nas里面 打开提示升级，取消不升级 投屏方式有：整屏投影，选择应用程序投影，扩展屏投影 使用感觉很好！
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-16 14:49" pubdate>
-              2020-12-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E4%B9%90%E6%92%AD%E6%8A%95%E5%B1%8F/">#乐播投屏</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/15/Vps%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/" target="_self">
-          VPS测试脚本
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2020/12/15/Vps%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/" target="_self">
-        <div>
-          
-          脚本1 纯净，不安装任何东西。均为国内节点。 1wget -qO- bench.sh  bash 脚本2 有国内节点，可看上行和下行。 1wget -qO- https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;oooldking&#x2F;script&#x2F;master&#x2F;superbench.sh  bash 脚本3 1(wget -qO- wget.racing&#x2F;nench.sh
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-15 23:42" pubdate>
-              2020-12-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/VPS%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/">#VPS测试脚本</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

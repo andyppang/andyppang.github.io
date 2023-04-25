@@ -1,13 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>docker安装plex</title>
+    <url>/2023/04/25/docker%E5%AE%89%E8%A3%85plex/</url>
+    <content><![CDATA[<h2 id="选择适配系统的版本">选择适配系统的版本</h2>
+<p>您需要考虑您的操作系统，因为Docker镜像是针对特定操作系统构建的。您可以在Docker Hub上找到适用于您操作系统的Plex镜像。</p>
+<p>例如我要在linux服务器上安装，则应该选择LinuxServer.io的Docker镜像。</p>
+<h2 id="利用docker-compose安装">利用docker compose安装</h2>
+<p>在/opt/plex文件夹下建立docker-compose.yml文件，写入如下内容：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;2.1&quot;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">plex:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">lscr.io/linuxserver/plex:latest</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">plex</span><br>    <span class="hljs-attr">network_mode:</span> <span class="hljs-string">host</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PUID=1000</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PGID=1000</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">VERSION=docker</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PLEX_CLAIM=换成自己的claim</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/opt/plex:/config</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/opt/aria2/aria2-downloads:/tv</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/opt/aria2/aria2-downloads:/movies</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br></code></pre></td></tr></table></figure>
+<p>其中claim id 在https://plex.com/claim获取，volumes的磁盘映射根据自己的需求更改</p>
+<p>然后<code>docker-compose up -d</code> 就可以玩耍了</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>docker,plex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>n1小钢炮搬家记</title>
+    <url>/2022/10/04/n1%E5%B0%8F%E9%92%A2%E7%82%AE%E6%90%AC%E5%AE%B6%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="一搬迁之前的准备工作">一、搬迁之前的准备工作</h2>
+<ul>
+<li>事先了解搬迁地的网关地址和子网掩码</li>
+<li>进入小钢炮后台 <code>System-Network</code>，选择 <code>use Static IP</code>，填入ip地址、网关地址，然后保存</li>
+<li>如果搬迁地没有登录路由或交换机后台的权限，上一步不要选择 <code>use DHCP</code>，不然就捞不到小钢炮的ip了</li>
+</ul>
+<h2 id="二搬迁后遇到的各种麻烦及解决办法">二、搬迁后遇到的各种麻烦及解决办法</h2>
+<ul>
+<li><p>搬迁地的网段为172.17.0.0/16，和docker0网段冲突</p>
+<p>直接表现就是已建好的容器不能访问了，因此修改docker0网段为172.100.0.0/16</p>
+<p>修改文件 <code>/etc/docker/daemon.json</code> 为以下内容：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;storage-driver&quot;</span>: <span class="hljs-string">&quot;overlay2&quot;</span>,<br>  <span class="hljs-attr">&quot;registry-mirrors&quot;</span>: [<span class="hljs-string">&quot;https://hub-mirror.c.163.com&quot;</span>,<br>    <span class="hljs-string">&quot;https://registry.aliyuncs.com&quot;</span>,<br>    <span class="hljs-string">&quot;https://registry.docker-cn.com&quot;</span>,<br>    <span class="hljs-string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span>],<br>  <span class="hljs-attr">&quot;default-address-pools&quot;</span>:[&#123;<span class="hljs-attr">&quot;base&quot;</span>:<span class="hljs-string">&quot;172.100.0.0/16&quot;</span>,<span class="hljs-attr">&quot;size&quot;</span>:<span class="hljs-number">24</span>&#125;]<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>docker版本的openwrt更换新版本以后，ssrplus总是无法启动或者谷歌连接测试不通</p>
+<p>经过百般搜索，看到这样一句话：</p>
+<p><code>选 仅常用端口（不走P2P流量到代理） 就无法启动。</code></p>
+<p>改为全部端口就可以启动了</p></li>
+<li><p>openwrt里面的passwall显示谷歌连接测试失败</p>
+<p>解决办法：在高级设置里面，找到<code>TCP 转发端口</code>，将常用改为全部，再来测试就正常了</p></li>
+<li><p>关于docker版本的openwrt安装版本</p>
+<p>由于n1的架构是aarch64，所以在docker hub中搜索arm64架构的openwrt版本才可以安装</p>
+<p>先后尝试了</p>
+<p><code>unifreq/openwrt-aarch64</code> 最高尝试到<a href="https://hub.docker.com/layers/unifreq/openwrt-aarch64/r20.10.20/images/sha256-b6370f04bb231867957ee9101e91e5978d4b22dccfca265b16c36f450a4fddc9?context=explore">r20.10.20</a>版本可以正常使用</p>
+<p><code>buddyfly/openwrt-aarch64</code></p>
+<p><code>sulinggg/openwrt</code> 版本多，界面美化好，n1可使用registry.cn-shanghai.aliyuncs.com/suling/openwrt:armv8</p></li>
+<li><p>小钢炮自带的transmission提示错误，无法启动</p>
+<p>解决办法：进入 <code>Apps-Transmission-Extra Settings</code> 找到 <code>rpc whitelist</code> 添加新的本地网段</p></li>
+<li><p>关于n1无法ping通openwrt容器</p>
+<p>由于openwrt容器采用的是网卡混杂模式macvlan，宿主机与容器之间的网络连接是隔绝的，但是多个混杂模式之间的网络是可以相互访问的，只要在宿主机上再建立一个macvlan，然后修改路由表，使数据经由<strong>宿主机下的macvlan</strong>传输到<strong>容器内的macvlan</strong>即可。</p>
+<ul>
+<li><p>环境：</p>
+<p>宿主机eth0：172.17.18.18/16</p>
+<p>openwrt容器：172.17.18.22/16</p></li>
+<li><p>解决：以下操作均在 <strong>宿主机</strong> 中，不是在Docker容器中</p>
+<p>新增一个叫mynet的macvlan接口</p>
+<figure class="highlight lasso"><table><tr><td class="code"><pre><code class="hljs lasso">ip <span class="hljs-keyword">link</span> add mynet <span class="hljs-keyword">link</span> eth0 <span class="hljs-keyword">type</span> macvlan mode bridge<br></code></pre></td></tr></table></figure>
+<p>为该接口分配ip</p>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">ip</span> <span class="hljs-keyword">addr</span> <span class="hljs-keyword">add</span> <span class="hljs-number">172</span>.<span class="hljs-number">17</span>.<span class="hljs-number">18</span>.<span class="hljs-number">222</span> dev mynet<br></code></pre></td></tr></table></figure>
+<p>启用名称为mynet的macvlan</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><code class="hljs gams">ip link <span class="hljs-keyword">set</span> mynet <span class="hljs-comment">up</span><br></code></pre></td></tr></table></figure>
+<p>修改路由表，使宿主机172.17.18.18/16到Openwrt容器172.17.18.22/16的通信全部由mynet中转</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">ip<span class="hljs-built_in"> route </span><span class="hljs-builtin-name">add</span> 172.17.18.22 dev mynet<br></code></pre></td></tr></table></figure>
+<p>该问题解决参考了https://mopo-blog.ddnsfree.com/2021/02/23/n1-eth0-macvlan/</p></li>
+</ul></li>
+</ul>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>n1,docker,openwrt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哪吒探针监控vps状态</title>
+    <url>/2022/09/21/%E5%93%AA%E5%90%92%E6%8E%A2%E9%92%88%E7%9B%91%E6%8E%A7vps%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h1 id="项目地址">项目地址</h1>
+<p>https://github.com/naiba/nezha</p>
+<h1 id="创建一个oauth-apps">创建一个OAuth Apps</h1>
+<ul>
+<li>先打开：https://github.com/settings/developers，然后点击New OAuth App按钮</li>
+<li>Homepage URL：http://域名:8088<br />
+</li>
+<li>Authorization callback URL：http://域名:8008/oauth2/callback</li>
+<li>可能需要用github的手机app进行激活</li>
+<li>记录OAuth Apps的Client ID和Client secrets</li>
+</ul>
+<h1 id="放行防火墙如果需要">放行防火墙（如果需要）</h1>
+<p>开放8008和5555两个端口</p>
+<h1 id="安装命令">安装命令</h1>
+<p>国外vps一键脚本命令：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">curl -L https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/naiba/</span>nezha<span class="hljs-regexp">/master/</span>script<span class="hljs-regexp">/install.sh  -o nezha.sh &amp;&amp; chmod +x nezha.sh &amp;&amp; sudo ./</span>nezha.sh<br></code></pre></td></tr></table></figure>
+<p>国内vps一键脚本命令：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">curl -L https:<span class="hljs-regexp">//</span>jihulab.com<span class="hljs-regexp">/nezha/</span>nezha<span class="hljs-regexp">/-/</span>raw<span class="hljs-regexp">/master/</span>script<span class="hljs-regexp">/install.sh -o nezha.sh &amp;&amp; chmod +x nezha.sh &amp;&amp; sudo CN=true ./</span>nezha.sh<br></code></pre></td></tr></table></figure>
+<h1 id="访问地址">访问地址：</h1>
+<p><code>http://域名:8008</code></p>
+<h1 id="后台管理">后台管理</h1>
+<p>增加服务器后，需要在每个被监控的服务器安装Agent客户端，如果是国内vps还是会因为网络问题，不能正常下载到客户端，可以借助于上面国内vps的一键脚本命令后面加上参数，进行安装。</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>vps</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用warp脚本使任意vps变双栈</title>
+    <url>/2022/09/20/%E5%88%A9%E7%94%A8warp%E8%84%9A%E6%9C%AC%E4%BD%BF%E4%BB%BB%E6%84%8Fvps%E5%8F%98%E5%8F%8C%E6%A0%88/</url>
+    <content><![CDATA[<h1 id="cloudflare-warp功能">cloudflare warp功能</h1>
+<p>直接搬运p3terx大佬博客的文字：</p>
+<p><a href="https://p3terx.com/go/aHR0cHM6Ly8xLjEuMS4xLw">Cloudflare WARP</a> 是 Cloud­flare 提供的一项基于 Wire­Guard 的网络流量安全及加速服务，能够让你通过连接到 Cloud­flare 的边缘节点实现隐私保护及链路优化。之前有很多小伙伴拿来当做某科学的上网工具来使用，应该很熟悉了。不过由于 Wire­Guard 数据传输使用的 UDP 协议，中国大陆的网络运营商会对其进行 QoS ，加上很多节点的 IP 被封锁，现在可以说几乎处于不可用的状态了。而对于自由网络的地区来说则没有这些限制，加上有国外开发者制作的工具可以生成通用的 Wire­Guard 配置文件，这使得我们可以在安装了某科学的上网工具的海外 VPS 上部署它并获得如下作用：</p>
+<ul>
+<li>WARP 网络出入口均为双栈 (IPv4/IPv6)，因此单栈 VPS 云服务器可以连接到 WARP 网络来获取额外的网络连通性支持：
+<ul>
+<li>IPv6 Only VPS 可获得 IPv4 网络的访问能力，不再局限于 NAT64/DNS64 的束缚，能自定义任意 DNS 解析服务器，这对使用某科学的上网工具有奇效。</li>
+<li>IPv4 Only VPS 可获得 IPv6 网络的访问能力，比如可作为 IPv6 Only VPS 的 SSH 跳板。此外 WARP 的 IPv6 网络的质量比 <a href="https://p3terx.com/archives/use-he-tunnel-broker-to-add-public-network-ipv6-support-to-ipv4-vps-for-free.html">HE IPv6 Tunnel Broker</a> 甚至 VPS 自带的都要好，很少绕路。</li>
+</ul></li>
+<li>WARP 对外访问网络的出口 IP 被很多网站视为真实用户，即所谓的原生 IP 或私人家庭住宅 IP，可以解除某些网站基于 IP 的封锁限制：
+<ul>
+<li>解锁 Netflix 非自制剧</li>
+<li>解决 Google 搜索流量异常频繁跳出人机身份验证的问题</li>
+<li>解决无法打开 Google Scholar (谷歌学术) 403 访问限制的问题</li>
+<li>解决 Google 的 IP 定位漂移到中国(送中)，无法使用 YouTube Premium 的问题</li>
+</ul></li>
+</ul>
+<h1 id="关于wireguard安装问题">关于wireguard安装问题</h1>
+<p>要点：</p>
+<ul>
+<li><p>该教程适用于De­bian 10+</p></li>
+<li><p>先执行 <code>uname -r</code> 命令查看内核版本。如果是 5.6 及以上内核则已经集成了 Wire­Guard ，就不需要安装了。</p>
+<p>当然看到这篇教程的小伙伴肯定大多数都不是这个情况，因为目前 De­bian 10 自带的内核版本是 4.19。所以有如下几个安装方法可供选择：</p>
+<ol type="1">
+<li>安装版本高于 5.6 的内核</li>
+<li>安装 wireguard 内核模块</li>
+<li>安装 wireguard-go</li>
+</ol>
+<p>理论网络性能：<strong>内核集成</strong> ≥ <strong>内核模块</strong> ＞ <strong>wireguard-go</strong></p></li>
+<li><p>OpenVZ / LXC 等非完整虚拟化 VPS 主机，由于是共享宿主机内核，故无法对内核进行修改，就只能安装 <strong>wireguard-go</strong>。</p></li>
+</ul>
+<p>详细参考：https://p3terx.com/archives/debian-linux-vps-server-wireguard-installation-tutorial.html</p>
+<h1 id="一键脚本">一键脚本</h1>
+<ul>
+<li><p>适用于除了香港、多伦多以外的vps：https://github.com/fscarmen/warp</p></li>
+<li><p><span class="citation" data-cites="CoiaPrant">@CoiaPrant</span> 的 warp-go 一键脚本。使用 CloudFlare-WARP 的各类接口，集成 wireguard-go，可以完全替代 WGCF。 救活了香港、多伦多等，让没有官方 WARP 的 VPS 也可以获取 WARP IP。</p>
+<p>下载脚本：<code>wget -N https://raw.githubusercontent.com/fscarmen/warp/main/warp-go.sh</code></p></li>
+</ul>
+<h1 id="关于warp-go.sh选项选择问题">关于warp-go.sh选项选择问题</h1>
+<p>经过实测，ipv4的vps选择全局ipv6，如果是选择全局双栈，ssh马上失去连接，只能到网页端重启vps</p>
+<p>好像有修改配置的方法，可以实现全局双栈，后续再研究</p>
+<h1 id="作euserv的跳板">作euserv的跳板</h1>
+<ul>
+<li><p>使用x-ui的dokodemo-door，转发到euserv的ipv6，从而实现ssh连接</p></li>
+<li><p>使用x-ui的dokodemo-door，转发到euserv的ipv6，从而实现shadowsocks连接，vmess协议转发貌似未成功</p></li>
+</ul>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>warp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker安装flare个人导航页</title>
+    <url>/2022/09/16/docker%E5%AE%89%E8%A3%85flare%E4%B8%AA%E4%BA%BA%E5%AF%BC%E8%88%AA%E9%A1%B5/</url>
+    <content><![CDATA[<h2 id="利用docker-compose安装">利用docker-compose安装</h2>
+<p>新建文件夹flare，进入新建文件docker-compose.yml，写入以下内容：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.6&#x27;</span><br><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">flare:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">soulteary/flare:0.3.1</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-comment"># 默认无需添加任何参数，如有特殊需求</span><br>    <span class="hljs-comment"># 可阅读文档 https://github.com/soulteary/docker-flare/blob/main/docs/advanced-startup.md</span><br>    <span class="hljs-comment"># command: flare</span><br>    <span class="hljs-comment"># 启用账号登陆模式,--visibility=private表示登录才能看到首页</span><br>    <span class="hljs-attr">command:</span> <span class="hljs-string">flare</span> <span class="hljs-string">--nologin=0</span> <span class="hljs-string">--visibility=private</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-comment"># 如需开启用户登陆模式，需要先设置 `nologin` 启动参数为 `0`</span><br>      <span class="hljs-comment"># 如开启 `nologin`，未设置 FLARE_USER，则默认用户为 `flare`</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">FLARE_USER=username</span><br>      <span class="hljs-comment"># 指定你自己的账号密码，如未设置 `FLARE_USER`，则会默认生成密码并展示在应用启动日志中</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">FLARE_PASS=passwd</span><br>      <span class="hljs-comment"># 是否开启“使用向导”，访问 `/guide`</span><br>      <span class="hljs-comment"># - FLARE_GUIDE=1</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">5005</span><span class="hljs-string">:5005</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./app:/app</span><br></code></pre></td></tr></table></figure>
+<p>然后 <code>docker-compose up -d</code> 启动即可</p>
+<h2 id="编辑书签和应用页面">编辑书签和应用页面</h2>
+<p>通过 <code>/editor</code> 访问编辑页面，在app文件夹下可以通过备份 <code>apps.yml</code> 和 <code>bookmarks.yml</code> 即可将flare搬迁至其他地方，比如自己的vps上</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>docker,flare</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mac虚拟机安装OpenWrt</title>
+    <url>/2022/09/05/mac%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85OpenWrt/</url>
+    <content><![CDATA[<h2 id="安装vmware-fusion">安装vmware fusion</h2>
+<p>可以免费申请个人非商业用途许可证，可以参考https://zhuanlan.zhihu.com/p/315035843</p>
+<h2 id="下载openwrt固件">下载OpenWrt固件</h2>
+<p>这里我选择下载esir的固件，google drive地址为：https://drive.google.com/drive/folders/1dqNUrMf9n7i3y1aSh68U5Yf44WQ3KCuh</p>
+<p>可以选择精品小包或者佛跳墙版本，注意选择引导模式uefi或者传统bios模式</p>
+<h2 id="格式转换">格式转换</h2>
+<p>由于下载的 文件后缀名是.img，如果是.img.gz，可以手动重命名为.img， 我们需要转换为.vmdk，这里需要用到qemu工具，<code>brew install qemu</code>，安装好以后，利用命令<code>qemu-img convert -f raw 源文件.img -O vmdk 目标文件.vmdk</code>就可以转换为vmdk格式了</p>
+<h2 id="安装openwrt">安装OpenWrt</h2>
+<p>新建虚拟机，硬盘设置为选择刚转换的vmdk文件，网络选择为桥接网络，以便将此OpenWrt作为macos的旁路由</p>
+<h2 id="启动修改openwrt设置">启动修改OpenWrt设置</h2>
+<ul>
+<li><p>首次登录系统，还没有设置root密码，利用<code>password</code>命令设置root密码</p></li>
+<li><p>修改ip地址：由于我的mac主机ip地址为172.17.18.154，网关为172.17.0.1，子网掩码为255.255.0.0，利用命令<code>vi /etc/config/network</code>，修改openwrt的ip为172.17.18.66，netmask设置为255.255.0.0</p></li>
+<li><p>重启网络服务使修改生效：<code>/etc/init.d/network restart</code></p></li>
+<li><p>（也可以下一步之后再验证）验证设置是否生效：<code>ifconfig</code>查看ip地址，还可以<code>ping 172.17.18.154</code>， <code>ping baidu.com</code></p></li>
+</ul>
+<h2 id="登录后台并修改设置">登录后台并修改设置</h2>
+<p>浏览器登入172.17.18.66，用户名root，密码刚设的登录，找到网络--接口，修改网关为172.17.0.1，以及子网掩码为255.255.0.0，验证设置是否生效：<code>ifconfig</code>查看ip地址，还可以<code>ping 172.17.18.154</code>， <code>ping baidu.com</code>都通过了就表示设置成功了</p>
+<h2 id="mac富强">mac富强</h2>
+<p>修改mac的ip地址为手动：</p>
+<figure class="highlight dns"><table><tr><td class="code"><pre><code class="hljs dns">ip: <span class="hljs-number">172.17.18.154</span><br>网关：<span class="hljs-number">172.17.18.66</span><br>DNS：<span class="hljs-number">114.114.114.114</span><br></code></pre></td></tr></table></figure>
+<p>愉快的玩耍吧，旁路由秒杀所有V2rayX之类的</p>
+<p>哦，对了，设置OpenWrt开机自动启动并且是无界面模式<code>vmrun start /Users/pl/Virtual\ Machines.localized/openwrt.vmwarevm/openwrt.vmx nogui</code></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>OpenWrt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>全国卷密集出现构造函数比较大小</title>
+    <url>/2022/06/09/%E5%85%A8%E5%9B%BD%E5%8D%B7%E5%AF%86%E9%9B%86%E5%87%BA%E7%8E%B0%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F/</url>
+    <content><![CDATA[<h2 id="新高考全国1卷">2022新高考全国1卷</h2>
+<div class="note note-primary">
+            <p>7.设<span class="math inline">\(a=0.1e^{0.1},b=\dfrac{1}{9},c=-\ln 0.9\)</span>，则</p><p><span class="math inline">\(A.a&lt;b&lt;c\qquad\)</span> <span class="math inline">\(B.c&lt;b&lt;a\qquad\)</span> <span class="math inline">\(C.c&lt;a&lt;b\qquad\)</span> <span class="math inline">\(D.a&lt;c&lt;b\)</span></p>
+          </div>
+<div class="note note-success">
+            <p>从所给数据来看，可以将三个数处理为对<span class="math inline">\(0.1\)</span>的运算：<span class="math inline">\(a=0.1e^{0.1},b=\dfrac{0.1}{1-0.1},c=\ln\dfrac{1}{1-0.1}\)</span></p><p>因此可以构造<span class="math inline">\(f(x)=xe^x\)</span>，<span class="math inline">\(g(x)=\dfrac{x}{1-x}\)</span>，<span class="math inline">\(h(x)=\ln\dfrac{1}{1-x}\)</span></p><p>由<span class="math inline">\(\ln x\le x-1\)</span>得，<span class="math inline">\(\ln\dfrac{1}{1-x}\le \dfrac{1}{1-x}-1=\dfrac{x}{1-x}\)</span>，于是<span class="math inline">\(b&lt;c\)</span></p><p>由<span class="math inline">\(e^x\ge x+1\)</span>得，<span class="math inline">\(e^{-x}\ge 1-x\)</span>，即<span class="math inline">\(e^x\le\dfrac{1}{1-x}(x&lt;1)\)</span>，即<span class="math inline">\(xe^x\le\dfrac{x}{1-x}\)</span>，于是<span class="math inline">\(a&lt;b\)</span></p><p>对于<span class="math inline">\(a,c\)</span>的比较，构造<span class="math inline">\(\varphi(x)=xe^x+\ln(1-x)\)</span>，则<span class="math inline">\(\varphi&#39;(x)=(x+1)e^x+\dfrac{1}{x-1}=\dfrac{(x^2-1)e^x+1}{x-1}\)</span></p><p>记<span class="math inline">\(m(x)=(x^2-1)e^x+1\)</span>，则<span class="math inline">\(m&#39;(x)=(x^2+2x-1)e^x\)</span>，<span class="math inline">\(x\in(0,0.1)\)</span>时，<span class="math inline">\(m&#39;(x)&lt;0\)</span>，于是<span class="math inline">\(m(x)\)</span>在<span class="math inline">\((0,0.1)\)</span>单减，则<span class="math inline">\(m(x)&lt;m(0)=0\)</span>，于是<span class="math inline">\(\varphi&#39;(x)&gt;0\)</span>，即<span class="math inline">\(\varphi(x)\)</span>在<span class="math inline">\((0,0.1)\)</span>单增，则<span class="math inline">\(\varphi(x)&gt;\varphi(0)=0\)</span>，于是<span class="math inline">\(a&gt;c\)</span></p>
+          </div>
+<h2 id="新课标2卷12题">2022新课标2卷12题：</h2>
+<div class="note note-primary">
+            <p>12.已知<span class="math inline">\(a=\dfrac{31}{32}\)</span>，<span class="math inline">\(b=\cos\dfrac{1}{4}\)</span>，<span class="math inline">\(c=4\sin\dfrac{1}{4}\)</span>，则</p><p><span class="math inline">\(A.c&gt;b&gt;a\qquad\)</span> <span class="math inline">\(B.b&gt;a&gt;c\qquad\)</span> <span class="math inline">\(C.a&gt;b&gt;c\qquad\)</span> <span class="math inline">\(D.a&gt;c&gt;b\)</span></p>
+          </div>
+<div class="note note-success">
+            <p>解析：</p><p><span class="math inline">\(b-c=\cos\dfrac{1}{4}-4\sin\dfrac{1}{4}=4(\dfrac{1}{4}\cos\dfrac{1}{4}-\sin\dfrac{1}{4})\)</span>，构造<span class="math inline">\(f(x)=x\cos x-\sin x\)</span>，则<span class="math inline">\(f&#39;(x)=-x\sin x\)</span>，则<span class="math inline">\(f(x)\)</span>在<span class="math inline">\((0,\dfrac{1}{4})\)</span>单减，于是<span class="math inline">\(f(x)&lt;f(0)=0\)</span>，即<span class="math inline">\(b&lt;c\)</span></p><p>又<span class="math inline">\(a=1-\dfrac{1}{2}\cdot(\dfrac{1}{4})^2\)</span>，构造<span class="math inline">\(g(x)=1-\dfrac{1}{2}x^2-\cos x\)</span>，则<span class="math inline">\(g&#39;(x)=-x+\sin x\)</span>，<span class="math inline">\(g&#39;&#39;(x)=-1+\cos x\le0\)</span>，于是在<span class="math inline">\((0,+\infty)\)</span>上<span class="math inline">\(g&#39;(x)\)</span>单减，则<span class="math inline">\(g&#39;(x)&lt;g&#39;(0)=0\)</span>，于是<span class="math inline">\(g(x)\)</span>在<span class="math inline">\((0,+\infty)\)</span>单减，则<span class="math inline">\(g(x)&lt;g(0)=0\)</span>，即<span class="math inline">\(a&lt;b\)</span></p>
+          </div>
+<h2 id="新课标1卷12题">2021新课标1卷12题</h2>
+<div class="note note-primary">
+            <p>12.设<span class="math inline">\(a=2\ln1.01\)</span>，<span class="math inline">\(b=\ln1.02\)</span>，<span class="math inline">\(c=\sqrt{1.04}-1\)</span>，则（ ）</p><p><span class="math inline">\(A.a&lt;b&lt;c\qquad\)</span> <span class="math inline">\(B.b&lt;c&lt;a\qquad\)</span> <span class="math inline">\(C.b&lt;a&lt;c\qquad\)</span> <span class="math inline">\(D.c&lt;a&lt;b\)</span></p>
+          </div>
+<div class="note note-success">
+            <p>解：<span class="math inline">\(a=\ln1.0201&gt;b\)</span>，比较<span class="math inline">\(b\)</span>和<span class="math inline">\(c\)</span>，注意到<span class="math inline">\(1.04=1.02\times2-1\)</span>，构造<span class="math inline">\(f(x)=\ln x-\sqrt{2x-1}+1\)</span></p><p><span class="math inline">\(f&#39;(x)=\dfrac{\sqrt{2x-1}-x}{x\sqrt{2x-1}}\le0\)</span>，则<span class="math inline">\(f(x)\)</span>在<span class="math inline">\([1,+\infty)\)</span>单减，于是<span class="math inline">\(f(1.02)&lt;f(1)=0\)</span>，即<span class="math inline">\(b&lt;c\)</span></p><p>比较<span class="math inline">\(a\)</span>和<span class="math inline">\(c\)</span>，构造<span class="math inline">\(g(x)=2\ln x-\sqrt{4x-3}+1\)</span>，<span class="math inline">\(g&#39;(x)=\dfrac{2(\sqrt{4x-3}-x)}{x\sqrt{4x-3}}\)</span></p><p>令<span class="math inline">\(g&#39;(x)&gt;0\)</span>得<span class="math inline">\(x\in(1,3)\)</span>，于是<span class="math inline">\(g(x)\)</span>在<span class="math inline">\((1,3)\)</span>单增，则<span class="math inline">\(g(1.01)&gt;g(1)=0\)</span>，即<span class="math inline">\(a&gt;c\)</span></p>
+          </div>
+]]></content>
+      <categories>
+        <category>数学</category>
+        <category>导数</category>
+      </categories>
+  </entry>
+  <entry>
     <title>docker安装joomla</title>
     <url>/2022/06/05/docker%E5%AE%89%E8%A3%85joomla/</url>
-    <content><![CDATA[<h1 id="创建docker-compose.yml">创建docker-compose.yml</h1>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml">&#123;<span class="hljs-string">%</span> <span class="hljs-string">note</span> <span class="hljs-string">success</span> <span class="hljs-string">%</span>&#125;<br><span class="hljs-string">```</span><br><span class="hljs-attr">ersion:</span> <span class="hljs-string">&#x27;3.1&#x27;</span><br><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">joomla:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">joomla</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">joomla</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">links:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">joomladb:mysql</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">8080</span><span class="hljs-string">:80</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">JOOMLA_DB_HOST:</span> <span class="hljs-string">joomladb</span><br>      <span class="hljs-attr">JOOMLA_DB_PASSWORD:</span> <span class="hljs-string">your_password(same</span> <span class="hljs-string">as</span> <span class="hljs-string">below)</span><br><br>  <span class="hljs-attr">joomladb:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">mysql:5.6</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">mysql</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">MYSQL_ROOT_PASSWORD:</span> <span class="hljs-string">your_password(same</span> <span class="hljs-string">as</span> <span class="hljs-string">above)</span><br><span class="hljs-string">```</span><br>&#123;<span class="hljs-string">%</span> <span class="hljs-string">endnote</span> <span class="hljs-string">%</span>&#125;<br></code></pre></td></tr></table></figure>
+    <content><![CDATA[<h1 id="手动安装">手动安装</h1>
+<h2 id="创建数据库和joomla共用网络">创建数据库和joomla共用网络</h2>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker network create mariadb-network</span><br><span class="hljs-attribute">docker inspect mariadb-network</span><br></code></pre></td></tr></table></figure>
+<h2 id="创建映射目录">创建映射目录</h2>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">mkdir <span class="hljs-regexp">/opt/</span>joomla<br>mkdir <span class="hljs-regexp">/opt/m</span>ariadb<br></code></pre></td></tr></table></figure>
+<h2 id="创建mariadb数据库">创建mariadb数据库</h2>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><code class="hljs gradle">docker run -d --name mariadb --network mariadb-network -v <span class="hljs-regexp">/opt/m</span>ariadb:<span class="hljs-regexp">/var/</span>lib/mysql --env MARIADB_ROOT_PASSWORD=yourpassword mariadb:latest<br>docker <span class="hljs-keyword">inspect</span> mariadb | <span class="hljs-keyword">grep</span> -i <span class="hljs-string">&#x27;ipaddress&#x27;</span><br>docker logs mariadb<br></code></pre></td></tr></table></figure>
+<h2 id="创建joomla">创建joomla</h2>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">docker <span class="hljs-builtin-name">run</span> -d --name joomla -p 8080:80 -v /opt/joomla:/var/www/html --network mariadb-network -e <span class="hljs-attribute">JOOMLA_DB_HOST</span>=mariadb -e <span class="hljs-attribute">JOOMLA_DB_USER</span>=root -e <span class="hljs-attribute">JOOMLA_DB_PASSWORD</span>=yourmariadbpassword joomla<br>docker logs joomla<br></code></pre></td></tr></table></figure>
+<h1 id="docker-compose数据库一体化安装">docker-compose数据库一体化安装</h1>
+<h2 id="创建docker-compose.yml">创建docker-compose.yml</h2>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.1&#x27;</span><br><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">joomla:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">joomla</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">joomla</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">links:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">joomladb:mysql</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">8080</span><span class="hljs-string">:80</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">JOOMLA_DB_HOST:</span> <span class="hljs-string">joomladb</span><br>      <span class="hljs-attr">JOOMLA_DB_PASSWORD:</span> <span class="hljs-string">your_password(same</span> <span class="hljs-string">as</span> <span class="hljs-string">below)</span><br><br>  <span class="hljs-attr">joomladb:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">mysql:5.6</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">mysql</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">MYSQL_ROOT_PASSWORD:</span> <span class="hljs-string">your_password(same</span> <span class="hljs-string">as</span> <span class="hljs-string">above)</span><br></code></pre></td></tr></table></figure>
 <h1 id="启动容器">启动容器</h1>
 <figure class="highlight ebnf"><table><tr><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker-compose up -d</span><br></code></pre></td></tr></table></figure>
-<h2 id="查看容器启动日志">查看容器启动日志</h2>
+<h1 id="查看容器启动日志">查看容器启动日志</h1>
 <figure class="highlight ebnf"><table><tr><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker logs joomla</span><br><span class="hljs-attribute">docker logs mysql</span><br></code></pre></td></tr></table></figure>
 <h2 id="查看容器ip">查看容器ip</h2>
 <figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="xml">docker inspect -f &#x27;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">range</span> .NetworkSettings.Networks&#125;&#125;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">.IPAddress</span>&#125;&#125;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">end</span>&#125;&#125;</span><span class="xml">&#x27; <span class="hljs-tag">&lt;<span class="hljs-name">container_name</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
@@ -719,8 +975,8 @@ r\cdot \dfrac{\sigma_y}{\sigma_x}
         <category>导数</category>
       </categories>
       <tags>
-        <tag>导数</tag>
         <tag>高考题</tag>
+        <tag>导数</tag>
       </tags>
   </entry>
   <entry>
@@ -2353,8 +2609,8 @@ r\cdot \dfrac{\sigma_y}{\sigma_x}
         <category>折腾</category>
       </categories>
       <tags>
-        <tag>小钢炮</tag>
         <tag>n1</tag>
+        <tag>小钢炮</tag>
       </tags>
   </entry>
   <entry>
@@ -2619,8 +2875,8 @@ r\cdot \dfrac{\sigma_y}{\sigma_x}
         <category>折腾</category>
       </categories>
       <tags>
-        <tag>小钢炮</tag>
         <tag>n1</tag>
+        <tag>小钢炮</tag>
       </tags>
   </entry>
   <entry>

@@ -296,7 +296,7 @@
 <p>该插件最初设计为本地编辑器-您在本地运行hexo，使用 <code>hexo-admin</code> 撰写帖子，然后使用<code>hexo generate</code> 或 <code>hexo deploy</code> 将生成的静态HTML文件发送到github页面或其他静态服务器。</p>
 <p>但是，只要您使用非静态托管服务（例如Heroku，DigitalOcean等），就可以在实时博客上运行hexo-admin。<strong>静态托管服务（例如Github页面和Surge.sh）不支持运行hexo-admin从您的实时站点。</strong> 如果您是通过实时博客使用Hexo admin，则一定要设置密码（请参见下文），否则任何人都可以编辑您的内容。</p>
 <h2 id="安装插件">安装插件</h2>
-<figure class="highlight awk"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs awk">npm install --save hexo-admin<br>hexo server -d<br>open http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">4000</span><span class="hljs-regexp">/admin/</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">npm install --save hexo-admin<br>hexo server -d<br>open http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">4000</span><span class="hljs-regexp">/admin/</span><br></code></pre></td></tr></table></figure>
 <h2 id="插件设置">插件设置</h2>
 <p>以下1，2步针对实时服务器上使用Hexo admin，需要设置密码保护，<span class="label label-warning">本地用户可跳过</span></p>
 <p>1.登录后台，点击 <code>Settings</code> -- <code>Setup authentification here</code> ，输入用户名，登录密码和一个叫做 <code>Secret</code> 的项，用来加密cookies的，越长越好，设置好以后会在下方生成配置信息</p>

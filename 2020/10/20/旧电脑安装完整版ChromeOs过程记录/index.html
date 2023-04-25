@@ -322,7 +322,7 @@
 <h1 id="利用linux安装chromeos">利用linux，安装ChromeOS</h1>
 <p>和Windows不一样，ChromeOS官方并没有放出通用安装程序，所以需要U盘上的Linux系统（这里是Ubuntu）辅助安装。</p>
 <h2 id="安装需要的软件">安装需要的软件</h2>
-<figure class="highlight sas"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs sas">sudo apt <span class="hljs-meta">update</span> <span class="hljs-variable">&amp;&amp;</span> sudo apt install figlet pv cgpt<br></code></pre></td></tr></table></figure>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sas">sudo apt <span class="hljs-meta">update</span> <span class="hljs-variable">&amp;&amp;</span> sudo apt install figlet pv cgpt<br></code></pre></td></tr></table></figure>
 <h2 id="查询安装硬盘代号">查询安装硬盘代号</h2>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">sudo fdisk -l</span><br></code></pre></td></tr></table></figure>
 <p>如果只有一块硬盘，硬盘代号一般是/dev/sda。但某些机器，可能是emmc或nvram固态硬盘，这种情况下代号可能不同。</p>

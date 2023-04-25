@@ -304,7 +304,7 @@
 <ul>
 <li><p>首先安装好entware环境</p></li>
 <li><p>安装zerotier</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs stata">opkg <span class="hljs-keyword">update</span><br>opkg install zerotier<br>modprobe tun<br>zerotier-<span class="hljs-keyword">one</span> -<span class="hljs-keyword">d</span><br>zerotier-<span class="hljs-keyword">cli</span> join xxxxx<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stata">opkg <span class="hljs-keyword">update</span><br>opkg install zerotier<br>modprobe tun<br>zerotier-<span class="hljs-keyword">one</span> -<span class="hljs-keyword">d</span><br>zerotier-<span class="hljs-keyword">cli</span> join xxxxx<br></code></pre></td></tr></table></figure></li>
 <li><p>网页端同意加入，并建立路由表192.168.50.0/24 via 192.168.192.1</p></li>
 <li><p>添加iptables，允许转发到192.168.50.0网段的流量通过</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">iptables</span> -A FORWARD -d <span class="hljs-number">192.168.50.0</span>/<span class="hljs-number">24</span> -j ACCEPT<br></code></pre></td></tr></table></figure></li>

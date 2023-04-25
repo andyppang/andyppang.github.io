@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="创建docker-compose.yml 12345678910111213141516171819202122232425&amp;#123;% note success %&amp;#125;&#96;&#96;&#96;ersion: &amp;#x27;3.1&amp;#x27;services:  joomla:    image: joomla    container_name: joomla    restart: always">
+    <meta name="description" content="手动安装 创建数据库和joomla共用网络 12docker network create mariadb-networkdocker inspect mariadb-network 创建映射目录 12mkdir &#x2F;opt&#x2F;joomlamkdir &#x2F;opt&#x2F;mariadb 创建mariadb数据库 123docker run -d --name mariadb --network ma">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker安装joomla">
 <meta property="og:url" content="https://andyppang.github.io/2022/06/05/docker%E5%AE%89%E8%A3%85joomla/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="创建docker-compose.yml 12345678910111213141516171819202122232425&amp;#123;% note success %&amp;#125;&#96;&#96;&#96;ersion: &amp;#x27;3.1&amp;#x27;services:  joomla:    image: joomla    container_name: joomla    restart: always">
+<meta property="og:description" content="手动安装 创建数据库和joomla共用网络 12docker network create mariadb-networkdocker inspect mariadb-network 创建映射目录 12mkdir &#x2F;opt&#x2F;joomlamkdir &#x2F;opt&#x2F;mariadb 创建mariadb数据库 123docker run -d --name mariadb --network ma">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-04T16:07:58.000Z">
-<meta property="article:modified_time" content="2022-06-04T16:26:07.717Z">
+<meta property="article:modified_time" content="2022-06-07T07:28:14.300Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          984 字
+          1.5k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
           <!-- compatible with older versions-->
-          9 分钟
+          13 分钟
         
       </span>
     
@@ -285,18 +285,28 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年6月5日 凌晨
+                    本文最后更新于：2022年6月7日 下午
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <h1 id="创建docker-compose.yml">创建docker-compose.yml</h1>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs yaml">&#123;<span class="hljs-string">%</span> <span class="hljs-string">note</span> <span class="hljs-string">success</span> <span class="hljs-string">%</span>&#125;<br><span class="hljs-string">```</span><br><span class="hljs-attr">ersion:</span> <span class="hljs-string">&#x27;3.1&#x27;</span><br><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">joomla:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">joomla</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">joomla</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">links:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">joomladb:mysql</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">8080</span><span class="hljs-string">:80</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">JOOMLA_DB_HOST:</span> <span class="hljs-string">joomladb</span><br>      <span class="hljs-attr">JOOMLA_DB_PASSWORD:</span> <span class="hljs-string">your_password(same</span> <span class="hljs-string">as</span> <span class="hljs-string">below)</span><br><br>  <span class="hljs-attr">joomladb:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">mysql:5.6</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">mysql</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">MYSQL_ROOT_PASSWORD:</span> <span class="hljs-string">your_password(same</span> <span class="hljs-string">as</span> <span class="hljs-string">above)</span><br><span class="hljs-string">```</span><br>&#123;<span class="hljs-string">%</span> <span class="hljs-string">endnote</span> <span class="hljs-string">%</span>&#125;<br></code></pre></td></tr></table></figure>
+              <h1 id="手动安装">手动安装</h1>
+<h2 id="创建数据库和joomla共用网络">创建数据库和joomla共用网络</h2>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker network create mariadb-network</span><br><span class="hljs-attribute">docker inspect mariadb-network</span><br></code></pre></td></tr></table></figure>
+<h2 id="创建映射目录">创建映射目录</h2>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">mkdir <span class="hljs-regexp">/opt/</span>joomla<br>mkdir <span class="hljs-regexp">/opt/m</span>ariadb<br></code></pre></td></tr></table></figure>
+<h2 id="创建mariadb数据库">创建mariadb数据库</h2>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gradle">docker run -d --name mariadb --network mariadb-network -v <span class="hljs-regexp">/opt/m</span>ariadb:<span class="hljs-regexp">/var/</span>lib/mysql --env MARIADB_ROOT_PASSWORD=yourpassword mariadb:latest<br>docker <span class="hljs-keyword">inspect</span> mariadb | <span class="hljs-keyword">grep</span> -i <span class="hljs-string">&#x27;ipaddress&#x27;</span><br>docker logs mariadb<br></code></pre></td></tr></table></figure>
+<h2 id="创建joomla">创建joomla</h2>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">docker <span class="hljs-builtin-name">run</span> -d --name joomla -p 8080:80 -v /opt/joomla:/var/www/html --network mariadb-network -e <span class="hljs-attribute">JOOMLA_DB_HOST</span>=mariadb -e <span class="hljs-attribute">JOOMLA_DB_USER</span>=root -e <span class="hljs-attribute">JOOMLA_DB_PASSWORD</span>=yourmariadbpassword joomla<br>docker logs joomla<br></code></pre></td></tr></table></figure>
+<h1 id="docker-compose数据库一体化安装">docker-compose数据库一体化安装</h1>
+<h2 id="创建docker-compose.yml">创建docker-compose.yml</h2>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.1&#x27;</span><br><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">joomla:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">joomla</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">joomla</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">links:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">joomladb:mysql</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">8080</span><span class="hljs-string">:80</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">JOOMLA_DB_HOST:</span> <span class="hljs-string">joomladb</span><br>      <span class="hljs-attr">JOOMLA_DB_PASSWORD:</span> <span class="hljs-string">your_password(same</span> <span class="hljs-string">as</span> <span class="hljs-string">below)</span><br><br>  <span class="hljs-attr">joomladb:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">mysql:5.6</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">mysql</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">MYSQL_ROOT_PASSWORD:</span> <span class="hljs-string">your_password(same</span> <span class="hljs-string">as</span> <span class="hljs-string">above)</span><br></code></pre></td></tr></table></figure>
 <h1 id="启动容器">启动容器</h1>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker-compose up -d</span><br></code></pre></td></tr></table></figure>
-<h2 id="查看容器启动日志">查看容器启动日志</h2>
+<h1 id="查看容器启动日志">查看容器启动日志</h1>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker logs joomla</span><br><span class="hljs-attribute">docker logs mysql</span><br></code></pre></td></tr></table></figure>
 <h2 id="查看容器ip">查看容器ip</h2>
 <figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="xml">docker inspect -f &#x27;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">range</span> .NetworkSettings.Networks&#125;&#125;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">.IPAddress</span>&#125;&#125;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">end</span>&#125;&#125;</span><span class="xml">&#x27; <span class="hljs-tag">&lt;<span class="hljs-name">container_name</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
@@ -371,6 +381,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/06/09/%E5%85%A8%E5%9B%BD%E5%8D%B7%E5%AF%86%E9%9B%86%E5%87%BA%E7%8E%B0%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F/" title="全国卷密集出现构造函数比较大小">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">全国卷密集出现构造函数比较大小</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

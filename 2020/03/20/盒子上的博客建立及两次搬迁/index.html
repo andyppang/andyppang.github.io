@@ -26,8 +26,8 @@
 <meta property="article:published_time" content="2020-03-20T15:55:17.000Z">
 <meta property="article:modified_time" content="2022-05-14T04:18:59.044Z">
 <meta property="article:author" content="PL">
-<meta property="article:tag" content="小钢炮">
 <meta property="article:tag" content="n1">
+<meta property="article:tag" content="小钢炮">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -298,7 +298,7 @@
 <h1 id="搬迁到docker-wordpress">搬迁到docker wordpress</h1>
 <h2 id="docker-wordpress建立过程">docker wordpress建立过程</h2>
 <p>1.利用docker建立mariadb数据库（选择mariadb的原因是小钢炮架构是arm64）</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs routeros">docker <span class="hljs-builtin-name">run</span> -itd --name some-mariadb -p 3308:3306 -e <span class="hljs-attribute">MYSQL_ROOT_PASSWORD</span>=123456 -d mariadb:tag<br></code></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">docker <span class="hljs-builtin-name">run</span> -itd --name some-mariadb -p 3308:3306 -e <span class="hljs-attribute">MYSQL_ROOT_PASSWORD</span>=123456 -d mariadb:tag<br></code></pre></td></tr></table></figure>
 <p>name参数指定要启动的实例名称，MYSQL_ROOT_PASSWORD指定ROOT密码。tag参数是mariadb的版本号，我使用的是latest;由于3306已经被onmp的mysql占用，所以改端口为3308</p>
 <p>然后通过portainer进入mariadb的主机：</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">mysql</span> -u root -p <span class="hljs-comment">#连接数据库，输入密码</span><br>creat database wordpress; <br></code></pre></td></tr></table></figure>
@@ -354,9 +354,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%B0%8F%E9%92%A2%E7%82%AE/">#小钢炮</a>
-      
         <a href="/tags/n1/">#n1</a>
+      
+        <a href="/tags/%E5%B0%8F%E9%92%A2%E7%82%AE/">#小钢炮</a>
       
     </div>
   

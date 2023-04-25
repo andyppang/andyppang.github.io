@@ -304,7 +304,7 @@
 <h2 id="上传至盒子">上传至盒子</h2>
 <p>通过当贝上传文件至 <code>/sdcard/dangbei-upload</code>，然后把 <code>androidvncserver</code> 移动到目录：<code>/system/bin</code>，修改 <code>androidvncserver</code> 权限，增加执行权限 <code>chmod +x /system/bin/androidvncserver</code></p>
 <h2 id="运行测试">运行测试</h2>
-<figure class="highlight awk"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/system/</span>bin/androidvncserver &amp;<br></code></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/system/</span>bin/androidvncserver &amp;<br></code></pre></td></tr></table></figure>
 <p>然后通过MobaXterm连接192.168.50.162:5901，看看是否能正常连接</p>
 <h2 id="添加开机启动">添加开机启动</h2>
 <p>在 <code>/system/bin/lazy-start.sh</code> 中增加上面的运行命令，重启盒子，看能否正常启动 <code>androidvncserver</code></p>
