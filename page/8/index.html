@@ -180,7 +180,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://fastly.jsdelivr.net/gh/andyppang/mdpic/pic/20220514000303.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://gcore.jsdelivr.net/gh/andyppang/mdpic/pic/20220514000303.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -217,6 +217,201 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/07/06/%E6%A2%85%E6%9E%97%E8%B7%AF%E7%94%B1%E5%99%A8%E5%8D%87%E7%BA%A7%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" target="_self">
+          梅林路由器升级过程记录
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2019/07/06/%E6%A2%85%E6%9E%97%E8%B7%AF%E7%94%B1%E5%99%A8%E5%8D%87%E7%BA%A7%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" target="_self">
+        <div>
+          
+          今日把梅林固件从7.5升级到了7.9，简单记录一下过程： 准备工作 1.到https:&#x2F;&#x2F;firmware.koolshare.cn&#x2F; 下载固件，找到自己路由器对应的版本 2.备份jffs的脚本 开始升级 1.找到系统管理——固件升级——上传升级，等待3分钟左右，完成升级 2.（可选动作）为了稳定可以重置一下路由器，避免新旧版本冲突造成的一些莫名问题，如果重置，需要重新配置路由各项数据
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-07-06 22:50" pubdate>
+              2019-07-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">#路由器</a>
+            
+              <a href="/tags/merlin/">#merlin</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/07/01/%E6%A2%85%E6%9E%97%E5%AE%89%E8%A3%85entware%E5%92%8C%E5%BC%80%E5%90%AF%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" target="_self">
+          梅林安装entware和开启虚拟内存的正确姿势
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2019/07/01/%E6%A2%85%E6%9E%97%E5%AE%89%E8%A3%85entware%E5%92%8C%E5%BC%80%E5%90%AF%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/" target="_self">
+        <div>
+          
+          准备U盘  查找U盘，找到对应的设备名，例如&#x2F;dev&#x2F;sda1 1df -h 卸载 1umount &#x2F;dev&#x2F;sda1 格式化 1mkfs.ext4 &#x2F;dev&#x2F;sda1 重新挂载 1mount &#x2F;dev&#x2F;sda1&#x2F; &#x2F;tmp&#x2F;mnt&#x2F;sda1  安装entware 一个命令搞定 1entware-setup.sh 注意的问题: 1.这个命令是梅林系统自带的，位于&#x2F;us
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-07-01 10:35" pubdate>
+              2019-07-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">#虚拟内存</a>
+            
+              <a href="/tags/entware/">#entware</a>
+            
+              <a href="/tags/merlin/">#merlin</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/06/30/%E6%A2%85%E6%9E%97%E8%B7%AF%E7%94%B1%E5%99%A8%E5%AE%89%E8%A3%85entware%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/" target="_self">
+          梅林路由器安装entware踩过的坑
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2019/06/30/%E6%A2%85%E6%9E%97%E8%B7%AF%E7%94%B1%E5%99%A8%E5%AE%89%E8%A3%85entware%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/" target="_self">
+        <div>
+          
+          解决 wget 无法建立SSL问题 1curl -O -L &#x2F;opt&#x2F;onmp.zip https:&#x2F;&#x2F;github.com&#x2F;xzhih&#x2F;ONMP&#x2F;archive&#x2F;master.zip 创建2gb虚拟内存 [梅林虚拟内存](https:&#x2F;&#x2F;koolshare.cn&#x2F;forum.php?mod&#x3D;viewthread&amp;tid&#x3D;42723&amp;extra&#x3D;page%3D1%26filt
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-06-30 01:30" pubdate>
+              2019-06-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">#路由器</a>
+            
+              <a href="/tags/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">#虚拟内存</a>
+            
+              <a href="/tags/entware/">#entware</a>
+            
+              <a href="/tags/merlin/">#merlin</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     

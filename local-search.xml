@@ -4,6 +4,81 @@
   
   
   <entry>
+    <title>NginxProxyManager安装与使用</title>
+    <link href="/2023/05/18/NginxProxyManager%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
+    <url>/2023/05/18/NginxProxyManager%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="安装">安装</h2><ol type="1"><li><p>安装 Docker 和 Docker-Compose</p></li><li><p>在/opt/npm文件夹下创建一个类似于下面的 docker-compose.yml 文件：</p><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">version</span>: <span class="hljs-string">&#x27;3.8&#x27;</span><br>service<span class="hljs-variable">s:</span><br>  app:<br>    image: <span class="hljs-string">&#x27;jc21/nginx-proxy-manager:latest&#x27;</span><br>    restar<span class="hljs-variable">t:</span> unless-stopped<br>    port<span class="hljs-variable">s:</span><br>      - <span class="hljs-string">&#x27;80:80&#x27;</span><br>      - <span class="hljs-string">&#x27;81:81&#x27;</span><br>      - <span class="hljs-string">&#x27;443:443&#x27;</span><br>    volume<span class="hljs-variable">s:</span><br>      - ./dat<span class="hljs-variable">a:</span>/data<br>      - ./letsencryp<span class="hljs-variable">t:</span>/etc/letsencrypt<br></code></pre></td></tr></table></figure></li><li><p>运行容器</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker-compose up -d</span><br></code></pre></td></tr></table></figure></li><li><p>登录到管理界面</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//y</span>ourip:<span class="hljs-number">81</span><br></code></pre></td></tr></table></figure><p>默认管理员用户：</p><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">Email:</span>    admin@example.com<br><span class="hljs-symbol">Password:</span> changeme<br></code></pre></td></tr></table></figure><p>使用此默认用户登录后，系统会立即要求您修改您的详细信息并更改密码。</p></li><li><p>升级</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker-compose pull</span><br><span class="hljs-attribute">docker-compose up -d</span><br></code></pre></td></tr></table></figure></li></ol><h2 id="使用">使用</h2><p>添加反代网站add proxy host：</p><ol type="1"><li><p>Details：</p><ul><li>Domain Names：一般要在dns服务商那里先用*解析一个通用的二级域名到本机ip，这里添加你喜欢的二级域名就好</li><li>Scheme：选择https</li><li>Forward Hostname：要反代的ip，如果是docker容器一般填写 <code>172.17.0.1</code></li><li>Forward Port：反代的端口</li></ul></li><li><p>Custom locations：与Details应该是并列关系</p><ul><li>Location： 填写要反代的网站的文件夹位置，有些网站是建立在二级文件夹下就需要在这里定义</li><li>Scheme：选择https</li><li>Forward Hostname：要反代的ip，如果是docker容器一般填写 <code>172.17.0.1</code></li><li>Forward Port：反代的端口</li></ul></li><li><p>SSL Certificate：</p><p>根据需要是否开启SSL和强制Force SSL，输入邮箱，同意条款就可以自动签发证书了，爽！</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>docker,nginx</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Macos系统Python多版本管理和Pip管理</title>
+    <link href="/2023/05/11/Macos%E7%B3%BB%E7%BB%9FPython%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%92%8CPip%E7%AE%A1%E7%90%86/"/>
+    <url>/2023/05/11/Macos%E7%B3%BB%E7%BB%9FPython%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%92%8CPip%E7%AE%A1%E7%90%86/</url>
+    
+    <content type="html"><![CDATA[<h2 id="系统概况">系统概况</h2><ol type="1"><li><p>macos蒙特雷，系统自带Python3.9.6</p></li><li><p>通过安装包安装了Python3.10</p></li><li><p><code>brew install autojump</code> 时作为依赖包安装了Python3.11</p></li><li><p>查看所有安装的Python</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">ls /usr/local/bin | grep python3<br><span class="hljs-meta">#</span><span class="bash"> 会列出所有自己安装的版本，但是不包括系统自带的，系统自带的是/usr/bin/python3</span><br><br>/usr/bin/python3 --version<br><span class="hljs-meta">#</span><span class="bash"> 显示系统自带的Python版本</span><br><br>python3 --version<br><span class="hljs-meta">#</span><span class="bash"> 显示现在系统默认使用的Python版本</span><br></code></pre></td></tr></table></figure></li></ol><h2 id="处理">处理</h2><ol type="1"><li><p>卸载多余的3.10版本</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo rm -rf /Library/Frameworks/Python.framework/Versions/X.Y.Z<br>sudo rm -rf &quot;/Applications/Python X.Y.Z&quot;<br>sudo rm /usr/local/bin/pydoc3.X<br>sudo rm /usr/local/bin/python3.X<br>sudo rm /usr/local/bin/python3.Xm<br><span class="hljs-meta">#</span><span class="bash"> 其中 `X.Y.Z` 是要卸载的 Python 版本号。例如，如果要卸载 Python 3.8.10，则应将 `X.Y.Z` 替换为 `3.8.10`。请注意，这些命令需要管理员权限才能执行（使用 `sudo` 命令）。</span><br><br><span class="hljs-meta">#</span><span class="bash">（可选）您还可以使用以下命令，删除与卸载的 Python 版本相关的任何残留文件或目录</span><br>sudo rm -rf ~/Library/Python/X.Y<br>sudo rm -rf /Library/Python/X.Y<br><span class="hljs-meta">#</span><span class="bash"> 其中 `X.Y` 是要卸载的 Python 版本号。</span><br></code></pre></td></tr></table></figure></li><li><p>想卸载3.11版本，但是作为<code>autojump</code>的依赖，不知道怎么弄，暂时放弃</p></li><li><p>此时再来<code>python3 --version</code> 查看现在系统用的版本，我这里变成了3.11</p></li><li><p>关联命令 <code>python3</code> 为指定版本</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">nano ~/.zshrc<br><span class="hljs-meta">#</span><span class="bash"> 根据自己使用的终端程序更改，蒙特雷默认使用的是zsh</span><br><br>alias python3=&#x27;/usr/bin/python3&#x27;<br><span class="hljs-meta">#</span><span class="bash"> 指定为系统自带的3.9.6版本</span><br></code></pre></td></tr></table></figure><p>记得 <code>source ~/.zshrc</code> 使更改生效</p></li><li><p>为了安装 <code>pix2text</code> ，其依赖包 <code>torch</code> 版本要求为1.8.0~2.0，使用pip安装时总是找到2.0.1的版本，因此需要使用老版本的Pip，刚好退回到python3.9.6的版本</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">nano <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/bin/</span>pip<br><span class="hljs-comment"># 会看到如下的代码</span><br></code></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/usr/<span class="hljs-built_in">local</span>/bin/python3</span><br><span class="hljs-meta">#</span><span class="bash"> -*- coding: utf-8 -*-</span><br>import re<br>import sys<br>from pip._internal.cli.main import main<br>if __name__ == &#x27;__main__&#x27;:<br>    sys.argv[0] = re.sub(r&#x27;(-script\.pyw|\.exe)?$&#x27;, &#x27;&#x27;, sys.argv[0])<br>    sys.exit(main())<br></code></pre></td></tr></table></figure><p>将第一行的 <code>#!/usr/local/bin/python3</code> 修改为你想要的Python版本的路径就好了，例如修改为 <code>#!/usr/bin/python3</code>这样Pip默认关联的就是系统自带版本的Python也就是3.9.6了。</p><h2 id="后记">后记</h2><p>折腾了一圈，目的其实就是为了安装 <code>torch</code> 的1.8版本，貌似直接修改Pip的默认Python就可以了吧，不过顺带清理了一下系统多余的Python版本，也对各个版本的Python安装的位置也有了大概的了解。</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>pythoh, pip</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Memo的搭建和使用</title>
+    <link href="/2023/05/05/Memo%E7%9A%84%E6%90%AD%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/"/>
+    <url>/2023/05/05/Memo%E7%9A%84%E6%90%AD%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/</url>
+    
+    <content type="html"><![CDATA[<p>好的，以下是您需要的Markdown格式博文：</p><h1 id="memos-docker搭建过程记录">Memos Docker搭建过程记录</h1><p>在这篇博文中，我将记录我如何使用Docker搭建Memo应用程序，并使用Git自动备份Memo数据。我还将介绍如何使用crontab定期运行备份脚本。</p><h2 id="docker搭建memos应用程序">Docker搭建Memos应用程序</h2><p>Memo是一个简单的笔记应用程序，可以帮助您轻松记录您的想法和笔记。我选择使用Docker容器来运行Memo，因为这样可以避免与本地环境的冲突，并使部署更加简单。</p><h3 id="步骤">步骤</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker run -d --name memos -p <span class="hljs-number">5230</span>:<span class="hljs-number">5230</span> -v <span class="hljs-regexp">/opt/m</span>emos<span class="hljs-regexp">/:/</span>var<span class="hljs-regexp">/opt/m</span>emos ghcr.io<span class="hljs-regexp">/usememos/m</span>emos:latest<br></code></pre></td></tr></table></figure><p>现在，您可以通过访问 <code>http://localhost:5230</code> 来访问Memo应用程序。</p><h3 id="说明">说明</h3><ul><li>将/opt/memos替换成你想要映射的文件夹</li><li>注册登录以后，将存储方式从数据库改为本地存储，这样方便增量备份</li></ul><h2 id="使用git自动备份memos数据">使用Git自动备份Memos数据</h2><p>为了确保Memos数据不会丢失，并且方便从服务器之间进行迁移，我使用Git对数据进行自动备份。我将备份脚本编写为Shell脚本，并使用Git命令将备份提交到GitHub。</p><h3 id="步骤-1">步骤</h3><ol type="1"><li>在 <code>memos</code> 目录中创建一个名为 <code>backup.sh</code> 的文件，并添加以下内容：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><br><span class="hljs-built_in">cd</span> /opt/memos<br><br>git add .<br>git commit -m <span class="hljs-string">&quot;Backup <span class="hljs-subst">$(date)</span>&quot;</span><br>git push<br></code></pre></td></tr></table></figure><p>这个脚本将切换到Memos数据目录，并使用Git命令将备份提交到GitHub。</p><ol start="2" type="1"><li>将脚本标记为可执行：</li></ol><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>chmod +x backup.sh<br></code></pre></td></tr></table></figure><ol start="3" type="1"><li>将该文件夹关联到远程github仓库，要将现有的Memos数据文件夹关联到远程的GitHub仓库，您可以按照以下步骤进行操作：</li></ol><ul><li><p>在GitHub上创建一个新的仓库，用于存储Memos数据备份。</p></li><li><p>进入您的Memos数据文件夹，并初始化一个新的Git仓库：</p></li></ul><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> <span class="hljs-built_in">cd</span> /opt/memos<br><span class="hljs-variable">$</span> git init<br></code></pre></td></tr></table></figure><ul><li>添加备份文件夹和提交备份文件夹到本地Git仓库：</li></ul><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>git add .<br><span class="hljs-variable">$ </span>git commit -m <span class="hljs-string">&quot;Initial backup&quot;</span><br></code></pre></td></tr></table></figure><ul><li>的Git仓库关联到远程的GitHub仓库：</li></ul><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">$ git remote <span class="hljs-built_in">add</span> origin git@github.<span class="hljs-keyword">com</span>:<span class="hljs-symbol">&lt;username&gt;</span>/<span class="hljs-symbol">&lt;repository&gt;</span>.git<br></code></pre></td></tr></table></figure><p>请将 <code>&lt;username&gt;</code> 和 <code>&lt;repository&gt;</code> 替换为您在GitHub上创建的仓库的用户名和仓库名称。</p><ul><li>地的备份文件夹推送到远程的GitHub仓库：</li></ul><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">$ git <span class="hljs-built_in">push</span> -u <span class="hljs-built_in">origin</span> master<br></code></pre></td></tr></table></figure><p>现在，您的Memos据备份文件夹已经成功关联到远程的GitHub仓库，您可以定期运行备份脚本，将最新的备份文件推送到GitHub仓库中。</p><ol start="4" type="1"><li>运行一次备份脚本，以确保一切正常：</li></ol><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>./backup.sh<br></code></pre></td></tr></table></figure><p>现在，备份应该已经提交到GitHub。</p><h2 id="使用crontab定期运行备份脚本">使用crontab定期运行备份脚本</h2><p>为了确保Memo数据得到及时备份，我使用crontab定期运行备份脚本。我设置crontab每隔2小时运行一次备份脚本。</p><h3 id="步骤-2">步骤</h3><ol type="1"><li>运行以下命令以编辑crontab：</li></ol><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>crontab -e<br></code></pre></td></tr></table></figure><ol start="2" type="1"><li>在打开的编辑器中添加以下行：</li></ol><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span>*/<span class="hljs-number">2</span> * * * /opt/memos/backup.sh<br></code></pre></td></tr></table></figure><p>这将在每2个小时的第0分钟运行备份脚本。</p><ol start="3" type="1"><li>保存并关闭编辑器。</li></ol><p>现在，您的Memos数据应该每隔2小时自动备份到GitHub。</p><h2 id="通过raycast发memo">通过Raycast发Memo</h2><p>Raycast是一款Mac上的快速启动应用程序，可以让您通过简单的快捷键访问常用的功能和应用程序。要使用Raycast来发Memo笔记，您可以按照以下步骤进行操作：</p><ol type="1"><li><p>下载并安装Raycast应用程序。</p></li><li><p>在Raycast中搜索并安装“Memo”插件。</p></li><li><p>打开Memo应用程序，并创建一个新的笔记。在笔记中输入您要保存的文本内容。</p></li><li><p>打开Raycast应用程序，并使用快捷键 <code>Cmd + Shift + P</code> 来打开命令面板。</p></li><li><p>在命令面板中搜索并选择“Memo: Save New Note”选项。</p></li><li><p>在弹出的窗口中输入您的笔记标题和内容，并按下 <code>Enter</code> 键。</p></li><li><p>您的Memo笔记已经成功保存！您可以在Memo应用程序中查看它。</p></li></ol><p>除了保存新的Memo笔记外，Memo插件还支持搜索和查看现有的Memo笔记。通过Raycast和Memo插件，您可以更加高效地记录和查看笔记，提高您的工作效率。</p><h2 id="windowsandroidiosmac客户端">Windows,android,ios,mac客户端</h2><p>https://memos.moe/</p><h2 id="结论">结论</h2><p>在本文中，我介绍了如何使用Docker搭建Memos应用程序，并使用Git自动备份Memos数据。我还介绍了如何使用crontab定期运行备份脚本。现在，您可以放心地记录您的想法和笔记，因为您的数据已经得到了完美的保护！</p><p>P.S. 本文主体是chatgpt写就，在其基础上做了微改</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>折腾</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Memos,docker,git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>docker安装plex</title>
     <link href="/2023/04/25/docker%E5%AE%89%E8%A3%85plex/"/>
     <url>/2023/04/25/docker%E5%AE%89%E8%A3%85plex/</url>
