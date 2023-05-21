@@ -3150,4 +3150,47 @@ r\cdot \dfrac{\sigma_y}{\sigma_x}
         <tag>androidvncserver</tag>
       </tags>
   </entry>
+  <entry>
+    <title>ChatGpt接入QQ</title>
+    <url>/2023/05/21/ChatGpt%E6%8E%A5%E5%85%A5QQ/</url>
+    <content><![CDATA[<h2 id="准备工具">准备工具</h2>
+<p>一台vps，一个chatgpt账号，chatgpt的access token，2个QQ账号</p>
+<h2 id="项目地址">项目地址</h2>
+<p><a href="https://github.com/lss233/chatgpt-mirai-qq-bot">lss233/chatgpt-mirai-qq-bot: 🚀 一键部署！真正的 AI 聊天机器人！支持ChatGPT、文心一言、Bing、Bard、ChatGLM、POE，多账号，人设调教，虚拟女仆、图片渲染、语音发送 | 支持 QQ、Telegram、Discord、微信 等平台 (github.com)</a></p>
+<h2 id="实操">实操</h2>
+<ol type="1">
+<li><p>在linux的vps上进入 <code>/opt</code> 目录运行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">bash -c <span class="hljs-string">&quot;<span class="hljs-subst">$(wget -O- https://gist.githubusercontent.com/lss233/2fdd75be3f0724739368d0dcd9d1367d/raw/62a790da4a391af096074b3355c2c2b7ecab3c28/chatgpt-mirai-installer-gocqhttp.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<p>会自动下载docker, docker-compose, 和建立三个容器</p></li>
+<li><p>输入QQ号（通常是小号）作为机器人，输入密码，管理员QQ，还有chatgpt的access token</p></li>
+<li><p>程序运行结束会显示如下内容，找个地方复制粘贴一下，后续会常用到</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">程序已被安装在 ./chatgpt-qq 下，<br><br>以下是一些维护的注意事项：<br><br>你需要先 cd ./chatgpt-qq 才能进入到程序的安装目录。<br><br>你可以输入docker-compose logs -f --tail=<span class="hljs-number">100</span> 来观察运行日志。<br><br>修改配置文件后，使用 docker-compose restart 重启程序。<br><br>使用 docker-compose pull &amp;&amp; docker-compose up -d 命令来更新程序<br><br>如果你记不住的话，可以把上面这段文字保存到一个文件里面，需要的时候再看。<br><br>如果您遇到问题可以在这里寻找答案：<br><br>https:<span class="hljs-regexp">//</span>chatgpt-qq.lss233.com/<br><br>如果您觉得此脚本对你有帮助的话，欢迎您在爱发电支持作者。<br><br>https:<span class="hljs-regexp">//</span>afdian.net<span class="hljs-regexp">/a/</span>lss233<br><br>再见。<br></code></pre></td></tr></table></figure></li>
+<li><p>按照上述步骤</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-keyword">cd</span> <span class="hljs-string">./chatgpt-qq</span><br>docker-compose logs -f <span class="hljs-params">--tail=100</span><br></code></pre></td></tr></table></figure>
+<p>查看容器运行记录，因为我们的QQ登录是在非常用地址，其中显示登录QQ需要复制出来那个长串的地址，然后在浏览器访问，进行登录验证，无奈我这里总是要循环验证，无解。</p></li>
+<li><p>解决上述问题：</p>
+<p>进入<code>gocqhttp</code> 文件夹，修改 <code>device.json</code> ，将 <code>protocol</code> 修改为 <code>3</code> ，也就是MacOS，参看<a href="https://docs.go-cqhttp.org/guide/config.html#设备信息">配置 | go-cqhttp 帮助中心</a></p>
+<p>然后 <code>docker-compose restart</code> ，重复步骤4的操作，我这里就显示QQ登录成功了，如果还不行就用自己的vps的ip在手机或电脑上登录一下QQ，使该ip成为你的常用登录地。如果登录成功，恭喜你过了最难的一关，也具备了基本的与gpt对话的功能。</p></li>
+<li><p>可选操作：接入其它的AI平台和聊天软件，只需要修改 <code>chatgpt-qq</code> 下的 <code>config.cfg</code> 在里面添加相应的配置即可</p>
+<p><a href="https://chatgpt-qq.lss233.com/pei-zhi-wen-jian-jiao-cheng/wan-zheng-pei-zhi-wen-jian-yang-li">完整配置文件样例 - ChatGPT for QQ 使用文档 (lss233.com)</a></p>
+<p>接入tg需要解决两个问题：</p>
+<ul>
+<li><p>建立机器人参看<a href="https://blog.csdn.net/whatday/article/details/113747294">telegram 创建机器人 bot 简介_telegram创建机器人_whatday的博客-CSDN博客</a></p></li>
+<li><p>获取 <code>chat id</code> 参看https://cloud.tencent.com/developer/article/1948136</p></li>
+</ul></li>
+<li><p>机器人的管理指令：</p>
+<p><a href="https://github.com/lss233/chatgpt-mirai-qq-bot/wiki/常用命令列表">常用命令列表 · lss233/chatgpt-mirai-qq-bot Wiki (github.com)</a></p></li>
+</ol>
+<h2 id="后记">后记</h2>
+<ul>
+<li>接入poe会封poe的账号！！！我的账号也寄了[<a href="https://github.com/lss233/chatgpt-mirai-qq-bot/issues/705">BUG] Poe 登录提示 Something went wrong... · Issue #705 · lss233/chatgpt-mirai-qq-bot (github.com)</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>chatgpt</tag>
+      </tags>
+  </entry>
 </search>

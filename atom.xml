@@ -6,7 +6,7 @@
   <link href="https://andyppang.github.io/atom.xml" rel="self"/>
   
   <link href="https://andyppang.github.io/"/>
-  <updated>2023-05-20T18:17:34.874Z</updated>
+  <updated>2023-05-21T13:53:14.465Z</updated>
   <id>https://andyppang.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ChatGpt接入QQ</title>
+    <link href="https://andyppang.github.io/2023/05/21/ChatGpt%E6%8E%A5%E5%85%A5QQ/"/>
+    <id>https://andyppang.github.io/2023/05/21/ChatGpt%E6%8E%A5%E5%85%A5QQ/</id>
+    <published>2023-05-21T12:48:49.000Z</published>
+    <updated>2023-05-21T13:53:14.465Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;准备工具&quot;&gt;准备工具&lt;/h2&gt;
+&lt;p&gt;一台vps，一个chatgpt账号，chatgpt的access token，2个QQ账号&lt;/p&gt;
+&lt;h2 id=&quot;项目地址&quot;&gt;项目地址&lt;/h2&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="chatgpt" scheme="https://andyppang.github.io/tags/chatgpt/"/>
+    
+  </entry>
   
   <entry>
     <title>NginxProxyManager安装与使用</title>
@@ -520,33 +548,6 @@
         
     <summary type="html">&lt;h2 id=&quot;新高考全国2卷&quot;&gt;2021新高考全国2卷&lt;/h2&gt;
 &lt;p&gt;11.已知直线&lt;span class=&quot;math inline&quot;&gt;\(l:ax+by-r^2=0\)&lt;/span&gt;与圆&lt;span class=&quot;math</summary>
-        
-      
-    
-    
-    
-    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-    
-    <category term="高考题" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/%E9%AB%98%E8%80%83%E9%A2%98/"/>
-    
-    
-    <category term="高考题" scheme="https://andyppang.github.io/tags/%E9%AB%98%E8%80%83%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2021新高考1卷部分试题解析</title>
-    <link href="https://andyppang.github.io/2021/06/21/2021%E6%96%B0%E9%AB%98%E8%80%831%E5%8D%B7%E9%83%A8%E5%88%86%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/"/>
-    <id>https://andyppang.github.io/2021/06/21/2021%E6%96%B0%E9%AB%98%E8%80%831%E5%8D%B7%E9%83%A8%E5%88%86%E8%AF%95%E9%A2%98%E8%A7%A3%E6%9E%90/</id>
-    <published>2021-06-21T09:30:00.000Z</published>
-    <updated>2022-05-14T04:18:59.031Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2</summary>
         
       
     
