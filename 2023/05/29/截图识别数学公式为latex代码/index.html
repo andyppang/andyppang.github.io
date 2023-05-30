@@ -16,24 +16,24 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="准备工具 一台vps，一个chatgpt账号，chatgpt的access token，2个QQ账号 项目地址 lss233&#x2F;chatgpt-mirai-qq-bot: 🚀 一键部署！真正的 AI 聊天机器人！支持ChatGPT、文心一言、Bing、Bard、ChatGLM、POE，多账号，人设调教，虚拟女仆、图片渲染、语音发送 | 支持 QQ、Telegram、Discord、微信 等平">
+    <meta name="description" content="实现的几种途径  商用的最有名的Mathpix 免费的：https:&#x2F;&#x2F;simpletex.cn 开源的两个项目： lukas-blecher&#x2F;LaTeX-OCR: pix2tex: Using a ViT to convert images of equations into LaTeX code. (github.com) breezedeus&#x2F;Pix2Text: Pix In,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ChatGpt接入QQ">
-<meta property="og:url" content="https://andyppang.github.io/2023/05/21/ChatGpt%E6%8E%A5%E5%85%A5QQ/index.html">
+<meta property="og:title" content="截图识别数学公式为latex代码">
+<meta property="og:url" content="https://andyppang.github.io/2023/05/29/%E6%88%AA%E5%9B%BE%E8%AF%86%E5%88%AB%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E4%B8%BAlatex%E4%BB%A3%E7%A0%81/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="准备工具 一台vps，一个chatgpt账号，chatgpt的access token，2个QQ账号 项目地址 lss233&#x2F;chatgpt-mirai-qq-bot: 🚀 一键部署！真正的 AI 聊天机器人！支持ChatGPT、文心一言、Bing、Bard、ChatGLM、POE，多账号，人设调教，虚拟女仆、图片渲染、语音发送 | 支持 QQ、Telegram、Discord、微信 等平">
+<meta property="og:description" content="实现的几种途径  商用的最有名的Mathpix 免费的：https:&#x2F;&#x2F;simpletex.cn 开源的两个项目： lukas-blecher&#x2F;LaTeX-OCR: pix2tex: Using a ViT to convert images of equations into LaTeX code. (github.com) breezedeus&#x2F;Pix2Text: Pix In,">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-05-21T12:48:49.000Z">
-<meta property="article:modified_time" content="2023-05-21T13:53:14.465Z">
+<meta property="article:published_time" content="2023-05-29T15:08:57.000Z">
+<meta property="article:modified_time" content="2023-05-30T01:15:36.143Z">
 <meta property="article:author" content="PL">
-<meta property="article:tag" content="chatgpt">
+<meta property="article:tag" content="latex-ocr">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>ChatGpt接入QQ - Wish You Success</title>
+  <title>截图识别数学公式为latex代码 - Wish You Success</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ChatGpt接入QQ"></span>
+            <span id="subtitle" data-typed-text="截图识别数学公式为latex代码"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-21 20:48" pubdate>
-          2023年5月21日 晚上
+        <time datetime="2023-05-29 23:08" pubdate>
+          2023年5月29日 晚上
         </time>
       </span>
     
@@ -221,7 +221,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.6k 字
+          912 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
           <!-- compatible with older versions-->
-          14 分钟
+          8 分钟
         
       </span>
     
@@ -279,51 +279,47 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">ChatGpt接入QQ</h1>
+            <h1 style="display: none">截图识别数学公式为latex代码</h1>
             
               <p class="note note-info">
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2023年5月21日 晚上
+                    本文最后更新于：2023年5月30日 上午
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <h2 id="准备工具">准备工具</h2>
-<p>一台vps，一个chatgpt账号，chatgpt的access token，2个QQ账号</p>
-<h2 id="项目地址">项目地址</h2>
-<p><a target="_blank" rel="noopener" href="https://github.com/lss233/chatgpt-mirai-qq-bot">lss233/chatgpt-mirai-qq-bot: 🚀 一键部署！真正的 AI 聊天机器人！支持ChatGPT、文心一言、Bing、Bard、ChatGLM、POE，多账号，人设调教，虚拟女仆、图片渲染、语音发送 | 支持 QQ、Telegram、Discord、微信 等平台 (github.com)</a></p>
-<h2 id="实操">实操</h2>
-<ol type="1">
-<li><p>在linux的vps上进入 <code>/opt</code> 目录运行如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash -c <span class="hljs-string">&quot;<span class="hljs-subst">$(wget -O- https://gist.githubusercontent.com/lss233/2fdd75be3f0724739368d0dcd9d1367d/raw/62a790da4a391af096074b3355c2c2b7ecab3c28/chatgpt-mirai-installer-gocqhttp.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
-<p>会自动下载docker, docker-compose, 和建立三个容器</p></li>
-<li><p>输入QQ号（通常是小号）作为机器人，输入密码，管理员QQ，还有chatgpt的access token</p></li>
-<li><p>程序运行结束会显示如下内容，找个地方复制粘贴一下，后续会常用到</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs awk">程序已被安装在 ./chatgpt-qq 下，<br><br>以下是一些维护的注意事项：<br><br>你需要先 cd ./chatgpt-qq 才能进入到程序的安装目录。<br><br>你可以输入docker-compose logs -f --tail=<span class="hljs-number">100</span> 来观察运行日志。<br><br>修改配置文件后，使用 docker-compose restart 重启程序。<br><br>使用 docker-compose pull &amp;&amp; docker-compose up -d 命令来更新程序<br><br>如果你记不住的话，可以把上面这段文字保存到一个文件里面，需要的时候再看。<br><br>如果您遇到问题可以在这里寻找答案：<br><br>https:<span class="hljs-regexp">//</span>chatgpt-qq.lss233.com/<br><br>如果您觉得此脚本对你有帮助的话，欢迎您在爱发电支持作者。<br><br>https:<span class="hljs-regexp">//</span>afdian.net<span class="hljs-regexp">/a/</span>lss233<br><br>再见。<br></code></pre></td></tr></table></figure></li>
-<li><p>按照上述步骤</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-keyword">cd</span> <span class="hljs-string">./chatgpt-qq</span><br>docker-compose logs -f <span class="hljs-params">--tail=100</span><br></code></pre></td></tr></table></figure>
-<p>查看容器运行记录，因为我们的QQ登录是在非常用地址，其中显示登录QQ需要复制出来那个长串的地址，然后在浏览器访问，进行登录验证，无奈我这里总是要循环验证，无解。</p></li>
-<li><p>解决上述问题：</p>
-<p>进入<code>gocqhttp</code> 文件夹，修改 <code>device.json</code> ，将 <code>protocol</code> 修改为 <code>3</code> ，也就是MacOS，参看<a target="_blank" rel="noopener" href="https://docs.go-cqhttp.org/guide/config.html#设备信息">配置 | go-cqhttp 帮助中心</a></p>
-<p>然后 <code>docker-compose restart</code> ，重复步骤4的操作，我这里就显示QQ登录成功了，如果还不行就用自己的vps的ip在手机或电脑上登录一下QQ，使该ip成为你的常用登录地。如果登录成功，恭喜你过了最难的一关，也具备了基本的与gpt对话的功能。</p></li>
-<li><p>可选操作：接入其它的AI平台和聊天软件，只需要修改 <code>chatgpt-qq</code> 下的 <code>config.cfg</code> 在里面添加相应的配置即可</p>
-<p><a target="_blank" rel="noopener" href="https://chatgpt-qq.lss233.com/pei-zhi-wen-jian-jiao-cheng/wan-zheng-pei-zhi-wen-jian-yang-li">完整配置文件样例 - ChatGPT for QQ 使用文档 (lss233.com)</a></p>
-<p>接入tg需要解决两个问题：</p>
+              <h2 id="实现的几种途径">实现的几种途径</h2>
 <ul>
-<li><p>建立机器人参看<a target="_blank" rel="noopener" href="https://blog.csdn.net/whatday/article/details/113747294">telegram 创建机器人 bot 简介_telegram创建机器人_whatday的博客-CSDN博客</a></p></li>
-<li><p>获取 <code>chat id</code> 参看https://cloud.tencent.com/developer/article/1948136</p></li>
-</ul></li>
-<li><p>机器人的管理指令：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/lss233/chatgpt-mirai-qq-bot/wiki/常用命令列表">常用命令列表 · lss233/chatgpt-mirai-qq-bot Wiki (github.com)</a></p></li>
-</ol>
-<h2 id="后记">后记</h2>
-<ul>
-<li>接入poe会封poe的账号！！！我的账号也寄了[<a target="_blank" rel="noopener" href="https://github.com/lss233/chatgpt-mirai-qq-bot/issues/705">BUG] Poe 登录提示 Something went wrong... · Issue #705 · lss233/chatgpt-mirai-qq-bot (github.com)</a></li>
+<li><p>商用的最有名的Mathpix</p></li>
+<li><p>免费的：https://simpletex.cn</p></li>
+<li><p>开源的两个项目：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/lukas-blecher/LaTeX-OCR">lukas-blecher/LaTeX-OCR: pix2tex: Using a ViT to convert images of equations into LaTeX code. (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/breezedeus/Pix2Text">breezedeus/Pix2Text: Pix In, Latex &amp; Text Out. Recognize Chinese, English Texts, and Math Formulas from Images. (github.com)</a></p></li>
 </ul>
+<p>本文主要介绍开源的两个项目的安装使用</p>
+<h2 id="latex-ocrpix2tex">LaTex-OCR：pix2tex</h2>
+<p>该项目的目标是创建一个基于学习的系统，它可以接收一张数学公式的图片，并返回相应的LaTeX代码。</p>
+<ol type="1">
+<li><p><strong>系统已经安装Python3.7+</strong></p></li>
+<li><p>国内网络环境建议更换pip源</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">pip install -i https:<span class="hljs-regexp">//</span>pypi.tuna.tsinghua.edu.cn/simple pip --trusted-host<br></code></pre></td></tr></table></figure></li>
+<li><p>然后一行代码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pip install pix2tex[gui]<br></code></pre></td></tr></table></figure></li>
+<li><p>在终端输入命令 <code>latexocr</code>就会调用应用程序，对公式截图即可自动转换并且自动复制latex代码，其中界面当中的参数 <code>Temperature</code>调整是公式识别的精度</p></li>
+</ol>
+<p>安装过程中如果出现各种错误，善用各种搜索引擎和各种AI，感觉可以和chatgpt媲美的Perplexity.ai</p>
+<p>自己安装过程中总是提示找不到PyQt的各种包，也许有用的一个命令</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">pip</span> install PyQt<span class="hljs-number">6</span>-WebEngine==<span class="hljs-number">6</span>.<span class="hljs-number">5</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<p>还有调用api的用法，请参看项目主页</p>
+<h2 id="pix2text">pix2text</h2>
+<p>从名字来看，这是pix2tex项目的加强版，pix2tex只能识别数学公式，而pix2text希望能识别文字和公式混合的场景，从使用的效果来看，还有很大的进步空间</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">pip install pix2text -i https:<span class="hljs-regexp">//</span>pypi.doubanio.com/simple<br></code></pre></td></tr></table></figure>
+<p>如果电脑中从未安装过 <code>PyTorch</code>，<code>OpenCV</code> python包，初次安装可能会遇到不少问题，善用各种搜索引擎和AI</p>
+<p>各种使用方式看项目主页即可，我使用的是本机<a target="_blank" rel="noopener" href="https://github.com/breezedeus/Pix2Text#%E8%84%9A%E6%9C%AC%E8%BF%90%E8%A1%8C">脚本运行</a></p>
 
               
             </div>
@@ -341,7 +337,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  <a href="/categories/%E6%95%B0%E5%AD%A6/" class="category-chain-item">数学</a>
   
   
 
@@ -356,7 +352,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/chatgpt/">#chatgpt</a>
+        <a href="/tags/latex-ocr/">#latex-ocr</a>
       
     </div>
   
@@ -368,8 +364,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ChatGpt接入QQ</div>
-      <div>https://andyppang.github.io/2023/05/21/ChatGpt接入QQ/</div>
+      <div>截图识别数学公式为latex代码</div>
+      <div>https://andyppang.github.io/2023/05/29/截图识别数学公式为latex代码/</div>
     </div>
     <div class="license-meta">
       
@@ -381,7 +377,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年5月21日</div>
+          <div>2023年5月29日</div>
         </div>
       
       
@@ -411,18 +407,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/05/25/%E6%89%8B%E5%8A%A8%E6%90%AD%E5%BB%BAchatgpt-mirai-qqbot%E5%AF%B9%E6%8E%A5AI%E5%92%8C%E8%81%8A%E5%A4%A9%E8%BD%AF%E4%BB%B6/" title="手动搭建chatgpt-mirai-qqbot对接AI和聊天软件">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">手动搭建chatgpt-mirai-qqbot对接AI和聊天软件</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/18/NginxProxyManager%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="NginxProxyManager安装与使用">
-                        <span class="hidden-mobile">NginxProxyManager安装与使用</span>
+                      <a href="/2023/05/25/%E6%89%8B%E5%8A%A8%E6%90%AD%E5%BB%BAchatgpt-mirai-qqbot%E5%AF%B9%E6%8E%A5AI%E5%92%8C%E8%81%8A%E5%A4%A9%E8%BD%AF%E4%BB%B6/" title="手动搭建chatgpt-mirai-qqbot对接AI和聊天软件">
+                        <span class="hidden-mobile">手动搭建chatgpt-mirai-qqbot对接AI和聊天软件</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
