@@ -1,0 +1,914 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="PL">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="说明 前面用docker-compose一键搭建过，为了方便调试各种错误，这次手动一步步搭建，也顺便学习一些新东西。 准备工作  两个qq账号 一个微信账号 一个tg账号：新建bot获取token，获取chatid 一个chatgpt账号获取access token 一个bing账号获取cookie 一个Google bard账户获取cookie 国内和国外vps各一台（国外vps负责接入AI，国">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手动搭建chatgpt-mirai-qqbot对接AI和聊天软件">
+<meta property="og:url" content="https://andyppang.github.io/2023/05/25/%E6%89%8B%E5%8A%A8%E6%90%AD%E5%BB%BAchatgpt-mirai-qqbot%E5%AF%B9%E6%8E%A5AI%E5%92%8C%E8%81%8A%E5%A4%A9%E8%BD%AF%E4%BB%B6/index.html">
+<meta property="og:site_name" content="Wish You Success">
+<meta property="og:description" content="说明 前面用docker-compose一键搭建过，为了方便调试各种错误，这次手动一步步搭建，也顺便学习一些新东西。 准备工作  两个qq账号 一个微信账号 一个tg账号：新建bot获取token，获取chatid 一个chatgpt账号获取access token 一个bing账号获取cookie 一个Google bard账户获取cookie 国内和国外vps各一台（国外vps负责接入AI，国">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-25T12:15:58.000Z">
+<meta property="article:modified_time" content="2024-08-01T07:26:58.340Z">
+<meta property="article:author" content="PL">
+<meta property="article:tag" content="gpt, go-cqhttp">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>手动搭建chatgpt-mirai-qqbot对接AI和聊天软件 - Wish You Success</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"andyppang.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1279870992,"leancloud":{"app_id":"nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI","app_key":"jpWiVUMoucJREpt4DsJR4oys","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Wish You Success" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>零和壹</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://gcore.jsdelivr.net/gh/andyppang/mdpic/pic/20220514001448.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="手动搭建chatgpt-mirai-qqbot对接AI和聊天软件"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-25 12:15" pubdate>
+          2023年5月25日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          5.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          47 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">手动搭建chatgpt-mirai-qqbot对接AI和聊天软件</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：2024年8月1日 早上
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h2 id="说明">说明</h2>
+<p>前面用docker-compose一键搭建过，为了方便调试各种错误，这次手动一步步搭建，也顺便学习一些新东西。</p>
+<h2 id="准备工作">准备工作</h2>
+<ul>
+<li><p>两个qq账号</p></li>
+<li><p>一个微信账号</p></li>
+<li><p>一个tg账号：<a
+target="_blank" rel="noopener" href="https://www.dengnz.com/2020/11/23/telegram-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E7%94%B3%E8%AF%B7%E5%92%8C%E8%AE%BE%E7%BD%AE%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/">新建bot获取token</a>，<a
+target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1948136">获取chatid</a></p></li>
+<li><p>一个chatgpt账号<a
+target="_blank" rel="noopener" href="https://chatgpt-qq.lss233.com/pei-zhi-wen-jian-jiao-cheng/jie-ru-ai-ping-tai/jie-ru-openai-de-chatgpt">获取access
+token</a></p></li>
+<li><p>一个bing账号<a
+target="_blank" rel="noopener" href="https://chatgpt-qq.lss233.com/pei-zhi-wen-jian-jiao-cheng/jie-ru-ai-ping-tai/jie-ru-new-bing-sydney">获取cookie</a></p></li>
+<li><p>一个Google bard账户<a
+target="_blank" rel="noopener" href="https://chatgpt-qq.lss233.com/pei-zhi-wen-jian-jiao-cheng/jie-ru-ai-ping-tai/jie-ru-google-bard">获取cookie</a></p></li>
+<li><p>国内和国外vps各一台（国外vps负责接入AI，国内vps负责挂qq和微信）</p></li>
+<li><p>国外vps安装Python3.11及以上版本（chatgpt-mirai-qqbot需要的要求）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 以下是Debian10或11安装Python3.11的命令</span><br><br>sudo apt update &amp;&amp; sudo apt upgrade<br><br>sudo apt install wget build-essential libncursesw5-dev libssl-dev \<br>     libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev<br>     <br>wget https://www.python.org/ftp/python/3.11.3/Python-3.11.3.tgz<br><br>tar xzf Python-3.11.3.tgz<br><br>cd Python-3.11.3<br><br>./configure --enable-optimizations<br><br>make altinstall<br><br>python3.11 -V<br><span class="hljs-meta">#</span><span class="bash"> 如果系统有多个版本的python，注意看默认使用的版本是不是3.11</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="项目地址">项目地址</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/lss233/chatgpt-mirai-qq-bot">lss233/chatgpt-mirai-qq-bot:
+🚀 一键部署！真正的 AI
+聊天机器人！支持ChatGPT、文心一言、Bing、Bard、ChatGLM、POE，多账号，人设调教，虚拟女仆、图片渲染、语音发送
+| 支持 QQ、Telegram、Discord、微信 等平台 (github.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Mrs4s/go-cqhttp">Mrs4s/go-cqhttp:
+cqhttp的golang实现，轻量、原生跨平台. (github.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lcjqyml/wechatbot">lcjqyml/wechatbot: A
+chatbot for wechat. (github.com)</a></li>
+</ul>
+<h2 id="搭建项目本体">搭建项目本体</h2>
+<p>在国外vps上：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/lss233/</span>chatgpt-mirai-qq-bot<br>cd chatgpt-mirai-qq-bot<br>pip3 install -r requirements.txt<br></code></pre></td></tr></table></figure>
+<h2 id="接入各种ai">接入各种AI</h2>
+<p>调整配置文件config.cfg，没有就自己创建，如果不需要接入那么多的ai和聊天软件就注释或删除</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs python">[onebot]<br>qq=小号qq<br>manager_qq=管理员qq<br><span class="hljs-comment"># 此处保持默认设置，无需修改</span><br>reverse_ws_host = <span class="hljs-string">&quot;0.0.0.0&quot;</span><br>reverse_ws_port = <span class="hljs-number">8554</span><br><br>[telegram]<br><span class="hljs-comment"># 这个 token 是找 BotFather 要的</span><br>bot_token = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-comment"># 如果部署在国内，就填这个设置代理</span><br><span class="hljs-comment"># 不填的话就会读取系统的代理设置</span><br><span class="hljs-comment"># proxy = &quot;http://localhost:1080&quot;</span><br><span class="hljs-comment"># 管理员的 chat id</span><br>manager_chat = <br><br>[openai]<br>[[openai.accounts]]<br>access_token = <span class="hljs-string">&quot;换成自己的&quot;</span><br><br>[bing]<br><span class="hljs-comment"># 开启 Bing 画图功能</span><br>use_drawing = true<br>[[bing.accounts]]<br>cookie_content = <span class="hljs-string">&#x27;换成自己的&#x27;</span><br><br><span class="hljs-comment">#[poe]</span><br><span class="hljs-comment">#[[poe.accounts]]</span><br><span class="hljs-comment"># 登陆 poe.com 网站后，通过开发者工具查看Cookie获取</span><br><span class="hljs-comment">#p_b = &quot;这个秒封，不建议接入&quot;</span><br><br>[bard]<br>[[bard.accounts]]<br>cookie_content = <span class="hljs-string">&#x27;换成自己的&#x27;</span><br><br>[http]<br>host = <span class="hljs-string">&quot;0.0.0.0&quot;</span><br><span class="hljs-comment"># 填写提供服务的端口，此端口用来接入微信</span><br>port = <span class="hljs-number">8234</span><br><span class="hljs-comment"># 是否开启调试</span><br>debug = false<br><br></code></pre></td></tr></table></figure>
+<h2 id="接入聊天软件">接入聊天软件</h2>
+<p>在国内vps上</p>
+<h3
+id="安装go-cqhttp接入qq最困难的一步先看再动">安装go-cqhttp接入qq（最困难的一步，先看再动）</h3>
+<ol type="1">
+<li><p><a
+target="_blank" rel="noopener" href="https://github.com/Mrs4s/go-cqhttp/releases">下载</a>最新版适合自己vps的软件包</p></li>
+<li><p>解压包 <code>tar -xzvf [文件名]</code></p></li>
+<li><p>cd 进入解压目录</p></li>
+<li><p>输入 <code>./go-cqhttp</code>
+回车运行，选择3反向WebSocket，生成配置文件</p></li>
+<li><p>按下述样例修改配置：最简配置可只关注account和servers两项</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> go-cqhttp 默认配置文件</span><br><br>account: # 账号相关<br>  uin:  # QQ账号<br>  password: &#x27;&#x27; # 密码为空时使用扫码登录,如果device.json里面的protocol选择的是2也就是watch在线，就留空扫码登录，需要手机端qq和vps在同一ip才能扫码<br>  encrypt: false  # 是否开启密码加密<br>  status: 17      # 在线状态（任意都行） 请参考 https://docs.go-cqhttp.org/guide/config.html#在线状态<br>  relogin: # 重连设置<br>    delay: 3   # 首次重连延迟, 单位秒<br>    interval: 3   # 重连间隔<br>    max-times: 0  # 最大重连次数, 0为无限制<br><br><span class="hljs-meta">  #</span><span class="bash"> 是否使用服务器下发的新地址进行重连</span><br><span class="hljs-meta">  #</span><span class="bash"> 注意, 此设置可能导致在海外服务器上连接情况更差</span><br>  use-sso-address: true<br><span class="hljs-meta">  #</span><span class="bash"> 是否允许发送临时会话消息</span><br>  allow-temp-session: false<br><br>heartbeat:<br><span class="hljs-meta">  #</span><span class="bash"> 心跳频率, 单位秒</span><br><span class="hljs-meta">  #</span><span class="bash"> -1 为关闭心跳</span><br>  interval: 5<br><br>message:<br><span class="hljs-meta">  #</span><span class="bash"> 上报数据类型</span><br><span class="hljs-meta">  #</span><span class="bash"> 可选: string,array</span><br>  post-format: string<br><span class="hljs-meta">  #</span><span class="bash"> 是否忽略无效的CQ码, 如果为假将原样发送</span><br>  ignore-invalid-cqcode: false<br><span class="hljs-meta">  #</span><span class="bash"> 是否强制分片发送消息</span><br><span class="hljs-meta">  #</span><span class="bash"> 分片发送将会带来更快的速度</span><br><span class="hljs-meta">  #</span><span class="bash"> 但是兼容性会有些问题</span><br>  force-fragment: false<br><span class="hljs-meta">  #</span><span class="bash"> 是否将url分片发送</span><br>  fix-url: false<br><span class="hljs-meta">  #</span><span class="bash"> 下载图片等请求网络代理</span><br>  proxy-rewrite: &#x27;&#x27;<br><span class="hljs-meta">  #</span><span class="bash"> 是否上报自身消息</span><br>  report-self-message: false<br><span class="hljs-meta">  #</span><span class="bash"> 移除服务端的Reply附带的At</span><br>  remove-reply-at: false<br><span class="hljs-meta">  #</span><span class="bash"> 为Reply附加更多信息</span><br>  extra-reply-data: false<br><span class="hljs-meta">  #</span><span class="bash"> 跳过 Mime 扫描, 忽略错误数据</span><br>  skip-mime-scan: false<br><span class="hljs-meta">  #</span><span class="bash"> 是否自动转换 WebP 图片</span><br>  convert-webp-image: false<br><br>output:<br><span class="hljs-meta">  #</span><span class="bash"> 日志等级 trace,debug,info,warn,error</span><br>  log-level: warn<br><span class="hljs-meta">  #</span><span class="bash"> 日志时效 单位天. 超过这个时间之前的日志将会被自动删除. 设置为 0 表示永久保留.</span><br>  log-aging: 15<br><span class="hljs-meta">  #</span><span class="bash"> 是否在每次启动时强制创建全新的文件储存日志. 为 <span class="hljs-literal">false</span> 的情况下将会在上次启动时创建的日志文件续写</span><br>  log-force-new: true<br><span class="hljs-meta">  #</span><span class="bash"> 是否启用日志颜色</span><br>  log-colorful: true<br><span class="hljs-meta">  #</span><span class="bash"> 是否启用 DEBUG</span><br>  debug: false # 开启调试模式<br><br><span class="hljs-meta">#</span><span class="bash"> 默认中间件锚点</span><br>default-middlewares: &amp;default<br><span class="hljs-meta">  #</span><span class="bash"> 访问密钥, 强烈推荐在公网的服务器设置</span><br>  access-token: &#x27;&#x27;<br><span class="hljs-meta">  #</span><span class="bash"> 事件过滤器文件目录</span><br>  filter: &#x27;&#x27;<br><span class="hljs-meta">  #</span><span class="bash"> API限速设置</span><br><span class="hljs-meta">  #</span><span class="bash"> 该设置为全局生效</span><br><span class="hljs-meta">  #</span><span class="bash"> 原 cqhttp 虽然启用了 rate_limit 后缀, 但是基本没插件适配</span><br><span class="hljs-meta">  #</span><span class="bash"> 目前该限速设置为令牌桶算法, 请参考:</span><br><span class="hljs-meta">  #</span><span class="bash"> https://baike.baidu.com/item/%E4%BB%A4%E7%89%8C%E6%A1%B6%E7%AE%97%E6%B3%95/6597000?fr=aladdin</span><br>  rate-limit:<br>    enabled: false # 是否启用限速<br>    frequency: 1  # 令牌回复频率, 单位秒<br>    bucket: 1     # 令牌桶大小<br><br>database: # 数据库相关设置<br>  leveldb:<br>    # 是否启用内置leveldb数据库<br>    # 启用将会增加10-20MB的内存占用和一定的磁盘空间<br>    # 关闭将无法使用 撤回 回复 get_msg 等上下文相关功能<br>    enable: true<br>  sqlite3:<br>    # 是否启用内置sqlite3数据库<br>    # 启用将会增加一定的内存占用和一定的磁盘空间<br>    # 关闭将无法使用 撤回 回复 get_msg 等上下文相关功能<br>    enable: false<br>    cachettl: 3600000000000 # 1h<br><br><span class="hljs-meta">#</span><span class="bash"> 连接服务列表</span><br>servers:<br><span class="hljs-meta">  #</span><span class="bash"> 添加方式，同一连接方式可添加多个，具体配置说明请查看文档</span><br><span class="hljs-meta">  #</span><span class="bash">- http: <span class="hljs-comment"># http 通信</span></span><br><span class="hljs-meta">  #</span><span class="bash">- ws:   <span class="hljs-comment"># 正向 Websocket</span></span><br><span class="hljs-meta">  #</span><span class="bash">- ws-reverse: <span class="hljs-comment"># 反向 Websocket</span></span><br><span class="hljs-meta">  #</span><span class="bash">- pprof: <span class="hljs-comment">#性能分析服务器</span></span><br><span class="hljs-meta">  #</span><span class="bash"> 反向WS设置</span><br>  - ws-reverse:<br>      # 反向WS Universal 地址<br>      # 注意 设置了此项地址后下面两项将会被忽略<br>      universal: ws://国外vps的ip:8554/ws<br>      # # 反向WS API 地址<br>      # api: ws://your_websocket_api.server<br>      # # 反向WS Event 地址<br>      # event: ws://your_websocket_event.server<br>      # # 重连间隔 单位毫秒<br>      # reconnect-interval: 3000<br>      # middlewares:<br>      #   &lt;&lt;: *default # 引用默认中间件<br></code></pre></td></tr></table></figure></li>
+<li><p>再次运行 <code>./go-cqhttp</code> 生成随机设备信息<a
+target="_blank" rel="noopener" href="https://docs.go-cqhttp.org/guide/config.html#%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF">device.json</a></p></li>
+<li><p>根据需要修改device.json中的protocol为2</p></li>
+<li><p>再次运行 <code>./go-cqhttp</code>
+，如果你没有配置qq密码就会让你扫码登录，这就要求你的手机qq登录时用的是国外vps的地址，两者必须在同一ip下才能扫码登录成功。<strong>解决这个问题，可以是在本地电脑端下载对应版本的go-cqhttp，按照上述配置成功扫码登录以后，将本地的config.yml和device.json以及session.token上传到vps，然后vps就可以直接登录qq了，目前来看这样操作比较稳当。</strong></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://docs.go-cqhttp.org/guide/config.html#%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">项目的配置说明</a>，如果遇到问题多看项目issue或提问</p></li>
+<li><p>登录成功以后，有概率碰到qq号被冻结的情况，申诉可解封</p></li>
+</ol>
+<h3 id="接入微信">接入微信</h3>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">docker <span class="hljs-builtin-name">run</span> -e <span class="hljs-attribute">CHATBOT_PROXY</span>=<span class="hljs-string">&quot;http://国外vps的ip:8234&quot;</span> lcjqyml/wechatbot:latest<br></code></pre></td></tr></table></figure>
+<p>端口是安装chatgpt-mirai-qqbot时设置的 <code>config.cfg</code>
+里面的http项的端口</p>
+<p>启动后扫码登陆即可：</p>
+<ul>
+<li><strong>扫码的微信号需要进过实名认证，否则会异常。</strong></li>
+<li>尽量避免国外登陆或者异地登陆，防止封号。</li>
+<li>若二维码不清晰，可将二维码上方的链接copy至浏览器打开扫码，或者将二维码复制粘贴到记事本，或者更换终端连接器都可能解决（本人开始使用的是finalshell二维码整个变形了）</li>
+</ul>
+<h2 id="启动主程序">启动主程序</h2>
+<p>国外vps</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd chatgpt-mirai-qq-bot<br>python3 bot.py<br></code></pre></td></tr></table></figure>
+<p>注意看报错信息，再去检查各项设置，如果顺利享受各种聊天软件与各种AI的对话吧。</p>
+<h2 id="常用聊天指令">常用聊天指令</h2>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-comment"># 切换AI</span><br>切换AI chatgpt-web<br>切换AI <span class="hljs-keyword">bing-c</span><br><span class="hljs-keyword">切换AI </span><span class="hljs-keyword">bard</span><br><span class="hljs-keyword"></span><br><span class="hljs-keyword"># </span>切换聊天内容显示方式<br>文本模式<br>图片模式<br>图文混合模式<br></code></pre></td></tr></table></figure>
+<h2 id="后记">后记</h2>
+<ol type="1">
+<li><p>使用 <code>screen</code> 命令让<code>python3 bot.py</code> 和
+<code>./go-cqhttp</code>在关闭终端的情况下继续运行：(这玩意就是session的套娃)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 安装命令</span><br>apt install screen<br><br><span class="hljs-meta">#</span><span class="bash"> 新建screen窗口名称为bot，并自动进入</span><br>screen -S bot<br><br><span class="hljs-meta">#</span><span class="bash"> 运行bot</span><br>python3 bot.py<br><br><span class="hljs-meta">#</span><span class="bash"> 退出bot窗口，程序就在窗口中运行了</span><br>Ctrl + A , D<br><br><span class="hljs-meta">#</span><span class="bash"> 显示目前所有的窗口</span><br>screen -ls<br><br><span class="hljs-meta">#</span><span class="bash"> 恢复某个窗口，检查程序运行情况</span><br>screen -r 窗口名称<br><br><span class="hljs-meta">#</span><span class="bash"> 开另一个窗口运行go-cqhttp</span><br>screen -S qq<br></code></pre></td></tr></table></figure></li>
+<li><p>检查
+<code>go-cqhttp</code>的运行状态，如果失败退出就自动再运行</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-keyword">while</span> <span class="hljs-literal">true</span><br><span class="hljs-keyword">do</span><br>	<span class="hljs-comment"># 检查 go-cqhttp 进程是否正在运行</span><br>	<span class="hljs-keyword">if</span> ps aux | grep -v grep | grep -q <span class="hljs-string">&quot;go-cqhttp&quot;</span>; <span class="hljs-keyword">then</span><br>	  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;go-cqhttp 进程正在运行,继续监视&quot;</span><br>	<span class="hljs-keyword">else</span><br>	  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;go-cqhttp 进程未运行，启动进程&quot;</span><br>	  <span class="hljs-comment"># 运行 go-cqhttp 命令，根据实际情况调整命令路径和参数</span><br>	  /root/go-cqhttp/go-cqhttp<br>	  sleep 300<br>	<span class="hljs-keyword">fi</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<p>将上述内容保存为
+<code>autorun.sh</code>，并且<code>chmod +x autorun.sh</code>
+，存放在go-cqhttp文件夹下，用 <code>bash autorun.sh</code> 代替
+<code>./go-cqhttp</code>运行，注意如果qq登录失败又反复运行的话，是不是大概率会冻结账号，还在观察中。</p></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/gpt-go-cqhttp/">#gpt, go-cqhttp</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>手动搭建chatgpt-mirai-qqbot对接AI和聊天软件</div>
+      <div>https://andyppang.github.io/2023/05/25/手动搭建chatgpt-mirai-qqbot对接AI和聊天软件/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>PL</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月25日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/29/%E6%88%AA%E5%9B%BE%E8%AF%86%E5%88%AB%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E4%B8%BAlatex%E4%BB%A3%E7%A0%81/" title="截图识别数学公式为latex代码">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">截图识别数学公式为latex代码</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/05/21/ChatGpt%E6%8E%A5%E5%85%A5QQ/" title="ChatGpt接入QQ">
+                        <span class="hidden-mobile">ChatGpt接入QQ</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI","appKey":"jpWiVUMoucJREpt4DsJR4oys","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":null,"emojiCDN":null,"emojiMaps":null,"enableQQ":false,"appid":"nUgjFYOuYFR5cpQ3I5mQTDDP-MdYXbMMI","appkey":"jpWiVUMoucJREpt4DsJR4oys"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1279870992" style="display: none"></span>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('//s4.cnzz.com/z_stat.php?id=1279870992&show=pic');
+      }
+    </script>
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
