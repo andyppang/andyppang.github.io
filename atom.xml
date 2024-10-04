@@ -6,7 +6,7 @@
   <link href="https://andyppang.github.io/atom.xml" rel="self"/>
   
   <link href="https://andyppang.github.io/"/>
-  <updated>2023-05-30T01:15:36.143Z</updated>
+  <updated>2024-10-01T07:17:05.795Z</updated>
   <id>https://andyppang.github.io/</id>
   
   <author>
@@ -15,6 +15,118 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GitHub page 备份到 cloudflare page</title>
+    <link href="https://andyppang.github.io/2024/10/01/GitHub%20page%20%E5%A4%87%E4%BB%BD%E5%88%B0%20cloudflare%20page/"/>
+    <id>https://andyppang.github.io/2024/10/01/GitHub%20page%20%E5%A4%87%E4%BB%BD%E5%88%B0%20cloudflare%20page/</id>
+    <published>2024-10-01T07:17:05.795Z</published>
+    <updated>2024-10-01T07:17:05.795Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;cloudflare page 只需要连接 github</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="GitHub page" scheme="https://andyppang.github.io/tags/GitHub-page/"/>
+    
+    <category term="cloudflare page" scheme="https://andyppang.github.io/tags/cloudflare-page/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>adb连接TCL75Q10GPro</title>
+    <link href="https://andyppang.github.io/2024/09/16/adb%E8%BF%9E%E6%8E%A5TCL75Q10GPro/"/>
+    <id>https://andyppang.github.io/2024/09/16/adb%E8%BF%9E%E6%8E%A5TCL75Q10GPro/</id>
+    <published>2024-09-16T14:00:03.000Z</published>
+    <updated>2024-10-01T07:17:05.795Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;苦于无法在电视上设置网络的网关，所以采用迂回的办法：通过adb修改电视的http代理设置。&lt;/p&gt;
+&lt;h2 id=&quot;电视上打开adb&quot;&gt;电视上打开adb&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="openwrt" scheme="https://andyppang.github.io/tags/openwrt/"/>
+    
+    <category term="adb" scheme="https://andyppang.github.io/tags/adb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自动部署Hexo</title>
+    <link href="https://andyppang.github.io/2024/08/01/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2Hexo/"/>
+    <id>https://andyppang.github.io/2024/08/01/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2Hexo/</id>
+    <published>2024-08-01T14:00:03.000Z</published>
+    <updated>2024-10-01T07:17:05.795Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;创建两个github仓库&quot;&gt;创建两个Github仓库&lt;/h2&gt;
+&lt;p&gt;在 Github 网站建立两个仓库，名称任意。其中一个仓库用于存放 Blog 文件的源码（以下称 &lt;strong&gt;仓库A&lt;/strong&gt;），另一个用于存放生成以后的静态内容，即</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="hexo" scheme="https://andyppang.github.io/tags/hexo/"/>
+    
+    <category term="github actions" scheme="https://andyppang.github.io/tags/github-actions/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Github actions 测试发送</title>
+    <link href="https://andyppang.github.io/2024/08/01/Github%20actions%20%E6%B5%8B%E8%AF%95%E5%8F%91%E9%80%81/"/>
+    <id>https://andyppang.github.io/2024/08/01/Github%20actions%20%E6%B5%8B%E8%AF%95%E5%8F%91%E9%80%81/</id>
+    <published>2024-08-01T12:48:49.000Z</published>
+    <updated>2024-08-01T13:05:39.614Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;测试文&quot;&gt;测试文&lt;/h1&gt;
+&lt;h2 id=&quot;测试文-1&quot;&gt;测试文&lt;/h2&gt;
+&lt;h3</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="github actions" scheme="https://andyppang.github.io/tags/github-actions/"/>
+    
+  </entry>
   
   <entry>
     <title>截图识别数学公式为latex代码</title>
@@ -454,112 +566,6 @@
     <category term="导数" scheme="https://andyppang.github.io/tags/%E5%AF%BC%E6%95%B0/"/>
     
     <category term="零点问题" scheme="https://andyppang.github.io/tags/%E9%9B%B6%E7%82%B9%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>因式分解背后的主元思想</title>
-    <link href="https://andyppang.github.io/2022/03/14/%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3%E8%83%8C%E5%90%8E%E7%9A%84%E4%B8%BB%E5%85%83%E6%80%9D%E6%83%B3/"/>
-    <id>https://andyppang.github.io/2022/03/14/%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3%E8%83%8C%E5%90%8E%E7%9A%84%E4%B8%BB%E5%85%83%E6%80%9D%E6%83%B3/</id>
-    <published>2022-03-14T15:55:33.000Z</published>
-    <updated>2022-05-14T04:18:59.039Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;题目：若&lt;span class=&quot;math inline&quot;&gt;\(f(x)=\dfrac{1}{2}x^2+b\ln x+ax\)&lt;/span&gt;在&lt;span class=&quot;math inline&quot;&gt;\((1,2)\)&lt;/span&gt;内有两个极值点，则&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-    
-    
-    <category term="主元法" scheme="https://andyppang.github.io/tags/%E4%B8%BB%E5%85%83%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>相关系数</title>
-    <link href="https://andyppang.github.io/2022/03/03/%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/"/>
-    <id>https://andyppang.github.io/2022/03/03/%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</id>
-    <published>2022-03-03T14:33:21.000Z</published>
-    <updated>2022-05-20T02:36:53.809Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;strong&gt;相关系数的引入理解&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;对于成对数据的相关性强弱问题，可以从定性的角度观察散点图直观的感知，当然定量进行研究就需要引入一个新的量——相关系数&lt;/p&gt;
-&lt;p&gt;对于数据&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;math</summary>
-        
-      
-    
-    
-    
-    <category term="数学" scheme="https://andyppang.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-    
-    
-    <category term="回归分析" scheme="https://andyppang.github.io/tags/%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测试Windows下写博客</title>
-    <link href="https://andyppang.github.io/2022/03/01/testwindows/"/>
-    <id>https://andyppang.github.io/2022/03/01/testwindows/</id>
-    <published>2022-03-01T15:30:00.000Z</published>
-    <updated>2022-05-14T04:18:59.037Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;这是windows7环境下，安装了git + nodejs + pandoc + hexo</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    
-    <category term="windows" scheme="https://andyppang.github.io/tags/windows/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>远程桌面控制软件Rustdesk</title>
-    <link href="https://andyppang.github.io/2021/07/09/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%8E%A7%E5%88%B6%E8%BD%AF%E4%BB%B6Rustdesk/"/>
-    <id>https://andyppang.github.io/2021/07/09/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%8E%A7%E5%88%B6%E8%BD%AF%E4%BB%B6Rustdesk/</id>
-    <published>2021-07-09T05:54:00.000Z</published>
-    <updated>2022-05-14T04:18:59.047Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;下载地址&quot;&gt;下载地址&lt;/h2&gt;
-&lt;p&gt;在控制端和主机端都下载好&lt;/p&gt;
-&lt;p&gt;1.如果是windows桌面版需要先下载dll动态库&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://andyppang.github.io/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    
-    <category term="Rustdesk" scheme="https://andyppang.github.io/tags/Rustdesk/"/>
     
   </entry>
   
