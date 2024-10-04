@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目：若\(f(x)&#x3D;\dfrac{1}{2}x^2+b\ln x+ax\)在\((1,2)\)内有两个极值点，则\(b(3a+b+9)\)的取值范围是___ 解析： \(f&#39;(x)&#x3D;\dfrac{x^2+ax+b}{x}\)，则\(x^2+ax+b&#x3D;0\)在\((1,2)\)有两个不相等的实数根，设为\(x_1,x_2\)，于是 \[ \begin{cases} x_1+x_2&#x3D;-">
+    <meta name="description" content="题目：若\(f(x)&#x3D;\dfrac{1}{2}x^2+b\ln x+ax\)在\((1,2)\)内有两个极值点，则\(b(3a+b+9)\)的取值范围是___ 解析： \(f&#39;(x)&#x3D;\dfrac{x^2+ax+b}{x}\)，则\(x^2+ax+b&#x3D;0\)在\((1,2)\)有两个不相等的实数根，设为\(x_1,x_2\)，于是 \[ \begin{cases} x_1+x_2&#x3D;-a\\">
 <meta property="og:type" content="article">
 <meta property="og:title" content="因式分解背后的主元思想">
 <meta property="og:url" content="https://andyppang.github.io/2022/03/14/%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3%E8%83%8C%E5%90%8E%E7%9A%84%E4%B8%BB%E5%85%83%E6%80%9D%E6%83%B3/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="题目：若\(f(x)&#x3D;\dfrac{1}{2}x^2+b\ln x+ax\)在\((1,2)\)内有两个极值点，则\(b(3a+b+9)\)的取值范围是___ 解析： \(f&#39;(x)&#x3D;\dfrac{x^2+ax+b}{x}\)，则\(x^2+ax+b&#x3D;0\)在\((1,2)\)有两个不相等的实数根，设为\(x_1,x_2\)，于是 \[ \begin{cases} x_1+x_2&#x3D;-">
+<meta property="og:description" content="题目：若\(f(x)&#x3D;\dfrac{1}{2}x^2+b\ln x+ax\)在\((1,2)\)内有两个极值点，则\(b(3a+b+9)\)的取值范围是___ 解析： \(f&#39;(x)&#x3D;\dfrac{x^2+ax+b}{x}\)，则\(x^2+ax+b&#x3D;0\)在\((1,2)\)有两个不相等的实数根，设为\(x_1,x_2\)，于是 \[ \begin{cases} x_1+x_2&#x3D;-a\\">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-14T15:55:33.000Z">
-<meta property="article:modified_time" content="2022-05-14T04:18:59.039Z">
+<meta property="article:published_time" content="2022-03-14T23:55:33.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.314Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="主元法">
 <meta name="twitter:card" content="summary_large_image">
@@ -285,21 +285,33 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年5月14日 中午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <p>题目：若<span class="math inline">\(f(x)=\dfrac{1}{2}x^2+b\ln x+ax\)</span>在<span class="math inline">\((1,2)\)</span>内有两个极值点，则<span class="math inline">\(b(3a+b+9)\)</span>的取值范围是___</p>
-<p><font color=deepskyblue>解析：</font> <span class="math inline">\(f&#39;(x)=\dfrac{x^2+ax+b}{x}\)</span>，则<span class="math inline">\(x^2+ax+b=0\)</span>在<span class="math inline">\((1,2)\)</span>有两个不相等的实数根，设为<span class="math inline">\(x_1,x_2\)</span>，于是 <span class="math display">\[
+              <p>题目：若<span class="math inline">\(f(x)=\dfrac{1}{2}x^2+b\ln
+x+ax\)</span>在<span
+class="math inline">\((1,2)\)</span>内有两个极值点，则<span
+class="math inline">\(b(3a+b+9)\)</span>的取值范围是___</p>
+<p><font color=deepskyblue>解析：</font> <span
+class="math inline">\(f&#39;(x)=\dfrac{x^2+ax+b}{x}\)</span>，则<span
+class="math inline">\(x^2+ax+b=0\)</span>在<span
+class="math inline">\((1,2)\)</span>有两个不相等的实数根，设为<span
+class="math inline">\(x_1,x_2\)</span>，于是 <span
+class="math display">\[
 \begin{cases}
 x_1+x_2=-a\\
 x_1x_2=b
 \end{cases}
-\]</span> 则<span class="math inline">\(b(3a+b+9)=x_1x_2(-3x_1-3x_2+x_1x_2+9)\)</span></p>
-<p>由于注意到<span class="math inline">\(x_1,x_2\)</span>是可以在<span class="math inline">\((1,2)\)</span>内任意互不影响的任意发生变化的，也就是说二者是相互独立的变量，因此对于上式就是一个<strong>独立双变量的范围问题</strong>，那么就可以采用<strong>主元法</strong>进行求解，不妨<strong>选定<span class="math inline">\(x_1\)</span>为主元对上式进行整理</strong>： <span class="math display">\[
+\]</span> 则<span
+class="math inline">\(b(3a+b+9)=x_1x_2(-3x_1-3x_2+x_1x_2+9)\)</span></p>
+<p>由于注意到<span class="math inline">\(x_1,x_2\)</span>是可以在<span
+class="math inline">\((1,2)\)</span>内任意互不影响的任意发生变化的，也就是说二者是相互独立的变量，因此对于上式就是一个<strong>独立双变量的范围问题</strong>，那么就可以采用<strong>主元法</strong>进行求解，不妨<strong>选定<span
+class="math inline">\(x_1\)</span>为主元对上式进行整理</strong>： <span
+class="math display">\[
 \begin{aligned}
 &amp;\quad x_1x_2(-3x_1-3x_2+x_1x_2+9)\\
 &amp;=(x_2^2-3x_2)x_1^2-(3x_2^2-9x_2)x_1\\
@@ -307,9 +319,14 @@ x_1x_2=b
 &amp;=x_2(x_2-3)(x_1^2-3x_1)\\
 &amp;=(x_2^2-3x_2)(x_1^2-3x_1)
 \end{aligned}
-\]</span> 没想到整理出来了一个<span class="math inline">\(x_1,x_2\)</span>不再缠绵的一个式子，那就只需要求出各自的范围就好了</p>
-<p>由于<span class="math inline">\(x_1\in(1,2)\)</span>，则<span class="math inline">\(x_1^2-3x_1\in[-\dfrac{9}{4},-2)\)</span>，同理<span class="math inline">\(x_2^2-3x_2\in[-\dfrac{9}{4},-2)\)</span>，但是由于<span class="math inline">\(x_1\ne x_2\)</span></p>
-<p>则<span class="math inline">\((x_2^2-3x_2)(x_1^2-3x_1)\in(4,\dfrac{81}{16})\)</span></p>
+\]</span> 没想到整理出来了一个<span
+class="math inline">\(x_1,x_2\)</span>不再缠绵的一个式子，那就只需要求出各自的范围就好了</p>
+<p>由于<span class="math inline">\(x_1\in(1,2)\)</span>，则<span
+class="math inline">\(x_1^2-3x_1\in[-\dfrac{9}{4},-2)\)</span>，同理<span
+class="math inline">\(x_2^2-3x_2\in[-\dfrac{9}{4},-2)\)</span>，但是由于<span
+class="math inline">\(x_1\ne x_2\)</span></p>
+<p>则<span
+class="math inline">\((x_2^2-3x_2)(x_1^2-3x_1)\in(4,\dfrac{81}{16})\)</span></p>
 
               
             </div>

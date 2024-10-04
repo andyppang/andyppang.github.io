@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Pandoc简介  Pandoc是使用Haskell语言编写的一款跨平台、自由开源及命令行界面的标记语言转换工具，可实现不同标记语言间的格式转换，堪称该领域中的“瑞士军刀”  Windows10系统下的使用方法  将pandoc安装目录加入系统环境变量的path中 在命令行操作pandoc进行格式转换  markdown&#x2F;latex转docx 123pandoc -s sour">
+    <meta name="description" content="Pandoc简介  Pandoc是使用Haskell语言编写的一款跨平台、自由开源及命令行界面的标记语言转换工具，可实现不同标记语言间的格式转换，堪称该领域中的“瑞士军刀”  Windows10系统下的使用方法  将pandoc安装目录加入系统环境变量的path中 在命令行操作pandoc进行格式转换  markdown&#x2F;latex转docx 123pandoc -s source.md -o o">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pandoc的使用记录">
 <meta property="og:url" content="https://andyppang.github.io/2021/05/13/Pandoc%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="Pandoc简介  Pandoc是使用Haskell语言编写的一款跨平台、自由开源及命令行界面的标记语言转换工具，可实现不同标记语言间的格式转换，堪称该领域中的“瑞士军刀”  Windows10系统下的使用方法  将pandoc安装目录加入系统环境变量的path中 在命令行操作pandoc进行格式转换  markdown&#x2F;latex转docx 123pandoc -s sour">
+<meta property="og:description" content="Pandoc简介  Pandoc是使用Haskell语言编写的一款跨平台、自由开源及命令行界面的标记语言转换工具，可实现不同标记语言间的格式转换，堪称该领域中的“瑞士军刀”  Windows10系统下的使用方法  将pandoc安装目录加入系统环境变量的path中 在命令行操作pandoc进行格式转换  markdown&#x2F;latex转docx 123pandoc -s source.md -o o">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-13T08:20:00.000Z">
-<meta property="article:modified_time" content="2022-05-14T04:18:59.034Z">
+<meta property="article:published_time" content="2021-05-13T16:20:00.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.313Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="pandoc">
 <meta name="twitter:card" content="summary_large_image">
@@ -285,7 +285,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年5月14日 中午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -304,13 +304,20 @@
 <h2 id="markdownlatex转docx">markdown/latex转docx</h2>
 <figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">pandoc</span> <span class="hljs-literal">-</span><span class="hljs-comment">s</span> <span class="hljs-comment">source</span><span class="hljs-string">.</span><span class="hljs-comment">md</span> <span class="hljs-literal">-</span><span class="hljs-comment">o</span> <span class="hljs-comment">output</span><span class="hljs-string">.</span><span class="hljs-comment">docx</span><br><span class="hljs-comment">#</span> <span class="hljs-comment">如果有数学公式需要转换，加上</span>--<span class="hljs-comment">mathjax或者</span>--<span class="hljs-comment">katex或者</span>--<span class="hljs-comment">mathml参数</span><br><span class="hljs-comment">pandoc</span> <span class="hljs-literal">-</span><span class="hljs-comment">s</span> <span class="hljs-comment">maths</span><span class="hljs-string">.</span><span class="hljs-comment">md</span> <span class="hljs-literal">-</span><span class="hljs-comment">o</span> <span class="hljs-comment">outputmaths</span><span class="hljs-string">.</span><span class="hljs-comment">docx</span> --<span class="hljs-comment">mathjax</span> <br></code></pre></td></tr></table></figure>
 <p>使用情况记录：转换出来的公式是用word中自带的公式编辑器显示的，绝大部分公式都能正常显示</p>
-<p><strong>小贴士：</strong> 利用typora编辑器，在安装好pandoc的情况下，可以一键实现转换，不需要命令行操作，并且转换后的格式比用命令行转换出来的好看。</p>
-<p><strong>To do:</strong> <code>\dfrac&#123;&#125;&#123;&#125;</code> 的行间分式转化出来，在word中变矮了，显示的格式是 <code>frac&#123;&#125;&#123;&#125;</code> 类型</p>
-<p>查阅大量文章之后发现word不支持 <code>\dfrac</code> ，看来让行内公式显示看起来比较舒服的分数大小，不太容易实现了。</p>
+<p><strong>小贴士：</strong>
+利用typora编辑器，在安装好pandoc的情况下，可以一键实现转换，不需要命令行操作，并且转换后的格式比用命令行转换出来的好看。</p>
+<p><strong>To do:</strong> <code>\dfrac&#123;&#125;&#123;&#125;</code>
+的行间分式转化出来，在word中变矮了，显示的格式是 <code>frac&#123;&#125;&#123;&#125;</code>
+类型</p>
+<p>查阅大量文章之后发现word不支持 <code>\dfrac</code>
+，看来让行内公式显示看起来比较舒服的分数大小，不太容易实现了。</p>
 <h2 id="md转html再转docx">md转html再转docx</h2>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">pandoc</span> <span class="hljs-selector-tag">-s</span> <span class="hljs-selector-tag">maths</span><span class="hljs-selector-class">.md</span> <span class="hljs-selector-tag">--webtex</span> <span class="hljs-selector-tag">-t</span> <span class="hljs-selector-tag">html</span> | <span class="hljs-selector-tag">pandoc</span> <span class="hljs-selector-tag">-f</span> <span class="hljs-selector-tag">html</span> <span class="hljs-selector-tag">-o</span> <span class="hljs-selector-tag">output</span><span class="hljs-selector-class">.docx</span><br></code></pre></td></tr></table></figure>
 <blockquote>
-<p>解释说明： &gt; -s 表示待转换的文件 &gt; --webtex 表示将数学公式加上<img>标签 &gt; -t to的简写 &gt; | 管道符 &gt; -f from的简写 &gt; -o output的简写 &gt; 上述命令的作用就是将md文件以及其中的数学公式以图片形式转为html，然后再将html转成docx</p>
+<p>解释说明： &gt; -s 表示待转换的文件 &gt; --webtex
+表示将数学公式加上<img>标签 &gt; -t to的简写 &gt; | 管道符 &gt; -f
+from的简写 &gt; -o output的简写 &gt;
+上述命令的作用就是将md文件以及其中的数学公式以图片形式转为html，然后再将html转成docx</p>
 </blockquote>
 <p>由于此时word中的公式全部都是图片显示了，可以有效解决分数变小的问题。</p>
 <p>实际使用过程中的三个问题：</p>
@@ -318,9 +325,12 @@
 <li>运行命令报错，提示连接错误之类的，很可能是众所周知的问题，在命令行挂上代理即可：</li>
 </ol>
 <p>linux系统终端使用 <code>proxychains</code></p>
-<p>win10命令行需要设置代理 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">http_proxy</span>=http://127.0.0.1:xxxx<br><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">https_proxy</span>=http://127.0.0.1:xxxx<br></code></pre></td></tr></table></figure> 2. 处理图片的速度比较慢，在正确设置代理的情况下，完成一套数学试卷的转换大约用了8分钟左右，请耐心等待</p>
+<p>win10命令行需要设置代理 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">http_proxy</span>=http://127.0.0.1:xxxx<br><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">https_proxy</span>=http://127.0.0.1:xxxx<br></code></pre></td></tr></table></figure> 2.
+处理图片的速度比较慢，在正确设置代理的情况下，完成一套数学试卷的转换大约用了8分钟左右，请耐心等待</p>
 <ol start="3" type="1">
-<li>转换好打开发现，word中图片和文字参差不齐，只需要选中所有，右键选择 <code>段落</code> ，找到 <code>对齐方式</code> 选择 <code>居中</code> 即可，为了美观些，还可以将行距设置为1.5倍。</li>
+<li>转换好打开发现，word中图片和文字参差不齐，只需要选中所有，右键选择
+<code>段落</code> ，找到 <code>对齐方式</code> 选择 <code>居中</code>
+即可，为了美观些，还可以将行距设置为1.5倍。</li>
 </ol>
 
               

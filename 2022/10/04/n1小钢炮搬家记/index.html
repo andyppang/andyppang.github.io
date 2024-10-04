@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、搬迁之前的准备工作  事先了解搬迁地的网关地址和子网掩码 进入小钢炮后台 System-Network，选择 use Static IP，填入ip地址、网关地址，然后保存 如果搬迁地没有登录路由或交换机后台的权限，上一步不要选择 use DHCP，不然就捞不到小钢炮的ip了  二、搬迁后遇到的各种麻烦及解决办法  搬迁地的网段为172.17.0.0&#x2F;16，和docker0网段冲">
+    <meta name="description" content="一、搬迁之前的准备工作  事先了解搬迁地的网关地址和子网掩码 进入小钢炮后台 System-Network，选择 use Static IP，填入ip地址、网关地址，然后保存 如果搬迁地没有登录路由或交换机后台的权限，上一步不要选择 use DHCP，不然就捞不到小钢炮的ip了  二、搬迁后遇到的各种麻烦及解决办法  搬迁地的网段为172.17.0.0&#x2F;16，和docker0网段冲突 直接表现就是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="n1小钢炮搬家记">
 <meta property="og:url" content="https://andyppang.github.io/2022/10/04/n1%E5%B0%8F%E9%92%A2%E7%82%AE%E6%90%AC%E5%AE%B6%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="一、搬迁之前的准备工作  事先了解搬迁地的网关地址和子网掩码 进入小钢炮后台 System-Network，选择 use Static IP，填入ip地址、网关地址，然后保存 如果搬迁地没有登录路由或交换机后台的权限，上一步不要选择 use DHCP，不然就捞不到小钢炮的ip了  二、搬迁后遇到的各种麻烦及解决办法  搬迁地的网段为172.17.0.0&#x2F;16，和docker0网段冲">
+<meta property="og:description" content="一、搬迁之前的准备工作  事先了解搬迁地的网关地址和子网掩码 进入小钢炮后台 System-Network，选择 use Static IP，填入ip地址、网关地址，然后保存 如果搬迁地没有登录路由或交换机后台的权限，上一步不要选择 use DHCP，不然就捞不到小钢炮的ip了  二、搬迁后遇到的各种麻烦及解决办法  搬迁地的网段为172.17.0.0&#x2F;16，和docker0网段冲突 直接表现就是">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-04T07:53:09.000Z">
-<meta property="article:modified_time" content="2023-04-25T01:14:25.753Z">
+<meta property="article:published_time" content="2022-10-04T15:53:09.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.314Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="n1,docker,openwrt">
 <meta name="twitter:card" content="summary_large_image">
@@ -285,7 +285,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2023年4月25日 上午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -295,10 +295,13 @@
               <h2 id="一搬迁之前的准备工作">一、搬迁之前的准备工作</h2>
 <ul>
 <li>事先了解搬迁地的网关地址和子网掩码</li>
-<li>进入小钢炮后台 <code>System-Network</code>，选择 <code>use Static IP</code>，填入ip地址、网关地址，然后保存</li>
-<li>如果搬迁地没有登录路由或交换机后台的权限，上一步不要选择 <code>use DHCP</code>，不然就捞不到小钢炮的ip了</li>
+<li>进入小钢炮后台 <code>System-Network</code>，选择
+<code>use Static IP</code>，填入ip地址、网关地址，然后保存</li>
+<li>如果搬迁地没有登录路由或交换机后台的权限，上一步不要选择
+<code>use DHCP</code>，不然就捞不到小钢炮的ip了</li>
 </ul>
-<h2 id="二搬迁后遇到的各种麻烦及解决办法">二、搬迁后遇到的各种麻烦及解决办法</h2>
+<h2
+id="二搬迁后遇到的各种麻烦及解决办法">二、搬迁后遇到的各种麻烦及解决办法</h2>
 <ul>
 <li><p>搬迁地的网段为172.17.0.0/16，和docker0网段冲突</p>
 <p>直接表现就是已建好的容器不能访问了，因此修改docker0网段为172.100.0.0/16</p>
@@ -311,20 +314,25 @@
 <li><p>openwrt里面的passwall显示谷歌连接测试失败</p>
 <p>解决办法：在高级设置里面，找到<code>TCP 转发端口</code>，将常用改为全部，再来测试就正常了</p></li>
 <li><p>关于docker版本的openwrt安装版本</p>
-<p>由于n1的架构是aarch64，所以在docker hub中搜索arm64架构的openwrt版本才可以安装</p>
+<p>由于n1的架构是aarch64，所以在docker
+hub中搜索arm64架构的openwrt版本才可以安装</p>
 <p>先后尝试了</p>
-<p><code>unifreq/openwrt-aarch64</code> 最高尝试到<a target="_blank" rel="noopener" href="https://hub.docker.com/layers/unifreq/openwrt-aarch64/r20.10.20/images/sha256-b6370f04bb231867957ee9101e91e5978d4b22dccfca265b16c36f450a4fddc9?context=explore">r20.10.20</a>版本可以正常使用</p>
+<p><code>unifreq/openwrt-aarch64</code> 最高尝试到<a
+target="_blank" rel="noopener" href="https://hub.docker.com/layers/unifreq/openwrt-aarch64/r20.10.20/images/sha256-b6370f04bb231867957ee9101e91e5978d4b22dccfca265b16c36f450a4fddc9?context=explore">r20.10.20</a>版本可以正常使用</p>
 <p><code>buddyfly/openwrt-aarch64</code></p>
-<p><code>sulinggg/openwrt</code> 版本多，界面美化好，n1可使用registry.cn-shanghai.aliyuncs.com/suling/openwrt:armv8</p></li>
+<p><code>sulinggg/openwrt</code>
+版本多，界面美化好，n1可使用registry.cn-shanghai.aliyuncs.com/suling/openwrt:armv8</p></li>
 <li><p>小钢炮自带的transmission提示错误，无法启动</p>
-<p>解决办法：进入 <code>Apps-Transmission-Extra Settings</code> 找到 <code>rpc whitelist</code> 添加新的本地网段</p></li>
+<p>解决办法：进入 <code>Apps-Transmission-Extra Settings</code> 找到
+<code>rpc whitelist</code> 添加新的本地网段</p></li>
 <li><p>关于n1无法ping通openwrt容器</p>
 <p>由于openwrt容器采用的是网卡混杂模式macvlan，宿主机与容器之间的网络连接是隔绝的，但是多个混杂模式之间的网络是可以相互访问的，只要在宿主机上再建立一个macvlan，然后修改路由表，使数据经由<strong>宿主机下的macvlan</strong>传输到<strong>容器内的macvlan</strong>即可。</p>
 <ul>
 <li><p>环境：</p>
 <p>宿主机eth0：172.17.18.18/16</p>
 <p>openwrt容器：172.17.18.22/16</p></li>
-<li><p>解决：以下操作均在 <strong>宿主机</strong> 中，不是在Docker容器中</p>
+<li><p>解决：以下操作均在 <strong>宿主机</strong>
+中，不是在Docker容器中</p>
 <p>新增一个叫mynet的macvlan接口</p>
 <figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lasso">ip <span class="hljs-keyword">link</span> add mynet <span class="hljs-keyword">link</span> eth0 <span class="hljs-keyword">type</span> macvlan mode bridge<br></code></pre></td></tr></table></figure>
 <p>为该接口分配ip</p>

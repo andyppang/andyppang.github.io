@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="服务端安装 1234567891011121314151617181920212223242526272829## 进入配置目录cd &#x2F;etc&#x2F;tinc&#x2F;## 网络目录名可任意，但其他节点须与服务端节点相同sudo mkdir cloudcd cloud&#x2F;## 目录名固定，这里存放各个节点的配置文件sudo mkdir hosts## 开始配置cloudsudo vim tinc.conf##">
+    <meta name="description" content="服务端安装 1234567891011121314151617181920212223242526272829## 进入配置目录cd &#x2F;etc&#x2F;tinc&#x2F;## 网络目录名可任意，但其他节点须与服务端节点相同sudo mkdir cloudcd cloud&#x2F;## 目录名固定，这里存放各个节点的配置文件sudo mkdir hosts## 开始配置cloudsudo vim tinc.conf## 极">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tinc建立vpn">
 <meta property="og:url" content="https://andyppang.github.io/2020/10/21/Tinc%E5%BB%BA%E7%AB%8BVpn/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="服务端安装 1234567891011121314151617181920212223242526272829## 进入配置目录cd &#x2F;etc&#x2F;tinc&#x2F;## 网络目录名可任意，但其他节点须与服务端节点相同sudo mkdir cloudcd cloud&#x2F;## 目录名固定，这里存放各个节点的配置文件sudo mkdir hosts## 开始配置cloudsudo vim tinc.conf##">
+<meta property="og:description" content="服务端安装 1234567891011121314151617181920212223242526272829## 进入配置目录cd &#x2F;etc&#x2F;tinc&#x2F;## 网络目录名可任意，但其他节点须与服务端节点相同sudo mkdir cloudcd cloud&#x2F;## 目录名固定，这里存放各个节点的配置文件sudo mkdir hosts## 开始配置cloudsudo vim tinc.conf## 极">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-21T08:27:29.000Z">
-<meta property="article:modified_time" content="2022-05-14T04:18:59.035Z">
+<meta property="article:published_time" content="2020-10-21T16:27:29.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.313Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="tinc">
 <meta property="article:tag" content="vpn">
@@ -286,7 +286,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年5月14日 中午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -308,13 +308,15 @@
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">Name</span> = pc<br><span class="hljs-attr">Interface</span> = vpn<br><span class="hljs-attr">ConnectTo</span> = tencent<br></code></pre></td></tr></table></figure></li>
 <li><p>在hosts目录下新建文件pc，输入如下内容，将节点IP配置为10.0.0.2</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Subnet</span> = <span class="hljs-number">10.0.0.2</span>/<span class="hljs-number">32</span><br></code></pre></td></tr></table></figure></li>
-<li><p>在安装目录下以管理员身份启动cmd，输入tincd -n cloud -K，生成密钥</p></li>
+<li><p>在安装目录下以管理员身份启动cmd，输入tincd -n cloud
+-K，生成密钥</p></li>
 <li><p>待密钥生成完毕后，获取并保存服务端hosts文件夹下的tencent文件至pc文件处，将pc文件上传至服务端的hosts文件夹下。</p></li>
 <li><p>在安装目录tap-win64下以管理员身份运行addtap.exe，安装网络适配器</p></li>
 <li><p>接着去网络中心找到类似的TAP网络适配器，修改其名称为tinc.conf中的Interface值，本例为vpn，接着右键属性设置ipv4的地址，此地址应与hosts中pc的Subnet值相同，本例为10.0.0.2</p></li>
 </ul>
 <h1 id="linux客户端安装">Linux客户端安装</h1>
-<p>使用apt install tinc即可。其配置与服务端的配置步骤相同。同样是确保用户具备sudo权限或是直接使用root。</p>
+<p>使用apt install
+tinc即可。其配置与服务端的配置步骤相同。同样是确保用户具备sudo权限或是直接使用root。</p>
 <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta">## 进入配置目录</span><br>cd /etc/tinc/<br><span class="hljs-meta">## 网络须与服务端节点相同</span><br>sudo mkdir cloud<br>cd cloud/<br><span class="hljs-meta">## 目录名固定，这里存放orangePi节点和服务端节点的主机文件</span><br>sudo mkdir hosts<br><span class="hljs-meta">## 开始配置cloud</span><br>sudo vim tinc.conf<br><span class="hljs-meta">## 极简配置如下，其他配置默认</span><br><span class="hljs-meta">## ConnectTo = 服务端节点名，本例为tencent</span><br>Name = orangePi<br>Interface = vpn<br>ConnectTo = tencent<br><span class="hljs-meta">## 配置orangePi节点，对应tinc.conf中的Name</span><br>sudo vim hosts/orangePi<br><span class="hljs-meta">## 填写orangePi节点vpn的IP，需唯一</span><br>Subnet = <span class="hljs-number">10.0</span><span class="hljs-number">.0</span><span class="hljs-number">.10</span>/<span class="hljs-number">32</span><br><span class="hljs-meta">## 生成密钥，-n 网络名</span><br>sudo tincd -n cloud -K<br><span class="hljs-meta">## 编写拨号脚本，注意与Subnet的IP相同</span><br>sudo vim tinc-up<br><span class="hljs-meta">#!/bin/bash</span><br>ifconfig $INTERFACE <span class="hljs-number">10.0</span><span class="hljs-number">.0</span><span class="hljs-number">.10</span> netmask <span class="hljs-number">255.255</span><span class="hljs-number">.255</span><span class="hljs-number">.0</span><br><span class="hljs-meta">## 编写断线脚本</span><br>sudo vim tinc-down<br><span class="hljs-meta">#!/bin/bash</span><br>ifconfig $INTERFACE down<br><span class="hljs-meta">## 赋予脚本执行权限</span><br>sudo chmod +x tinc-*<br></code></pre></td></tr></table></figure>
 <h1 id="padavan安装tinc">Padavan安装tinc</h1>
 <p>首先要加载entware环境，然后opkg install tinc</p>
@@ -346,7 +348,12 @@
 <p>2.晚高峰期间的速度基本可以接受</p>
 <p>3.将两个vps同时作为服务端的文件配置，目前还没有搞定</p>
 <h1 id="致敬原文作者">致敬原文作者</h1>
-<p><a target="_blank" rel="noopener" href="https://wuzk.tk/2018/09/13/2018/20180913/">https://wuzk.tk/2018/09/13/2018/20180913/</a> <a target="_blank" rel="noopener" href="https://chanix.github.io/TincCookbook/">https://chanix.github.io/TincCookbook/</a> <a target="_blank" rel="noopener" href="http://www.lucktu.com/archives/763-3.html">http://www.lucktu.com/archives/763-3.html</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://wuzk.tk/2018/09/13/2018/20180913/">https://wuzk.tk/2018/09/13/2018/20180913/</a>
+<a
+target="_blank" rel="noopener" href="https://chanix.github.io/TincCookbook/">https://chanix.github.io/TincCookbook/</a>
+<a
+target="_blank" rel="noopener" href="http://www.lucktu.com/archives/763-3.html">http://www.lucktu.com/archives/763-3.html</a></p>
 
               
             </div>

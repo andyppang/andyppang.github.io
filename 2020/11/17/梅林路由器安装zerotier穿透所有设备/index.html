@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="准备工作（重要）  如果zerotier后台建立了路由表的话，需要先删除，不然等下梅林连接的时候就会引起路由器死机 关闭梅林路由器防火墙，实测安装完zerotier后，不关防火墙ping结果最高1000ms，关闭后稳定在30ms，貌似传说的打洞成功  安装过程  首先安装好entware环境 安装zerotier 12345opkg updateopkg install zero">
+    <meta name="description" content="准备工作（重要）  如果zerotier后台建立了路由表的话，需要先删除，不然等下梅林连接的时候就会引起路由器死机 关闭梅林路由器防火墙，实测安装完zerotier后，不关防火墙ping结果最高1000ms，关闭后稳定在30ms，貌似传说的打洞成功  安装过程  首先安装好entware环境 安装zerotier 12345opkg updateopkg install zerotiermodpr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="梅林路由器安装zerotier">
 <meta property="og:url" content="https://andyppang.github.io/2020/11/17/%E6%A2%85%E6%9E%97%E8%B7%AF%E7%94%B1%E5%99%A8%E5%AE%89%E8%A3%85zerotier%E7%A9%BF%E9%80%8F%E6%89%80%E6%9C%89%E8%AE%BE%E5%A4%87/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="准备工作（重要）  如果zerotier后台建立了路由表的话，需要先删除，不然等下梅林连接的时候就会引起路由器死机 关闭梅林路由器防火墙，实测安装完zerotier后，不关防火墙ping结果最高1000ms，关闭后稳定在30ms，貌似传说的打洞成功  安装过程  首先安装好entware环境 安装zerotier 12345opkg updateopkg install zero">
+<meta property="og:description" content="准备工作（重要）  如果zerotier后台建立了路由表的话，需要先删除，不然等下梅林连接的时候就会引起路由器死机 关闭梅林路由器防火墙，实测安装完zerotier后，不关防火墙ping结果最高1000ms，关闭后稳定在30ms，貌似传说的打洞成功  安装过程  首先安装好entware环境 安装zerotier 12345opkg updateopkg install zerotiermodpr">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-17T14:49:48.000Z">
-<meta property="article:modified_time" content="2022-05-14T04:18:59.042Z">
+<meta property="article:published_time" content="2020-11-17T22:49:48.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.315Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="路由器">
 <meta property="article:tag" content="内网穿透">
@@ -288,7 +288,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年5月14日 中午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -305,7 +305,8 @@
 <li><p>首先安装好entware环境</p></li>
 <li><p>安装zerotier</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stata">opkg <span class="hljs-keyword">update</span><br>opkg install zerotier<br>modprobe tun<br>zerotier-<span class="hljs-keyword">one</span> -<span class="hljs-keyword">d</span><br>zerotier-<span class="hljs-keyword">cli</span> join xxxxx<br></code></pre></td></tr></table></figure></li>
-<li><p>网页端同意加入，并建立路由表192.168.50.0/24 via 192.168.192.1</p></li>
+<li><p>网页端同意加入，并建立路由表192.168.50.0/24 via
+192.168.192.1</p></li>
 <li><p>添加iptables，允许转发到192.168.50.0网段的流量通过</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">iptables</span> -A FORWARD -d <span class="hljs-number">192.168.50.0</span>/<span class="hljs-number">24</span> -j ACCEPT<br></code></pre></td></tr></table></figure></li>
 <li><p>测试连接是否正常，包括从学校访问家中的局域网是否ping通</p></li>
@@ -317,10 +318,15 @@
 <h2 id="后记">后记</h2>
 <h3 id="modprobe-tun命令的作用">modprobe tun命令的作用</h3>
 <p>Tun/Tap是通过软件模拟的网络设备，提供与网络设备完全相同的功能。其中TAP模拟了以太网设备，即操作第二层数据包；TUN则模拟了网络层设备，即第三层数据包。Tun/Tap虚拟网络设备为用户空间程序提供了网络数据包的发送和接收能力。既可以当做点对点设备(TUN)，也可以当做以太网设备(TAP)。不仅Linux支持Tun/Tap虚拟网络设备，其他UNIX也是支持的，之间有少许差别。Tun/Tap驱动程序实现了虚拟网卡的功能，Tun表示虚拟的是点对点设备，Tap表示虚拟的是以太网设备，这两种设备针对网络包实行不同的封装。利用Tun/Tap驱动，可以将tcp/ip协议栈处理好的网络分包传给任何一个使用Tun/Tap驱动的进程，由进程重新处理后再发到物理链路中。</p>
-<p>Linux 2.4 内核之后代码默认编译tun、tap驱动，使用的时候只需要将模块加载即可(modprobe tun，mknod /dev/net/tun c 10 200)。运行tun、tap设备之后，会在内核空间添加一个杂项设备(miscdevice，类比字符设备、块设备等)/dev/net/tun，实质上是主设备号10的字符设备。从功能上看，tun设备驱动主要应该包括两个部分，一是虚拟网卡驱动，其实就是虚拟网卡中对skb进行封装解封装等操作；二是字符设备驱动，用于内核空间与用户空间的交互。</p>
+<p>Linux 2.4
+内核之后代码默认编译tun、tap驱动，使用的时候只需要将模块加载即可(modprobe
+tun，mknod /dev/net/tun c 10
+200)。运行tun、tap设备之后，会在内核空间添加一个杂项设备(miscdevice，类比字符设备、块设备等)/dev/net/tun，实质上是主设备号10的字符设备。从功能上看，tun设备驱动主要应该包括两个部分，一是虚拟网卡驱动，其实就是虚拟网卡中对skb进行封装解封装等操作；二是字符设备驱动，用于内核空间与用户空间的交互。</p>
 <h3 id="iptables命令相关知识">iptables命令相关知识</h3>
-<h3 id="为啥在post-mount中添加开机启动项">为啥在post-mount中添加开机启动项</h3>
-<p>/jffs/scripts目录: 里面的脚本名固定不可以随便修改，但是可以加自己的内容。</p>
+<h3
+id="为啥在post-mount中添加开机启动项">为啥在post-mount中添加开机启动项</h3>
+<p>/jffs/scripts目录:
+里面的脚本名固定不可以随便修改，但是可以加自己的内容。</p>
 <p>脚本名</p>
 <p>作用</p>
 <p>wan-start</p>
@@ -342,7 +348,8 @@
 <li><p>安装 entware后，产生了一个/jffs/service-start文件。</p>
 <ul>
 <li><p>该脚本调用/opt/etc/init.d/rc.unslung。</p></li>
-<li><p>然后rc.unslung启动/opt/etc/init.d/目录下的所有脚本，使用*.* start参数进行调用。</p></li>
+<li><p>然后rc.unslung启动/opt/etc/init.d/目录下的所有脚本，使用*.*
+start参数进行调用。</p></li>
 <li><p>脚本中运行的进程以服务方式驻留，是Linux早期版本的标准运行机制。</p></li>
 </ul></li>
 <li><p>自己的脚本放在/opt/etc/init.d/目录下</p></li>

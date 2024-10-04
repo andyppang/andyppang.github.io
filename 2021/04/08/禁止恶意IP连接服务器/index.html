@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="实现原理 由于 &#x2F;var&#x2F;log&#x2F;auth.log 会记录所有用户的登录信息，通过提取 Failed password 类型的连接ip，然后将其加入 &#x2F;etc&#x2F;hosts.deny 文件，就可以禁止该ip再次连接。 具体步骤 1.首先确保安装了python 2.然后在 &#x2F;home 目录下 touch bannedip.py ，写入如下内容： 12345678910111213141516">
+    <meta name="description" content="实现原理 由于 &#x2F;var&#x2F;log&#x2F;auth.log 会记录所有用户的登录信息，通过提取 Failed password 类型的连接ip，然后将其加入 &#x2F;etc&#x2F;hosts.deny 文件，就可以禁止该ip再次连接。 具体步骤 1.首先确保安装了python 2.然后在 &#x2F;home 目录下 touch bannedip.py ，写入如下内容： 1234567891011121314151617181">
 <meta property="og:type" content="article">
 <meta property="og:title" content="禁止恶意ip连接服务器">
 <meta property="og:url" content="https://andyppang.github.io/2021/04/08/%E7%A6%81%E6%AD%A2%E6%81%B6%E6%84%8FIP%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="实现原理 由于 &#x2F;var&#x2F;log&#x2F;auth.log 会记录所有用户的登录信息，通过提取 Failed password 类型的连接ip，然后将其加入 &#x2F;etc&#x2F;hosts.deny 文件，就可以禁止该ip再次连接。 具体步骤 1.首先确保安装了python 2.然后在 &#x2F;home 目录下 touch bannedip.py ，写入如下内容： 12345678910111213141516">
+<meta property="og:description" content="实现原理 由于 &#x2F;var&#x2F;log&#x2F;auth.log 会记录所有用户的登录信息，通过提取 Failed password 类型的连接ip，然后将其加入 &#x2F;etc&#x2F;hosts.deny 文件，就可以禁止该ip再次连接。 具体步骤 1.首先确保安装了python 2.然后在 &#x2F;home 目录下 touch bannedip.py ，写入如下内容： 1234567891011121314151617181">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-04-08T08:15:34.000Z">
-<meta property="article:modified_time" content="2022-05-14T04:18:59.044Z">
+<meta property="article:published_time" content="2021-04-08T16:15:34.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.315Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="ban ip">
@@ -286,7 +286,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年5月14日 中午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -294,14 +294,19 @@
             <div class="markdown-body">
               
               <h2 id="实现原理">实现原理</h2>
-<p>由于 <code>/var/log/auth.log</code> 会记录所有用户的登录信息，通过提取 <code>Failed password</code> 类型的连接ip，然后将其加入 <code>/etc/hosts.deny</code> 文件，就可以禁止该ip再次连接。</p>
+<p>由于 <code>/var/log/auth.log</code>
+会记录所有用户的登录信息，通过提取 <code>Failed password</code>
+类型的连接ip，然后将其加入 <code>/etc/hosts.deny</code>
+文件，就可以禁止该ip再次连接。</p>
 <h2 id="具体步骤">具体步骤</h2>
 <p>1.首先确保安装了python</p>
-<p>2.然后在 <code>/home</code> 目录下 <code>touch bannedip.py</code> ，写入如下内容：</p>
+<p>2.然后在 <code>/home</code> 目录下 <code>touch bannedip.py</code>
+，写入如下内容：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;/etc/hosts.deny&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    deny = f.read().split(<span class="hljs-string">&quot;\n&quot;</span>)<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;/var/log/auth.log&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    log = f.read().split(<span class="hljs-string">&quot;\n&quot;</span>)<br><br>ipset = <span class="hljs-built_in">set</span>()<br><br><span class="hljs-keyword">for</span> each <span class="hljs-keyword">in</span> log:<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;Failed password&#x27;</span> <span class="hljs-keyword">in</span> each:<br>        ip = each.split(<span class="hljs-string">&#x27; from &#x27;</span>)[<span class="hljs-number">1</span>].split(<span class="hljs-string">&#x27; port &#x27;</span>)[<span class="hljs-number">0</span>]<br>        writein = <span class="hljs-string">&#x27;ALL: &#x27;</span> + ip<br>        ipset.add(writein)<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;/etc/hosts.deny&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    <span class="hljs-keyword">for</span> each <span class="hljs-keyword">in</span> ipset:<br>        <span class="hljs-keyword">if</span> each <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> deny:<br>            <span class="hljs-built_in">print</span>(each)<br>            f.write(each + <span class="hljs-string">&#x27;\n&#x27;</span>)<br></code></pre></td></tr></table></figure>
 <p>3.创建定时任务，每5分钟执行一次</p>
 <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arcade">crontab -e<br>*<span class="hljs-regexp">/5 * * * * python /</span>home/bannedip.py<br></code></pre></td></tr></table></figure>
-<p>4.手动将自己的ip（段）加入白名单 <code>/etc/hosts.allow</code> ，不然万一输错密码，把自己也关在外边就不好玩啦</p>
+<p>4.手动将自己的ip（段）加入白名单 <code>/etc/hosts.allow</code>
+，不然万一输错密码，把自己也关在外边就不好玩啦</p>
 
               
             </div>

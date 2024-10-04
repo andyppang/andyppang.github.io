@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题 已知函数\(f(x)&#x3D;axe^{2-x}-2(x-1)^2,a\in\mathbf{R}\) （1）讨论\(f(x)\)的单调性； （2）当\(0&lt;a&lt;1\)时，证明：\(f(x)\)有两个零点\(x_1,x_2\)，且\(x_1x_2&lt;1\) 解 解析：（1）\(f&#39;(x)&#x3D;ae^{2-x}(1-x)-4(x-1)&#x3D;(1-x)(ae^{2-x}+4)\)">
+    <meta name="description" content="题 已知函数\(f(x)&#x3D;axe^{2-x}-2(x-1)^2,a\in\mathbf{R}\) （1）讨论\(f(x)\)的单调性； （2）当\(0&lt;a&lt;1\)时，证明：\(f(x)\)有两个零点\(x_1,x_2\)，且\(x_1x_2&lt;1\) 解 解析：（1）\(f&#39;(x)&#x3D;ae^{2-x}(1-x)-4(x-1)&#x3D;(1-x)(ae^{2-x}+4)\) 当\(a\">
 <meta property="og:type" content="article">
 <meta property="og:title" content="极值点偏移的思路消参的操作">
 <meta property="og:url" content="https://andyppang.github.io/2021/05/14/%E6%9E%81%E5%80%BC%E7%82%B9%E5%81%8F%E7%A7%BB%E7%9A%84%E6%80%9D%E8%B7%AF%E6%B6%88%E5%8F%82%E7%9A%84%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="题 已知函数\(f(x)&#x3D;axe^{2-x}-2(x-1)^2,a\in\mathbf{R}\) （1）讨论\(f(x)\)的单调性； （2）当\(0&lt;a&lt;1\)时，证明：\(f(x)\)有两个零点\(x_1,x_2\)，且\(x_1x_2&lt;1\) 解 解析：（1）\(f&#39;(x)&#x3D;ae^{2-x}(1-x)-4(x-1)&#x3D;(1-x)(ae^{2-x}+4)\)">
+<meta property="og:description" content="题 已知函数\(f(x)&#x3D;axe^{2-x}-2(x-1)^2,a\in\mathbf{R}\) （1）讨论\(f(x)\)的单调性； （2）当\(0&lt;a&lt;1\)时，证明：\(f(x)\)有两个零点\(x_1,x_2\)，且\(x_1x_2&lt;1\) 解 解析：（1）\(f&#39;(x)&#x3D;ae^{2-x}(1-x)-4(x-1)&#x3D;(1-x)(ae^{2-x}+4)\) 当\(a\">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-14T06:38:00.000Z">
-<meta property="article:modified_time" content="2022-05-14T04:18:59.041Z">
+<meta property="article:published_time" content="2021-05-14T14:38:00.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.315Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="导数">
 <meta property="article:tag" content="极值点偏移">
@@ -286,7 +286,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年5月14日 中午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -294,26 +294,80 @@
             <div class="markdown-body">
               
               <h2 id="题">题</h2>
-<p>已知函数<span class="math inline">\(f(x)=axe^{2-x}-2(x-1)^2,a\in\mathbf{R}\)</span></p>
+<p>已知函数<span
+class="math inline">\(f(x)=axe^{2-x}-2(x-1)^2,a\in\mathbf{R}\)</span></p>
 <p>（1）讨论<span class="math inline">\(f(x)\)</span>的单调性；</p>
-<p>（2）当<span class="math inline">\(0&lt;a&lt;1\)</span>时，证明：<span class="math inline">\(f(x)\)</span>有两个零点<span class="math inline">\(x_1,x_2\)</span>，且<span class="math inline">\(x_1x_2&lt;1\)</span></p>
+<p>（2）当<span
+class="math inline">\(0&lt;a&lt;1\)</span>时，证明：<span
+class="math inline">\(f(x)\)</span>有两个零点<span
+class="math inline">\(x_1,x_2\)</span>，且<span
+class="math inline">\(x_1x_2&lt;1\)</span></p>
 <h2 id="解">解</h2>
-<p>解析：（1）<span class="math inline">\(f&#39;(x)=ae^{2-x}(1-x)-4(x-1)=(1-x)(ae^{2-x}+4)\)</span></p>
-<p>当<span class="math inline">\(a\ge0\)</span>时，<span class="math inline">\(f(x)\)</span>在<span class="math inline">\((-\infty,1)\)</span>单增，在<span class="math inline">\((1,+\infty)\)</span>单减</p>
-<p>当<span class="math inline">\(a&lt;0\)</span>时，令<span class="math inline">\(f&#39;(x)=0\)</span>得<span class="math inline">\(x_1=1\)</span>或<span class="math inline">\(x_2=2-\ln(-\dfrac{4}{a})\)</span></p>
-<p>若<span class="math inline">\(a=-\dfrac{4}{e}\)</span>，则<span class="math inline">\(x_1=x_2\)</span>，<span class="math inline">\(f&#39;(x)\le0\)</span>，于是<span class="math inline">\(f(x)\)</span>在<span class="math inline">\(\mathbf{R}\)</span>上单减</p>
-<p>若<span class="math inline">\(a&lt;-\dfrac{4}{e}\)</span>，则<span class="math inline">\(x_1&lt;x_2\)</span>，于是<span class="math inline">\(f(x)\)</span>在<span class="math inline">\((-\infty,1)\)</span>单减，<span class="math inline">\((1,x_2)\)</span>单增，<span class="math inline">\((x_2,+\infty)\)</span>单减</p>
-<p>若<span class="math inline">\(-\dfrac{4}{e}&lt;a&lt;0\)</span>，则<span class="math inline">\(x_2&lt;x_1\)</span>，于是<span class="math inline">\(f(x)\)</span>在<span class="math inline">\((-\infty,x_2)\)</span>单减，<span class="math inline">\((x_2,1)\)</span>单增，<span class="math inline">\((1,+\infty)\)</span>单减</p>
-<p>（2）<span class="math inline">\(0&lt;a&lt;1\)</span>时，由（1）知<span class="math inline">\(f(x)\)</span>在<span class="math inline">\((-\infty,1)\)</span>单增，在<span class="math inline">\((1,+\infty)\)</span>单减，<span class="math inline">\(f(0)=-2&lt;0\)</span>，<span class="math inline">\(f(1)=ae&gt;0\)</span>，<span class="math inline">\(f(2)=2a-2&lt;0\)</span></p>
-<p>于是<span class="math inline">\(f(x)\)</span>在<span class="math inline">\((0,1)\)</span>和<span class="math inline">\((1,2)\)</span>内各有一个零点<span class="math inline">\(x_1,x_2\)</span>，由<span class="math inline">\(f(x_1)=0\)</span>得<span class="math inline">\(ax_1e^{2-x_1}=2(x_1-1)^2\)</span>，即<span class="math inline">\(a=\dfrac{2(x_1-1)^2}{x_1e^{2-x_1}}\)</span></p>
-<p>欲证<span class="math inline">\(x_1x_2&lt;1\)</span>，即证<span class="math inline">\(x_2&lt;\dfrac{1}{x_1}\)</span>，由于<span class="math inline">\(x_2,\dfrac{1}{x_1}\in(1,+\infty)\)</span>，只需证<span class="math inline">\(0=f(x_2)&gt;f(\dfrac{1}{x_1})\)</span>，即证</p>
-<p><span class="math inline">\(f(\dfrac{1}{x_1})=a\cdot\dfrac{1}{x_1}\cdot e^{2-\dfrac{1}{x_1}}-2(\dfrac{1}{x_1}-1)^2&lt;0\)</span>，将<span class="math inline">\(a\)</span>代入化简后即证<span class="math inline">\(e^{x_1-\dfrac{1}{x_1}}&lt;1\)</span></p>
-<p>由于<span class="math inline">\(0&lt;x_1&lt;1\)</span>，则上式显然成立，得证</p>
+<p>解析：（1）<span
+class="math inline">\(f&#39;(x)=ae^{2-x}(1-x)-4(x-1)=(1-x)(ae^{2-x}+4)\)</span></p>
+<p>当<span class="math inline">\(a\ge0\)</span>时，<span
+class="math inline">\(f(x)\)</span>在<span
+class="math inline">\((-\infty,1)\)</span>单增，在<span
+class="math inline">\((1,+\infty)\)</span>单减</p>
+<p>当<span class="math inline">\(a&lt;0\)</span>时，令<span
+class="math inline">\(f&#39;(x)=0\)</span>得<span
+class="math inline">\(x_1=1\)</span>或<span
+class="math inline">\(x_2=2-\ln(-\dfrac{4}{a})\)</span></p>
+<p>若<span class="math inline">\(a=-\dfrac{4}{e}\)</span>，则<span
+class="math inline">\(x_1=x_2\)</span>，<span
+class="math inline">\(f&#39;(x)\le0\)</span>，于是<span
+class="math inline">\(f(x)\)</span>在<span
+class="math inline">\(\mathbf{R}\)</span>上单减</p>
+<p>若<span class="math inline">\(a&lt;-\dfrac{4}{e}\)</span>，则<span
+class="math inline">\(x_1&lt;x_2\)</span>，于是<span
+class="math inline">\(f(x)\)</span>在<span
+class="math inline">\((-\infty,1)\)</span>单减，<span
+class="math inline">\((1,x_2)\)</span>单增，<span
+class="math inline">\((x_2,+\infty)\)</span>单减</p>
+<p>若<span
+class="math inline">\(-\dfrac{4}{e}&lt;a&lt;0\)</span>，则<span
+class="math inline">\(x_2&lt;x_1\)</span>，于是<span
+class="math inline">\(f(x)\)</span>在<span
+class="math inline">\((-\infty,x_2)\)</span>单减，<span
+class="math inline">\((x_2,1)\)</span>单增，<span
+class="math inline">\((1,+\infty)\)</span>单减</p>
+<p>（2）<span
+class="math inline">\(0&lt;a&lt;1\)</span>时，由（1）知<span
+class="math inline">\(f(x)\)</span>在<span
+class="math inline">\((-\infty,1)\)</span>单增，在<span
+class="math inline">\((1,+\infty)\)</span>单减，<span
+class="math inline">\(f(0)=-2&lt;0\)</span>，<span
+class="math inline">\(f(1)=ae&gt;0\)</span>，<span
+class="math inline">\(f(2)=2a-2&lt;0\)</span></p>
+<p>于是<span class="math inline">\(f(x)\)</span>在<span
+class="math inline">\((0,1)\)</span>和<span
+class="math inline">\((1,2)\)</span>内各有一个零点<span
+class="math inline">\(x_1,x_2\)</span>，由<span
+class="math inline">\(f(x_1)=0\)</span>得<span
+class="math inline">\(ax_1e^{2-x_1}=2(x_1-1)^2\)</span>，即<span
+class="math inline">\(a=\dfrac{2(x_1-1)^2}{x_1e^{2-x_1}}\)</span></p>
+<p>欲证<span class="math inline">\(x_1x_2&lt;1\)</span>，即证<span
+class="math inline">\(x_2&lt;\dfrac{1}{x_1}\)</span>，由于<span
+class="math inline">\(x_2,\dfrac{1}{x_1}\in(1,+\infty)\)</span>，只需证<span
+class="math inline">\(0=f(x_2)&gt;f(\dfrac{1}{x_1})\)</span>，即证</p>
+<p><span
+class="math inline">\(f(\dfrac{1}{x_1})=a\cdot\dfrac{1}{x_1}\cdot
+e^{2-\dfrac{1}{x_1}}-2(\dfrac{1}{x_1}-1)^2&lt;0\)</span>，将<span
+class="math inline">\(a\)</span>代入化简后即证<span
+class="math inline">\(e^{x_1-\dfrac{1}{x_1}}&lt;1\)</span></p>
+<p>由于<span
+class="math inline">\(0&lt;x_1&lt;1\)</span>，则上式显然成立，得证</p>
 <h2 id="评">评</h2>
 <ol type="1">
-<li>第（1）问解不等式<span class="math inline">\((1-x)(ae^{2-x}+4)&gt;0\)</span>时，由于<span class="math inline">\(y=ae^{2-x}+4(a&lt;0)\)</span>是个增函数，所以相当于解<span class="math inline">\((1-x)[x-(2-\ln(-\dfrac{4}{a}))]&gt;0\)</span>，可能有些同学绕不清楚</li>
-<li>第（2）问在1的右侧找点小于0时，注意观察找到<span class="math inline">\(f(2)\)</span>，刚好可以利用题目条件<span class="math inline">\(a\)</span>的范围</li>
-<li>如果采用传统的极值点偏移构造函数的思路，将会得到非常复杂的函数解析式，如果不消参处理，基本完蛋，切忌不写出解析式直接求导的操作，比如直接拿着<span class="math inline">\(f(x)-f(\dfrac{1}{x})\)</span>利用复合函数求导去了。</li>
+<li>第（1）问解不等式<span
+class="math inline">\((1-x)(ae^{2-x}+4)&gt;0\)</span>时，由于<span
+class="math inline">\(y=ae^{2-x}+4(a&lt;0)\)</span>是个增函数，所以相当于解<span
+class="math inline">\((1-x)[x-(2-\ln(-\dfrac{4}{a}))]&gt;0\)</span>，可能有些同学绕不清楚</li>
+<li>第（2）问在1的右侧找点小于0时，注意观察找到<span
+class="math inline">\(f(2)\)</span>，刚好可以利用题目条件<span
+class="math inline">\(a\)</span>的范围</li>
+<li>如果采用传统的极值点偏移构造函数的思路，将会得到非常复杂的函数解析式，如果不消参处理，基本完蛋，切忌不写出解析式直接求导的操作，比如直接拿着<span
+class="math inline">\(f(x)-f(\dfrac{1}{x})\)</span>利用复合函数求导去了。</li>
 </ol>
 
               

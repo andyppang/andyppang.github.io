@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="安装vmware fusion 可以免费申请个人非商业用途许可证，可以参考https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;315035843 下载OpenWrt固件 这里我选择下载esir的固件，google drive地址为：https:&#x2F;&#x2F;drive.google.com&#x2F;drive&#x2F;folders&#x2F;1dqNUrMf9n7i3y1aSh68U5Yf44WQ3KCuh 可以选择">
+    <meta name="description" content="安装vmware fusion 可以免费申请个人非商业用途许可证，可以参考https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;315035843 下载OpenWrt固件 这里我选择下载esir的固件，google drive地址为：https:&#x2F;&#x2F;drive.google.com&#x2F;drive&#x2F;folders&#x2F;1dqNUrMf9n7i3y1aSh68U5Yf44WQ3KCuh 可以选择精品小包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mac虚拟机安装OpenWrt">
 <meta property="og:url" content="https://andyppang.github.io/2022/09/05/mac%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85OpenWrt/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="安装vmware fusion 可以免费申请个人非商业用途许可证，可以参考https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;315035843 下载OpenWrt固件 这里我选择下载esir的固件，google drive地址为：https:&#x2F;&#x2F;drive.google.com&#x2F;drive&#x2F;folders&#x2F;1dqNUrMf9n7i3y1aSh68U5Yf44WQ3KCuh 可以选择">
+<meta property="og:description" content="安装vmware fusion 可以免费申请个人非商业用途许可证，可以参考https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;315035843 下载OpenWrt固件 这里我选择下载esir的固件，google drive地址为：https:&#x2F;&#x2F;drive.google.com&#x2F;drive&#x2F;folders&#x2F;1dqNUrMf9n7i3y1aSh68U5Yf44WQ3KCuh 可以选择精品小包">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-05T01:44:00.000Z">
-<meta property="article:modified_time" content="2023-04-25T01:14:25.752Z">
+<meta property="article:published_time" content="2022-09-05T09:44:00.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.314Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="Mac">
 <meta property="article:tag" content="OpenWrt">
@@ -286,7 +286,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2023年4月25日 上午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -296,10 +296,12 @@
               <h2 id="安装vmware-fusion">安装vmware fusion</h2>
 <p>可以免费申请个人非商业用途许可证，可以参考https://zhuanlan.zhihu.com/p/315035843</p>
 <h2 id="下载openwrt固件">下载OpenWrt固件</h2>
-<p>这里我选择下载esir的固件，google drive地址为：https://drive.google.com/drive/folders/1dqNUrMf9n7i3y1aSh68U5Yf44WQ3KCuh</p>
+<p>这里我选择下载esir的固件，google
+drive地址为：https://drive.google.com/drive/folders/1dqNUrMf9n7i3y1aSh68U5Yf44WQ3KCuh</p>
 <p>可以选择精品小包或者佛跳墙版本，注意选择引导模式uefi或者传统bios模式</p>
 <h2 id="格式转换">格式转换</h2>
-<p>由于下载的 文件后缀名是.img，如果是.img.gz，可以手动重命名为.img， 我们需要转换为.vmdk，这里需要用到qemu工具，<code>brew install qemu</code>，安装好以后，利用命令<code>qemu-img convert -f raw 源文件.img -O vmdk 目标文件.vmdk</code>就可以转换为vmdk格式了</p>
+<p>由于下载的 文件后缀名是.img，如果是.img.gz，可以手动重命名为.img，
+我们需要转换为.vmdk，这里需要用到qemu工具，<code>brew install qemu</code>，安装好以后，利用命令<code>qemu-img convert -f raw 源文件.img -O vmdk 目标文件.vmdk</code>就可以转换为vmdk格式了</p>
 <h2 id="安装openwrt">安装OpenWrt</h2>
 <p>新建虚拟机，硬盘设置为选择刚转换的vmdk文件，网络选择为桥接网络，以便将此OpenWrt作为macos的旁路由</p>
 <h2 id="启动修改openwrt设置">启动修改OpenWrt设置</h2>
@@ -307,10 +309,12 @@
 <li><p>首次登录系统，还没有设置root密码，利用<code>password</code>命令设置root密码</p></li>
 <li><p>修改ip地址：由于我的mac主机ip地址为172.17.18.154，网关为172.17.0.1，子网掩码为255.255.0.0，利用命令<code>vi /etc/config/network</code>，修改openwrt的ip为172.17.18.66，netmask设置为255.255.0.0</p></li>
 <li><p>重启网络服务使修改生效：<code>/etc/init.d/network restart</code></p></li>
-<li><p>（也可以下一步之后再验证）验证设置是否生效：<code>ifconfig</code>查看ip地址，还可以<code>ping 172.17.18.154</code>， <code>ping baidu.com</code></p></li>
+<li><p>（也可以下一步之后再验证）验证设置是否生效：<code>ifconfig</code>查看ip地址，还可以<code>ping 172.17.18.154</code>，
+<code>ping baidu.com</code></p></li>
 </ul>
 <h2 id="登录后台并修改设置">登录后台并修改设置</h2>
-<p>浏览器登入172.17.18.66，用户名root，密码刚设的登录，找到网络--接口，修改网关为172.17.0.1，以及子网掩码为255.255.0.0，验证设置是否生效：<code>ifconfig</code>查看ip地址，还可以<code>ping 172.17.18.154</code>， <code>ping baidu.com</code>都通过了就表示设置成功了</p>
+<p>浏览器登入172.17.18.66，用户名root，密码刚设的登录，找到网络--接口，修改网关为172.17.0.1，以及子网掩码为255.255.0.0，验证设置是否生效：<code>ifconfig</code>查看ip地址，还可以<code>ping 172.17.18.154</code>，
+<code>ping baidu.com</code>都通过了就表示设置成功了</p>
 <h2 id="mac富强">mac富强</h2>
 <p>修改mac的ip地址为手动：</p>
 <figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dns">ip: <span class="hljs-number">172.17.18.154</span><br>网关：<span class="hljs-number">172.17.18.66</span><br>DNS：<span class="hljs-number">114.114.114.114</span><br></code></pre></td></tr></table></figure>

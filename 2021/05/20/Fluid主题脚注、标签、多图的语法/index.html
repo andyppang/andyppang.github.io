@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="脚注 主题内置了脚注语法支持，可以在文章末尾自动生成带有锚点的脚注，该功能在主题配置中默认开启： 1234post:  footnote:    enable: true    header: &amp;#x27;&amp;#x27; 脚注语法如下： 12这是一句话[1][^1]: 这是对应的脚注 显示效果：              这句话带脚注[1]这句话也带脚注[2]">
+    <meta name="description" content="脚注 主题内置了脚注语法支持，可以在文章末尾自动生成带有锚点的脚注，该功能在主题配置中默认开启： 1234post:  footnote:    enable: true    header: &amp;#x27;&amp;#x27; 脚注语法如下： 12这是一句话[1][^1]: 这是对应的脚注 显示效果：              这句话带脚注[1]这句话也带脚注[2]            标签 在 mar">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fluid主题脚注、标签、多图的语法">
 <meta property="og:url" content="https://andyppang.github.io/2021/05/20/Fluid%E4%B8%BB%E9%A2%98%E8%84%9A%E6%B3%A8%E3%80%81%E6%A0%87%E7%AD%BE%E3%80%81%E5%A4%9A%E5%9B%BE%E7%9A%84%E8%AF%AD%E6%B3%95/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="脚注 主题内置了脚注语法支持，可以在文章末尾自动生成带有锚点的脚注，该功能在主题配置中默认开启： 1234post:  footnote:    enable: true    header: &amp;#x27;&amp;#x27; 脚注语法如下： 12这是一句话[1][^1]: 这是对应的脚注 显示效果：              这句话带脚注[1]这句话也带脚注[2]">
+<meta property="og:description" content="脚注 主题内置了脚注语法支持，可以在文章末尾自动生成带有锚点的脚注，该功能在主题配置中默认开启： 1234post:  footnote:    enable: true    header: &amp;#x27;&amp;#x27; 脚注语法如下： 12这是一句话[1][^1]: 这是对应的脚注 显示效果：              这句话带脚注[1]这句话也带脚注[2]            标签 在 mar">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-20T08:51:00.000Z">
-<meta property="article:modified_time" content="2022-05-14T04:18:59.032Z">
+<meta property="article:published_time" content="2021-05-20T16:51:00.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.312Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="fluid">
@@ -286,7 +286,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年5月14日 中午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -301,14 +301,16 @@
 ">[1]</span></a></sup><br>[<span class="hljs-symbol">^1</span>]: <span class="hljs-link">这是对应的脚注</span><br></code></pre></td></tr></table></figure>
 <p>显示效果：</p>
 <div class="note note-primary">
-            <p>这句话带脚注<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="参考资料1">[1]</span></a></sup></p><p>这句话也带脚注<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="参考资料2">[2]</span></a></sup></p>
+            <p>这句话带脚注<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><spanclass="hint--top hint--rounded" aria-label="参考资料1">[1]</span></a></sup></p><p>这句话也带脚注<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><spanclass="hint--top hint--rounded" aria-label="参考资料2">[2]</span></a></sup></p>
           </div>
 <h2 id="标签">标签</h2>
 <p>在 markdown 中加入如下的代码来使用便签：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">&#123;% note success %&#125;<br>文字 或者 <span class="hljs-code">`markdown`</span> 均可<br>&#123;% endnote %&#125;<br></code></pre></td></tr></table></figure>
 <p>或者使用 HTML 形式：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;note note-primary&quot;</span>&gt;</span>标签<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<p>可选标签 <code>primary,secondary,success,danger,warning,info,light</code> 显示效果：</p>
+<p>可选标签
+<code>primary,secondary,success,danger,warning,info,light</code>
+显示效果：</p>
 <div class="note note-primary">
             <p>primary</p>
           </div>
@@ -344,19 +346,27 @@
 <span class="label label-info">info</span>
 <span class="label label-light">light</span>
 <h2 id="组图">组图</h2>
-<p>如果想把多张图片按一定布局组合显示，你可以在 markdown 中按如下格式：</p>
+<p>如果想把多张图片按一定布局组合显示，你可以在 markdown
+中按如下格式：</p>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs less">&#123;% <span class="hljs-selector-tag">gi</span> <span class="hljs-selector-tag">total</span> <span class="hljs-selector-tag">n1-n2-</span>... %&#125;<br>  !<span class="hljs-selector-attr">[]</span>(url)<br>  !<span class="hljs-selector-attr">[]</span>(url)<br>  !<span class="hljs-selector-attr">[]</span>(url)<br>  !<span class="hljs-selector-attr">[]</span>(url)<br>  !<span class="hljs-selector-attr">[]</span>(url)<br>&#123;% <span class="hljs-selector-tag">endgi</span> %&#125;<br></code></pre></td></tr></table></figure>
-<p>total：图片总数量，对应中间包含的图片 url 数量 n1-n2-...：每行的图片数量，可以省略，默认单行最多 3 张图，求和必须相等于 total，否则按默认样式</p>
-<p>例如 <code>&#123;% gi 5 3-2 %&#125;</code> 代表共 5 张图，第一行 3 张图，第二行 2 张图。</p>
+<p>total：图片总数量，对应中间包含的图片 url 数量
+n1-n2-...：每行的图片数量，可以省略，默认单行最多 3 张图，求和必须相等于
+total，否则按默认样式</p>
+<p>例如 <code>&#123;% gi 5 3-2 %&#125;</code> 代表共 5 张图，第一行 3
+张图，第二行 2 张图。</p>
 <h2 id="参考">参考</h2>
 <section class="footnotes">
 <div class="footnote-list">
 <ol>
 <li>
-<span id="fn:1" class="footnote-text"><span>参考资料1 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩︎</a></span></span>
+<span id="fn:1" class="footnote-text"><span>参考资料1
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
 </li>
 <li>
-<span id="fn:2" class="footnote-text"><span>参考资料2 <a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩︎</a></span></span>
+<span id="fn:2" class="footnote-text"><span>参考资料2
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
 </li>
 </ol>
 </div>

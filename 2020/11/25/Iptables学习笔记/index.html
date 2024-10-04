@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Linux防火墙 Linux系统防火墙功能是由内核实现的，从2.4版本之后的内核中，包过滤机制是netfilter，管理工具是iptables netfilter 位于系统内核中的包过滤防火墙功能体系，被称为Linux防火墙的“内核态” iptables 位于&#x2F;sbin&#x2F;iptables，是用来管理防火墙的命令工具，被称为linux防火墙的“用户态” iptables的表与链介绍 链">
+    <meta name="description" content="Linux防火墙 Linux系统防火墙功能是由内核实现的，从2.4版本之后的内核中，包过滤机制是netfilter，管理工具是iptables netfilter 位于系统内核中的包过滤防火墙功能体系，被称为Linux防火墙的“内核态” iptables 位于&#x2F;sbin&#x2F;iptables，是用来管理防火墙的命令工具，被称为linux防火墙的“用户态” iptables的表与链介绍 链是防火墙规则或">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iptables学习笔记">
 <meta property="og:url" content="https://andyppang.github.io/2020/11/25/Iptables%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="Linux防火墙 Linux系统防火墙功能是由内核实现的，从2.4版本之后的内核中，包过滤机制是netfilter，管理工具是iptables netfilter 位于系统内核中的包过滤防火墙功能体系，被称为Linux防火墙的“内核态” iptables 位于&#x2F;sbin&#x2F;iptables，是用来管理防火墙的命令工具，被称为linux防火墙的“用户态” iptables的表与链介绍 链">
+<meta property="og:description" content="Linux防火墙 Linux系统防火墙功能是由内核实现的，从2.4版本之后的内核中，包过滤机制是netfilter，管理工具是iptables netfilter 位于系统内核中的包过滤防火墙功能体系，被称为Linux防火墙的“内核态” iptables 位于&#x2F;sbin&#x2F;iptables，是用来管理防火墙的命令工具，被称为linux防火墙的“用户态” iptables的表与链介绍 链是防火墙规则或">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-25T04:57:31.000Z">
-<meta property="article:modified_time" content="2022-05-14T04:18:59.033Z">
+<meta property="article:published_time" content="2020-11-25T12:57:31.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.312Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="iptables">
 <meta name="twitter:card" content="summary_large_image">
@@ -285,7 +285,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年5月14日 中午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -349,10 +349,12 @@
 <h2 id="iptables管理与配置">iptables管理与配置</h2>
 <h3 id="命令语法格式">命令语法格式</h3>
 <p>iptables [-t 表名] 选项 [链名] [匹配条件] [-j 目标动作]</p>
-<p>注：不指定表名时默认是filter表 不指定链名时默认是表内的所有链 除设置链的默认策略，否则需要指定匹配条件</p>
+<p>注：不指定表名时默认是filter表 不指定链名时默认是表内的所有链
+除设置链的默认策略，否则需要指定匹配条件</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">iptables -t <span class="hljs-attribute">filter</span> -<span class="hljs-selector-tag">A</span> <span class="hljs-selector-tag">INPUT</span> -<span class="hljs-selector-tag">p</span> tcp -j ACCEPT<br>iptables -<span class="hljs-selector-tag">I</span> <span class="hljs-selector-tag">INPUT</span> -<span class="hljs-selector-tag">p</span> udp -j ACCEPT<br>iptables -<span class="hljs-selector-tag">I</span> <span class="hljs-selector-tag">INPUT</span> <span class="hljs-number">2</span> -<span class="hljs-selector-tag">p</span> icmp -j ACCEPT<br>iptables -<span class="hljs-selector-tag">P</span> <span class="hljs-selector-tag">INPUT</span> DROP #设置<span class="hljs-selector-tag">INPUT</span>链默认操作为DROP<br></code></pre></td></tr></table></figure>
 <h3 id="选项">选项：</h3>
-<p>-A 在末尾追加一条规则 -I 在开头插入一条规则 -D 删除一条规则 -R 替换一条规则</p>
+<p>-A 在末尾追加一条规则 -I 在开头插入一条规则 -D 删除一条规则 -R
+替换一条规则</p>
 <h3 id="匹配条件">匹配条件</h3>
 <h4 id="协议匹配">协议匹配</h4>
 <p>-p 协议名</p>
@@ -364,7 +366,9 @@
 <p>- - sport 源端口 - - dport 目标端口</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css">iptables -<span class="hljs-selector-tag">A</span> FORWARD -<span class="hljs-selector-tag">p</span> tcp --dport <span class="hljs-number">22</span> -j ACCEPT<br>iptables -<span class="hljs-selector-tag">A</span> OUTPUT -<span class="hljs-selector-tag">p</span> tcp --sport <span class="hljs-number">20</span>:<span class="hljs-number">80</span> -j ACCEPT<br></code></pre></td></tr></table></figure>
 <h3 id="常见数据包的处理动作">常见数据包的处理动作</h3>
-<p>ACCEPT：放行数据包 DROP：丢弃数据包 REJECT：拒绝数据包 SNAT - - to ip : 转译源地址 DNAT - - to ip : 转译目标地址 MASQUERADE : 转译源地址为动态ip</p>
+<p>ACCEPT：放行数据包 DROP：丢弃数据包 REJECT：拒绝数据包 SNAT - - to ip
+: 转译源地址 DNAT - - to ip : 转译目标地址 MASQUERADE :
+转译源地址为动态ip</p>
 <h3 id="查看现有规则">查看现有规则</h3>
 <p>-nvL</p>
 <figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs excel">iptables -<span class="hljs-built_in">t</span> nat -nvL<br>iptables -<span class="hljs-built_in">t</span> filter -nvL<br></code></pre></td></tr></table></figure>
@@ -400,29 +404,36 @@
 <p>9.禁止其他主机ping防火墙主机，但是允许从防火墙上ping其他主机</p>
 <p>iptables -I INPUT -p icmp --icmp-type Echo-Request -j DROP</p>
 <p>iptables -I INPUT -p icmp --icmp-type Echo-Reply -j ACCEPT</p>
-<p>iptables -I INPUT -p icmp --icmp-type destination-Unreachable -j ACCEPT</p>
+<p>iptables -I INPUT -p icmp --icmp-type destination-Unreachable -j
+ACCEPT</p>
 <p>10.禁止转发来自MAC地址为00：0C：29：27：55：3F的和主机的数据包</p>
 <p>iptables -A FORWARD -m mac --mac-source 00:0c:29:27:55:3F -j DROP</p>
-<p>说明：iptables中使用“-m 模块关键字”的形式调用显示匹配。咱们这里用“-m mac –mac-source”来表示数据包的源MAC地址。</p>
+<p>说明：iptables中使用“-m 模块关键字”的形式调用显示匹配。咱们这里用“-m
+mac –mac-source”来表示数据包的源MAC地址。</p>
 <p>11.允许防火墙本机对外开放TCP端口20、21、25、110以及被动模式FTP端口1250-1280</p>
-<p>iptables -A INPUT -p tcp -m multiport --dport 20,21,25,110,1250:1280 -j ACCEPT</p>
+<p>iptables -A INPUT -p tcp -m multiport --dport 20,21,25,110,1250:1280
+-j ACCEPT</p>
 <p>说明：这里用“-m multiport –dport”来指定目的端口及范围</p>
 <p>12.禁止转发源IP地址为192.168.1.20-192.168.1.99的TCP数据包。</p>
-<p>iptables -A FORWARD -p tcp -m iprange --src-range 192.168.1.20-192.168.1.99 -j DROP</p>
+<p>iptables -A FORWARD -p tcp -m iprange --src-range
+192.168.1.20-192.168.1.99 -j DROP</p>
 <p>说明：此处用“-m –iprange –src-range”指定IP范围。</p>
 <p>13.禁止转发与正常TCP连接无关的非—syn请求数据包。</p>
 <p>iptables -A FORWARD -m state --state NEW -p tcp ! --syn -j DROP</p>
-<p>说明：“-m state”表示数据包的连接状态，“NEW”表示与任何连接无关的，新的嘛！</p>
+<p>说明：“-m
+state”表示数据包的连接状态，“NEW”表示与任何连接无关的，新的嘛！</p>
 <p>14.拒绝访问防火墙的新数据包，但允许响应连接或与已有连接相关的数据包</p>
 <p>iptables -A INPUT -p tcp -m state --state NEW -j DROP</p>
-<p>iptables -A INPUT -p tcp -m state --state ESTABLISHED,RELATED -j ACCEPT</p>
+<p>iptables -A INPUT -p tcp -m state --state ESTABLISHED,RELATED -j
+ACCEPT</p>
 <p>说明：“ESTABLISHED”表示已经响应请求或者已经建立连接的数据包，“RELATED”表示与已建立的连接有相关性的，比如FTP数据连接等。</p>
 <p>15.只开放本机的web服务（80）、FTP(20、21、20450-20480)，放行外部主机发住服务器其它端口的应答数据包，将其他入站数据包均予以丢弃处理。</p>
 <p>iptables -I INPUT -p tcp -m multiport --dport 20,21,80 -j ACCEPT</p>
 <p>iptables -I INPUT -p tcp --dport 20450:20480 -j ACCEPT</p>
 <p>iptables -I INPUT -p tcp -m state --state ESTABLISHED -j ACCEPT</p>
 <p>iptables -P INPUT DROP</p>
-<p>原文链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ee4ee15d3658">https://www.jianshu.com/p/ee4ee15d3658</a></p>
+<p>原文链接：<a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/ee4ee15d3658">https://www.jianshu.com/p/ee4ee15d3658</a></p>
 
               
             </div>

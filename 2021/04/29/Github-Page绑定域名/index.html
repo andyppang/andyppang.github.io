@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="轻松两步就可以完成Github Page域名绑定 DNS端的设置  增加一条 CNAME 记录，名称指向自己的 github page 页 username.github.io     类型 名称 内容     CNAME www username.github.io     增加一条 A 记录，指向 185.199.108.153 或 185.199.">
+    <meta name="description" content="轻松两步就可以完成Github Page域名绑定 DNS端的设置  增加一条 CNAME 记录，名称指向自己的 github page 页 username.github.io     类型 名称 内容     CNAME www username.github.io     增加一条 A 记录，指向 185.199.108.153 或 185.199.109.153 或 185.199.110.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Github Page绑定域名">
 <meta property="og:url" content="https://andyppang.github.io/2021/04/29/Github-Page%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="轻松两步就可以完成Github Page域名绑定 DNS端的设置  增加一条 CNAME 记录，名称指向自己的 github page 页 username.github.io     类型 名称 内容     CNAME www username.github.io     增加一条 A 记录，指向 185.199.108.153 或 185.199.">
+<meta property="og:description" content="轻松两步就可以完成Github Page域名绑定 DNS端的设置  增加一条 CNAME 记录，名称指向自己的 github page 页 username.github.io     类型 名称 内容     CNAME www username.github.io     增加一条 A 记录，指向 185.199.108.153 或 185.199.109.153 或 185.199.110.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-04-29T15:56:51.000Z">
-<meta property="article:modified_time" content="2022-05-14T04:18:59.032Z">
+<meta property="article:published_time" content="2021-04-29T23:56:51.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.312Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="github page">
 <meta property="article:tag" content="绑定域名">
@@ -286,7 +286,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年5月14日 中午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -296,18 +296,19 @@
               <p>轻松两步就可以完成Github Page域名绑定</p>
 <h2 id="dns端的设置">DNS端的设置</h2>
 <ul>
-<li>增加一条 <code>CNAME</code> 记录，名称指向自己的 <code>github page</code> 页 <code>username.github.io</code></li>
+<li>增加一条 <code>CNAME</code> 记录，名称指向自己的
+<code>github page</code> 页 <code>username.github.io</code></li>
 </ul>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: center;">类型</th>
 <th style="text-align: center;">名称</th>
 <th style="text-align: center;">内容</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">CNAME</td>
 <td style="text-align: center;">www</td>
 <td style="text-align: center;">username.github.io</td>
@@ -315,18 +316,20 @@
 </tbody>
 </table>
 <ul>
-<li>增加一条 <code>A</code> 记录，指向 <code>185.199.108.153</code> 或 <code>185.199.109.153</code> 或 <code>185.199.110.153</code> 或 <code>185.199.111.153</code></li>
+<li>增加一条 <code>A</code> 记录，指向 <code>185.199.108.153</code> 或
+<code>185.199.109.153</code> 或 <code>185.199.110.153</code> 或
+<code>185.199.111.153</code></li>
 </ul>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: center;">类型</th>
 <th style="text-align: center;">名称</th>
 <th style="text-align: center;">内容</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">A</td>
 <td style="text-align: center;">@</td>
 <td style="text-align: center;">185.199.108.153</td>
@@ -335,15 +338,27 @@
 </table>
 <h2 id="github-pages端设置">Github Pages端设置</h2>
 <p><strong>（这样设置有坑，可以不看了，看下一步）</strong></p>
-<p><code>settings</code> --&gt; <code>Pages</code> --&gt; <code>Custom domain</code> --&gt; <code>www.zeroandone.tk</code> --&gt; <code>save</code></p>
-<p>如果你的DNS配置正确的话，检测通过，稍等片刻，这时可以通过 <code>http://www.zeroandone.tk</code> 访问了</p>
-<p>建议勾选下方的 <code>Enforce HTTPS</code> ，这样就可以通过 <code>https://www.zeroandone.tk</code> 访问</p>
-<p>说明：<code>zeroandone.tk</code> 会重定向到 <code>www.zeroandone.tk</code></p>
-<p>刚把这篇文章写完，去 <code>hexo g -d</code> 以后，突然访问 <code>https://www.zeroandone.tk</code> 页面 <code>404</code> 了，好奇怪！</p>
-<p>没发这篇文章之前还访问好好的，搜索发现好多小伙伴也有类似的事情发生：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Belingda/article/details/100635572">github page+hexo 绑定域名后页面显示404</a>，原来是部署覆盖掉了CNAME文件，正确的处理方式看下一步</p>
+<p><code>settings</code> --&gt; <code>Pages</code> --&gt;
+<code>Custom domain</code> --&gt; <code>www.zeroandone.tk</code> --&gt;
+<code>save</code></p>
+<p>如果你的DNS配置正确的话，检测通过，稍等片刻，这时可以通过
+<code>http://www.zeroandone.tk</code> 访问了</p>
+<p>建议勾选下方的 <code>Enforce HTTPS</code> ，这样就可以通过
+<code>https://www.zeroandone.tk</code> 访问</p>
+<p>说明：<code>zeroandone.tk</code> 会重定向到
+<code>www.zeroandone.tk</code></p>
+<p>刚把这篇文章写完，去 <code>hexo g -d</code> 以后，突然访问
+<code>https://www.zeroandone.tk</code> 页面 <code>404</code>
+了，好奇怪！</p>
+<p>没发这篇文章之前还访问好好的，搜索发现好多小伙伴也有类似的事情发生：<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/Belingda/article/details/100635572">github
+page+hexo
+绑定域名后页面显示404</a>，原来是部署覆盖掉了CNAME文件，正确的处理方式看下一步</p>
 <h2 id="hexo博客端设置">Hexo博客端设置</h2>
-<p>在 <code>source</code> 文件夹下创建 <code>CNAME</code> 文件（注意一定是大写）</p>
-<p>文件的内容就一行 <code>www.zeroandone.tk</code> （换成你自己的域名）</p>
+<p>在 <code>source</code> 文件夹下创建 <code>CNAME</code>
+文件（注意一定是大写）</p>
+<p>文件的内容就一行 <code>www.zeroandone.tk</code>
+（换成你自己的域名）</p>
 <p>这样部署上传的时候，就将该文件push到github仓库了</p>
 
               

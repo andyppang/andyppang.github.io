@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="创建两个Github仓库 在 Github 网站建立两个仓库，名称任意。其中一个仓库用于存放 Blog 文件的源码（以下称 仓库A），另一个用于存放生成以后的静态内容，即 public 目录下的内容（以下称 仓库B）。 使用 Github Action + Vercel 为 Hexo 的 Pandoc 渲染器提供支持 | Hui-Shao&#39;s Blog 创建个人访问令牌（Personal A">
+    <meta name="description" content="创建两个Github仓库 在 Github 网站建立两个仓库，名称任意。其中一个仓库用于存放 Blog 文件的源码（以下称 仓库A），另一个用于存放生成以后的静态内容，即 public 目录下的内容（以下称 仓库B）。 使用 Github Action + Vercel 为 Hexo 的 Pandoc 渲染器提供支持 | Hui-Shao&#39;s Blog 创建个人访问令牌（Personal Acce">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自动部署Hexo">
 <meta property="og:url" content="https://andyppang.github.io/2024/08/01/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2Hexo/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="创建两个Github仓库 在 Github 网站建立两个仓库，名称任意。其中一个仓库用于存放 Blog 文件的源码（以下称 仓库A），另一个用于存放生成以后的静态内容，即 public 目录下的内容（以下称 仓库B）。 使用 Github Action + Vercel 为 Hexo 的 Pandoc 渲染器提供支持 | Hui-Shao&#39;s Blog 创建个人访问令牌（Personal A">
+<meta property="og:description" content="创建两个Github仓库 在 Github 网站建立两个仓库，名称任意。其中一个仓库用于存放 Blog 文件的源码（以下称 仓库A），另一个用于存放生成以后的静态内容，即 public 目录下的内容（以下称 仓库B）。 使用 Github Action + Vercel 为 Hexo 的 Pandoc 渲染器提供支持 | Hui-Shao&#39;s Blog 创建个人访问令牌（Personal Acce">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-01T14:00:03.000Z">
-<meta property="article:modified_time" content="2024-10-01T07:17:05.795Z">
+<meta property="article:published_time" content="2024-08-01T22:00:03.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.315Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="github actions">
@@ -286,7 +286,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2024年10月1日 下午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -294,21 +294,41 @@
             <div class="markdown-body">
               
               <h2 id="创建两个github仓库">创建两个Github仓库</h2>
-<p>在 Github 网站建立两个仓库，名称任意。其中一个仓库用于存放 Blog 文件的源码（以下称 <strong>仓库A</strong>），另一个用于存放生成以后的静态内容，即 <code>public</code> 目录下的内容（以下称 <strong>仓库B</strong>）。</p>
-<p><a target="_blank" rel="noopener" href="https://hui-shao.com/hexo-github-action-vervel/">使用 Github Action + Vercel 为 Hexo 的 Pandoc 渲染器提供支持 | Hui-Shao's Blog</a></p>
-<h2 id="创建个人访问令牌personal-access-token">创建个人访问令牌（Personal Access Token）</h2>
-<p>因为我们需要在 <strong>Hexo 项目仓库A</strong> 执行 <strong>Github Actions</strong> 向 <strong>username.github.io 仓库B</strong>推送代码，由于 Github 权限限制，我们需要在 GitHub 账户中创建一个具有足够权限的<strong>个人访问令牌（Personal Access Token，简称 PAT）</strong>。这个令牌需要有足够的权限来修改仓库。然后在 secrects 里面添加 PERSONAL_TOKEN</p>
-<p><a target="_blank" rel="noopener" href="https://hackergavin.com/2024/01/11/hexo-automate-deploy/">利用 GitHub Actions 实现自动化部署 Hexo 到 Github Pages (hackergavin.com)</a></p>
+<p>在 Github 网站建立两个仓库，名称任意。其中一个仓库用于存放 Blog
+文件的源码（以下称
+<strong>仓库A</strong>），另一个用于存放生成以后的静态内容，即
+<code>public</code> 目录下的内容（以下称 <strong>仓库B</strong>）。</p>
+<p><a target="_blank" rel="noopener" href="https://hui-shao.com/hexo-github-action-vervel/">使用 Github
+Action + Vercel 为 Hexo 的 Pandoc 渲染器提供支持 | Hui-Shao's
+Blog</a></p>
+<h2
+id="创建个人访问令牌personal-access-token">创建个人访问令牌（Personal
+Access Token）</h2>
+<p>因为我们需要在 <strong>Hexo 项目仓库A</strong> 执行 <strong>Github
+Actions</strong> 向 <strong>username.github.io
+仓库B</strong>推送代码，由于 Github 权限限制，我们需要在 GitHub
+账户中创建一个具有足够权限的<strong>个人访问令牌（Personal Access
+Token，简称 PAT）</strong>。这个令牌需要有足够的权限来修改仓库。然后在
+secrects 里面添加 PERSONAL_TOKEN</p>
+<p><a
+target="_blank" rel="noopener" href="https://hackergavin.com/2024/01/11/hexo-automate-deploy/">利用
+GitHub Actions 实现自动化部署 Hexo 到 Github Pages
+(hackergavin.com)</a></p>
 <h2 id="创建-github-actions-脚本">创建 Github Actions 脚本</h2>
 <ol type="1">
-<li>在你的 Hexo 项目仓库A根目录下创建一个 <strong>.github/workflows</strong> 文件夹（如果尚未存在）。</li>
-<li>在该文件夹内创建一个新的 <strong>YAML</strong> 文件（例如 hexo-deploy.yml），用于定义 <strong>GitHub Actions</strong> 工作流。</li>
+<li>在你的 Hexo 项目仓库A根目录下创建一个
+<strong>.github/workflows</strong> 文件夹（如果尚未存在）。</li>
+<li>在该文件夹内创建一个新的 <strong>YAML</strong> 文件（例如
+hexo-deploy.yml），用于定义 <strong>GitHub Actions</strong>
+工作流。</li>
 <li>复制如下配置到 <strong>YAML</strong> 文件</li>
 </ol>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span> <span class="hljs-string">Hexo</span> <span class="hljs-string">to</span> <span class="hljs-string">GitHub</span> <span class="hljs-string">Pages</span><br><br><span class="hljs-attr">on:</span><br>  <span class="hljs-attr">push:</span><br>    <span class="hljs-attr">branches:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">master</span> <span class="hljs-comment"># 或你使用的默认分支名称</span><br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">deploy:</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Checkout</span> <span class="hljs-string">blog</span> <span class="hljs-string">source</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v2</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">path:</span> <span class="hljs-string">blog</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Set</span> <span class="hljs-string">up</span> <span class="hljs-string">Node.js</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/setup-node@v1</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">node-version:</span> <span class="hljs-string">&quot;16&quot;</span> <span class="hljs-comment"># 设置 Node.js 版本</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Cache</span> <span class="hljs-string">dependencies</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/cache@v2</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">path:</span> <span class="hljs-string">node_modules</span><br>          <span class="hljs-attr">key:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">runner.os</span> <span class="hljs-string">&#125;&#125;-node-$&#123;&#123;</span> <span class="hljs-string">hashFiles(&#x27;**/package-lock.json&#x27;)</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">restore-keys:</span> <span class="hljs-string">|</span><br>            <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">runner.os</span> <span class="hljs-string">&#125;&#125;-node-</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">dependencies</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">npm</span> <span class="hljs-string">install</span><br>        <span class="hljs-attr">working-directory:</span> <span class="hljs-string">./blog</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">Hexo</span> <span class="hljs-string">CLI</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-string">-g</span> <span class="hljs-string">hexo-cli</span><br>        <span class="hljs-attr">working-directory:</span> <span class="hljs-string">./blog</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Setup</span> <span class="hljs-string">pandoc</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">nikeee/setup-pandoc@v1</span> <span class="hljs-comment"># 可选项，如果是用pandoc渲染的话，需要安装这个</span><br>      <br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Generate</span> <span class="hljs-string">static</span> <span class="hljs-string">pages</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">hexo</span> <span class="hljs-string">generate</span><br>        <span class="hljs-attr">working-directory:</span> <span class="hljs-string">./blog</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span> <span class="hljs-string">to</span> <span class="hljs-string">GitHub</span> <span class="hljs-string">Pages</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">peaceiris/actions-gh-pages@v3</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">personal_token:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.PERSONAL_TOKEN</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">publish_dir:</span> <span class="hljs-string">./blog/public</span><br>          <span class="hljs-attr">external_repository:</span> <span class="hljs-string">andyppang/andyppang.github.io</span> <span class="hljs-comment"># 更改为你的 GitHub Pages 仓库</span><br>          <span class="hljs-attr">publish_branch:</span> <span class="hljs-string">master</span> <span class="hljs-comment"># GitHub Pages 分支</span><br><br></code></pre></td></tr></table></figure>
 <h2 id="大功告成">大功告成</h2>
 <ol type="1">
-<li><p>提交本地的 Hexo 项目代码到对应 Github 仓库即可触发 <strong>Github Actions</strong> 工作流实现自动部署，然后访问你的 <strong>username.github.io</strong> ！</p></li>
+<li><p>提交本地的 Hexo 项目代码到对应 Github 仓库即可触发 <strong>Github
+Actions</strong> 工作流实现自动部署，然后访问你的
+<strong>username.github.io</strong> ！</p></li>
 <li><p>或者直接在github仓库A的source/_posts文件夹下添加文件，开始写博客，写完就会自动部署到仓库B</p></li>
 </ol>
 

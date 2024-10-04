@@ -6,7 +6,7 @@
   <link href="https://andyppang.github.io/atom.xml" rel="self"/>
   
   <link href="https://andyppang.github.io/"/>
-  <updated>2024-10-01T07:17:05.795Z</updated>
+  <updated>2024-10-04T11:45:08.312Z</updated>
   <id>https://andyppang.github.io/</id>
   
   <author>
@@ -18,17 +18,17 @@
   
   <entry>
     <title>GitHub page 备份到 cloudflare page</title>
-    <link href="https://andyppang.github.io/2024/10/01/GitHub%20page%20%E5%A4%87%E4%BB%BD%E5%88%B0%20cloudflare%20page/"/>
-    <id>https://andyppang.github.io/2024/10/01/GitHub%20page%20%E5%A4%87%E4%BB%BD%E5%88%B0%20cloudflare%20page/</id>
-    <published>2024-10-01T07:17:05.795Z</published>
-    <updated>2024-10-01T07:17:05.795Z</updated>
+    <link href="https://andyppang.github.io/2024/10/04/GitHub%20page%20%E5%A4%87%E4%BB%BD%E5%88%B0%20cloudflare%20page/"/>
+    <id>https://andyppang.github.io/2024/10/04/GitHub%20page%20%E5%A4%87%E4%BB%BD%E5%88%B0%20cloudflare%20page/</id>
+    <published>2024-10-04T11:45:08.312Z</published>
+    <updated>2024-10-04T11:45:08.312Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;cloudflare page 只需要连接 github</summary>
+    <summary type="html">&lt;p&gt;cloudflare page 只需要连接</summary>
         
       
     
@@ -47,8 +47,8 @@
     <title>adb连接TCL75Q10GPro</title>
     <link href="https://andyppang.github.io/2024/09/16/adb%E8%BF%9E%E6%8E%A5TCL75Q10GPro/"/>
     <id>https://andyppang.github.io/2024/09/16/adb%E8%BF%9E%E6%8E%A5TCL75Q10GPro/</id>
-    <published>2024-09-16T14:00:03.000Z</published>
-    <updated>2024-10-01T07:17:05.795Z</updated>
+    <published>2024-09-16T22:00:03.000Z</published>
+    <updated>2024-10-04T11:45:08.313Z</updated>
     
     
       
@@ -58,7 +58,7 @@
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
 &lt;p&gt;苦于无法在电视上设置网络的网关，所以采用迂回的办法：通过adb修改电视的http代理设置。&lt;/p&gt;
 &lt;h2 id=&quot;电视上打开adb&quot;&gt;电视上打开adb&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&quot;</summary>
+&lt;pre&gt;&lt;code class=&quot; mermaid&quot;&gt;graph</summary>
         
       
     
@@ -77,8 +77,8 @@
     <title>自动部署Hexo</title>
     <link href="https://andyppang.github.io/2024/08/01/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2Hexo/"/>
     <id>https://andyppang.github.io/2024/08/01/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2Hexo/</id>
-    <published>2024-08-01T14:00:03.000Z</published>
-    <updated>2024-10-01T07:17:05.795Z</updated>
+    <published>2024-08-01T22:00:03.000Z</published>
+    <updated>2024-10-04T11:45:08.315Z</updated>
     
     
       
@@ -86,7 +86,7 @@
         
         
     <summary type="html">&lt;h2 id=&quot;创建两个github仓库&quot;&gt;创建两个Github仓库&lt;/h2&gt;
-&lt;p&gt;在 Github 网站建立两个仓库，名称任意。其中一个仓库用于存放 Blog 文件的源码（以下称 &lt;strong&gt;仓库A&lt;/strong&gt;），另一个用于存放生成以后的静态内容，即</summary>
+&lt;p&gt;在 Github 网站建立两个仓库，名称任意。其中一个仓库用于存放</summary>
         
       
     
@@ -105,8 +105,8 @@
     <title>Github actions 测试发送</title>
     <link href="https://andyppang.github.io/2024/08/01/Github%20actions%20%E6%B5%8B%E8%AF%95%E5%8F%91%E9%80%81/"/>
     <id>https://andyppang.github.io/2024/08/01/Github%20actions%20%E6%B5%8B%E8%AF%95%E5%8F%91%E9%80%81/</id>
-    <published>2024-08-01T12:48:49.000Z</published>
-    <updated>2024-08-01T13:05:39.614Z</updated>
+    <published>2024-08-01T20:48:49.000Z</published>
+    <updated>2024-10-04T11:45:08.312Z</updated>
     
     
       
@@ -132,20 +132,15 @@
     <title>截图识别数学公式为latex代码</title>
     <link href="https://andyppang.github.io/2023/05/29/%E6%88%AA%E5%9B%BE%E8%AF%86%E5%88%AB%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E4%B8%BAlatex%E4%BB%A3%E7%A0%81/"/>
     <id>https://andyppang.github.io/2023/05/29/%E6%88%AA%E5%9B%BE%E8%AF%86%E5%88%AB%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E4%B8%BAlatex%E4%BB%A3%E7%A0%81/</id>
-    <published>2023-05-29T15:08:57.000Z</published>
-    <updated>2023-05-30T01:15:36.143Z</updated>
+    <published>2023-05-29T23:08:57.000Z</published>
+    <updated>2024-10-04T11:45:08.314Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;实现的几种途径&quot;&gt;实现的几种途径&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;商用的最有名的Mathpix&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;免费的：https://simpletex.cn&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;开源的两个项目：&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
+    <summary type="html">&lt;h2</summary>
         
       
     
@@ -162,8 +157,8 @@
     <title>手动搭建chatgpt-mirai-qqbot对接AI和聊天软件</title>
     <link href="https://andyppang.github.io/2023/05/25/%E6%89%8B%E5%8A%A8%E6%90%AD%E5%BB%BAchatgpt-mirai-qqbot%E5%AF%B9%E6%8E%A5AI%E5%92%8C%E8%81%8A%E5%A4%A9%E8%BD%AF%E4%BB%B6/"/>
     <id>https://andyppang.github.io/2023/05/25/%E6%89%8B%E5%8A%A8%E6%90%AD%E5%BB%BAchatgpt-mirai-qqbot%E5%AF%B9%E6%8E%A5AI%E5%92%8C%E8%81%8A%E5%A4%A9%E8%BD%AF%E4%BB%B6/</id>
-    <published>2023-05-25T04:15:58.000Z</published>
-    <updated>2023-05-29T14:58:12.180Z</updated>
+    <published>2023-05-25T12:15:58.000Z</published>
+    <updated>2024-10-04T11:45:08.314Z</updated>
     
     
       
@@ -189,8 +184,8 @@
     <title>ChatGpt接入QQ</title>
     <link href="https://andyppang.github.io/2023/05/21/ChatGpt%E6%8E%A5%E5%85%A5QQ/"/>
     <id>https://andyppang.github.io/2023/05/21/ChatGpt%E6%8E%A5%E5%85%A5QQ/</id>
-    <published>2023-05-21T12:48:49.000Z</published>
-    <updated>2023-05-21T13:53:14.465Z</updated>
+    <published>2023-05-21T20:48:49.000Z</published>
+    <updated>2024-10-04T11:45:08.312Z</updated>
     
     
       
@@ -199,8 +194,7 @@
         
     <summary type="html">&lt;h2 id=&quot;准备工具&quot;&gt;准备工具&lt;/h2&gt;
 &lt;p&gt;一台vps，一个chatgpt账号，chatgpt的access token，2个QQ账号&lt;/p&gt;
-&lt;h2 id=&quot;项目地址&quot;&gt;项目地址&lt;/h2&gt;
-&lt;p&gt;&lt;a</summary>
+&lt;h2</summary>
         
       
     
@@ -217,8 +211,8 @@
     <title>NginxProxyManager安装与使用</title>
     <link href="https://andyppang.github.io/2023/05/18/NginxProxyManager%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
     <id>https://andyppang.github.io/2023/05/18/NginxProxyManager%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</id>
-    <published>2023-05-18T06:22:36.000Z</published>
-    <updated>2023-05-20T18:17:34.874Z</updated>
+    <published>2023-05-18T14:22:36.000Z</published>
+    <updated>2024-10-04T11:45:08.313Z</updated>
     
     
       
@@ -228,7 +222,7 @@
     <summary type="html">&lt;h2 id=&quot;安装&quot;&gt;安装&lt;/h2&gt;
 &lt;ol type=&quot;1&quot;&gt;
 &lt;li&gt;&lt;p&gt;安装 Docker 和 Docker-Compose&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;在/opt/npm文件夹下创建一个类似于下面的 docker-compose.yml</summary>
+&lt;li&gt;&lt;p&gt;在/opt/npm文件夹下创建一个类似于下面的</summary>
         
       
     
@@ -245,8 +239,8 @@
     <title>Macos系统Python多版本管理和Pip管理</title>
     <link href="https://andyppang.github.io/2023/05/11/Macos%E7%B3%BB%E7%BB%9FPython%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%92%8CPip%E7%AE%A1%E7%90%86/"/>
     <id>https://andyppang.github.io/2023/05/11/Macos%E7%B3%BB%E7%BB%9FPython%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%92%8CPip%E7%AE%A1%E7%90%86/</id>
-    <published>2023-05-11T03:23:24.000Z</published>
-    <updated>2023-05-12T02:21:03.939Z</updated>
+    <published>2023-05-11T11:23:24.000Z</published>
+    <updated>2024-10-04T11:45:08.312Z</updated>
     
     
       
@@ -257,7 +251,7 @@
 &lt;ol type=&quot;1&quot;&gt;
 &lt;li&gt;&lt;p&gt;macos蒙特雷，系统自带Python3.9.6&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;通过安装包安装了Python3.10&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;brew</summary>
+&lt;li&gt;&lt;p&gt;&lt;code&gt;brew install</summary>
         
       
     
@@ -274,8 +268,8 @@
     <title>Memo的搭建和使用</title>
     <link href="https://andyppang.github.io/2023/05/05/Memo%E7%9A%84%E6%90%AD%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/"/>
     <id>https://andyppang.github.io/2023/05/05/Memo%E7%9A%84%E6%90%AD%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/</id>
-    <published>2023-05-05T14:38:10.000Z</published>
-    <updated>2023-05-12T02:21:03.940Z</updated>
+    <published>2023-05-05T22:38:10.000Z</published>
+    <updated>2024-10-04T11:45:08.312Z</updated>
     
     
       
@@ -300,16 +294,15 @@
     <title>docker安装plex</title>
     <link href="https://andyppang.github.io/2023/04/25/docker%E5%AE%89%E8%A3%85plex/"/>
     <id>https://andyppang.github.io/2023/04/25/docker%E5%AE%89%E8%A3%85plex/</id>
-    <published>2023-04-25T07:35:49.000Z</published>
-    <updated>2023-04-25T13:34:20.616Z</updated>
+    <published>2023-04-25T15:35:49.000Z</published>
+    <updated>2024-10-04T11:45:08.313Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;选择适配系统的版本&quot;&gt;选择适配系统的版本&lt;/h2&gt;
-&lt;p&gt;您需要考虑您的操作系统，因为Docker镜像是针对特定操作系统构建的。您可以在Docker</summary>
+    <summary type="html">&lt;h2</summary>
         
       
     
@@ -326,8 +319,8 @@
     <title>n1小钢炮搬家记</title>
     <link href="https://andyppang.github.io/2022/10/04/n1%E5%B0%8F%E9%92%A2%E7%82%AE%E6%90%AC%E5%AE%B6%E8%AE%B0/"/>
     <id>https://andyppang.github.io/2022/10/04/n1%E5%B0%8F%E9%92%A2%E7%82%AE%E6%90%AC%E5%AE%B6%E8%AE%B0/</id>
-    <published>2022-10-04T07:53:09.000Z</published>
-    <updated>2023-04-25T01:14:25.753Z</updated>
+    <published>2022-10-04T15:53:09.000Z</published>
+    <updated>2024-10-04T11:45:08.314Z</updated>
     
     
       
@@ -337,7 +330,8 @@
     <summary type="html">&lt;h2 id=&quot;一搬迁之前的准备工作&quot;&gt;一、搬迁之前的准备工作&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;事先了解搬迁地的网关地址和子网掩码&lt;/li&gt;
-&lt;li&gt;进入小钢炮后台 &lt;code&gt;System-Network&lt;/code&gt;，选择 &lt;code&gt;use Static</summary>
+&lt;li&gt;进入小钢炮后台 &lt;code&gt;System-Network&lt;/code&gt;，选择
+&lt;code&gt;use Static</summary>
         
       
     
@@ -354,8 +348,8 @@
     <title>哪吒探针监控vps状态</title>
     <link href="https://andyppang.github.io/2022/09/21/%E5%93%AA%E5%90%92%E6%8E%A2%E9%92%88%E7%9B%91%E6%8E%A7vps%E7%8A%B6%E6%80%81/"/>
     <id>https://andyppang.github.io/2022/09/21/%E5%93%AA%E5%90%92%E6%8E%A2%E9%92%88%E7%9B%91%E6%8E%A7vps%E7%8A%B6%E6%80%81/</id>
-    <published>2022-09-21T08:28:16.000Z</published>
-    <updated>2023-04-25T01:14:25.753Z</updated>
+    <published>2022-09-21T16:28:16.000Z</published>
+    <updated>2024-10-04T11:45:08.314Z</updated>
     
     
       
@@ -381,8 +375,8 @@
     <title>利用warp脚本使任意vps变双栈</title>
     <link href="https://andyppang.github.io/2022/09/20/%E5%88%A9%E7%94%A8warp%E8%84%9A%E6%9C%AC%E4%BD%BF%E4%BB%BB%E6%84%8Fvps%E5%8F%98%E5%8F%8C%E6%A0%88/"/>
     <id>https://andyppang.github.io/2022/09/20/%E5%88%A9%E7%94%A8warp%E8%84%9A%E6%9C%AC%E4%BD%BF%E4%BB%BB%E6%84%8Fvps%E5%8F%98%E5%8F%8C%E6%A0%88/</id>
-    <published>2022-09-20T04:37:19.000Z</published>
-    <updated>2023-04-25T01:14:25.753Z</updated>
+    <published>2022-09-20T12:37:19.000Z</published>
+    <updated>2024-10-04T11:45:08.314Z</updated>
     
     
       
@@ -408,8 +402,8 @@
     <title>docker安装flare个人导航页</title>
     <link href="https://andyppang.github.io/2022/09/16/docker%E5%AE%89%E8%A3%85flare%E4%B8%AA%E4%BA%BA%E5%AF%BC%E8%88%AA%E9%A1%B5/"/>
     <id>https://andyppang.github.io/2022/09/16/docker%E5%AE%89%E8%A3%85flare%E4%B8%AA%E4%BA%BA%E5%AF%BC%E8%88%AA%E9%A1%B5/</id>
-    <published>2022-09-16T07:35:49.000Z</published>
-    <updated>2023-04-25T01:14:25.752Z</updated>
+    <published>2022-09-16T15:35:49.000Z</published>
+    <updated>2024-10-04T11:45:08.313Z</updated>
     
     
       
@@ -435,8 +429,8 @@
     <title>mac虚拟机安装OpenWrt</title>
     <link href="https://andyppang.github.io/2022/09/05/mac%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85OpenWrt/"/>
     <id>https://andyppang.github.io/2022/09/05/mac%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85OpenWrt/</id>
-    <published>2022-09-05T01:44:00.000Z</published>
-    <updated>2023-04-25T01:14:25.752Z</updated>
+    <published>2022-09-05T09:44:00.000Z</published>
+    <updated>2024-10-04T11:45:08.314Z</updated>
     
     
       
@@ -464,8 +458,8 @@
     <title>全国卷密集出现构造函数比较大小</title>
     <link href="https://andyppang.github.io/2022/06/09/%E5%85%A8%E5%9B%BD%E5%8D%B7%E5%AF%86%E9%9B%86%E5%87%BA%E7%8E%B0%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F/"/>
     <id>https://andyppang.github.io/2022/06/09/%E5%85%A8%E5%9B%BD%E5%8D%B7%E5%AF%86%E9%9B%86%E5%87%BA%E7%8E%B0%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F/</id>
-    <published>2022-06-09T07:27:39.000Z</published>
-    <updated>2022-08-05T11:53:10.291Z</updated>
+    <published>2022-06-09T15:27:39.000Z</published>
+    <updated>2024-10-04T11:45:08.314Z</updated>
     
     
       
@@ -491,8 +485,8 @@
     <title>docker安装joomla</title>
     <link href="https://andyppang.github.io/2022/06/05/docker%E5%AE%89%E8%A3%85joomla/"/>
     <id>https://andyppang.github.io/2022/06/05/docker%E5%AE%89%E8%A3%85joomla/</id>
-    <published>2022-06-04T16:07:58.000Z</published>
-    <updated>2022-06-07T07:28:14.300Z</updated>
+    <published>2022-06-05T00:07:58.000Z</published>
+    <updated>2024-10-04T11:45:08.313Z</updated>
     
     
       
@@ -516,8 +510,8 @@
     <title>cdn.jsdelivr.net被墙</title>
     <link href="https://andyppang.github.io/2022/06/01/cdn-jsdelivr-net%E8%A2%AB%E5%A2%99/"/>
     <id>https://andyppang.github.io/2022/06/01/cdn-jsdelivr-net%E8%A2%AB%E5%A2%99/</id>
-    <published>2022-06-01T03:27:03.000Z</published>
-    <updated>2022-06-04T16:05:37.667Z</updated>
+    <published>2022-06-01T11:27:03.000Z</published>
+    <updated>2024-10-04T11:45:08.313Z</updated>
     
     
       
@@ -526,7 +520,7 @@
         
     <summary type="html">&lt;p&gt;5月16日，cdn.jsdelivr.net被墙，至此加速github成为历史；&lt;/p&gt;
 &lt;p&gt;临时解决方案：将cdn.jsdelivr.net更改为fastly.jsdelivr.net，不知道会不会留活口给jsdelivr&lt;/p&gt;
-&lt;p&gt;同时受到影响的还有静态资源m</summary>
+&lt;p&gt;同时受到影响的还有静态资源mat</summary>
         
       
     
@@ -543,8 +537,8 @@
     <title>2021T8联考数学22导数题</title>
     <link href="https://andyppang.github.io/2022/05/13/2021T8%E8%81%94%E8%80%83%E6%95%B0%E5%AD%A622%E5%AF%BC%E6%95%B0%E9%A2%98/"/>
     <id>https://andyppang.github.io/2022/05/13/2021T8%E8%81%94%E8%80%83%E6%95%B0%E5%AD%A622%E5%AF%BC%E6%95%B0%E9%A2%98/</id>
-    <published>2022-05-13T14:36:30.000Z</published>
-    <updated>2022-05-14T04:36:53.268Z</updated>
+    <published>2022-05-13T22:36:30.000Z</published>
+    <updated>2024-10-04T11:45:08.311Z</updated>
     
     
       
@@ -552,7 +546,7 @@
         
         
     <summary type="html">&lt;div class=&quot;note note-primary&quot;&gt;
-            &lt;p&gt;已知函数&lt;span class=&quot;math inline&quot;&gt;\(f(x)=a\ln x-\sin x+x\)&lt;/span&gt;，其中&lt;span class=&quot;math</summary>
+            &lt;p&gt;已知函数&lt;span class=&quot;math inline&quot;&gt;\(f(x)=a\ln x-\sinx+x\)&lt;/span&gt;，其中&lt;span class=&quot;math</summary>
         
       
     

@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="尴尬 今天在 docker pull jupyter&#x2F;datascience-notebook 的时候，遇到了尴尬的问题：系统提示磁盘空间不足。仔细一看，原来是docker所在的var分区当时自动分区的时候只分了1.7个G，现在下载这个玩意儿解压缩以后有几个G，好尬尬 解决方案 首先尝试了给分区扩容，然后发现自己对linux纯命令行利用命令进行扩容一点都不知道，即使是在参看网上很多的教程以后">
+    <meta name="description" content="尴尬 今天在 docker pull jupyter&#x2F;datascience-notebook 的时候，遇到了尴尬的问题：系统提示磁盘空间不足。仔细一看，原来是docker所在的var分区当时自动分区的时候只分了1.7个G，现在下载这个玩意儿解压缩以后有几个G，好尬尬 解决方案 首先尝试了给分区扩容，然后发现自己对linux纯命令行利用命令进行扩容一点都不知道，即使是在参看网上很多的教程以后，尝试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决docker所在var分区磁盘空间不足的问题">
 <meta property="og:url" content="https://andyppang.github.io/2021/05/16/%E8%A7%A3%E5%86%B3docker%E6%89%80%E5%9C%A8var%E5%88%86%E5%8C%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="尴尬 今天在 docker pull jupyter&#x2F;datascience-notebook 的时候，遇到了尴尬的问题：系统提示磁盘空间不足。仔细一看，原来是docker所在的var分区当时自动分区的时候只分了1.7个G，现在下载这个玩意儿解压缩以后有几个G，好尬尬 解决方案 首先尝试了给分区扩容，然后发现自己对linux纯命令行利用命令进行扩容一点都不知道，即使是在参看网上很多的教程以后">
+<meta property="og:description" content="尴尬 今天在 docker pull jupyter&#x2F;datascience-notebook 的时候，遇到了尴尬的问题：系统提示磁盘空间不足。仔细一看，原来是docker所在的var分区当时自动分区的时候只分了1.7个G，现在下载这个玩意儿解压缩以后有几个G，好尬尬 解决方案 首先尝试了给分区扩容，然后发现自己对linux纯命令行利用命令进行扩容一点都不知道，即使是在参看网上很多的教程以后，尝试">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-15T16:17:15.000Z">
-<meta property="article:modified_time" content="2022-05-14T04:18:59.045Z">
+<meta property="article:published_time" content="2021-05-16T00:17:15.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.315Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary_large_image">
@@ -285,7 +285,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年5月14日 中午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -293,11 +293,15 @@
             <div class="markdown-body">
               
               <h2 id="尴尬">尴尬</h2>
-<p>今天在 <code>docker pull jupyter/datascience-notebook</code> 的时候，遇到了尴尬的问题：系统提示磁盘空间不足。仔细一看，原来是docker所在的var分区当时自动分区的时候只分了1.7个G，现在下载这个玩意儿解压缩以后有几个G，好尬尬</p>
+<p>今天在 <code>docker pull jupyter/datascience-notebook</code>
+的时候，遇到了尴尬的问题：系统提示磁盘空间不足。仔细一看，原来是docker所在的var分区当时自动分区的时候只分了1.7个G，现在下载这个玩意儿解压缩以后有几个G，好尬尬</p>
 <h2 id="解决方案">解决方案</h2>
 <p>首先尝试了给分区扩容，然后发现自己对linux纯命令行利用命令进行扩容一点都不知道，即使是在参看网上很多的教程以后，尝试进行操作也没有成功，干脆就放弃了这条路。就在一头莫展的时候发现了通过创建软连接的方式，将docker所在目录转移到其他空间充足的地方，比如我的home分区还剩十多个G</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">service stop docker<br>mkdir <span class="hljs-regexp">/home/</span>docker<br>mv <span class="hljs-regexp">/var/</span>lib<span class="hljs-regexp">/docker /</span>home/docker<br>ln -s <span class="hljs-regexp">/home/</span>docker <span class="hljs-regexp">/var/</span>lib/docker<br>service start docker<br></code></pre></td></tr></table></figure>
-<p>docker 默认的目录是在 <code>/var/lib/docker</code> 下，再次启动docker以后，docker还是只认这个目录，但是已经被我们软连接到home文件夹下了，再去pull以后，没有再报错了，并且发现 <code>/home/docker</code> 文件夹确实变大了，说明成功了。没想到通过软链接曲线救国，解决了空间不足的问题。</p>
+<p>docker 默认的目录是在 <code>/var/lib/docker</code>
+下，再次启动docker以后，docker还是只认这个目录，但是已经被我们软连接到home文件夹下了，再去pull以后，没有再报错了，并且发现
+<code>/home/docker</code>
+文件夹确实变大了，说明成功了。没想到通过软链接曲线救国，解决了空间不足的问题。</p>
 
               
             </div>

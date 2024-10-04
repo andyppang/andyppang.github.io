@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="两个问题 1.frps和frpc有什么区别？ s指的是server端，c指的是客户端 2.需要什么东西？ 一个vps 或者别人已经搭好的免费的frp服务，比如ddnsto.com 如何利用VPS自建frp服务 1.frps服务端搭建 首先到 frp 的 releases 页面下载最新版的对应 VPS 的处理器架构的压缩包 https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp">
+    <meta name="description" content="两个问题 1.frps和frpc有什么区别？ s指的是server端，c指的是客户端 2.需要什么东西？ 一个vps 或者别人已经搭好的免费的frp服务，比如ddnsto.com 如何利用VPS自建frp服务 1.frps服务端搭建 首先到 frp 的 releases 页面下载最新版的对应 VPS 的处理器架构的压缩包 https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp&#x2F;releas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Frp内网穿透">
 <meta property="og:url" content="https://andyppang.github.io/2019/06/24/Frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="两个问题 1.frps和frpc有什么区别？ s指的是server端，c指的是客户端 2.需要什么东西？ 一个vps 或者别人已经搭好的免费的frp服务，比如ddnsto.com 如何利用VPS自建frp服务 1.frps服务端搭建 首先到 frp 的 releases 页面下载最新版的对应 VPS 的处理器架构的压缩包 https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp">
+<meta property="og:description" content="两个问题 1.frps和frpc有什么区别？ s指的是server端，c指的是客户端 2.需要什么东西？ 一个vps 或者别人已经搭好的免费的frp服务，比如ddnsto.com 如何利用VPS自建frp服务 1.frps服务端搭建 首先到 frp 的 releases 页面下载最新版的对应 VPS 的处理器架构的压缩包 https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp&#x2F;releas">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-06-24T05:50:53.000Z">
-<meta property="article:modified_time" content="2022-05-14T04:18:59.032Z">
+<meta property="article:published_time" content="2019-06-24T13:50:53.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.312Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="frp">
 <meta property="article:tag" content="内网穿透">
@@ -286,7 +286,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年5月14日 中午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -300,50 +300,82 @@
 <p>一个vps 或者别人已经搭好的免费的frp服务，比如ddnsto.com</p>
 <h2 id="如何利用vps自建frp服务">如何利用VPS自建frp服务</h2>
 <h3 id="frps服务端搭建">1.frps服务端搭建</h3>
-<p>首先到 frp 的 releases 页面下载最新版的对应 VPS 的处理器架构的压缩包 <a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a> 如何知道 VPS 的处理器架构？在 VPS 上运行这个命令：</p>
+<p>首先到 frp 的 releases 页面下载最新版的对应 VPS 的处理器架构的压缩包
+<a
+target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a>
+如何知道 VPS 的处理器架构？在 VPS 上运行这个命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">arch<br></code></pre></td></tr></table></figure>
-<p>如果输出x86_64则需要下载带linux_amd64的那个压缩包； 如果输出的是其他的，则在文件列表中找 linux 的对应架构的压缩包 以x86_64架构举例（目前大多数都应该是这个架构）</p>
+<p>如果输出x86_64则需要下载带linux_amd64的那个压缩包；
+如果输出的是其他的，则在文件列表中找 linux 的对应架构的压缩包
+以x86_64架构举例（目前大多数都应该是这个架构）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /root<br><br><span class="hljs-meta">#</span><span class="bash"> 下载</span><br>wget --no-check-certificate https://github.com/fatedier/frp/releases/download/v0.18.0/frp_0.18.0_linux_amd64.tar.gz<br><br><span class="hljs-meta">#</span><span class="bash"> 解压</span><br>tar -xzvf frp_0.18.0_linux_amd64.tar.gz<br><br><span class="hljs-meta">#</span><span class="bash"> 文件夹名改成 frp，不然目录太长了不方便</span><br>mv frp_0.18.0_linux_amd64 frp<br>cd frp<br><br><span class="hljs-meta">#</span><span class="bash"> 确保 frps 程序具有可执行权限</span><br>chmod +x frps<br></code></pre></td></tr></table></figure>
 <p>然后试着运行一下frps,看看能否运行</p>
 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-string">./frps</span> <span class="hljs-params">--help</span><br></code></pre></td></tr></table></figure>
-<p>正常情况下会输出一串帮助信息，那么就说明你下载了正确架构的版本 如果提示-bash: ./frps: cannot execute binary file: Exec format error就说明你下错版本了</p>
+<p>正常情况下会输出一串帮助信息，那么就说明你下载了正确架构的版本
+如果提示-bash: ./frps: cannot execute binary file: Exec format
+error就说明你下错版本了</p>
 <h3 id="配置frps服务器">2.配置frps服务器</h3>
-<p>参考以下配置说明来书写配置文件frps.ini，你可以先在电脑上打一份草稿 此处只解释说明一些必要和常用的配置，如需研究完整配置说明请看目录下的frps_full.ini，以及参考<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/blob/master/README_zh.md" title="frp中文说明">frp中文说明</a></p>
+<p>参考以下配置说明来书写配置文件frps.ini，你可以先在电脑上打一份草稿
+此处只解释说明一些必要和常用的配置，如需研究完整配置说明请看目录下的frps_full.ini，以及参考<a
+target="_blank" rel="noopener" href="https://github.com/fatedier/frp/blob/master/README_zh.md"
+title="frp中文说明">frp中文说明</a></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 下面这句开头必须要有，表示配置的开始</span><br>[common]<br><br><span class="hljs-meta">#</span><span class="bash"> frp 服务端端口（必须）</span><br>bind_port = 7000<br><br><span class="hljs-meta">#</span><span class="bash"> frp 服务端密码（必须）</span><br>token = 12345678<br><br><span class="hljs-meta">#</span><span class="bash"> 认证超时时间，由于时间戳会被用于加密认证，防止报文劫持后被他人利用</span><br><span class="hljs-meta">#</span><span class="bash"> 因此服务端与客户端所在机器的时间差不能超过这个时间（秒）</span><br><span class="hljs-meta">#</span><span class="bash"> 默认为900秒，即15分钟，如果设置成0就不会对报文时间戳进行超时验证</span><br>authentication_timeout = 900<br><br><span class="hljs-meta">#</span><span class="bash"> 仪表盘端口，只有设置了才能使用仪表盘（即后台）</span><br>dashboard_port = 7500<br><br><span class="hljs-meta">#</span><span class="bash"> 仪表盘访问的用户名密码，如果不设置，则默认都是 admin</span><br>dashboard_user = admin<br>dashboard_pwd = admin<br><br><span class="hljs-meta">#</span><span class="bash"> 如果你想要用 frp 穿透访问内网中的网站（例如路由器设置页面）</span><br><span class="hljs-meta">#</span><span class="bash"> 则必须要设置以下两个监听端口，不设置则不会开启这项功能</span><br>vhost_http_port = 10080<br>vhost_https_port = 10443<br><br><span class="hljs-meta">#</span><span class="bash"> 此设置需要配合客户端设置，仅在穿透到内网中的 http 或 https 时有用（可选）</span><br><span class="hljs-meta">#</span><span class="bash"> 假设此项设置为 example.com，客户端配置 http 时将 subdomain 设置为 <span class="hljs-built_in">test</span>，</span><br><span class="hljs-meta">#</span><span class="bash"> 则你将 test.example.com 解析到服务端后，可以使用此域名来访问客户端对应的 http</span><br>subdomain_host = example.com<br></code></pre></td></tr></table></figure>
 <p>然后把你的准备好的配置文件内容写入frps.ini</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">echo &quot;[common]<br>bind_port = 7000<br>token = 12345678<br>dashboard_port = 7500<br>dashboard_user = admin<br>dashboard_pwd = admin<br>vhost_http_port = 10080<br>vhost_https_port = 10443<br>subdomain_host = example.com&quot; &gt; frps.ini<br></code></pre></td></tr></table></figure>
 <p>试着启动一下frps</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 使用 -c 参数指定配置文件</span><br>./frps -c frps.ini<br></code></pre></td></tr></table></figure>
-<p>如果没有出现错误提示就说明配置没有问题，可以正常使用 接着按下Ctrl + C可以终止程序运行</p>
+<p>如果没有出现错误提示就说明配置没有问题，可以正常使用 接着按下Ctrl +
+C可以终止程序运行</p>
 <h3 id="使-frps-在后台持续运行">3. 使 frps 在后台持续运行</h3>
-<p>启动 直接使用前面的命令行来运行是不行的，因为在关掉 ssh 窗口后程序frps就会停止运行，因此要使用nohup [command] &amp;这种操作来使其在后台运行</p>
+<p>启动 直接使用前面的命令行来运行是不行的，因为在关掉 ssh
+窗口后程序frps就会停止运行，因此要使用nohup [command]
+&amp;这种操作来使其在后台运行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nohup /root/frp/frps -c /root/frp/frps.ini &amp;<br></code></pre></td></tr></table></figure>
 <p>并且程序的所有输出（日志）会被写入nohup.out文件中，你可以使用cat命令查看其内容</p>
 <p>停止 想停止的话，结束frps即可</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pkill frps<br></code></pre></td></tr></table></figure>
 <p>重启 那就先停止再启动</p>
-<p>加入开机自启 编辑/etc/rc.local文件，将启动那句命令加到exit 0语句之前（如果有）</p>
+<p>加入开机自启 编辑/etc/rc.local文件，将启动那句命令加到exit
+0语句之前（如果有）</p>
 <p>注意：debian9需要自行创建rc.local文件，详细看这https://sb.sb/blog/debian-9-rc-local/</p>
 <h3 id="配置frpc客户端">4.配置frpc客户端</h3>
-<p>在梅林固件中，安装“frpc穿透”software，里面的配置对照第3步中的frps.ini进行配置即可，注意ac66u b1必须用虚拟内存软件，必须用虚拟内存软件，必须用虚拟内存软件，重要的事情说三遍 目前自己只是实现了udp的穿透形式：即 example.com:端口 进行穿透，当然首先需要将域名解析到frps服务器的ip</p>
+<p>在梅林固件中，安装“frpc穿透”software，里面的配置对照第3步中的frps.ini进行配置即可，注意ac66u
+b1必须用虚拟内存软件，必须用虚拟内存软件，必须用虚拟内存软件，重要的事情说三遍
+目前自己只是实现了udp的穿透形式：即 example.com:端口
+进行穿透，当然首先需要将域名解析到frps服务器的ip</p>
 <h2 id="后记">后记</h2>
-<p>这里只是记录自己目前实现的配置，感谢 https://moe.best/tutorial/frp.html 这个教程</p>
+<p>这里只是记录自己目前实现的配置，感谢
+https://moe.best/tutorial/frp.html 这个教程</p>
 <h2 id="更新于2021年5月4日">更新于2021年5月4日</h2>
 <p>由于经过两年时间frp版本的更新，除了以上基本功能外，再记录两个有用的新特性：</p>
 <h3 id="安全暴露内网服务">安全暴露内网服务</h3>
 <p>对于某些服务来说如果直接暴露于公网上将会存在安全隐患。</p>
-<p>使用 <code>stcp(secret tcp)</code> 类型的代理可以避免让任何人都能访问到要穿透的服务，但是访问者也需要运行另外一个 <code>frpc</code> 客户端。</p>
+<p>使用 <code>stcp(secret tcp)</code>
+类型的代理可以避免让任何人都能访问到要穿透的服务，但是访问者也需要运行另外一个
+<code>frpc</code> 客户端。</p>
 <p>1.<code>frps.ini</code> 内容如下： <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs json">[common]<br>bind_port = 7000<br></code></pre></td></tr></table></figure></p>
-<p>2.在需要暴露到内网的机器上部署 <code>frpc</code> ，且配置如下： <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs json">[common]<br>server_addr = x.x.x.x<br>server_port = 7000<br><br>[secret_ssh]<br>type = stcp<br># 只有 sk 一致的用户才能访问到此服务<br>sk = abcdefg<br>local_ip = 127.0.0.1<br>local_port = 22<br></code></pre></td></tr></table></figure></p>
-<p>3.在想要访问内网服务的机器上也部署 <code>frpc</code> ，且配置如下： <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs json">[common]<br>server_addr = x.x.x.x<br>server_port = 7000<br><br>[secret_ssh_visitor]<br>type = stcp<br># stcp 的访问者<br>role = visitor<br># 要访问的 stcp 代理的名字<br>server_name = secret_ssh<br>sk = abcdefg<br># 绑定本地端口用于访问 SSH 服务<br>bind_addr = 127.0.0.1<br>bind_port = 6000<br></code></pre></td></tr></table></figure></p>
-<p>4.通过 <code>SSH</code> 访问内网机器，假设用户名为 <code>test</code> ： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Shell">ssh -p 6000 test@127.0.0.1<br></code></pre></td></tr></table></figure> 更多设置方式见<a target="_blank" rel="noopener" href="https://gofrp.org/docs/examples/">示例</a></p>
+<p>2.在需要暴露到内网的机器上部署 <code>frpc</code> ，且配置如下：
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs json">[common]<br>server_addr = x.x.x.x<br>server_port = 7000<br><br>[secret_ssh]<br>type = stcp<br># 只有 sk 一致的用户才能访问到此服务<br>sk = abcdefg<br>local_ip = 127.0.0.1<br>local_port = 22<br></code></pre></td></tr></table></figure></p>
+<p>3.在想要访问内网服务的机器上也部署 <code>frpc</code> ，且配置如下：
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs json">[common]<br>server_addr = x.x.x.x<br>server_port = 7000<br><br>[secret_ssh_visitor]<br>type = stcp<br># stcp 的访问者<br>role = visitor<br># 要访问的 stcp 代理的名字<br>server_name = secret_ssh<br>sk = abcdefg<br># 绑定本地端口用于访问 SSH 服务<br>bind_addr = 127.0.0.1<br>bind_port = 6000<br></code></pre></td></tr></table></figure></p>
+<p>4.通过 <code>SSH</code> 访问内网机器，假设用户名为 <code>test</code>
+： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Shell">ssh -p 6000 test@127.0.0.1<br></code></pre></td></tr></table></figure> 更多设置方式见<a
+target="_blank" rel="noopener" href="https://gofrp.org/docs/examples/">示例</a></p>
 <h3 id="添加为系统服务">添加为系统服务</h3>
-<p>目前最新版的frp是0.36.2，下载下来以后其中有一个 <code>systemd</code> 文件夹，当中有文件 <code>frps.service</code> 和 <code>frpc.service</code></p>
-<p>查看 <code>frps.service</code> 的内容如下： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs Shell">[Unit]<br>Description=Frp Server Service<br>After=network.target<br><br>[Service]<br>Type=simple<br>User=nobody<br>Restart=on-failure<br>RestartSec=5s<br>ExecStart=/usr/bin/frps -c /etc/frp/frps.ini<br><br>[Install]<br>WantedBy=multi-user.target<br></code></pre></td></tr></table></figure> 因此我们可以如下操作将frps添加为系统服务： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">#</span><span class="bash"> 在下载解压后的frp文件夹内执行</span><br>cp frps /usr/bin<br>mkdir /etc/frp<br>cp frps.ini /etc/frp<br><br><span class="hljs-meta">#</span><span class="bash">/etc/systemd/system或/lib/systemd/system是存放系统服务的文件夹</span><br>cp ./systemd/frps.service /etc/systemd/system<br><br><span class="hljs-meta">#</span><span class="bash">激活系统服务</span><br>systemctl enable frps.service <br><span class="hljs-meta">#</span><span class="bash"><span class="hljs-built_in">enable</span>的作用就是创建了一个链接到/etc/systemd/system/multi-user.target文件夹</span><br><br><span class="hljs-meta">#</span><span class="bash">测试启动服务</span><br>systemctl start frps.service<br></code></pre></td></tr></table></figure> 同理在客户端也可以将 <code>frpc</code> 设置为系统服务</p>
+<p>目前最新版的frp是0.36.2，下载下来以后其中有一个 <code>systemd</code>
+文件夹，当中有文件 <code>frps.service</code> 和
+<code>frpc.service</code></p>
+<p>查看 <code>frps.service</code> 的内容如下： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs Shell">[Unit]<br>Description=Frp Server Service<br>After=network.target<br><br>[Service]<br>Type=simple<br>User=nobody<br>Restart=on-failure<br>RestartSec=5s<br>ExecStart=/usr/bin/frps -c /etc/frp/frps.ini<br><br>[Install]<br>WantedBy=multi-user.target<br></code></pre></td></tr></table></figure>
+因此我们可以如下操作将frps添加为系统服务： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">#</span><span class="bash"> 在下载解压后的frp文件夹内执行</span><br>cp frps /usr/bin<br>mkdir /etc/frp<br>cp frps.ini /etc/frp<br><br><span class="hljs-meta">#</span><span class="bash">/etc/systemd/system或/lib/systemd/system是存放系统服务的文件夹</span><br>cp ./systemd/frps.service /etc/systemd/system<br><br><span class="hljs-meta">#</span><span class="bash">激活系统服务</span><br>systemctl enable frps.service <br><span class="hljs-meta">#</span><span class="bash"><span class="hljs-built_in">enable</span>的作用就是创建了一个链接到/etc/systemd/system/multi-user.target文件夹</span><br><br><span class="hljs-meta">#</span><span class="bash">测试启动服务</span><br>systemctl start frps.service<br></code></pre></td></tr></table></figure>
+同理在客户端也可以将 <code>frpc</code> 设置为系统服务</p>
 <p>参考文献：</p>
 <ul>
-<li><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000014740871">如何编写一个Systemd Service</a></p></li>
-<li><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html">Systemd 入门教程：实战篇</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000014740871">如何编写一个Systemd
+Service</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html">Systemd
+入门教程：实战篇</a></p></li>
 </ul>
 
               

@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="系统概况  macos蒙特雷，系统自带Python3.9.6 通过安装包安装了Python3.10 brew install autojump 时作为依赖包安装了Python3.11 查看所有安装的Python 12345678ls &#x2F;usr&#x2F;local&#x2F;bin | grep python3# 会列出所有自己安装的版本，但是不包括系统自带的，系统自带的是&#x2F;usr&#x2F;bin&#x2F;python3">
+    <meta name="description" content="系统概况  macos蒙特雷，系统自带Python3.9.6 通过安装包安装了Python3.10 brew install autojump 时作为依赖包安装了Python3.11 查看所有安装的Python 12345678ls &#x2F;usr&#x2F;local&#x2F;bin | grep python3# 会列出所有自己安装的版本，但是不包括系统自带的，系统自带的是&#x2F;usr&#x2F;bin&#x2F;python3&#x2F;usr&#x2F;b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Macos系统Python多版本管理和Pip管理">
 <meta property="og:url" content="https://andyppang.github.io/2023/05/11/Macos%E7%B3%BB%E7%BB%9FPython%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%92%8CPip%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="系统概况  macos蒙特雷，系统自带Python3.9.6 通过安装包安装了Python3.10 brew install autojump 时作为依赖包安装了Python3.11 查看所有安装的Python 12345678ls &#x2F;usr&#x2F;local&#x2F;bin | grep python3# 会列出所有自己安装的版本，但是不包括系统自带的，系统自带的是&#x2F;usr&#x2F;bin&#x2F;python3">
+<meta property="og:description" content="系统概况  macos蒙特雷，系统自带Python3.9.6 通过安装包安装了Python3.10 brew install autojump 时作为依赖包安装了Python3.11 查看所有安装的Python 12345678ls &#x2F;usr&#x2F;local&#x2F;bin | grep python3# 会列出所有自己安装的版本，但是不包括系统自带的，系统自带的是&#x2F;usr&#x2F;bin&#x2F;python3&#x2F;usr&#x2F;b">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-05-11T03:23:24.000Z">
-<meta property="article:modified_time" content="2023-05-12T02:21:03.939Z">
+<meta property="article:published_time" content="2023-05-11T11:23:24.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.312Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="pythoh, pip">
 <meta name="twitter:card" content="summary_large_image">
@@ -285,7 +285,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2023年5月12日 上午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -296,7 +296,8 @@
 <ol type="1">
 <li><p>macos蒙特雷，系统自带Python3.9.6</p></li>
 <li><p>通过安装包安装了Python3.10</p></li>
-<li><p><code>brew install autojump</code> 时作为依赖包安装了Python3.11</p></li>
+<li><p><code>brew install autojump</code>
+时作为依赖包安装了Python3.11</p></li>
 <li><p>查看所有安装的Python</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">ls /usr/local/bin | grep python3<br><span class="hljs-meta">#</span><span class="bash"> 会列出所有自己安装的版本，但是不包括系统自带的，系统自带的是/usr/bin/python3</span><br><br>/usr/bin/python3 --version<br><span class="hljs-meta">#</span><span class="bash"> 显示系统自带的Python版本</span><br><br>python3 --version<br><span class="hljs-meta">#</span><span class="bash"> 显示现在系统默认使用的Python版本</span><br></code></pre></td></tr></table></figure></li>
 </ol>
@@ -305,16 +306,21 @@
 <li><p>卸载多余的3.10版本</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo rm -rf /Library/Frameworks/Python.framework/Versions/X.Y.Z<br>sudo rm -rf &quot;/Applications/Python X.Y.Z&quot;<br>sudo rm /usr/local/bin/pydoc3.X<br>sudo rm /usr/local/bin/python3.X<br>sudo rm /usr/local/bin/python3.Xm<br><span class="hljs-meta">#</span><span class="bash"> 其中 `X.Y.Z` 是要卸载的 Python 版本号。例如，如果要卸载 Python 3.8.10，则应将 `X.Y.Z` 替换为 `3.8.10`。请注意，这些命令需要管理员权限才能执行（使用 `sudo` 命令）。</span><br><br><span class="hljs-meta">#</span><span class="bash">（可选）您还可以使用以下命令，删除与卸载的 Python 版本相关的任何残留文件或目录</span><br>sudo rm -rf ~/Library/Python/X.Y<br>sudo rm -rf /Library/Python/X.Y<br><span class="hljs-meta">#</span><span class="bash"> 其中 `X.Y` 是要卸载的 Python 版本号。</span><br></code></pre></td></tr></table></figure></li>
 <li><p>想卸载3.11版本，但是作为<code>autojump</code>的依赖，不知道怎么弄，暂时放弃</p></li>
-<li><p>此时再来<code>python3 --version</code> 查看现在系统用的版本，我这里变成了3.11</p></li>
+<li><p>此时再来<code>python3 --version</code>
+查看现在系统用的版本，我这里变成了3.11</p></li>
 <li><p>关联命令 <code>python3</code> 为指定版本</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">nano ~/.zshrc<br><span class="hljs-meta">#</span><span class="bash"> 根据自己使用的终端程序更改，蒙特雷默认使用的是zsh</span><br><br>alias python3=&#x27;/usr/bin/python3&#x27;<br><span class="hljs-meta">#</span><span class="bash"> 指定为系统自带的3.9.6版本</span><br></code></pre></td></tr></table></figure>
 <p>记得 <code>source ~/.zshrc</code> 使更改生效</p></li>
-<li><p>为了安装 <code>pix2text</code> ，其依赖包 <code>torch</code> 版本要求为1.8.0~2.0，使用pip安装时总是找到2.0.1的版本，因此需要使用老版本的Pip，刚好退回到python3.9.6的版本</p>
+<li><p>为了安装 <code>pix2text</code> ，其依赖包 <code>torch</code>
+版本要求为1.8.0~2.0，使用pip安装时总是找到2.0.1的版本，因此需要使用老版本的Pip，刚好退回到python3.9.6的版本</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">nano <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/bin/</span>pip<br><span class="hljs-comment"># 会看到如下的代码</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/usr/<span class="hljs-built_in">local</span>/bin/python3</span><br><span class="hljs-meta">#</span><span class="bash"> -*- coding: utf-8 -*-</span><br>import re<br>import sys<br>from pip._internal.cli.main import main<br>if __name__ == &#x27;__main__&#x27;:<br>    sys.argv[0] = re.sub(r&#x27;(-script\.pyw|\.exe)?$&#x27;, &#x27;&#x27;, sys.argv[0])<br>    sys.exit(main())<br></code></pre></td></tr></table></figure>
-<p>将第一行的 <code>#!/usr/local/bin/python3</code> 修改为你想要的Python版本的路径就好了，例如修改为 <code>#!/usr/bin/python3</code>这样Pip默认关联的就是系统自带版本的Python也就是3.9.6了。</p>
+<p>将第一行的 <code>#!/usr/local/bin/python3</code>
+修改为你想要的Python版本的路径就好了，例如修改为
+<code>#!/usr/bin/python3</code>这样Pip默认关联的就是系统自带版本的Python也就是3.9.6了。</p>
 <h2 id="后记">后记</h2>
-<p>折腾了一圈，目的其实就是为了安装 <code>torch</code> 的1.8版本，貌似直接修改Pip的默认Python就可以了吧，不过顺带清理了一下系统多余的Python版本，也对各个版本的Python安装的位置也有了大概的了解。</p></li>
+<p>折腾了一圈，目的其实就是为了安装 <code>torch</code>
+的1.8版本，貌似直接修改Pip的默认Python就可以了吧，不过顺带清理了一下系统多余的Python版本，也对各个版本的Python安装的位置也有了大概的了解。</p></li>
 </ol>
 
               

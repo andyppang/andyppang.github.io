@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="安装  安装 Docker 和 Docker-Compose 在&#x2F;opt&#x2F;npm文件夹下创建一个类似于下面的 docker-compose.yml 文件： 123456789101112version: &amp;#x27;3.8&amp;#x27;services:  app:    image: &amp;#x27;jc21&#x2F;nginx-proxy-manager:latest&amp;#x27;    restar">
+    <meta name="description" content="安装  安装 Docker 和 Docker-Compose 在&#x2F;opt&#x2F;npm文件夹下创建一个类似于下面的 docker-compose.yml 文件： 123456789101112version: &amp;#x27;3.8&amp;#x27;services:  app:    image: &amp;#x27;jc21&#x2F;nginx-proxy-manager:latest&amp;#x27;    restart: u">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NginxProxyManager安装与使用">
 <meta property="og:url" content="https://andyppang.github.io/2023/05/18/NginxProxyManager%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="安装  安装 Docker 和 Docker-Compose 在&#x2F;opt&#x2F;npm文件夹下创建一个类似于下面的 docker-compose.yml 文件： 123456789101112version: &amp;#x27;3.8&amp;#x27;services:  app:    image: &amp;#x27;jc21&#x2F;nginx-proxy-manager:latest&amp;#x27;    restar">
+<meta property="og:description" content="安装  安装 Docker 和 Docker-Compose 在&#x2F;opt&#x2F;npm文件夹下创建一个类似于下面的 docker-compose.yml 文件： 123456789101112version: &amp;#x27;3.8&amp;#x27;services:  app:    image: &amp;#x27;jc21&#x2F;nginx-proxy-manager:latest&amp;#x27;    restart: u">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-05-18T06:22:36.000Z">
-<meta property="article:modified_time" content="2023-05-20T18:17:34.874Z">
+<meta property="article:published_time" content="2023-05-18T14:22:36.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.313Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="docker,nginx">
 <meta name="twitter:card" content="summary_large_image">
@@ -285,7 +285,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2023年5月21日 凌晨
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -295,7 +295,8 @@
               <h2 id="安装">安装</h2>
 <ol type="1">
 <li><p>安装 Docker 和 Docker-Compose</p></li>
-<li><p>在/opt/npm文件夹下创建一个类似于下面的 docker-compose.yml 文件：</p>
+<li><p>在/opt/npm文件夹下创建一个类似于下面的 docker-compose.yml
+文件：</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">version</span>: <span class="hljs-string">&#x27;3.8&#x27;</span><br>service<span class="hljs-variable">s:</span><br>  app:<br>    image: <span class="hljs-string">&#x27;jc21/nginx-proxy-manager:latest&#x27;</span><br>    restar<span class="hljs-variable">t:</span> unless-stopped<br>    port<span class="hljs-variable">s:</span><br>      - <span class="hljs-string">&#x27;80:80&#x27;</span><br>      - <span class="hljs-string">&#x27;81:81&#x27;</span><br>      - <span class="hljs-string">&#x27;443:443&#x27;</span><br>    volume<span class="hljs-variable">s:</span><br>      - ./dat<span class="hljs-variable">a:</span>/data<br>      - ./letsencryp<span class="hljs-variable">t:</span>/etc/letsencrypt<br></code></pre></td></tr></table></figure></li>
 <li><p>运行容器</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker-compose up -d</span><br></code></pre></td></tr></table></figure></li>
@@ -312,20 +313,25 @@
 <ol type="1">
 <li><p>Details：</p>
 <ul>
-<li>Domain Names：一般要在dns服务商那里先用*解析一个通用的二级域名到本机ip，这里添加你喜欢的二级域名就好</li>
+<li>Domain
+Names：一般要在dns服务商那里先用*解析一个通用的二级域名到本机ip，这里添加你喜欢的二级域名就好</li>
 <li>Scheme：选择https</li>
-<li>Forward Hostname：要反代的ip，如果是docker容器一般填写 <code>172.17.0.1</code></li>
+<li>Forward Hostname：要反代的ip，如果是docker容器一般填写
+<code>172.17.0.1</code></li>
 <li>Forward Port：反代的端口</li>
 </ul></li>
 <li><p>Custom locations：与Details应该是并列关系</p>
 <ul>
-<li>Location： 填写要反代的网站的文件夹位置，有些网站是建立在二级文件夹下就需要在这里定义</li>
+<li>Location：
+填写要反代的网站的文件夹位置，有些网站是建立在二级文件夹下就需要在这里定义</li>
 <li>Scheme：选择https</li>
-<li>Forward Hostname：要反代的ip，如果是docker容器一般填写 <code>172.17.0.1</code></li>
+<li>Forward Hostname：要反代的ip，如果是docker容器一般填写
+<code>172.17.0.1</code></li>
 <li>Forward Port：反代的端口</li>
 </ul></li>
 <li><p>SSL Certificate：</p>
-<p>根据需要是否开启SSL和强制Force SSL，输入邮箱，同意条款就可以自动签发证书了，爽！</p></li>
+<p>根据需要是否开启SSL和强制Force
+SSL，输入邮箱，同意条款就可以自动签发证书了，爽！</p></li>
 </ol>
 
               

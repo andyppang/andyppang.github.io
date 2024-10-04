@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="实现的几种途径  商用的最有名的Mathpix 免费的：https:&#x2F;&#x2F;simpletex.cn 开源的两个项目： lukas-blecher&#x2F;LaTeX-OCR: pix2tex: Using a ViT to convert images of equations into LaTeX code. (github.com) breezedeus&#x2F;Pix2Text: Pix In,">
+    <meta name="description" content="实现的几种途径  商用的最有名的Mathpix 免费的：https:&#x2F;&#x2F;simpletex.cn 开源的两个项目： lukas-blecher&#x2F;LaTeX-OCR: pix2tex: Using a ViT to convert images of equations into LaTeX code. (github.com) breezedeus&#x2F;Pix2Text: Pix In, Latex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="截图识别数学公式为latex代码">
 <meta property="og:url" content="https://andyppang.github.io/2023/05/29/%E6%88%AA%E5%9B%BE%E8%AF%86%E5%88%AB%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E4%B8%BAlatex%E4%BB%A3%E7%A0%81/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="实现的几种途径  商用的最有名的Mathpix 免费的：https:&#x2F;&#x2F;simpletex.cn 开源的两个项目： lukas-blecher&#x2F;LaTeX-OCR: pix2tex: Using a ViT to convert images of equations into LaTeX code. (github.com) breezedeus&#x2F;Pix2Text: Pix In,">
+<meta property="og:description" content="实现的几种途径  商用的最有名的Mathpix 免费的：https:&#x2F;&#x2F;simpletex.cn 开源的两个项目： lukas-blecher&#x2F;LaTeX-OCR: pix2tex: Using a ViT to convert images of equations into LaTeX code. (github.com) breezedeus&#x2F;Pix2Text: Pix In, Latex">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-05-29T15:08:57.000Z">
-<meta property="article:modified_time" content="2023-05-30T01:15:36.143Z">
+<meta property="article:published_time" content="2023-05-29T23:08:57.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.314Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="latex-ocr">
 <meta name="twitter:card" content="summary_large_image">
@@ -285,7 +285,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2023年5月30日 上午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -297,8 +297,13 @@
 <li><p>商用的最有名的Mathpix</p></li>
 <li><p>免费的：https://simpletex.cn</p></li>
 <li><p>开源的两个项目：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/lukas-blecher/LaTeX-OCR">lukas-blecher/LaTeX-OCR: pix2tex: Using a ViT to convert images of equations into LaTeX code. (github.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/breezedeus/Pix2Text">breezedeus/Pix2Text: Pix In, Latex &amp; Text Out. Recognize Chinese, English Texts, and Math Formulas from Images. (github.com)</a></p></li>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/lukas-blecher/LaTeX-OCR">lukas-blecher/LaTeX-OCR:
+pix2tex: Using a ViT to convert images of equations into LaTeX code.
+(github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/breezedeus/Pix2Text">breezedeus/Pix2Text:
+Pix In, Latex &amp; Text Out. Recognize Chinese, English Texts, and Math
+Formulas from Images. (github.com)</a></p></li>
 </ul>
 <p>本文主要介绍开源的两个项目的安装使用</p>
 <h2 id="latex-ocrpix2tex">LaTex-OCR：pix2tex</h2>
@@ -309,7 +314,9 @@
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">pip install -i https:<span class="hljs-regexp">//</span>pypi.tuna.tsinghua.edu.cn/simple pip --trusted-host<br></code></pre></td></tr></table></figure></li>
 <li><p>然后一行代码</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pip install pix2tex[gui]<br></code></pre></td></tr></table></figure></li>
-<li><p>在终端输入命令 <code>latexocr</code>就会调用应用程序，对公式截图即可自动转换并且自动复制latex代码，其中界面当中的参数 <code>Temperature</code>调整是公式识别的精度</p></li>
+<li><p>在终端输入命令
+<code>latexocr</code>就会调用应用程序，对公式截图即可自动转换并且自动复制latex代码，其中界面当中的参数
+<code>Temperature</code>调整是公式识别的精度</p></li>
 </ol>
 <p>安装过程中如果出现各种错误，善用各种搜索引擎和各种AI，感觉可以和chatgpt媲美的Perplexity.ai</p>
 <p>自己安装过程中总是提示找不到PyQt的各种包，也许有用的一个命令</p>
@@ -318,8 +325,10 @@
 <h2 id="pix2text">pix2text</h2>
 <p>从名字来看，这是pix2tex项目的加强版，pix2tex只能识别数学公式，而pix2text希望能识别文字和公式混合的场景，从使用的效果来看，还有很大的进步空间</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">pip install pix2text -i https:<span class="hljs-regexp">//</span>pypi.doubanio.com/simple<br></code></pre></td></tr></table></figure>
-<p>如果电脑中从未安装过 <code>PyTorch</code>，<code>OpenCV</code> python包，初次安装可能会遇到不少问题，善用各种搜索引擎和AI</p>
-<p>各种使用方式看项目主页即可，我使用的是本机<a target="_blank" rel="noopener" href="https://github.com/breezedeus/Pix2Text#%E8%84%9A%E6%9C%AC%E8%BF%90%E8%A1%8C">脚本运行</a></p>
+<p>如果电脑中从未安装过 <code>PyTorch</code>，<code>OpenCV</code>
+python包，初次安装可能会遇到不少问题，善用各种搜索引擎和AI</p>
+<p>各种使用方式看项目主页即可，我使用的是本机<a
+target="_blank" rel="noopener" href="https://github.com/breezedeus/Pix2Text#%E8%84%9A%E6%9C%AC%E8%BF%90%E8%A1%8C">脚本运行</a></p>
 
               
             </div>

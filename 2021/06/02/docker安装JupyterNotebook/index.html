@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在docker中安装 12345678# 映射容器内jupyter的工作目录mkdir &#x2F;home&#x2F;jupyter# 给jupyter写入文件夹的权限chmod 777 &#x2F;home&#x2F;jupyter# 映射端口和文件夹，安装科学计算高大全版本，有6个G吧docker run -d -v &#x2F;home&#x2F;jupyter:&#x2F;home&#x2F;jovyan&#x2F;work --name&#x3D;jupyter -p 13579:">
+    <meta name="description" content="在docker中安装 12345678# 映射容器内jupyter的工作目录mkdir &#x2F;home&#x2F;jupyter# 给jupyter写入文件夹的权限chmod 777 &#x2F;home&#x2F;jupyter# 映射端口和文件夹，安装科学计算高大全版本，有6个G吧docker run -d -v &#x2F;home&#x2F;jupyter:&#x2F;home&#x2F;jovyan&#x2F;work --name&#x3D;jupyter -p 13579:8">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker安装JupyterNotebook">
 <meta property="og:url" content="https://andyppang.github.io/2021/06/02/docker%E5%AE%89%E8%A3%85JupyterNotebook/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="在docker中安装 12345678# 映射容器内jupyter的工作目录mkdir &#x2F;home&#x2F;jupyter# 给jupyter写入文件夹的权限chmod 777 &#x2F;home&#x2F;jupyter# 映射端口和文件夹，安装科学计算高大全版本，有6个G吧docker run -d -v &#x2F;home&#x2F;jupyter:&#x2F;home&#x2F;jovyan&#x2F;work --name&#x3D;jupyter -p 13579:">
+<meta property="og:description" content="在docker中安装 12345678# 映射容器内jupyter的工作目录mkdir &#x2F;home&#x2F;jupyter# 给jupyter写入文件夹的权限chmod 777 &#x2F;home&#x2F;jupyter# 映射端口和文件夹，安装科学计算高大全版本，有6个G吧docker run -d -v &#x2F;home&#x2F;jupyter:&#x2F;home&#x2F;jovyan&#x2F;work --name&#x3D;jupyter -p 13579:8">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-06-02T15:55:00.000Z">
-<meta property="article:modified_time" content="2022-05-14T04:18:59.037Z">
+<meta property="article:published_time" content="2021-06-02T23:55:00.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.313Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="jupyter">
@@ -286,7 +286,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年5月14日 中午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -295,16 +295,22 @@
               
               <h2 id="在docker中安装">在docker中安装</h2>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 映射容器内jupyter的工作目录</span><br>mkdir <span class="hljs-regexp">/home/</span>jupyter<br><span class="hljs-comment"># 给jupyter写入文件夹的权限</span><br>chmod <span class="hljs-number">777</span> <span class="hljs-regexp">/home/</span>jupyter<br><span class="hljs-comment"># 映射端口和文件夹，安装科学计算高大全版本，有6个G吧</span><br>docker run -d -v <span class="hljs-regexp">/home/</span>jupyter:<span class="hljs-regexp">/home/</span>jovyan<span class="hljs-regexp">/work --name=jupyter -p 13579:8888 jupyter/</span>datascience-notebook<br><span class="hljs-comment"># 或者安装基本版本</span><br>docker run -d -v <span class="hljs-regexp">/home/</span>jupyter:<span class="hljs-regexp">/home/</span>jovyan<span class="hljs-regexp">/work --name=jupyter -p 13579:8888 jupyter/</span>base-notebook<br></code></pre></td></tr></table></figure>
-<p>访问浏览器地址：127.0.0.1:13579 （同时支持远程访问），会进入jupyter页面，首次需要输入token。</p>
-<p>获取token的方法是 <code>docker logs jupyter</code> ,然后会看到token字样。</p>
-<p>从jupyter 5开始，可以通过命令设置密码，首先<code>docker exec -it jupyter /bin/bash</code>连接jupyter的终端，然后 <code>jupyter notebook password</code>，输入两次密码后，今后就默认启用密码登录jupyter了，不然每次都要输入token，重启容器生效</p>
+<p>访问浏览器地址：127.0.0.1:13579
+（同时支持远程访问），会进入jupyter页面，首次需要输入token。</p>
+<p>获取token的方法是 <code>docker logs jupyter</code>
+,然后会看到token字样。</p>
+<p>从jupyter
+5开始，可以通过命令设置密码，首先<code>docker exec -it jupyter /bin/bash</code>连接jupyter的终端，然后
+<code>jupyter notebook password</code>，输入两次密码后，今后就默认启用密码登录jupyter了，不然每次都要输入token，重启容器生效</p>
 <h2 id="安装主题及设置文字样式大小">安装主题及设置文字样式大小</h2>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-comment"># install jupyterthemes</span><br>pip <span class="hljs-keyword">install </span><span class="hljs-keyword">jupyterthemes</span><br><span class="hljs-keyword"></span><br><span class="hljs-keyword"># </span>upgrade to latest version<br>pip <span class="hljs-keyword">install </span>--upgrade <span class="hljs-keyword">jupyterthemes</span><br><span class="hljs-keyword"></span><br><span class="hljs-keyword"># </span>查看可用主题<br><span class="hljs-keyword">jt </span>-l<br><br><span class="hljs-comment"># 查看jt帮助</span><br><span class="hljs-keyword">jt </span>--help<br><br><span class="hljs-comment"># 个性化设置示例</span><br><span class="hljs-keyword">jt </span>-t onedork -f roboto -fs <span class="hljs-number">14</span> -nfs <span class="hljs-number">14</span> -tfs <span class="hljs-number">14</span> -ofs <span class="hljs-number">11</span><br></code></pre></td></tr></table></figure>
 <p>重启容器生效</p>
 <h2 id="安装插件">安装插件</h2>
-<p>首先连接jupyter终端 <code>docker exec -it jupyter /bin/bash</code></p>
+<p>首先连接jupyter终端
+<code>docker exec -it jupyter /bin/bash</code></p>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-comment"># 安装</span><br>pip <span class="hljs-keyword">install </span><span class="hljs-keyword">jupyter_contrib_nbextensions</span><br><span class="hljs-keyword"> </span><br><span class="hljs-comment"># 配置</span><br><span class="hljs-keyword">jupyter </span>contrib nbextension <span class="hljs-keyword">install </span>--user --skip-running-check<br></code></pre></td></tr></table></figure>
-<p>设置好开启的插件以后，重启容器生效，推荐开启 <code>Gist-it</code> 和 <code>Hinterland</code> 插件</p>
+<p>设置好开启的插件以后，重启容器生效，推荐开启 <code>Gist-it</code> 和
+<code>Hinterland</code> 插件</p>
 
               
             </div>

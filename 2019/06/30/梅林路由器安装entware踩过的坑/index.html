@@ -16,15 +16,15 @@
   <meta name="author" content="PL">
   <meta name="keywords" content="">
   
-    <meta name="description" content="解决 wget 无法建立SSL问题 1curl -O -L &#x2F;opt&#x2F;onmp.zip https:&#x2F;&#x2F;github.com&#x2F;xzhih&#x2F;ONMP&#x2F;archive&#x2F;master.zip 创建2gb虚拟内存 [梅林虚拟内存](https:&#x2F;&#x2F;koolshare.cn&#x2F;forum.php?mod&#x3D;viewthread&amp;tid&#x3D;42723&amp;extra&#x3D;page%3D1%26filt">
+    <meta name="description" content="解决 wget 无法建立SSL问题 1curl -O -L &#x2F;opt&#x2F;onmp.zip https:&#x2F;&#x2F;github.com&#x2F;xzhih&#x2F;ONMP&#x2F;archive&#x2F;master.zip 创建2gb虚拟内存 [梅林虚拟内存](https:&#x2F;&#x2F;koolshare.cn&#x2F;forum.php?mod&#x3D;viewthread&amp;tid&#x3D;42723&amp;extra&#x3D;page%3D1%26filter%">
 <meta property="og:type" content="article">
 <meta property="og:title" content="梅林路由器安装entware踩过的坑">
 <meta property="og:url" content="https://andyppang.github.io/2019/06/30/%E6%A2%85%E6%9E%97%E8%B7%AF%E7%94%B1%E5%99%A8%E5%AE%89%E8%A3%85entware%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/index.html">
 <meta property="og:site_name" content="Wish You Success">
-<meta property="og:description" content="解决 wget 无法建立SSL问题 1curl -O -L &#x2F;opt&#x2F;onmp.zip https:&#x2F;&#x2F;github.com&#x2F;xzhih&#x2F;ONMP&#x2F;archive&#x2F;master.zip 创建2gb虚拟内存 [梅林虚拟内存](https:&#x2F;&#x2F;koolshare.cn&#x2F;forum.php?mod&#x3D;viewthread&amp;tid&#x3D;42723&amp;extra&#x3D;page%3D1%26filt">
+<meta property="og:description" content="解决 wget 无法建立SSL问题 1curl -O -L &#x2F;opt&#x2F;onmp.zip https:&#x2F;&#x2F;github.com&#x2F;xzhih&#x2F;ONMP&#x2F;archive&#x2F;master.zip 创建2gb虚拟内存 [梅林虚拟内存](https:&#x2F;&#x2F;koolshare.cn&#x2F;forum.php?mod&#x3D;viewthread&amp;tid&#x3D;42723&amp;extra&#x3D;page%3D1%26filter%">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-06-29T17:30:21.000Z">
-<meta property="article:modified_time" content="2022-05-14T04:18:59.042Z">
+<meta property="article:published_time" content="2019-06-30T01:30:21.000Z">
+<meta property="article:modified_time" content="2024-10-04T11:45:08.315Z">
 <meta property="article:author" content="PL">
 <meta property="article:tag" content="路由器">
 <meta property="article:tag" content="entware">
@@ -288,7 +288,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年5月14日 中午
+                    本文最后更新于：2024年10月4日 中午
                   
                 
               </p>
@@ -298,7 +298,10 @@
               <h2 id="解决-wget-无法建立ssl问题">解决 wget 无法建立SSL问题</h2>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -O -L <span class="hljs-regexp">/opt/</span>onmp.zip https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/xzhih/</span>ONMP<span class="hljs-regexp">/archive/m</span>aster.zip<br></code></pre></td></tr></table></figure>
 <h2 id="创建2gb虚拟内存">创建2gb虚拟内存</h2>
-<p>[梅林虚拟内存](<a target="_blank" rel="noopener" href="https://koolshare.cn/forum.php?mod=viewthread&amp;tid=42723&amp;extra=page%3D1%26filter%3Dtypeid%26typeid%3D97">https://koolshare.cn/forum.php?mod=viewthread&amp;tid=42723&amp;extra=page%3D1%26filter%3Dtypeid%26typeid%3D97</a> 2gb=2097152kb "梅林虚拟内存") 多么痛的领悟！！！mysqld无法启动就是因为虚拟内存设置不够，想增加内存可能会用到下面的东东</p>
+<p>[梅林虚拟内存](<a
+target="_blank" rel="noopener" href="https://koolshare.cn/forum.php?mod=viewthread&amp;tid=42723&amp;extra=page%3D1%26filter%3Dtypeid%26typeid%3D97">https://koolshare.cn/forum.php?mod=viewthread&amp;tid=42723&amp;extra=page%3D1%26filter%3Dtypeid%26typeid%3D97</a>
+2gb=2097152kb "梅林虚拟内存")
+多么痛的领悟！！！mysqld无法启动就是因为虚拟内存设置不够，想增加内存可能会用到下面的东东</p>
 <h2 id="相关知识">相关知识</h2>
 <p>简单来讲就是swapoff和swapon命令，但是如果内存不足，比如出现</p>
 <figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs fortran">swapoff failed: Cannot <span class="hljs-built_in">allocate</span> memory<br></code></pre></td></tr></table></figure>
@@ -309,10 +312,12 @@
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cat <span class="hljs-regexp">/proc/</span>swaps<br></code></pre></td></tr></table></figure>
 <p>得到结果 /dev/sda3</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">swapoff <span class="hljs-regexp">/dev/</span>sda3<br></code></pre></td></tr></table></figure>
-<p>原文：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhsh87/article/details/8954493">https://blog.csdn.net/zhsh87/article/details/8954493</a></p>
+<p>原文：<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/zhsh87/article/details/8954493">https://blog.csdn.net/zhsh87/article/details/8954493</a></p>
 <h2 id="修改onmp.sh文件">修改onmp.sh文件</h2>
 <p>由于脚本只建了512M的虚拟内存，启动mysql时可能会报错不够</p>
-<p>将第1217行修改为 dd if=/dev/zero  of=/opt/swaptmp bs=1M  count=2097152 原来是512m的虚拟内存，修改为2097152kb=2gb</p>
+<p>将第1217行修改为 dd if=/dev/zero  of=/opt/swaptmp bs=1M
+ count=2097152 原来是512m的虚拟内存，修改为2097152kb=2gb</p>
 <h2 id="注意">注意：</h2>
 <p>安装entware会更改覆盖梅林的services-start文件内容</p>
 <p>造成的后果就是重启路由器后，虚拟内存不会自动加载</p>
