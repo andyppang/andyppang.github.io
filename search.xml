@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>GitHub page 备份到 cloudflare page</title>
-    <url>/2024/10/04/GitHub%20page%20%E5%A4%87%E4%BB%BD%E5%88%B0%20cloudflare%20page/</url>
+    <url>/2024/10/06/GitHub%20page%20%E5%A4%87%E4%BB%BD%E5%88%B0%20cloudflare%20page/</url>
     <content><![CDATA[<p>cloudflare page 只需要连接 github
 的仓库就可以了，不需要配置任何密匙，并且可以绑定自己的域名</p>
 <p>zeroandone.pages.dev</p>
@@ -36,6 +36,9 @@ openwrt的ssrplus只能提供socks代理，并不提供http代理，而adb好像
 <p>利用<code>privoxy</code>实现，具体参考<a
 href="https://blog.csdn.net/u011005745/article/details/132383080">使用Privoxy为Openwrt的ssrplus开启http代理服务器_openwrt
 代理服务器-CSDN博客</a>，如果不能安装privoxy的话，可以先更换一下opkg的源再安装就没问题了。</p>
+<h2 id="系统更新后有惊喜">系统更新后有惊喜</h2>
+<p>9月份系统更新版本v8-t653t11-lf1v320.002164后，国庆节期间偶然发现wifi里面可以手动设置ip地址、dns服务器和<strong>网关</strong>了！！！！</p>
+<p>留坑待填：如何禁止系统更新或者寻找该系统的固件备用（t653t11代表机器芯片型号）</p>
 ]]></content>
       <categories>
         <category>折腾</category>
