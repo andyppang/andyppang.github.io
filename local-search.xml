@@ -31,11 +31,11 @@
   
   
   <entry>
-    <title>title</title>
+    <title>docker开启ipv6支持</title>
     <link href="/2025/04/19/docker%E5%BC%80%E5%90%AFipv6%E6%94%AF%E6%8C%81/"/>
     <url>/2025/04/19/docker%E5%BC%80%E5%90%AFipv6%E6%94%AF%E6%8C%81/</url>
     
-    <content type="html"><![CDATA[<h1 id="检查宿主机是否开启ipv6转发">1.检查宿主机是否开启Ipv6转发</h1><p>确保启用IPv6转发（编辑 <code>/etc/sysctl.conf</code>）：</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">net<span class="hljs-selector-class">.ipv6</span><span class="hljs-selector-class">.conf</span><span class="hljs-selector-class">.all</span>.forwarding=<span class="hljs-number">1</span><br>net<span class="hljs-selector-class">.ipv6</span><span class="hljs-selector-class">.conf</span><span class="hljs-selector-class">.default</span>.forwarding=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure><p>应用配置：<code>sysctl -p</code></p><h1 id="修改docker配置">2.修改docker配置</h1><p>编辑<code>/etc/docker/daemon.json</code>，之前可以先备份原文件，然后添加如下信息：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;ipv6&quot;</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">&quot;fixed-cidr-v6&quot;</span>: <span class="hljs-string">&quot;fd00:db8::/64&quot;</span>,       <span class="hljs-comment">// 本地私有网络（ULA）</span><br>  <span class="hljs-attr">&quot;experimental&quot;</span>: <span class="hljs-literal">true</span>,                   <span class="hljs-comment">// 开启docker实验性功能</span><br>  <span class="hljs-attr">&quot;ip6tables&quot;</span>: <span class="hljs-literal">true</span>                       <span class="hljs-comment">// 启用 IPv6 iptables 规则（关键！）</span><br>&#125;<br></code></pre></td></tr></table></figure><p>然后<code>systemctl restart docker</code>，如果出现错误，检查配置文件是否缺少逗号或者是否对齐。</p><p>此时通过<code>ip a show docker0</code>查看宿主机是否为docker分配了ipv6地址，例如<code>inet6 fd00:db8::1/64 scope global</code>，如果看到这样的地址，即表示开启成功了。</p><h1 id="为容器建立新的ipv6专用网络">3.为容器建立新的ipv6专用网络</h1><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> network create --driver=bridge --subnet=<span class="hljs-number">172.26.0.0</span>/<span class="hljs-number">16</span> --subnet=fd<span class="hljs-number">00</span>:db<span class="hljs-number">8</span>:abcd::/<span class="hljs-number">64</span> --ipv<span class="hljs-number">6</span>  my-ipv<span class="hljs-number">6</span>-network<br></code></pre></td></tr></table></figure><p>这一步容易出错，原因是如果之前建立的容器较多，172.26.0.0/16这个地址段很可能已经被占用了，修改一下就ok啦，这样就建立了名字为<code>my-ipv6-network</code>的docker网络。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="检查宿主机是否开启ipv6转发">1.检查宿主机是否开启Ipv6转发</h1><p>确保启用IPv6转发（编辑 <code>/etc/sysctl.conf</code>）：</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">net<span class="hljs-selector-class">.ipv6</span><span class="hljs-selector-class">.conf</span><span class="hljs-selector-class">.all</span>.forwarding=<span class="hljs-number">1</span><br>net<span class="hljs-selector-class">.ipv6</span><span class="hljs-selector-class">.conf</span><span class="hljs-selector-class">.default</span>.forwarding=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure><p>应用配置：<code>sysctl -p</code></p><h1 id="修改docker配置">2.修改docker配置</h1><p>编辑<code>/etc/docker/daemon.json</code>，之前可以先备份原文件，然后添加如下信息：</p><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">```<br><br>然后`systemctl restart docker`，如果出现错误，检查配置文件是否缺少逗号或者是否对齐。<br><br><span class="hljs-title">此时通过`ip a show docker0`查看宿主机是否为docker分配了ipv6地址，例如`inet6 fd00:db8::</span><span class="hljs-number">1</span>/<span class="hljs-number">64</span> scope global`，如果看到这样的地址，即表示开启成功了。<br><br># <span class="hljs-number">3</span>.为容器建立新的ipv6专用网络<br><br></code></pre></td></tr></table></figure><p>docker network create --driver=bridge --subnet=172.26.0.0/16--subnet=fd00:db8:abcd::/64 --ipv6 my-ipv6-network ```</p><p>这一步容易出错，原因是如果之前建立的容器较多，172.26.0.0/16这个地址段很可能已经被占用了，修改一下就ok啦，这样就建立了名字为<code>my-ipv6-network</code>的docker网络。</p>]]></content>
     
     
     
@@ -1608,11 +1608,11 @@
       
       <tag>路由器</tag>
       
-      <tag>内网穿透</tag>
-      
       <tag>zerotier</tag>
       
       <tag>merlin</tag>
+      
+      <tag>内网穿透</tag>
       
     </tags>
     
@@ -2206,9 +2206,9 @@
     
     <tags>
       
-      <tag>frp</tag>
-      
       <tag>内网穿透</tag>
+      
+      <tag>frp</tag>
       
     </tags>
     
